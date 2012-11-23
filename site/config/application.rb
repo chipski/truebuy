@@ -13,14 +13,14 @@ module Reviews
   class Application < Rails::Application
 
     # don't generate RSpec tests for views and helpers
-    config.generators do |g|
-      
+    config.generators do |g|       
+      g.orm             :active_record  
+      g.template_engine :haml
       g.test_framework :rspec, fixture: true
       g.fixture_replacement :factory_girl
-      
-      
       g.view_specs false
-      g.helper_specs false
+      g.helper_specs false  
+      g.helpers      false  
     end
 
     # Settings in config/environments/* take precedence over those specified here.
@@ -29,7 +29,9 @@ module Reviews
 
     # Custom directories with classes and modules you want to be autoloadable.
     # config.autoload_paths += %W(#{config.root}/extras)
-    config.autoload_paths += %W(#{config.root}/lib)
+    config.autoload_paths += %W(#{config.root}/lib)           
+    config.autoload_paths += %W( #{Rails.root}/app/mixins ) 
+    
 
 
     # Only load the plugins named here, in the order given (default is alphabetical).
@@ -48,7 +50,8 @@ module Reviews
     # config.i18n.default_locale = :de
 
     # Configure the default encoding used in templates for Ruby 1.9.
-    config.encoding = "utf-8"
+    config.encoding = "utf-8"     
+    config.time_zone = 'UTC'  
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password, :password_confirmation]
@@ -69,7 +72,8 @@ module Reviews
 
     # Enable the asset pipeline
     config.assets.enabled = true
-
+    config.assets.logger = false    
+    
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
   end

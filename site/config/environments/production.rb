@@ -76,7 +76,7 @@ Reviews::Application.configure do
       :password  => ENV["MANDRILL_API_KEY"]
     }
 
-
+  GA.tracker = "UA-35680198-1" 
 
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)

@@ -34,6 +34,9 @@ gem 'jquery-rails'
 gem "jquery-datatables-rails", ">= 1.11.2"
 gem "google_visualr", ">= 2.1.2"
 
+#gem 'masonry-rails'
+gem 'google-analytics-rails'
+
 #gem 'inherited_resources' 
 #gem "rest-client"
 gem 'aasm'
