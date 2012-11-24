@@ -14,8 +14,10 @@ module Reviews
 
     # don't generate RSpec tests for views and helpers
     config.generators do |g|       
-      g.orm             :active_record  
-      g.template_engine :haml
+      g.orm               :active_record  
+      #g.scaffold_controller InheritedResources::Base
+      g.template_engine   :haml                
+      g.stylesheet_engine :sass
       g.test_framework :rspec, fixture: true
       g.fixture_replacement :factory_girl
       g.view_specs false

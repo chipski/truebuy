@@ -25,11 +25,15 @@
 //= require bootstrap-typeahead
 //  require underscore
 //= require gritter
-//  require chosen-jquery
 //  require jquery.remotipart
 //  require ember
 //  require ember/Rightby.me.js
 //= require jquery_nested_form
+
+// require masonry/jquery.masonry    
+// require masonry/jquery.imagesloaded.min
+// require masonry/jquery.infinitescroll.min
+// require bootstrap-ajax.js
 
 //= require dataTables/jquery.dataTables
 //= require dataTables/jquery.dataTables.bootstrap

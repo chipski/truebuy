@@ -49,6 +49,11 @@ class User < ActiveRecord::Base
   def only_if_unconfirmed
     pending_any_confirmation {yield}
   end
+   
+  # below allows  render :partial => @users, :as => :user
+  def to_partial_path() 
+    "users/#{type}" 
+  end 
     
   private
 

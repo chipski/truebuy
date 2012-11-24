@@ -9,11 +9,13 @@ gem 'mysql', '2.8.1'
 gem 'pg', :group => :production  
 #gem 'mysql2'
 #gem 'sqlite3'
+gem 'squeel'  #http://railscasts.com/episodes/354-squeel?view=asciicast
 
 gem 'rack'  #, '~> 1.2.1'
 gem "rake" #, "10.0.1"     
 #gem 'eventmachine', '~> 1.0.0.beta.4.1'
-gem "thin"     
+#gem "thin"     
+gem "unicorn"
 gem 'capistrano'
 #gem "chronic"
 
@@ -30,7 +32,10 @@ gem "bootstrap-sass", ">= 2.1.1.0"
 #gem "twitter-bootstrap-rails"
 #gem 'twitter_bootstrap_form_for'
 gem "simple_form", ">= 2.0.4"          
-gem "nested_form", :git => "git://github.com/ryanb/nested_form.git"    
+gem "nested_form", :git => "git://github.com/ryanb/nested_form.git"
+#gem install has_scope
+#gem install responders    
+#gem 'inherited_resources' 
 gem 'will_paginate', '~> 3.0'  
 
 gem 'jquery-rails'
@@ -38,6 +43,12 @@ gem "jquery-datatables-rails", ">= 1.11.2"
 
 #gem "ember-rails"
 #gem "underscore-rails"
+
+#gem "rest-client"
+gem 'aasm'              
+#gem "stateflow"   
+#    
+#gem 'acts-as-taggable-on', '~>2.3.1' 
 
 gem "gritter"
 #gem 'masonry-rails'
@@ -52,23 +63,19 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-#gem 'inherited_resources' 
-#gem "rest-client"
-gem 'aasm'              
-#gem "stateflow"   
-#    
-#gem 'acts-as-taggable-on', '~>2.3.1' 
-
 # Connector to cloud services
 gem "fog"
 gem "hominid", ">= 3.0.5"
 #gem 'airbrake'
 #gem 'mixpanel'   # https://github.com/zevarito/mixpanel
 
-# Image Processing    
+# Image Processing and image/file upload    
 #gem "remotipart"
-#gem "paperclip", '2.4.5'   
-gem 'carrierwave'
+#gem "paperclip", '2.4.5'      
+#gem 'rack-cache', :require => 'rack/cache'
+#gem 'dragonfly', '~>0.9.12'     #https://github.com/markevans/dragonfly
+#gem 'dragonfly-rails', :require => 'dragonfly_rails', :git => 'https://github.com/ritxi/dragonfly-rails.git'
+#gem 'carrierwave'
 gem 'rmagick'
 
 group :development, :test do
@@ -90,7 +97,8 @@ group :development do
   gem 'app_drone' 
   gem "haml-rails", ">= 0.3.5"
   gem "ruby_parser", ">= 3.0.1"    
-  gem "nifty-generators"
+  gem "nifty-generators", ">= 0.4.6"              
+  #gem 'nice_generators'
   gem "quiet_assets", ">= 1.0.1"
   gem "erd"
   gem "rails-erd"      

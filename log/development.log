@@ -1029,3 +1029,8 @@ Processing by HomeController#index as HTML
   Rendered layouts/_navigation.html.haml (44.4ms)
   Rendered layouts/_messages.html.haml (0.3ms)
 Completed 200 OK in 59ms (Views: 58.8ms | ActiveRecord: 0.5ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
