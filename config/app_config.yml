@@ -1,0 +1,56 @@
+
+defaults: &DEFAULTS
+  domain: localhost:3000 
+  dropbox:
+    app_key: app_key
+    app_secret: app_secret
+    polling_interval: 300
+  rackspace:
+    username: my_username
+    api_key: some_crazy_key
+    bucket: assets.groupiter.com 
+  aws:
+    access_key: s3_access_key
+    secret_key: s_secret_key   
+    bucket: "bucket"
+  blitline:
+    app_id: application_id
+    secet: secret_value
+    public_token: a_token
+  analytics:
+    google: google_analytics_id
+    mixpanel: mixpanel_id
+  sendgrid:
+    username: sendgrid_username
+    password: sendgrid_password
+    domain: sendgrid_domain
+    
+development: &DEVELOPMENT
+  <<: *DEFAULTS
+  domain: localhost:3000 
+  dropbox:
+    app_key: rng3zvqe5sp8soq        # "Groupiter 2 Staging"
+    app_secret: ccg347vwdjy2zp7
+    polling_interval: 10
+  rackspace:
+    username: launchprojectx
+    api_key: 1a0d961d7d9949f8fa2a69772affa709
+    bucket: assets.dev.groupiter.com
+
+test: &TEST
+  <<: *DEVELOPMENT
+
+cucumber:
+  <<: *TEST
+
+staging: &STAGING
+  <<: *DEVELOPMENT
+  domain: review.rightby.me 
+
+production:
+  <<: *STAGING
+  domain: review.rightby.me
+
+beta: &BETA
+  <<: *STAGING       
+  domain: beta.rightby.me

@@ -795,3 +795,237 @@ Processing by Devise::RegistrationsController#new as HTML
   Rendered layouts/_navigation.html.haml (0.6ms)
   Rendered layouts/_messages.html.haml (0.1ms)
 Completed 200 OK in 18ms (Views: 17.7ms | ActiveRecord: 0.0ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-23 17:58:11 -0800
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/registrations/new.html.haml within layouts/application (54.2ms)
+Completed 500 Internal Server Error in 1510ms
+
+ActionView::Template::Error (File to import not found or unreadable: gritter.
+Load path: Sass::Rails::Importer(/Users/chip/Dropbox/dev/2012/rightbyme/Rightby.me/app/assets/stylesheets/bootstrap_and_overrides.css.scss)
+  (in /Users/chip/Dropbox/dev/2012/rightbyme/Rightby.me/app/assets/stylesheets/bootstrap_and_overrides.css.scss)):
+    4:     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
+    5:       %title= content_for?(:title) ? yield(:title) : "Reviews"
+    6:       %meta{:content => content_for?(:description) ? yield(:description) : "Reviews", :name => "description"}
+    7:         = stylesheet_link_tag "application", :media => "all"
+    8:         = javascript_include_tag "application"
+    9:         = csrf_meta_tags
+    10:         = yield(:head)
+  app/assets/stylesheets/bootstrap_and_overrides.css.scss:5
+  app/views/layouts/application.html.haml:7:in `_app_views_layouts_application_html_haml__3892289248568781425_70273961793120'
+
+
+  Rendered /Users/chip/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /Users/chip/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /Users/chip/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (9.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-23 17:58:28 -0800
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/registrations/new.html.haml within layouts/application (2.7ms)
+Completed 500 Internal Server Error in 1074ms
+
+ActionView::Template::Error (File to import not found or unreadable: gritter.
+Load path: Sass::Rails::Importer(/Users/chip/Dropbox/dev/2012/rightbyme/Rightby.me/app/assets/stylesheets/bootstrap_and_overrides.css.scss)
+  (in /Users/chip/Dropbox/dev/2012/rightbyme/Rightby.me/app/assets/stylesheets/bootstrap_and_overrides.css.scss)):
+    4:     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
+    5:       %title= content_for?(:title) ? yield(:title) : "Reviews"
+    6:       %meta{:content => content_for?(:description) ? yield(:description) : "Reviews", :name => "description"}
+    7:         = stylesheet_link_tag "application", :media => "all"
+    8:         = javascript_include_tag "application"
+    9:         = csrf_meta_tags
+    10:         = yield(:head)
+  app/assets/stylesheets/bootstrap_and_overrides.css.scss:5
+  app/views/layouts/application.html.haml:7:in `_app_views_layouts_application_html_haml__3892289248568781425_70273961793120'
+
+
+  Rendered /Users/chip/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /Users/chip/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /Users/chip/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (7.3ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-23 17:58:45 -0800
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/registrations/new.html.haml within layouts/application (13.8ms)
+Completed 500 Internal Server Error in 2538ms
+
+ActionView::Template::Error (couldn't find file 'underscore'
+  (in /Users/chip/Dropbox/dev/2012/rightbyme/Rightby.me/app/assets/javascripts/application.js:26)):
+    5:       %title= content_for?(:title) ? yield(:title) : "Reviews"
+    6:       %meta{:content => content_for?(:description) ? yield(:description) : "Reviews", :name => "description"}
+    7:         = stylesheet_link_tag "application", :media => "all"
+    8:         = javascript_include_tag "application"
+    9:         = csrf_meta_tags
+    10:         = yield(:head)
+    11:   %body{:class => "#{controller_name} #{action_name}"}
+  app/views/layouts/application.html.haml:8:in `_app_views_layouts_application_html_haml___2486874073517055925_70289576165320'
+
+
+  Rendered /Users/chip/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+  Rendered /Users/chip/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/chip/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (9.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-23 17:59:20 -0800
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/registrations/new.html.haml within layouts/application (3.7ms)
+  Rendered layouts/_navigation.html.haml (4.5ms)
+  Rendered layouts/_messages.html.haml (1.4ms)
+Completed 200 OK in 245ms (Views: 243.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2012-11-23 17:59:23 -0800
+Processing by RegistrationsController#new as HTML
+  Rendered devise/registrations/new.html.haml within layouts/application (2.9ms)
+  Rendered layouts/_navigation.html.haml (0.8ms)
+  Rendered layouts/_messages.html.haml (0.1ms)
+Completed 200 OK in 61ms (Views: 59.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2012-11-23 17:59:25 -0800
+Processing by RegistrationsController#new as HTML
+  Rendered devise/registrations/new.html.haml within layouts/application (3.0ms)
+  Rendered layouts/_navigation.html.haml (0.7ms)
+  Rendered layouts/_messages.html.haml (0.1ms)
+Completed 200 OK in 21ms (Views: 20.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-23 17:59:33 -0800
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/registrations/new.html.haml within layouts/application (3.3ms)
+  Rendered layouts/_navigation.html.haml (0.7ms)
+  Rendered layouts/_messages.html.haml (0.1ms)
+Completed 200 OK in 23ms (Views: 22.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2012-11-23 17:59:34 -0800
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.haml (1.7ms)
+  Rendered devise/sessions/new.html.haml within layouts/application (51.7ms)
+  Rendered layouts/_navigation.html.haml (0.8ms)
+  Rendered layouts/_messages.html.haml (0.1ms)
+Completed 200 OK in 70ms (Views: 69.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2012-11-23 17:59:48 -0800
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"d8268vh5mgjmsrRB+3ZrzScC7rukeMqaYVWgMiExPno=", "user"=>{"email"=>"chipski@mac.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (19.5ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`email` = 'chipski@mac.com' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mUPDATE `users` SET `current_sign_in_at` = '2012-11-24 01:59:48', `sign_in_count` = 2, `updated_at` = '2012-11-24 01:59:48' WHERE `users`.`id` = 2[0m
+  [1m[35m (0.6ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 139ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-23 17:59:49 -0800
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+Processing by HomeController#index as HTML
+  Rendered home/index.html.haml within layouts/application (0.6ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `roles` INNER JOIN `users_roles` ON `roles`.`id` = `users_roles`.`role_id` WHERE `users_roles`.`user_id` = 2 AND (((roles.name = 'admin') AND (roles.resource_type IS NULL) AND (roles.resource_id IS NULL)))
+  Rendered layouts/_navigation.html.haml (84.8ms)
+  Rendered layouts/_messages.html.haml (0.2ms)
+Completed 200 OK in 102ms (Views: 98.3ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2012-11-23 17:59:52 -0800
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `roles` INNER JOIN `users_roles` ON `roles`.`id` = `users_roles`.`role_id` WHERE `users_roles`.`user_id` = 2 AND (((roles.name = 'admin') AND (roles.resource_type IS NULL) AND (roles.resource_id IS NULL)))
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` [0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) AS count_all, DATE(created_at) AS date_created_at FROM `users` GROUP BY DATE(created_at)
+  Rendered users/index.html.haml within layouts/application (6.2ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM `roles` INNER JOIN `users_roles` ON `roles`.`id` = `users_roles`.`role_id` WHERE `users_roles`.`user_id` = 2 AND (((roles.name = 'admin') AND (roles.resource_type IS NULL) AND (roles.resource_id IS NULL)))[0m
+  Rendered layouts/_navigation.html.haml (2.1ms)
+  Rendered layouts/_messages.html.haml (0.1ms)
+Completed 200 OK in 31ms (Views: 24.2ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/users/edit" for 127.0.0.1 at 2012-11-23 17:59:54 -0800
+Processing by RegistrationsController#edit as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1
+  Rendered devise/registrations/edit.html.haml within layouts/application (8.5ms)
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `roles` INNER JOIN `users_roles` ON `roles`.`id` = `users_roles`.`role_id` WHERE `users_roles`.`user_id` = 2 AND (((roles.name = 'admin') AND (roles.resource_type IS NULL) AND (roles.resource_id IS NULL)))[0m
+  Rendered layouts/_navigation.html.haml (2.7ms)
+  Rendered layouts/_messages.html.haml (0.1ms)
+Completed 200 OK in 30ms (Views: 28.2ms | ActiveRecord: 0.7ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2012-11-23 17:59:55 -0800
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"d8268vh5mgjmsrRB+3ZrzScC7rukeMqaYVWgMiExPno="}
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 34ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-23 17:59:55 -0800
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/registrations/new.html.haml within layouts/application (2.9ms)
+  Rendered layouts/_navigation.html.haml (0.7ms)
+  Rendered layouts/_messages.html.haml (0.2ms)
+Completed 200 OK in 20ms (Views: 19.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-23 17:59:56 -0800
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/registrations/new.html.haml within layouts/application (3.1ms)
+  Rendered layouts/_navigation.html.haml (0.6ms)
+  Rendered layouts/_messages.html.haml (0.1ms)
+Completed 200 OK in 20ms (Views: 19.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-23 17:59:59 -0800
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/registrations/new.html.haml within layouts/application (2.7ms)
+  Rendered layouts/_navigation.html.haml (0.6ms)
+  Rendered layouts/_messages.html.haml (0.1ms)
+Completed 200 OK in 19ms (Views: 18.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2012-11-23 18:00:00 -0800
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.haml (0.3ms)
+  Rendered devise/sessions/new.html.haml within layouts/application (6.2ms)
+  Rendered layouts/_navigation.html.haml (0.7ms)
+  Rendered layouts/_messages.html.haml (0.1ms)
+Completed 200 OK in 23ms (Views: 22.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2012-11-23 18:00:10 -0800
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"b95wZlo0j9zObkZyairg73vQc6d04HT5lu/r/H9Tb94=", "user"=>{"email"=>"chipski@mac.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`email` = 'chipski@mac.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mUPDATE `users` SET `remember_created_at` = '2012-11-24 02:00:10', `updated_at` = '2012-11-24 02:00:10' WHERE `users`.`id` = 2[0m
+  [1m[35m (23.1ms)[0m  COMMIT
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.4ms)[0m  UPDATE `users` SET `last_sign_in_at` = '2012-11-24 01:59:48', `current_sign_in_at` = '2012-11-24 02:00:10', `sign_in_count` = 3, `updated_at` = '2012-11-24 02:00:10' WHERE `users`.`id` = 2
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 106ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-23 18:00:10 -0800
+  [1m[35mUser Load (0.5ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1
+Processing by HomeController#index as HTML
+  Rendered home/index.html.haml within layouts/application (0.1ms)
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM `roles` INNER JOIN `users_roles` ON `roles`.`id` = `users_roles`.`role_id` WHERE `users_roles`.`user_id` = 2 AND (((roles.name = 'admin') AND (roles.resource_type IS NULL) AND (roles.resource_id IS NULL)))[0m
+  Rendered layouts/_navigation.html.haml (44.4ms)
+  Rendered layouts/_messages.html.haml (0.3ms)
+Completed 200 OK in 59ms (Views: 58.8ms | ActiveRecord: 0.5ms)
