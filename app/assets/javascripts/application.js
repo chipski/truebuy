@@ -60,6 +60,9 @@ $('document').ready(function() {
     });
     return false;
   });
-  
+  $('.wysihtml5').each(function(i, elem) {
+      $(elem).wysihtml5();
+  });
+    
 })
 

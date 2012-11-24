@@ -10,9 +10,9 @@ defaults: &DEFAULTS
     api_key: some_crazy_key
     bucket: assets.groupiter.com 
   aws:
-    access_key: s3_access_key
-    secret_key: s_secret_key   
-    bucket: "bucket"
+    access_key: AKIAJ4WX6PQISTLVZNEQ
+    secret_key: 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   
+    bucket: "rightbyme/production"
   blitline:
     app_id: application_id
     secet: secret_value
@@ -24,22 +24,25 @@ defaults: &DEFAULTS
     username: sendgrid_username
     password: sendgrid_password
     domain: sendgrid_domain
+  rackspace:
+    username: rightbyme
+    api_key: ggggg
+    bucket: assets.dev.rightby.me                
     
 development: &DEVELOPMENT
   <<: *DEFAULTS
   domain: localhost:3000 
-  dropbox:
-    app_key: rng3zvqe5sp8soq        # "Groupiter 2 Staging"
-    app_secret: ccg347vwdjy2zp7
-    polling_interval: 10
-  rackspace:
-    username: launchprojectx
-    api_key: 1a0d961d7d9949f8fa2a69772affa709
-    bucket: assets.dev.groupiter.com
+  aws:
+    access_key: AKIAJA6Y6RTHK3JZM3GQ
+    secret_key: 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   
+    bucket: "rightbyme/dev"
+  r
 
 test: &TEST
   <<: *DEVELOPMENT
-
+  aws:
+    bucket: "rightbyme/test"    
+      
 cucumber:
   <<: *TEST
 

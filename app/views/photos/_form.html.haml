@@ -6,7 +6,7 @@
     = f.input :permalink
     = f.input :name
     = f.input :keywords
-    = f.input :blurb
+    = f.input :blurb, :input_html=>{:class=>"wysihtml5", :cols=>100}
     = f.input :state
     = f.input :type
     = f.input :image_uid

@@ -9,12 +9,11 @@ class CreateTopics < ActiveRecord::Migration
       t.text :body
       t.string :state, :default=>:new
       t.string :type
-      t.references :photo
+      t.references :photos
 
       t.timestamps
     end
     add_index :topics, :uid, :unique => true
     add_index :topics, :permalink, :unique => true
-    add_index :topics, :photo_id
   end
 end
