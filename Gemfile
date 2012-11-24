@@ -10,6 +10,7 @@ gem 'pg', :group => :production
 #gem 'mysql2'
 #gem 'sqlite3'
 gem 'squeel'  #http://railscasts.com/episodes/354-squeel?view=asciicast
+gem "ransack"  #:git => "git://github.com/ernie/ransack.git" # better search gem
 
 gem 'rack'  #, '~> 1.2.1'
 gem "rake" #, "10.0.1"     
