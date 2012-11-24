@@ -35,6 +35,7 @@
 // require masonry/jquery.infinitescroll.min
 // require bootstrap-ajax.js
 
+//= require bootstrap-wysihtml5
 //= require dataTables/jquery.dataTables
 //= require dataTables/jquery.dataTables.bootstrap
 //= require_tree .

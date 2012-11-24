@@ -1,5 +1,11 @@
 Reviews::Application.routes.draw do
 
+  resources :photos
+
+  resources :categories
+
+  resources :topics
+
   authenticated :user do
     root :to => 'home#index'
   end

@@ -14,9 +14,6 @@ gem "ransack"  #:git => "git://github.com/ernie/ransack.git" # better search gem
 
 gem 'rack'  #, '~> 1.2.1'
 gem "rake" #, "10.0.1"     
-#gem 'eventmachine', '~> 1.0.0.beta.4.1'
-#gem "thin"     
-gem "unicorn"
 gem 'capistrano'
 #gem "chronic"
 
@@ -34,9 +31,9 @@ gem "bootstrap-sass", ">= 2.1.1.0"
 #gem 'twitter_bootstrap_form_for'
 gem "simple_form", ">= 2.0.4"          
 gem "nested_form", :git => "git://github.com/ryanb/nested_form.git"
-#gem install has_scope
-#gem install responders    
-#gem 'inherited_resources' 
+#gem "has_scope"
+gem 'inherited_resources' 
+gem "responders"    
 gem 'will_paginate', '~> 3.0'  
 
 gem 'jquery-rails'
@@ -80,6 +77,8 @@ gem "hominid", ">= 3.0.5"
 gem 'rmagick'
 
 group :development, :test do
+  #gem 'eventmachine', '~> 1.0.0.beta.4.1'
+  gem "thin"     
   gem "hpricot", ">= 0.8.6"
   gem "rspec-rails", ">= 2.11.4"
   gem "database_cleaner", ">= 0.9.1"
@@ -91,7 +90,8 @@ end
 group :test do
   gem "cucumber-rails", ">= 1.3.0"   
   gem "launchy", ">= 2.1.2"   
-  gem "capybara", ">= 1.1.3"
+  gem "capybara", ">= 1.1.3"   
+  gem "mocha"
 end
 
 group :development do
@@ -104,4 +104,8 @@ group :development do
   gem "erd"
   gem "rails-erd"      
 end
+ 
+group :production do
+  gem "unicorn"
+end  
 

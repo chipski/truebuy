@@ -1,0 +1,33 @@
+%p#notice= notice
+
+%p
+  %b Uid:
+  = @photo.uid
+%p
+  %b Permalink:
+  = @photo.permalink
+%p
+  %b Name:
+  = @photo.name
+%p
+  %b Keywords:
+  = @photo.keywords
+%p
+  %b Blurb:
+  = @photo.blurb
+%p
+  %b State:
+  = @photo.state
+%p
+  %b Type:
+  = @photo.type
+%p
+  %b Image uid:
+  = @photo.image_uid
+%p
+  %b Image name:
+  = @photo.image_name
+
+= link_to 'Edit', edit_photo_path(@photo)
+\|
+= link_to 'Back', photos_path

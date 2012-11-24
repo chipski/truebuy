@@ -1,0 +1,16 @@
+= simple_form_for(@category) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :uid
+    = f.input :permalink
+    = f.input :name
+    = f.input :keywords
+    = f.input :blurb
+    = f.input :body
+    = f.input :state
+    = f.input :type
+    = f.association :photo
+
+  .form-actions
+    = f.button :submit

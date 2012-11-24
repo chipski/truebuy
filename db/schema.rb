@@ -11,7 +11,42 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121123214822) do
+ActiveRecord::Schema.define(:version => 20121124193129) do
+
+  create_table "categories", :force => true do |t|
+    t.string   "uid"
+    t.string   "permalink"
+    t.string   "name"
+    t.string   "keywords"
+    t.text     "blurb"
+    t.text     "body"
+    t.string   "state",      :default => "new"
+    t.string   "type"
+    t.integer  "photo_id"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
+  add_index "categories", ["permalink"], :name => "index_categories_on_permalink", :unique => true
+  add_index "categories", ["photo_id"], :name => "index_categories_on_photo_id"
+  add_index "categories", ["uid"], :name => "index_categories_on_uid", :unique => true
+
+  create_table "photos", :force => true do |t|
+    t.string   "uid"
+    t.string   "permalink"
+    t.string   "name"
+    t.string   "keywords"
+    t.text     "blurb"
+    t.string   "state",      :default => "new"
+    t.string   "type"
+    t.string   "image_uid"
+    t.string   "image_name"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
+  add_index "photos", ["permalink"], :name => "index_photos_on_permalink", :unique => true
+  add_index "photos", ["uid"], :name => "index_photos_on_uid", :unique => true
 
   create_table "roles", :force => true do |t|
     t.string   "name"
@@ -23,6 +58,24 @@ ActiveRecord::Schema.define(:version => 20121123214822) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], :name => "index_roles_on_name"
+
+  create_table "topics", :force => true do |t|
+    t.string   "uid"
+    t.string   "permalink"
+    t.string   "name"
+    t.string   "keywords"
+    t.text     "blurb"
+    t.text     "body"
+    t.string   "state",      :default => "new"
+    t.string   "type"
+    t.integer  "photo_id"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
+  add_index "topics", ["permalink"], :name => "index_topics_on_permalink", :unique => true
+  add_index "topics", ["photo_id"], :name => "index_topics_on_photo_id"
+  add_index "topics", ["uid"], :name => "index_topics_on_uid", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

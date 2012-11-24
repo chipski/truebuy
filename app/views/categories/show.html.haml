@@ -1,0 +1,33 @@
+%p#notice= notice
+
+%p
+  %b Uid:
+  = @category.uid
+%p
+  %b Permalink:
+  = @category.permalink
+%p
+  %b Name:
+  = @category.name
+%p
+  %b Keywords:
+  = @category.keywords
+%p
+  %b Blurb:
+  = @category.blurb
+%p
+  %b Body:
+  = @category.body
+%p
+  %b State:
+  = @category.state
+%p
+  %b Type:
+  = @category.type
+%p
+  %b Photo:
+  = @category.photo
+
+= link_to 'Edit', edit_category_path(@category)
+\|
+= link_to 'Back', categories_path

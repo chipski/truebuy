@@ -1,0 +1,35 @@
+%h1 Listing categories
+
+%table
+  %tr
+    %th Uid
+    %th Permalink
+    %th Name
+    %th Keywords
+    %th Blurb
+    %th Body
+    %th State
+    %th Type
+    %th Photo
+    %th
+    %th
+    %th
+
+  - @categories.each do |category|
+    %tr
+      %td= category.uid
+      %td= category.permalink
+      %td= category.name
+      %td= category.keywords
+      %td= category.blurb
+      %td= category.body
+      %td= category.state
+      %td= category.type
+      %td= category.photo
+      %td= link_to 'Show', category
+      %td= link_to 'Edit', edit_category_path(category)
+      %td= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Category', new_category_path
