@@ -10,6 +10,6 @@ FactoryGirl.define do
     body "MyText"
     state "MyString"
     type ""
-    photo nil
+    cover "MyString"
   end
 end

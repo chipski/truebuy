@@ -1,16 +1,12 @@
 class Photo < ActiveRecord::Base
-  
-  
-  attr_accessible :blurb, :image_name, :image_uid, :keywords, :name, :permalink, :state, :type, :uid   
-  
-  attr_accessible :description, :topic_id, :image, :crop_x, :crop_y, :crop_w, :crop_h
+
+  attr_accessible :blurb, :image_name, :image_uid, :image, :keywords, :name, :permalink, :uid, :topic_id, :crop_x, :crop_y, :crop_w, :crop_h
   attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
 
   belongs_to :topic
-  
   mount_uploader :image, ImageUploader
-
   after_update :crop_image
+  
 
   def to_jq_upload
     {
@@ -33,5 +29,21 @@ class Photo < ActiveRecord::Base
     FileUtils.cp(large_version, current_version)
   end
   
-  
 end
+
+#create_table "photos", :force => true do |t|
+#  t.string   "uid"
+#  t.string   "permalink"
+#  t.string   "name"
+#  t.string   "keywords"
+#  t.text     "blurb"
+#  t.string   "state"
+#  t.string   "type"
+#  t.string   "image_url"
+#  t.string   "image_uid"
+#  t.string   "image_name"
+#  t.integer  "topic_id"
+#  t.datetime "created_at", :null => false
+#  t.datetime "updated_at", :null => false
+#end
+#

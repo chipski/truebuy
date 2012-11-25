@@ -1,35 +1,28 @@
-%h1 Listing photos
-
-%table
-  %tr
-    %th Uid
-    %th Permalink
-    %th Name
-    %th Keywords
-    %th Blurb
-    %th State
-    %th Type
-    %th Image uid
-    %th Image name
-    %th
-    %th
-    %th
-
-  - @photos.each do |photo|
+- model_class = Photo.new.class
+.page-header
+  %h1= "Photos"
+%table.table.table-striped
+  %thead
     %tr
-      %td= photo.uid
-      %td= photo.permalink
-      %td= photo.name
-      %td= photo.keywords
-      %td= photo.blurb
-      %td= photo.state
-      %td= photo.type
-      %td= photo.image_uid
-      %td= photo.image_name
-      %td= link_to 'Show', photo
-      %td= link_to 'Edit', edit_photo_path(photo)
-      %td= link_to 'Destroy', photo, method: :delete, data: { confirm: 'Are you sure?' }
-
-%br
-
-= link_to 'New Photo', new_photo_path
+      %th= "Topic"
+      %th= "Image"
+      %th= "Blurb"
+      %th= "Created"
+      %th= t '.actions', :default => t("helpers.actions")
+  %tbody
+    - @photos.each do |photo|
+      %tr
+        %td= link_to @topic, topic_path(@topic) if @topic 
+        %td=link_to image_tag(photo.image.thumb.url), photo_path(photo)  
+        %td= photo.blurb
+        %td= l photo.created_at
+        %td
+          -if @topic
+            = link_to "Edit", edit_topic_photo_path(@topic, photo), :class => 'btn btn-mini'     
+            = link_to "Delete", topic_photo_path(@topic, photo), :method => :delete, :confirm => "Are you sure?", :class => 'btn btn-mini btn-danger'                                                             
+            = link_to "New", new_topic_photo_path(@topic), :class => 'btn btn-primary'  
+          -else
+            = link_to "Edit", edit_photo_path(photo), :class => 'btn btn-mini'     
+            = link_to "Delete", photo_path(photo), :method => :delete, :confirm => "Are you sure?", :class => 'btn btn-mini btn-danger'                                                             
+            = link_to "New", new_photo_path, :class => 'btn btn-primary'  
+            

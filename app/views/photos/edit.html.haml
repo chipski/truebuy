@@ -1,7 +1,13 @@
 %h1 Editing photo
 
-= render 'form'
 
-= link_to 'Show', @photo
-\|
-= link_to 'Back', photos_path
+
+-if @topic             
+  = render 'form_topic'
+  = link_to 'Show', topic_photo_path(@topic, @photo) 
+  = link_to 'Back', topic_photos_path(@topic)
+-else         
+  = render 'form'
+  = link_to 'Show', photo_path(@photo) 
+  = link_to 'Back', photos_path
+  

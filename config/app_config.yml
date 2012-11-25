@@ -36,7 +36,7 @@ development: &DEVELOPMENT
     access_key: AKIAJA6Y6RTHK3JZM3GQ
     secret_key: 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   
     bucket: "rightbyme/dev"
-  r
+
 
 test: &TEST
   <<: *DEVELOPMENT

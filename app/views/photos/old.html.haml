@@ -1,0 +1,23 @@
+
+
+-#/
+  - @photos.each do |photo|
+    %tr
+      %td= photo.uid
+      %td= photo.permalink
+      %td= photo.name
+      %td= photo.keywords
+      %td= photo.blurb
+      %td= photo.state
+      %td= photo.type
+      %td= photo.image_url
+      %td= photo.image_uid
+      %td= photo.image_name
+      %td= photo.topic
+      %td= link_to 'Show', photo
+      %td= link_to 'Edit', edit_photo_path(photo)
+      %td= link_to 'Destroy', photo, method: :delete, data: { confirm: 'Are you sure?' }
+
+    %br
+
+    = link_to 'New Photo', new_photo_path

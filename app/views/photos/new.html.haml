@@ -1,5 +1,12 @@
 %h1 New photo
 
-= render 'form'
 
-= link_to 'Back', photos_path
+
+-if @topic
+  = render 'form_topic'
+  = link_to 'Show', topic_photo_path(@topic, @photo) 
+  = link_to 'Back', new_topic_photo_path(@topic)
+-else            
+  = render 'form'
+  = link_to 'Show', photo_path(@photo) 
+  = link_to 'Back', photos_path

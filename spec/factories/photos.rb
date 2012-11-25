@@ -9,7 +9,9 @@ FactoryGirl.define do
     blurb "MyText"
     state "MyString"
     type ""
+    image_url "MyString"
     image_uid "MyString"
     image_name "MyString"
+    topic nil
   end
 end

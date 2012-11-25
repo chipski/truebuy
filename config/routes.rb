@@ -1,10 +1,19 @@
 Reviews::Application.routes.draw do
 
-  resources :photos
-
   resources :categories
-
-  resources :topics
+  
+  resources :photos do
+    collection do
+      post 'make_default'
+    end
+  end
+  resources :topics do
+    resources :photos do
+      collection do
+        post 'make_default'
+      end
+    end
+  end  
 
   authenticated :user do
     root :to => 'home#index'

@@ -1,35 +1,23 @@
-%h1 Listing topics
+.row
+  %h1 Listing topics
+  %ul.files.thumbnails
+    - @topics.each do |topic|  
+      %li.span3#topic
+        .thumbnail
+          -if topic.cover.blank? or !Topic.find_by_id(topic.cover)  
+            =link_to image_tag("/assets/NoImageAvailable.jpg"), topic_path(topic.id)
+          -else
+            =link_to image_tag(Picture.find_by_id(topic.cover).image.thumb.url), topic_path(topic.id)
+        .caption
+          %p{:style=>"text-align: center;"}
+            =link_to edit_topic_path(topic.id), :class=>"btn btn-mini" do
+              %i.icon-edit
+              Edit
+            =link_to topic, method: :delete, data: { confirm: 'Are you sure?' } do
+              %i.icon-trash
+              ='Destroy'   
+            =topic.name  
 
-%table
-  %tr
-    %th Uid
-    %th Permalink
-    %th Name
-    %th Keywords
-    %th Blurb
-    %th Body
-    %th State
-    %th Type
-    %th Photo
-    %th
-    %th
-    %th
 
-  - @topics.each do |topic|
-    %tr
-      %td= topic.uid
-      %td= topic.permalink
-      %td= topic.name
-      %td= topic.keywords
-      %td= topic.blurb
-      %td= topic.body
-      %td= topic.state
-      %td= topic.type
-      %td= topic.photo
-      %td= link_to 'Show', topic
-      %td= link_to 'Edit', edit_topic_path(topic)
-      %td= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' }
 
-%br
-
-= link_to 'New Topic', new_topic_path
+  =link_to 'New', new_topic_path, :class => 'btn btn-mini'

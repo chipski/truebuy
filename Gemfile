@@ -27,8 +27,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 gem "haml", ">= 3.1.7"     
 gem "bootstrap-sass", ">= 2.1.1.0" 
-gem "twitter-bootstrap-rails"
-gem "bootstrapped", :git => 'https://github.com/entropillc/bootstrapped.git'
+gem "twitter-bootstrap-rails"                   
 #gem 'twitter_bootstrap_form_for'
 gem "simple_form", ">= 2.0.4"          
 gem "nested_form", :git => "git://github.com/ryanb/nested_form.git"       
@@ -75,7 +74,8 @@ gem "hominid", ">= 3.0.5"
 #gem 'rack-cache', :require => 'rack/cache'
 #gem 'dragonfly', '~>0.9.12'     #https://github.com/markevans/dragonfly
 #gem 'dragonfly-rails', :require => 'dragonfly_rails', :git => 'https://github.com/ritxi/dragonfly-rails.git'
-gem 'carrierwave'
+gem 'carrierwave'    
+gem "jquery-fileupload-rails"
 gem 'rmagick'
 
 group :development, :test do
@@ -103,7 +103,9 @@ group :development do
   gem "less-rails"
   
   gem "ruby_parser", ">= 3.0.1"    
-  #gem "nifty-generators", ">= 0.4.6"              
+  gem "nifty-generators", ">= 0.4.6"   
+  gem 'sexp_processor', '~> 4.1'
+  #gem "bootstrapped", :git => 'https://github.com/entropillc/bootstrapped.git'           
   #gem 'nice_generators'
   gem "quiet_assets", ">= 1.0.1"
   gem "erd"
