@@ -113,6 +113,7 @@ group :development do
 end
  
 group :production do
-  gem "unicorn"
+  gem "thin" 
+  #gem "unicorn"
 end  
 
