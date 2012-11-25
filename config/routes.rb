@@ -11,6 +11,7 @@ Reviews::Application.routes.draw do
     resources :photos do
       collection do
         post 'make_default'
+        get :make_default
       end
     end
   end  

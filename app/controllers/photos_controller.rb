@@ -72,7 +72,7 @@ class PhotosController < InheritedResources::Base
     end
   end
   def make_default
-    @photo = Picture.find(params[:id])
+    @photo = Photo.find(params[:photo_id])
     @topic = Topic.find(params[:topic_id])
 
     @topic.cover = @photo.id

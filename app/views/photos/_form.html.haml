@@ -19,7 +19,7 @@
   $.ajax({
   url: '#{make_default_photos_path}',
   type: 'POST',
-  data: {id : #{@photo.id}, topic_id : #{@topic ? @topic.id : ''}}
+  data: {photo_id : #{@photo.id}, topic_id : #{@topic ? @topic.id : ''}}
   });
   });
   });

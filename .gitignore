@@ -26,6 +26,7 @@ capybara-*.html
 /spec/tmp/*
 **.orig        
 /.DS_Store
+/public/uploads/*
 
 # YARD artifacts
 .yardoc

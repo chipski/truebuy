@@ -56,7 +56,8 @@ $(function () {
       $('a[href^="' + data.result[0].url + '"]').slimbox();
     },
     downloadTemplate: function (o) {
-        var rows = $();
+        var rows = $();     
+        console.log("Inside photo_main.downloadTemplate")
         $.each(o.files, function (index, file) {
             var row = $('<li class="span3" id="photo_' + file.photo_id + '">' +
                 (file.error ? '<div class="name"></div>' +
@@ -71,7 +72,7 @@ $(function () {
                               '<i class="icon-edit "></i>' +
                               'Edit' +
                             '</a>' +
-                            '<a class="btn btn-mini btn-delete" confirm="Вы уверены?" data-remote=true data-method="delete" href="" >' +
+                            '<a class="btn btn-mini btn-delete" confirm="Are you Sure?" data-remote=true data-method="delete" href="" >' +
                               '<i class="icon-trash"></i>' +
                               'Delete' +
                             '</a>' +
