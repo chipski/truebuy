@@ -1,13 +1,14 @@
 = form_for [@topic, @photo], :html => { :class => 'form-horizontal' } do |f|
-  .control-group
-    = f.label :description, :class => 'control-label'
-    .controls
-      = f.text_field :blurb, :class => 'text_field'
-  = image_tag @photo.image.large.url, :id => 'cropbox'
-  - %w[x y w h].each do |attribute|
-    = f.hidden_field "crop_#{attribute}"
-  
-  .form-actions
+  .image-box 
+    = image_tag @photo.image.large.url, :id => 'cropbox'
+    - %w[x y w h].each do |attribute|
+      = f.hidden_field "crop_#{attribute}"
+
+  .control-box 
+    %b Name
+    = f.text_field :name, :class => 'text_field'
+    = f.text_area :blurb, :class => 'wysihtml5'
+            
     = f.submit nil, :class => 'btn btn-primary  btn-mini'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), |
       topic_path(@topic), :class => 'btn btn-mini'             |

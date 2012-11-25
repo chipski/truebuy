@@ -4,6 +4,11 @@
  *
  * Copyright 2010, Sebastian Tschan
  * https://blueimp.net
+ *                                       
+ * https://github.com/blueimp/jQuery-File-Upload/wiki/Basic-plugin
+ * https://github.com/blueimp/jQuery-File-Upload/wiki/API
+ * https://github.com/blueimp/jQuery-File-Upload/wiki/Upload-directly-to-S3
+ * https://github.com/blueimp/jQuery-File-Upload/wiki/Rails-setup-for-V6
  *
  * Licensed under the MIT license:
  * http://www.opensource.org/licenses/MIT

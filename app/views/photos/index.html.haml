@@ -11,18 +11,19 @@
       %th= t '.actions', :default => t("helpers.actions")
   %tbody
     - @photos.each do |photo|
+      -topic = @topic || photo.topic
       %tr
-        %td= link_to @topic, topic_path(@topic) if @topic 
+        %td= link_to topic.name, topic_path(topic) if topic 
         %td=link_to image_tag(photo.image.thumb.url), photo_path(photo)  
         %td= photo.blurb
         %td= l photo.created_at
         %td
-          -if @topic
-            = link_to "Edit", edit_topic_photo_path(@topic, photo), :class => 'btn btn-mini'     
-            = link_to "Delete", topic_photo_path(@topic, photo), :method => :delete, :confirm => "Are you sure?", :class => 'btn btn-mini btn-danger'                                                             
-            = link_to "New", new_topic_photo_path(@topic), :class => 'btn btn-primary'  
+          -if topic
+            = link_to "Edit", edit_topic_photo_path(topic, photo), :class => 'btn btn-mini'     
+            = link_to "Delete", topic_photo_path(topic, photo), :method => :delete, :confirm => "Are you sure?", :class => 'btn btn-mini btn-danger'                                                             
+            = link_to "New", new_topic_photo_path(topic), :class => 'btn btn-mini btn-primary'  
           -else
             = link_to "Edit", edit_photo_path(photo), :class => 'btn btn-mini'     
             = link_to "Delete", photo_path(photo), :method => :delete, :confirm => "Are you sure?", :class => 'btn btn-mini btn-danger'                                                             
-            = link_to "New", new_photo_path, :class => 'btn btn-primary'  
+            = link_to "New", new_photo_path, :class => 'btn btn-mini btn-primary'  
             

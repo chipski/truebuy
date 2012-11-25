@@ -1,4 +1,11 @@
 
+.page-header {
+    margin: 10px 0;
+    h1 { 
+       width: auto;
+       
+    }
+}
 
 form {
     
@@ -12,6 +19,23 @@ form {
         input {
             width: 720px;
         }
+    }
+    .image-box {
+        width: 480px;
+        float: left;
+    }              
+    .control-box {
+        width: 420px;
+        float: right;
+        input.text_field {
+            width: 320px; 
+            margin-bottom: 10px;
+        }
+        textarea {
+            width: 365px; 
+            margin-bottom: 10px;
+        } 
+       
     }
 }
 
@@ -33,4 +57,10 @@ form {
    form {
        margin-bottom: 4px;
    } 
+}
+ 
+.small-gray {
+    font-size: 0.5em;
+    text-align: bottom;
+    margin-left: 10px;
 }

@@ -8,7 +8,7 @@ class PhotosController < InheritedResources::Base
     @photos = @topic ? @topic.photos : Photo.all
      respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @photos }
+      format.json { render json: @photos.collect { |p| p.to_jq_upload }.to_json }
     end
   end
   def show
