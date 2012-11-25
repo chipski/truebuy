@@ -25,7 +25,8 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 #gem 'omniauth', '~> 1.0.1'
 #gem 'omniauth-dropbox'
 
-gem "haml", ">= 3.1.7"     
+gem "haml", ">= 3.1.7"             
+gem "less-rails"       
 gem "bootstrap-sass", ">= 2.1.1.0" 
 gem "twitter-bootstrap-rails"                   
 #gem 'twitter_bootstrap_form_for'
@@ -100,7 +101,7 @@ group :development do
   #gem 'app_drone' 
   gem "therubyracer"
   gem "haml-rails", ">= 0.3.5"   
-  gem "less-rails"
+  
   
   gem "ruby_parser", ">= 3.0.1"    
   gem "nifty-generators", ">= 0.4.6"   
