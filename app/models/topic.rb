@@ -7,7 +7,7 @@ class Topic < ActiveRecord::Base
   
   
   def update_permalink
-    secret = "r#{self.name}_#{self.id}".gsub(" ", "_")  # add random
+    secret = "#{self.name}".gsub(" ", "_")  # add random
     permalink = Digest::SHA2.hexdigest(secret)
     token = Digest::SHA1.hexdigest(secret)
     if self.permalink != permalink

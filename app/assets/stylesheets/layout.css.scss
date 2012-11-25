@@ -14,3 +14,23 @@ form {
         }
     }
 }
+
+.modal {
+    .modal-header {
+        border-bottom: none;
+    }
+    .modal-body {
+        .control-label {
+            text-align: right; 
+            font-size: 130%;
+        }
+        input {
+            width: 320px;
+            height: 36px; 
+            font-size: 140%;
+        }
+    }
+   form {
+       margin-bottom: 4px;
+   } 
+}
