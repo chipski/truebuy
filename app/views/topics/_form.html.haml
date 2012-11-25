@@ -2,15 +2,19 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :uid
-    = f.input :permalink
-    = f.input :name
-    = f.input :keywords
-    = f.input :blurb
-    = f.input :body
-    = f.input :state
-    = f.input :type
-    = f.input :cover
+    .wide= f.input :name
+    = f.input :blurb, :input_html=>{:class=>"wysihtml5"}
+    = f.input :body, :input_html=>{:class=>"wysihtml5"}
 
   .form-actions
-    = f.button :submit
+    = f.button :submit  
+    
+  -if params[:detailed]
+    .form-inputs
+      = f.input :keywords
+      = f.input :uid
+      = f.input :permalink  
+      = f.input :state
+      = f.input :type
+      = f.input :cover
+    

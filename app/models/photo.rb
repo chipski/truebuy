@@ -4,7 +4,8 @@ class Photo < ActiveRecord::Base
   attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
 
   belongs_to :topic
-  mount_uploader :image, ImageUploader
+  mount_uploader :image, ImageUploader   
+  after_save :update_permalink
   after_update :crop_image
   
 
@@ -27,6 +28,16 @@ class Photo < ActiveRecord::Base
 
     FileUtils.rm(current_version)
     FileUtils.cp(large_version, current_version)
+  end
+  
+  def update_permalink
+    secret = "r#{self.name}_#{self.id}".gsub(" ", "_")  # add random
+    permalink = Digest::SHA2.hexdigest(secret)
+    token = Digest::SHA1.hexdigest(secret)
+    if self.permalink != permalink
+      self.update_attribute(:permalink, permalink)
+      self.update_attribute(:uid, token)
+    end      
   end
   
 end

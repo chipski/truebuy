@@ -2,15 +2,19 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :uid
-    = f.input :permalink
-    = f.input :name
-    = f.input :keywords
+    .wide= f.input :name
     = f.input :blurb, :input_html=>{:class=>"wysihtml5"} 
     = f.input :body, :input_html=>{:class=>"wysihtml5"} 
-    = f.input :state
-    = f.input :type
     = f.association :photo
 
   .form-actions
     = f.button :submit
+
+  -if params[:detailed]
+    .form-inputs
+      = f.input :keywords
+      = f.input :permalink
+      = f.input :uid
+      = f.input :state
+      = f.input :type
+      

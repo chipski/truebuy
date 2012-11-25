@@ -1,16 +1,9 @@
 <div class="row">
-  <h1>Topic</h1>
+  <h1><%= @topic.name %> </h1>
   
   <input type="hidden" id="topicID" value="<%= @topic.id %>">
-
   <p>
-    <b>Name: </b>
-    <%= @topic.name %>
-  </p>
-
-  <p>
-    <b>Description: </b>
-    <%= @topic.blurb %>
+    <%=  @topic.blurb.html_safe %>
   </p>
 
 <h2>Pictures</h2>

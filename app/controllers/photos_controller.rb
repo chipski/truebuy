@@ -1,5 +1,7 @@
 class PhotosController < InheritedResources::Base
-
+  defaults :resource_class => Photo, :collection_name => 'photos', :instance_name => 'photo'
+  respond_to :html, :json   
+  
 
   def index
     @topic = Topic.find(params[:topic_id]) if params[:topic_id]  
@@ -80,5 +82,12 @@ class PhotosController < InheritedResources::Base
       format.js
     end
   end
-  
+
+  protected
+      def collection
+        @photos ||= end_of_association_chain.paginate(:page => params[:page])
+      end 
+      def begin_of_association_chain
+        @current_user
+      end
 end
