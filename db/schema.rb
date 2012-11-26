@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(:version => 20121124230822) do
     t.text     "body"
     t.string   "state"
     t.string   "type"
-    t.integer   "cover"
+    t.integer  "cover"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

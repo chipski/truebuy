@@ -79,7 +79,7 @@ class PhotosController < InheritedResources::Base
 
     respond_to do |format|
       format.html { redirect_to topic_photos_url }
-      format.js
+      format.json { render :json => true }
     end
   end
   

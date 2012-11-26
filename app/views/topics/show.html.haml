@@ -12,30 +12,32 @@
         %div{:style => "width:0%;"}
       %span.btn.btn-mini.fileinput-button
         %i.icon-plus
-        %span
-          = t('photos.add_files')
-          \...
+        %span Add File
         = f.file_field :image, :multiple => true
   %br
-    .row
-      %ul.thumbnails.files
-        - unless @photos.empty?
-          - @photos.each do |pic|
-            %li.span3{:id => "photo_#{pic.id}"}
-              .thumbnail
-                %a{:href => pic.image.url, :rel => "lightbox-photos", :title => pic.blurb}
-                  %img{:alt => "", :src => pic.image.thumb.url}
-                .caption
-                  %p{:style => "text-align: center;"}
-                    %a.btn.btn-mini{:href => "/topics/#{@topic.id}/photos/#{pic.id}"}
-                      %i.icon-ok
-                      Show
-                    %a.btn.btn-mini{:href => "/topics/#{@topic.id}/photos/#{pic.id}/edit"}
-                      %i.icon-edit
-                      Edit
-                    %a.btn.btn-mini.btn-delete{:confirm => "Are you sure?", "data-method" => "delete", "data-remote" => "true", :href => "/topics/#{@topic.id}/photos/#{pic.id}"}
-                      %i.icon-trash
-                      Delete
+  .row
+    .progress.progress-success.progress-striped.active.fade 
+      .bar{:style=>"width:0%;"}   
+    .fileupload-loading
+      
+    %ul.thumbnails.files
+      - unless @photos.empty?
+        - @photos.each do |pic|
+          %li.span3{:id => "photo_#{pic.id}"}
+            .thumbnail
+              %a{:href => pic.image.url, :rel => "lightbox-photos", :title => pic.blurb}
+                %img{:alt => "", :src => pic.image.thumb.url}
+              .caption
+                %p{:style => "text-align: center;"}
+                  %a.btn.btn-mini{:href => "/topics/#{@topic.id}/photos/#{pic.id}"}
+                    %i.icon-ok
+                    Show
+                  %a.btn.btn-mini{:href => "/topics/#{@topic.id}/photos/#{pic.id}/edit"}
+                    %i.icon-edit
+                    Edit
+                  %a.btn.btn-mini.btn-delete{:confirm => "Are you sure?", "data-method" => "delete", "data-remote" => "true", :href => "/topics/#{@topic.id}/photos/#{pic.id}"}
+                    %i.icon-trash
+                    Delete
 :javascript
   var fileUploadErrors = {
     maxFileSize: 'File is too big',
@@ -45,7 +47,7 @@
     uploadedBytes: 'Uploaded bytes exceed file size',
     emptyResult: 'Empty file upload result'
   };
-%script#template-download{:type => "text/html"}
+%script#template-download{:type => "text/x-tmpl"}
   {% for (var i=0, files=o.files, l=files.length, file=files[0]; i<l; file=files[++i]) { %} 
   %tr.template-download.nofade
     {% if (file.error) { %}

@@ -16,6 +16,7 @@ gem 'rack'  #, '~> 1.2.1'
 gem "rake" #, "10.0.1"     
 gem 'capistrano'
 #gem "chronic"
+gem "airbrake"
 
 gem "devise", ">= 2.1.2"
 gem "cancan", ">= 1.6.8"
