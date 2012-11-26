@@ -12,5 +12,12 @@ class TopicsController < InheritedResources::Base
     end
   end
   
+  protected
+    def collection
+      @topics ||= end_of_association_chain.paginate(:page => params[:page])
+    end 
+    def begin_of_association_chain
+      @current_user
+    end
   
 end

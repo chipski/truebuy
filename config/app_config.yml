@@ -12,7 +12,7 @@ defaults: &DEFAULTS
   aws:
     access_key: AKIAJ4WX6PQISTLVZNEQ
     secret_key: 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   
-    bucket: "rightbyme/production"
+    bucket: "assets.rightbyme"
   blitline:
     app_id: application_id
     secet: secret_value
@@ -27,7 +27,7 @@ defaults: &DEFAULTS
   rackspace:
     username: rightbyme
     api_key: ggggg
-    bucket: assets.dev.rightby.me                
+    bucket: rightbyme-prod                
     
 development: &DEVELOPMENT
   <<: *DEFAULTS
@@ -35,13 +35,13 @@ development: &DEVELOPMENT
   aws:
     access_key: AKIAJA6Y6RTHK3JZM3GQ
     secret_key: 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   
-    bucket: "rightbyme/dev"
+    bucket: "rightbyme-dev"
 
 
 test: &TEST
   <<: *DEVELOPMENT
   aws:
-    bucket: "rightbyme/test"    
+    bucket: "rightbyme-dev"    
       
 cucumber:
   <<: *TEST

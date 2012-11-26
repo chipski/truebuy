@@ -71,6 +71,18 @@ class PhotosController < InheritedResources::Base
       end
     end
   end
+  
+  def destroy
+    @topic = Topic.find(params[:topic_id])
+    @photo = @topic.photos.find(params[:id])
+    @photo.destroy
+
+    respond_to do |format|
+      format.html { redirect_to topic_photos_url }
+      format.js
+    end
+  end
+  
   def make_default
     @photo = Photo.find(params[:photo_id])
     @topic = Topic.find(params[:topic_id])
@@ -83,11 +95,5 @@ class PhotosController < InheritedResources::Base
     end
   end
 
-  protected
-      def collection
-        @photos ||= end_of_association_chain.paginate(:page => params[:page])
-      end 
-      def begin_of_association_chain
-        @current_user
-      end
+
 end

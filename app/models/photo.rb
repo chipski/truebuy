@@ -3,10 +3,13 @@ class Photo < ActiveRecord::Base
   attr_accessible :blurb, :image_name, :image_uid, :image, :keywords, :name, :permalink, :uid, :topic_id, :crop_x, :crop_y, :crop_w, :crop_h
   attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
 
-  belongs_to :topic
-  mount_uploader :image, ImageUploader   
+  belongs_to :topic   
+  
+  include Rails.application.routes.url_helpers
+  mount_uploader :image, ImageUploader        
+  
   after_save :update_permalink
-  after_update :crop_image
+  #after_update :crop_image
   
 
   def to_jq_upload
