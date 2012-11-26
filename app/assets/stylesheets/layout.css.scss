@@ -3,7 +3,6 @@
     margin: 10px 0;
     h1 { 
        width: auto;
-       
     }
 }
 
@@ -15,11 +14,7 @@ form {
     .wysihtml5-sandbox {
         width: 780px;
     }
-    .wide {
-        input {
-            width: 720px;
-        }
-    }
+    .wide { input {  width: 720px;}}
     .image-box {
         width: 480px;
         float: left;

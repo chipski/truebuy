@@ -25,7 +25,13 @@ test: &test
     password:
 
 production:
-   
+    adapter: mysql
+    encoding: utf8             
+    #port: 5432   
+    pool: 5 
+    database: rightbyme_production
+    username: root
+    password: 
 
 
 cucumber:
