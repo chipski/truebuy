@@ -1,0 +1,24 @@
+.row
+  %h1 Listing companys
+  %ul.files.thumbnails
+    - @companies.each do |company|  
+      %li.span3#company
+        %h3=company.name  
+        .thumbnail
+          -if company.cover.blank? or !Photo.find_by_id(company.cover)  
+            =link_to image_tag("/assets/NoImageAvailable.jpg"), company_path(company.id)
+          -else
+            =link_to image_tag(Photo.find_by_id(company.cover).image.thumb.url), company_path(company.id)
+        .caption
+          %p{:style=>"text-align: center;"}
+            =link_to edit_company_path(company.id), :class=>"btn btn-mini" do
+              %i.icon-edit
+              Edit
+            =link_to company, method: :delete, data: { confirm: 'Are you sure?' } do
+              %i.icon-trash
+              ='Destroy'   
+            
+
+
+
+  =link_to 'New', new_company_path, :class => 'btn btn-mini'

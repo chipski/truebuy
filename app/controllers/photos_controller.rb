@@ -38,9 +38,15 @@ class PhotosController < InheritedResources::Base
   def create
     p_attr = params[:photo]
     p_attr[:image] = params[:photo][:image].first if params[:photo][:image].class == Array
-
-    @topic = Topic.find(params[:topic_id])
-    @photo = @topic.photos.build(p_attr)
+    Rails.logger.info("Photo.create p_attr=#{p_attr} topic=#{params[:topic_id]} company=#{params[:company_id]}")
+    if params[:topic_id]
+      @parent = Topic.find(params[:topic_id])
+      @photo = @parent.photos.build(p_attr) 
+    elsif params[:company_id]  
+      @parent = Company.find(params[:company_id])
+      @photo = Photo.create(p_attr)
+      @parent.update_attribute(:photo_id, @photo.id)
+    end 
     
     if @photo.save
       respond_to do |format|

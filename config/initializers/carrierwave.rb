@@ -6,7 +6,7 @@ CarrierWave.configure do |config|
   }
   config.fog_directory = APP_CONFIG['aws']['bucket']
   config.fog_public = true
-  if Rails.env.test?
+  if Rails.env.test? || Rails.env.dev?
     config.storage = :file
   else
     config.storage = :fog

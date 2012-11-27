@@ -17,6 +17,18 @@ else
       'username' => ENV['SENDGRID_USERNAME'],
       'password' => ENV['SENDGRID_PASSWORD'],
       'domain' => ENV['SENDGRID_DOMAIN']
+    }, 
+    'gmail' => {
+      'user_name' => ENV["GMAIL_USERNAME"],
+      'password' => ENV["GMAIL_PASSWORD"] 
+    },
+    'mandrill' => {
+      'username' => ENV["MANDRILL_USERNAME"],
+      'api_key' => ENV["MANDRILL_API_KEY"] 
+    },
+    'mailchimp' => {
+      'username' => ENV["MAILCHIMP_USERNAME"],
+      'api_key' => ENV["MAILCHIMP_API_KEY"] 
     }
   }
 

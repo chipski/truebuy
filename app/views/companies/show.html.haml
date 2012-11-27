@@ -1,0 +1,87 @@
+.row
+  %h1
+    = @company.name
+  %input#companyID{:type => "hidden", :value => @company.id}
+    %p
+      = @company.blurb ? @company.blurb.html_safe : ""
+    %p
+      = @company.body ? @company.body.html_safe : "" 
+
+= form_for [Photo.new], :url=>photos_path(:company_id=>@company.id), :html => { :multipart => true, :id => "fileupload"  } do |f|
+  .row
+    .fileupload-buttonbar
+      .progressbar.fileupload-progressbar.nofade
+        %div{:style => "width:0%;"}
+      %span.btn.btn-mini.fileinput-button
+        %i.icon-plus
+        %span Add File
+        = f.file_field :image, :multiple => true
+  %br
+  .row
+    .progress.progress-success.progress-striped.active.fade 
+      .bar{:style=>"width:0%;"}   
+    .fileupload-loading
+      
+    %ul.thumbnails.files
+      - if @company.photo
+        %li.span3{:id => "photo_#{@company.photo.id}"}
+          .thumbnail
+            %a{:href => @company.photo.image.url, :rel => "lightbox-photos", :title => @company.photo.blurb}
+              %img{:alt => "", :src => @company.photo.image.thumb.url}
+            .caption
+              %p{:style => "text-align: center;"}
+                %a.btn.btn-mini{:href => "/photos/#{@company.photo.id}"}
+                  %i.icon-ok
+                  Show
+                %a.btn.btn-mini{:href => "/photos/#{@company.photo.id}/edit"}
+                  %i.icon-edit
+                  Edit
+                %a.btn.btn-mini.btn-delete{:confirm => "Are you sure?", "data-method" => "delete", "data-remote" => "true", :href => "/photos/#{@company.photo.id}"}
+                  %i.icon-trash
+                  Delete
+-#/                    
+  %p#notice= notice
+
+  %p
+    %b Photo:
+    = @company.photo
+  %p
+    %b Uid:
+    = @company.uid
+  %p
+    %b Permalink:
+    = @company.permalink
+  %p
+    %b Name:
+    = @company.name
+  %p
+    %b Keywords:
+    = @company.keywords
+  %p
+    %b Blurb:
+    = @company.blurb
+  %p
+    %b Body:
+    = @company.body
+  %p
+    %b State:
+    = @company.state
+  %p
+    %b Type:
+    = @company.type
+  %p
+    %b Duns:
+    = @company.duns
+  %p
+    %b Url:
+    = @company.url
+  %p
+    %b Url2:
+    = @company.url2
+  %p
+    %b Cover:
+    = @company.cover                    
+
+= link_to 'Edit', edit_company_path(@company)
+\|
+= link_to 'Back', companies_path

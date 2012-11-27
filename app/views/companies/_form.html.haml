@@ -1,14 +1,12 @@
-= simple_form_for(@topic, :html => { :class => 'form-horizontal' }) do |f|
+= simple_form_for(@company, :html => { :class => 'form-horizontal' }) do |f|
   = f.error_notification
 
   .form-inputs
-    .wide= f.input :name                     
-    = f.association :company
-    = #f.input :company_id, Company.all.collect{ |t| [t.name, t.id]}
+    .wide= f.input :name
     = f.input :blurb, :input_html=>{:class=>"wysihtml5"}
-    = f.input :body, :input_html=>{:class=>"wysihtml5"}    
-    
-
+    = f.input :body, :input_html=>{:class=>"wysihtml5"}  
+    = f.association :photo   
+    =# f.input :photo_id, []  Photo.select_active(current_user)    
   .form-actions
     = f.button :submit  
     
@@ -19,5 +17,7 @@
       = f.input :permalink  
       = f.input :state
       = f.input :type
+      = f.input :duns
+      = f.input :url
+      = f.input :url2
       = f.input :cover
-    

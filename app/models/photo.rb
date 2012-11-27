@@ -11,6 +11,18 @@ class Photo < ActiveRecord::Base
   after_save :update_permalink
   #after_update :crop_image
   
+  default_scope order(:updated_at) 
+  scope :active, lambda {|current_user| where(:state=>:active)}     
+  scope :inactive, lambda {|current_user| where(:state=>[:inactive])}      
+  scope :initial, where(:state=>[:new, nil])  
+  
+  
+  
+  def self.select_active         
+
+    self.initial.collect{ |t| [" #{t.name[0..30]}", t.id]}
+  end
+  
 
   def to_jq_upload
     {
@@ -34,13 +46,7 @@ class Photo < ActiveRecord::Base
   end
   
   def update_permalink
-    secret = "p#{self.name}_#{self.id}".gsub(" ", "_")  # add random
-    permalink = Digest::SHA2.hexdigest(secret)
-    token = Digest::SHA1.hexdigest(secret)
-    if self.permalink != permalink
-      self.update_attribute(:permalink, permalink)
-      self.update_attribute(:uid, token)
-    end      
+    UtilityIds.update_permalink2(self)  
   end
   
 end

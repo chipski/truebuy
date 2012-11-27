@@ -11,7 +11,29 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121124230822) do
+ActiveRecord::Schema.define(:version => 20121126153120) do
+
+  create_table "companies", :force => true do |t|
+    t.integer  "photo_id"
+    t.string   "uid"
+    t.string   "permalink"
+    t.string   "name"
+    t.string   "keywords"
+    t.text     "blurb"
+    t.text     "body"
+    t.string   "state",      :default => "new"
+    t.string   "type"
+    t.string   "duns"
+    t.string   "url"
+    t.string   "url2"
+    t.integer  "cover"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
+  add_index "companies", ["permalink"], :name => "index_companies_on_permalink", :unique => true
+  add_index "companies", ["photo_id"], :name => "index_companies_on_photo_id"
+  add_index "companies", ["uid"], :name => "index_companies_on_uid", :unique => true
 
   create_table "photos", :force => true do |t|
     t.string   "uid"
@@ -19,14 +41,14 @@ ActiveRecord::Schema.define(:version => 20121124230822) do
     t.string   "name"
     t.string   "keywords"
     t.text     "blurb"
-    t.string   "state"
+    t.string   "state",      :default => "new"
     t.string   "type"
     t.string   "image"
     t.string   "image_uid"
     t.string   "image_name"
     t.integer  "topic_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   add_index "photos", ["permalink"], :name => "index_photos_on_permalink", :unique => true
@@ -51,13 +73,15 @@ ActiveRecord::Schema.define(:version => 20121124230822) do
     t.string   "keywords"
     t.text     "blurb"
     t.text     "body"
-    t.string   "state"
+    t.string   "state",      :default => "new"
     t.string   "type"
     t.integer  "cover"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.integer  "company_id"
   end
 
+  add_index "topics", ["company_id"], :name => "index_topics_on_company_id"
   add_index "topics", ["permalink"], :name => "index_topics_on_permalink", :unique => true
   add_index "topics", ["uid"], :name => "index_topics_on_uid", :unique => true
 

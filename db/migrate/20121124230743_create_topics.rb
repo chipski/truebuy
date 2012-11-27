@@ -7,7 +7,7 @@ class CreateTopics < ActiveRecord::Migration
       t.string :keywords
       t.text :blurb
       t.text :body
-      t.string :state
+      t.string :state, :default=>"new"
       t.string :type
       t.integer :cover
 

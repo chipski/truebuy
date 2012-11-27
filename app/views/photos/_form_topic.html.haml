@@ -1,4 +1,5 @@
-= form_for [@topic, @photo], :html => { :class => 'form-horizontal' } do |f|
+=# form_for , :html => { :class => 'form-horizontal' } do |f| 
+= simple_form_for([@topic, @photo], :html => { :class => 'form-horizontal' }) do |f|
   .image-box 
     = image_tag @photo.image.large.url, :id => 'cropbox'
     - %w[x y w h].each do |attribute|
@@ -6,8 +7,10 @@
 
   .control-box 
     %b Name
-    = f.text_field :name, :class => 'text_field'
+    = f.text_field :name, :class => 'text_field' 
+    = f.association :topic, :collection=>Topic.select_active 
     = f.text_area :blurb, :class => 'wysihtml5'
+   
             
     = f.submit nil, :class => 'btn btn-primary  btn-mini'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), |

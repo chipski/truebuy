@@ -82,7 +82,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = "8be02453440258c1984dba11371cc198c7174739d26f50f55389bbeb55dba62a51abf8a6a6b36acae2f9123600a0cc364ec4c64567a3a76542a17a2b0dff3a5a"
+  config.pepper = "8be02453440258c1984dba11371cc198c7174739d26888f55389bbeb55dba62a51abf8a6a6b36acae2f9123600a0cc364ec4c64567a3a76542a17a2b0dff3a5a"
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -197,7 +197,7 @@ Devise.setup do |config|
   # should add them to the navigational formats lists.
   #
   # The "*/*" below is required to match Internet Explorer requests.
-  # config.navigational_formats = ["*/*", :html]
+  # config.navigational_formats = ["*/*", :html, :iphone, :mobile]
 
   # The default HTTP method used to sign out a resource. Default is :delete.
   config.sign_out_via = Rails.env.test? ? :get : :delete
@@ -206,7 +206,8 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
-
+  # ToDo configure twitter and facebook
+  
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.

@@ -1,7 +1,7 @@
-%h1 Editing topic
+- model_class = @topic.class
+= render 'topics/breadcrumbs'
+-if @company             
+  = render 'form_company'
 
-= render 'form'
-
-= link_to 'Show', @topic
-\|
-= link_to 'Back', topics_path
+-else                          
+  = render 'form'

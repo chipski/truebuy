@@ -1,32 +1,31 @@
 -action = action || controller.action_name
--topic = @topic || @photo.topic
--if topic             
+-company = @company || @topic.company
+-if company             
   .page-header
     %h1
-      =link_to topic_photos_path(topic) do
+      =link_to company_topics_path(company) do
         %i.icon-list-alt
-      =link_to topic.name, topic
+      =link_to company.name, company
       -if action == "edit" 
         = "Edit "           
-        = link_to @photo.name, topic_photo_path(topic, @photo)   
+        = link_to @topic.name, company_topic_path(company, @topic)   
       -elsif action == "new"
         = "New "
       -else
         = "Photo "
         %span.small-gray
-          =link_to "edit", edit_topic_photo_path(topic, @photo), :class => 'btn btn-mini' 
+          =link_to "edit", edit_company_topic_path(company, @topic), :class => 'btn btn-mini' 
 -else                          
   .page-header
     %h1 
-      =link_to photos_path do
+      =link_to topics_path do
         %i.icon-list-alt
       -if action == "edit" 
         = "Edit "           
-        =link_to @photo.name, photo_path(@photo)   
+        =link_to @topic.name, topic_path(@topic)   
       -elsif action == "new"
         = "New "
       -else
         = "Photo "
         %span.small-gray
-          =link_to "edit", edit_photo_path(@photo), :class => 'btn btn-mini'    
-        
+          =link_to "edit", edit_topic_path(@topic), :class => 'btn btn-mini'    

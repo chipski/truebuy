@@ -12,5 +12,6 @@ puts 'New user created: ' << user.name
 user2 = User.create! :name => 'Chip Admin', :email => 'chipski@mac.com', :password => 'please', :password_confirmation => 'please'
 user2.confirm!
 puts 'New user created: ' << user2.name
-user2.add_role :admin
+user2.add_role :admin  
+comp=Company.create!(:name=>"Rightby.me", )
 

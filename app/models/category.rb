@@ -8,13 +8,7 @@ class Category < ActiveRecord::Base
   
   
   def update_permalink
-    permalink = "#{self.name}_#{self.id}".gsub(" ", "_")  # add random
-    #permalink = Digest::SHA2.hexdigest(secret)
-    token = Digest::SHA1.hexdigest(permalink)
-    if self.permalink != permalink
-      self.update_attribute(:permalink, permalink)
-      self.update_attribute(:uid, token)
-    end      
+    UtilityIds.update_permalink(self, self.name)   
   end
   
 end

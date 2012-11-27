@@ -6,7 +6,7 @@ class CreatePhotos < ActiveRecord::Migration
       t.string :name
       t.string :keywords
       t.text :blurb
-      t.string :state
+      t.string :state, :default=>"new"
       t.string :type
       t.string :image
       t.string :image_uid

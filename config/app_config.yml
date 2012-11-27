@@ -23,7 +23,13 @@ defaults: &DEFAULTS
   sendgrid:
     username: sendgrid_username
     password: sendgrid_password
-    domain: sendgrid_domain
+    domain: sendgrid_domain   
+  gmail:
+    user_name:
+    password:     
+  mandrill:
+    username:
+    api_key:    
   rackspace:
     username: rightbyme
     api_key: ggggg
