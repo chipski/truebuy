@@ -28,18 +28,16 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 gem "haml", ">= 3.1.7"             
 gem "less-rails"       
+gem 'sass-rails',   '~> 3.2.3'
+gem "bootstrap-sass", ">= 2.1.1.0" 
+# need to choose!  use above two or below two gems, not both or a mix
+# http://rubysource.com/twitter-bootstrap-less-and-sass-understanding-your-options-for-rails-3-1/
+#gem "less-rails-bootstrap"    #this can be switched with gem below but css & js load files will need rework
+gem "twitter-bootstrap-rails"                   
 
 
 group :assets do
   gem 'coffee-rails', '~> 3.2.1' 
-
-  gem 'sass-rails',   '~> 3.2.3'
-  gem "bootstrap-sass", ">= 2.1.1.0" 
-  # need to choose!  use above two or below two gems, not both or a mix
-  # http://rubysource.com/twitter-bootstrap-less-and-sass-understanding-your-options-for-rails-3-1/
-  #gem "less-rails-bootstrap"    #this can be switched with gem below but css & js load files will need rework
-  gem "twitter-bootstrap-rails"                   
-    
   gem "font-awesome-sass-rails"
   gem 'uglifier', '>= 1.0.3'
 end
