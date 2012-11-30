@@ -10,6 +10,8 @@
  *
  *= require_self                                      
  *= require bootstrap_and_overrides
+ *= require bootstrap-wysihtml5
+
  * require 'masonry/basic'
  * require 'masonry/centered'
  * require 'masonry/fluid'
@@ -18,7 +20,7 @@
  * require 'masonry/right-to-left'
  * require 'masonry/transitions' 
  *= require dataTables/jquery.dataTables.bootstrap  
- *= require bootstrap-wysihtml5
+
  *= require_tree .
 */
 

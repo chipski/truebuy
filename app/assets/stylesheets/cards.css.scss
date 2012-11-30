@@ -1,0 +1,140 @@
+// Place all the styles related masonary layout here
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+//@import "compass";
+//@include global-reset;
+
+$bg: #faf7f7;
+$color: #8c7e7e;
+
+#masonry {
+  position: relative;
+  margin: 0 auto;  
+
+} 
+.tab-pane {
+    margin: 0 4px;
+}
+.card {
+  width: 292px;
+  float: left;
+  padding: 10px 10px 4px;
+  margin: 0 1px 8px;
+  font-size: 12px;
+  background: white;
+  //@include box-shadow( 0 1px 3px rgba(34,25,25,0.4) ); 
+  -webkit-box-shadow: inset 0 1px 6px rgba(68, 31, 31, 0.25);
+  -moz-box-shadow: inset 0 1px 6px rgba(68, 31, 31, 0.25);
+  box-shadow: inset 0 1px 6px rgba(68, 31, 31, 0.25);
+  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+  -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+  -ms-transition: border linear 0.2s, box-shadow linear 0.2s;
+  -o-transition: border linear 0.2s, box-shadow linear 0.2s;
+  transition: border linear 0.2s, box-shadow linear 0.2s;
+  line-height: 1.5; 
+  .img-box {              
+     float: left;
+     overflow: hidden; 
+     width: auto;
+     max-width: 132px;
+     height: auto;
+     max-height:68px;
+     img { width: 132px;}
+  } 
+  .btn-box {
+      width: 294px;
+  }
+  .card-info {     
+      float: right;
+      margin: 8px 0 2px;
+  }
+  .title { 
+    font-size: 20px;   
+    font-weight: bold;
+    line-height: 20px;
+    margin: 0px;
+    padding: 8px;
+   }
+  h2 {
+    padding-top: 5px;
+  }
+  h3 { margin-bottom: 0px;}
+  h4 {
+    margin: 6px;
+    line-height: 14px; 
+    font-size: 16px;
+  }
+  .comments {
+    color: $color;
+    padding-bottom: 15px;
+  }
+  .info {
+    margin: 0 5px;
+  }
+  .infobox {
+    border-top: 1px solid white;
+    border-bottom: 1px solid rgba(#000,.1);
+    padding: 4px;
+    clear: both;
+    &:last-child {
+      border-bottom: none; 
+      clear: both;
+    }
+    &:first-child {
+      color: #b29c9c;
+      b {
+        color: #8c7e7e;
+      }
+    }
+    h4 { margin-bottom: 0px;}
+    b {
+      font-weight: bold;
+      font-size: 120%;
+    }
+    a {
+      color: #444;
+      text-decoration: underline;
+    }
+    
+  }
+ 
+} 
+.wide { 
+   .card { width: 98%; } 
+}
+.card_focus {
+    border: solid 1px rgba(82, 168, 236, 0.8);                 
+    box-shadow: inset 0 1px 8px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6); 
+}
+
+.small-gray {
+    font-size: 0.5em;
+    text-align: bottom;
+    margin-left: 10px;
+}
+.preview {
+  height: 100px;
+}
+img {
+  max-width: none;
+}
+.thumbnail a > img {
+  display: block;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.thumbnail .preview > img {
+  display: block;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.files .span3 {
+  //width: 220px;
+}
+.files .span3 .thumbnail {
+  height: 137px;
+}
+

@@ -4,8 +4,7 @@ class PhotosController < InheritedResources::Base
   
 
   def index
-    @topic = Topic.find(params[:topic_id]) if params[:topic_id]  
-    @photos = @topic ? @topic.photos : Photo.all
+    @photos = @parent ? @parent.photos : Photo.all
      respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @photos.collect { |p| p.to_jq_upload }.to_json }
@@ -21,8 +20,7 @@ class PhotosController < InheritedResources::Base
   end
   
   def new
-    @topic = Topic.find(params[:topic_id]) if params[:topic_id]
-    @photo = @topic ? @topic.photos.build : Photo.create
+    @photo = @parent ? @parent.photos.build : Photo.create
 
     respond_to do |format|
       format.html # new.html.erb
@@ -30,24 +28,16 @@ class PhotosController < InheritedResources::Base
     end
   end
   def edit
-    @topic = Topic.find(params[:topic_id]) if params[:topic_id]   
-    @photo = @topic ? @topic.photos.find(params[:id]) : Photo.find(params[:id]) 
+    @photo = @parent ? @parent.photos.find(params[:id]) : Photo.find(params[:id]) 
     # @photo = Picture.find(params[:id])
   end
   
   def create
     p_attr = params[:photo]
     p_attr[:image] = params[:photo][:image].first if params[:photo][:image].class == Array
-    Rails.logger.info("Photo.create p_attr=#{p_attr} topic=#{params[:topic_id]} company=#{params[:company_id]}")
-    if params[:topic_id]
-      @parent = Topic.find(params[:topic_id])
-      @photo = @parent.photos.build(p_attr) 
-    elsif params[:company_id]  
-      @parent = Company.find(params[:company_id])
-      @photo = Photo.create(p_attr)
-      @parent.update_attribute(:photo_id, @photo.id)
-    end 
-    
+    Rails.logger.info("Photo.create p_attr=#{p_attr} parent=#{params[:parent_id]} company=#{params[:company_id]}")
+    @photo = @parent ? @parent.photos.build(p_attr) : Photo.create(p_attr)
+
     if @photo.save
       respond_to do |format|
         format.html {
@@ -64,42 +54,63 @@ class PhotosController < InheritedResources::Base
     end
   end
   def update
-    @topic = Topic.find(params[:topic_id]) if params[:topic_id]
-    @photo = @topic ? @topic.photos.find(params[:id]) : Photo.find(params[:id])
-
+    @photo = @parent ? @parent.photos.find(params[:id]) : Photo.find(params[:id])
+    p_attr = params[:photo]
+    p_attr[:image] = params[:photo][:image].first if params[:photo][:image].class == Array
     respond_to do |format|
-      if @photo.update_attributes(params[:photo])
-        format.html { redirect_to @topic ? @topic : @photo , notice: 'Picture was successfully updated.' }
+      if @photo.update_attributes(p_attr)
+        format.html { redirect_to @parent ? @parent : @photo , notice: 'Picture was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @photo.errors, status: :unprocessable_entity }
+        format.json { 
+          Rails.logger.info("Photo.update errors=#{@photo.errors.inspect}")
+          render json: @photo.errors.to_json, status: :unprocessable_entity 
+        }
       end
     end
   end
   
   def destroy
-    @topic = Topic.find(params[:topic_id])
-    @photo = @topic.photos.find(params[:id])
+    @photo = @parent.photos.find(params[:id])
     @photo.destroy
 
     respond_to do |format|
-      format.html { redirect_to topic_photos_url }
+      format.html { redirect_to parent_photos_url }
       format.json { render :json => true }
     end
   end
   
   def make_default
     @photo = Photo.find(params[:photo_id])
-    @topic = Topic.find(params[:topic_id])
+    #@parent = Topic.find(params[:parent_id])
 
-    @topic.cover = @photo.id
-    @topic.save
+    @parent.cover = @photo.id
+    @parent.save
 
     respond_to do |format|
       format.js
     end
   end
-
+  
+  protected
+    def collection
+      @photos ||= end_of_association_chain.paginate(:page => params[:page])
+    end 
+    def begin_of_association_chain                         
+      if params[:parent_id] && params[:parent_type] 
+        parent_klass = begin
+          case params[:parent_type]
+          when "Company" 
+            Company
+          when "Topic"
+            Topic
+          else
+            Topic
+          end 
+        end 
+        @parent = parent_klass.find(params[:parent_id])
+      end  
+    end   
 
 end

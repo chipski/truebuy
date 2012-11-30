@@ -1,7 +1,6 @@
 class CreateCompanies < ActiveRecord::Migration
   def change
     create_table :companies do |t|
-      t.references :photo
       t.string :uid
       t.string :permalink
       t.string :name
@@ -17,7 +16,6 @@ class CreateCompanies < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :companies, :photo_id
     add_index :companies, :uid, :unique => true
     add_index :companies, :permalink, :unique => true     
     

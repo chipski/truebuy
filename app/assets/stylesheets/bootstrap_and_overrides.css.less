@@ -1,0 +1,89 @@
+@import "twitter/bootstrap/bootstrap";
+@import "twitter/bootstrap/responsive";
+
+@import "twitter/bootstrap/variables.less";
+@import "twitter/bootstrap/mixins.less";
+
+//@import "twitter/bootstrap/reset.less";
+//@import "twitter/bootstrap/scaffolding.less";
+//@import "twitter/bootstrap/grid.less";
+//@import "twitter/bootstrap/layouts.less";
+//@import "twitter/bootstrap/type.less";
+//@import "twitter/bootstrap/forms.less";
+//@import "twitter/bootstrap/wells.less";
+//@import "twitter/bootstrap/component-animations.less";
+//@import "twitter/bootstrap/buttons.less";
+//@import "twitter/bootstrap/close.less";
+//@import "twitter/bootstrap/navs.less";
+//@import "twitter/bootstrap/navbar.less";
+//@import "twitter/bootstrap/labels-badges.less";
+//@import "twitter/bootstrap/hero-unit.less";
+//@import "twitter/bootstrap/utilities.less";
+
+//@import 'gritter';
+
+@iconSpritePath: asset-path('twitter/bootstrap/glyphicons-halflings.png');
+@iconWhiteSpritePath: asset-path('twitter/bootstrap/glyphicons-halflings-white.png');
+  
+// Set the Font Awesome (Font Awesome is default. You can disable by commenting below lines)
+// Note: If you use asset_path() here, your compiled boostrap_and_overrides.css will not 
+//       have the proper paths. So for now we use the absolute path.
+@fontAwesomeEotPath: '/assets/fontawesome-webfont.eot';
+@fontAwesomeWoffPath: '/assets/fontawesome-webfont.woff';
+@fontAwesomeTtfPath: '/assets/fontawesome-webfont.ttf';
+@fontAwesomeSvgPath: '/assets/fontawesome-webfont.svg';
+// Font Awesome
+@import "fontawesome";
+
+body { padding-top: 60px; }
+.content {
+  //.border-radius(12px);
+  margin: 0;
+}
+.container {
+   
+}
+.modal {
+  .border-radius(6px);
+    border: 1px solid #777;
+}
+.alert  {
+  .border-radius(5px);
+}
+
+@media (max-width: 979px) {
+  .navbar-fixed-top, .navbar-fixed-bottom {
+    margin-bottom: 0;
+    position: fixed;
+    .navbar-inner {
+      padding: 0;
+    }
+  }
+  .span12 {
+    width: 100%
+  }
+  .container {
+    width: 98%
+  }
+  .navbar-static-top .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container, .navbar-inner .container {
+    //width: auto;
+    width: 100%
+  }
+  
+}
+@media (max-width: 767px) {
+  body {
+    padding: 48px 6px 0 6px
+  }
+  .navbar-fixed-top, .navbar-fixed-bottom {
+    margin: 0;
+    position: fixed;
+    .navbar-inner {
+      padding: 0;
+    }
+  }  
+}
+
+
+
+

@@ -1,5 +1,7 @@
 class Company < ActiveRecord::Base
-  belongs_to :photo    
+  
+  has_many :photos, :as => :parent, :class_name => "Photo"
+     
   has_many :topics  
   attr_accessible :blurb, :body, :cover, :duns, :keywords, :name, :permalink, :state, :type, :photo_id, :url, :url2      
    
@@ -14,6 +16,13 @@ class Company < ActiveRecord::Base
     self.initial.collect{ |t| [" #{t.name[0..30]}", t.id]}
   end
   
+  def cover_url
+    if cover
+      Photo.find_by_id(cover).image.thumb.url
+    else
+      "default/sky_hang.jpeg"
+    end
+  end
   
   def update_permalink
     UtilityIds.update_permalink(self, self.name) 

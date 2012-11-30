@@ -14,6 +14,14 @@ class Topic < ActiveRecord::Base
     all.collect{ |t| [t.name, t.id]}
   end
   
+  def cover_url
+    if cover
+      Photo.find_by_id(cover).image.thumb.url
+    else
+      "default/fence_hop.jpeg"
+    end
+  end
+  
   def update_permalink
     UtilityIds.update_permalink(self, self.name) 
   end

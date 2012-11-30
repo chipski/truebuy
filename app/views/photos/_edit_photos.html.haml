@@ -1,0 +1,58 @@
+-parent = parent || @company || @topic
+-photo = @photo || Photo.create()
+-if true
+  .row
+    = form_for photo, :html => { :multipart=>true, :id=>"fileupload"  } do |f|
+      = image_tag photo.image.large.url, :id => 'cropbox'
+      = link_to 'Default', '', :class => 'btn btn-mini btn-success' , :id => 'make_default'
+      - %w[x y w h].each do |attribute|
+        = f.hidden_field "crop_#{attribute}"   
+      .fileupload-buttonbar
+        .progressbar.fileupload-progressbar.nofade
+          %div{:style => "width:0%;"}
+        %span.btn.btn-mini.fileinput-button
+          %i.icon-plus
+          %span Add File
+          = f.file_field :image, :multiple => true
+      .progress.progress-success.progress-striped.active.fade 
+        .bar{:style=>"width:0%;"}   
+      .fileupload-loading
+.row
+  %ul.thumbnails.files
+    - if parent.photos
+      -parent.photos.each do |photo|
+        %li.span3{:id => "photo_#{photo.id}"}
+          .thumbnail
+            %a{:href => parent.photo.image.url, :rel => "lightbox-photos", :title => photo.blurb}
+              %img{:alt => "", :src => photo.image.thumb.url}
+            .caption
+              %p{:style => "text-align: center;"}
+                %a.btn.btn-mini{:href =>parent_photo_path(parent, photo)}
+                  %i.icon-ok
+                  Show
+                %a.btn.btn-mini{:href=>parent_photo_path(photo, parent, "edit")}
+                  %i.icon-edit
+                  Edit
+                %a.btn.btn-mini.btn-delete{:confirm=>"Are you sure?", "data-method"=>"delete", "data-remote"=>"true", :href=>"/photos/#{photo.id}"}
+                  %i.icon-trash
+                  Delete
+  .clearfix 
+-if true
+  -parent.photos.each do |photo|
+    = image_tag photo.image.large.url, :id => 'cropbox'
+    - %w[x y w h].each do |attribute|
+      = f.hidden_field "crop_#{attribute}"
+    = link_to 'Default', '', :action=>'make_default', :class => 'btn btn-mini btn-success' 
+    %script{:charset => "utf-8", :type => "text/javascript"}
+      $(function () {
+      $('#make_default').click(function(event) {
+      event.preventDefault();  
+      photo_id = this.data.id 
+      parent_id = 
+      $.ajax({
+      url: '#{parent_photo_path(parent, photo)}',
+      type: 'POST',
+      data: {photo_id : #{photo.id}, parent_id : #{parent.id}}
+      });
+      });
+      });

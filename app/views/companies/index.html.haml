@@ -6,7 +6,7 @@
         %h3=company.name  
         .thumbnail
           -if company.cover.blank? or !Photo.find_by_id(company.cover)  
-            =link_to image_tag("/assets/NoImageAvailable.jpg"), company_path(company.id)
+            =link_to image_tag("/NoImageAvailable.jpg"), company_path(company.id)
           -else
             =link_to image_tag(Photo.find_by_id(company.cover).image.thumb.url), company_path(company.id)
         .caption

@@ -27,9 +27,22 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 #gem 'omniauth-dropbox'
 
 gem "haml", ">= 3.1.7"             
-gem "less-rails"       
-gem "bootstrap-sass", ">= 2.1.1.0" 
-gem "twitter-bootstrap-rails"                   
+
+
+group :assets do
+  gem 'coffee-rails', '~> 3.2.1' 
+
+  gem 'sass-rails',   '~> 3.2.3'
+  #sgem "bootstrap-sass", ">= 2.1.1.0" 
+  # need to choose!  use above two or below two gems, not both or a mix
+  gem "less-rails"       
+  #gem "less-rails-bootstrap"    #this can be switched with gem below but css & js load files will need rework
+  gem "twitter-bootstrap-rails"                   
+    
+  gem "font-awesome-sass-rails"
+  gem 'uglifier', '>= 1.0.3'
+end
+
 #gem 'twitter_bootstrap_form_for'
 gem "simple_form", ">= 2.0.4"          
 gem "nested_form", :git => "git://github.com/ryanb/nested_form.git"       
@@ -56,13 +69,6 @@ gem "gritter"
 
 gem 'google-analytics-rails'
 gem "google_visualr", ">= 2.1.2"  
-
-group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'   
-  gem "font-awesome-sass-rails"
-  gem 'uglifier', '>= 1.0.3'
-end
 
 # Connector to cloud services
 gem "fog"

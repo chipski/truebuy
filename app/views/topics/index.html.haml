@@ -5,7 +5,7 @@
       %li.span3#topic
         .thumbnail
           -if topic.cover.blank? or !Photo.find_by_id(topic.cover)  
-            =link_to image_tag("/assets/NoImageAvailable.jpg"), topic_path(topic.id)
+            =link_to image_tag("/NoImageAvailable.jpg"), topic_path(topic.id)
           -else
             =link_to image_tag(Photo.find_by_id(topic.cover).image.thumb.url), topic_path(topic.id)
         .caption

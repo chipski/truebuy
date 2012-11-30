@@ -1,11 +1,6 @@
 =# form_for , :html => { :class => 'form-horizontal' } do |f| 
 = simple_form_for([@company, @photo], :html => { :class => 'form-horizontal' }) do |f|
-  .image-box 
-    = image_tag @photo.image.large.url, :id => 'cropbox'
-    - %w[x y w h].each do |attribute|
-      = f.hidden_field "crop_#{attribute}"
-
-  .control-box 
+  .form-input-boxes  
     %b Name
     = f.text_field :name, :class => 'text_field' 
     = f.association :company, :collection=>Topic.select_active 
@@ -15,6 +10,11 @@
     = f.submit nil, :class => 'btn btn-primary  btn-mini'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), |
       company_path(@company), :class => 'btn btn-mini'             |
+
+  .image-box 
+    = image_tag @photo.image.large.url, :id => 'cropbox'
+    - %w[x y w h].each do |attribute|
+      = f.hidden_field "crop_#{attribute}"
     = link_to 'Default', '', :class => 'btn btn-mini btn-success' , :id => 'make_default'
 
 %script{:charset => "utf-8", :type => "text/javascript"}

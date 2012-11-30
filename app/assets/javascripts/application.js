@@ -12,18 +12,21 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap                 
-//= require bootstrap-modal
-//= require bootstrap-dropdown
-//= require bootstrap-tab
-//= require bootstrap-tooltip
-//= require bootstrap-popover
-//= require bootstrap-alert
-//= require bootstrap-button
-//= require bootstrap-collapse
-//= require bootstrap-carousel
-//= require bootstrap-typeahead
-//  require underscore
+//= require twitter/bootstrap/bootstrap-transition
+//= require twitter/bootstrap/bootstrap-alert
+//= require twitter/bootstrap/bootstrap-modal
+//= require twitter/bootstrap/bootstrap-button
+//= require twitter/bootstrap/bootstrap-collapse
+//= require twitter/bootstrap/bootstrap-dropdown
+//= require twitter/bootstrap/bootstrap-tab
+//= require twitter/bootstrap/bootstrap-tooltip
+//= require twitter/bootstrap/bootstrap-popover
+//= require twitter/bootstrap/bootstrap-collapse
+//= require twitter/bootstrap/bootstrap-carousel
+//= require twitter/bootstrap/bootstrap-typeahead
+//  require bootstrap-ajax.js
+//= require bootstrap-wysihtml5
+
 //= require gritter    
 //= require jquery_nested_form
 
@@ -51,6 +54,7 @@
 //= require slimbox2         
 //= require photo_local
 
+//  require underscore
 //  require jquery.remotipart
 //  require ember
 //  require ember/Rightby.me.js
@@ -58,9 +62,6 @@
 // require masonry/jquery.masonry    
 // require masonry/jquery.imagesloaded.min
 // require masonry/jquery.infinitescroll.min
-// require bootstrap-ajax.js
-
-//= require bootstrap-wysihtml5
 //= require dataTables/jquery.dataTables
 //= require dataTables/jquery.dataTables.bootstrap
 //= require_tree .

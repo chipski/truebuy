@@ -1,23 +1,23 @@
-= simple_form_for(@company, :html => { :class => 'form-horizontal' }) do |f|
-  = f.error_notification
 
-  .form-inputs
-    .wide= f.input :name
-    = f.input :blurb, :input_html=>{:class=>"wysihtml5"}
-    = f.input :body, :input_html=>{:class=>"wysihtml5"}  
-    = f.association :photo   
-    =# f.input :photo_id, []  Photo.select_active(current_user)    
-  .form-actions
-    = f.button :submit  
-    
+= simple_form_for(@company, :html => { :class => 'form-horizontal' }) do |f|    
+  .form-input-boxes 
+    %b Name
+    = f.text_field :name, :class => 'text_field' 
+    = f.text_area :blurb, :class => 'wysihtml5', :style=>"height:100px;" 
+    = f.text_area :body, :class => 'wysihtml5', :style=>"height:200px;"
+    = f.submit nil, :class => 'btn btn-primary'
+
   -if params[:detailed]
     .form-inputs
       = f.input :keywords
-      = f.input :uid
       = f.input :permalink  
-      = f.input :state
-      = f.input :type
       = f.input :duns
       = f.input :url
       = f.input :url2
       = f.input :cover
+
+.image-box 
+  = render 'photos/edit_photos', :locals=>{:parent=>@company, :model_class=>@company.class}
+  
+  .clearfix
+  

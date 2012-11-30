@@ -1,19 +1,31 @@
-= form_for @photo, :html => { :class => 'form-horizontal' } do |f|
-  .image-box
-    = image_tag @photo.image.large.url, :id => 'cropbox'
-    - %w[x y w h].each do |attribute|
-      = f.hidden_field "crop_#{attribute}"   
-
-  .control-box 
+= simple_form_for(@photo, :html => { :class => 'form-horizontal' }) do |f|
+  .form-input-boxes  
     %b Name
     = f.text_field :name, :class => 'text_field'
     = f.text_area :blurb, :class => 'wysihtml5'        
-    = f.association :topic
     = #f.input :topic_id, Topic.all.collect{ |t| [t.name, t.id]} 
     = f.submit nil, :class => 'btn btn-primary  btn-mini'
     = link_to "Cancel", photos_path, :class => 'btn btn-mini' 
-    = link_to 'Default', '', :class => 'btn btn-mini btn-success' , :id => 'make_default'
     = link_to "Delete", photo_path(@photo), :method => 'delete', :confirm => "Are you sure?", :class => 'btn btn-mini btn-danger' 
+  
+.image-box
+  = image_tag @photo.image.large.url, :id => 'cropbox'
+  = link_to 'Default', '', :class => 'btn btn-mini btn-success' , :id => 'make_default'
+  .row
+    = form_for @photo, :html => { :multipart=>true, :id=>"fileupload"  } do |f|
+      - %w[x y w h].each do |attribute|
+        = f.hidden_field "crop_#{attribute}"   
+      .fileupload-buttonbar
+        .progressbar.fileupload-progressbar.nofade
+          %div{:style => "width:0%;"}
+        %span.btn.btn-mini.fileinput-button
+          %i.icon-plus
+          %span Add File
+          = f.file_field :image, :multiple => true
+      .progress.progress-success.progress-striped.active.fade 
+        .bar{:style=>"width:0%;"}   
+      .fileupload-loading
+
     
 %script{:charset => "utf-8", :type => "text/javascript"}
   $(function () {

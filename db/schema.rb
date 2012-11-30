@@ -14,7 +14,6 @@
 ActiveRecord::Schema.define(:version => 20121126153120) do
 
   create_table "companies", :force => true do |t|
-    t.integer  "photo_id"
     t.string   "uid"
     t.string   "permalink"
     t.string   "name"
@@ -32,27 +31,29 @@ ActiveRecord::Schema.define(:version => 20121126153120) do
   end
 
   add_index "companies", ["permalink"], :name => "index_companies_on_permalink", :unique => true
-  add_index "companies", ["photo_id"], :name => "index_companies_on_photo_id"
   add_index "companies", ["uid"], :name => "index_companies_on_uid", :unique => true
 
   create_table "photos", :force => true do |t|
     t.string   "uid"
     t.string   "permalink"
+    t.integer  "parent_id"
+    t.string   "parent_type"
     t.string   "name"
     t.string   "keywords"
     t.text     "blurb"
-    t.string   "state",      :default => "new"
+    t.string   "state",       :default => "new"
     t.string   "type"
     t.string   "image"
     t.string   "image_uid"
     t.string   "image_name"
     t.integer  "topic_id"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
   end
 
+  add_index "photos", ["parent_id"], :name => "index_photos_on_parent_id"
+  add_index "photos", ["parent_type", "parent_id"], :name => "index_photos_on_parent_type_and_parent_id"
   add_index "photos", ["permalink"], :name => "index_photos_on_permalink", :unique => true
-  add_index "photos", ["topic_id"], :name => "index_photos_on_topic_id"
   add_index "photos", ["uid"], :name => "index_photos_on_uid", :unique => true
 
   create_table "roles", :force => true do |t|

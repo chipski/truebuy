@@ -1,20 +1,22 @@
 -action = action || controller.action_name
--company = @company || @topic.company
--if company             
+
+-topic = @topic || parent
+-photo = @photo || Photo.create()
+
+-if @company             
   .page-header
     %h1
-      =link_to company_topics_path(company) do
+      =link_to topic_path(topic) do
         %i.icon-list-alt
-      =link_to company.name, company
       -if action == "edit" 
         = "Edit "           
-        = link_to @topic.name, company_topic_path(company, @topic)   
+        = link_to topic.name, topic 
       -elsif action == "new"
         = "New "
       -else
         = "Photo "
         %span.small-gray
-          =link_to "edit", edit_company_topic_path(company, @topic), :class => 'btn btn-mini' 
+          =link_to "edit", edit_topic_photo_path(topic, photo), :class => 'btn btn-mini' 
 -else                          
   .page-header
     %h1 
@@ -22,10 +24,10 @@
         %i.icon-list-alt
       -if action == "edit" 
         = "Edit "           
-        =link_to @topic.name, topic_path(@topic)   
+        =link_to topic.name, topic_path(topic)   
       -elsif action == "new"
         = "New "
       -else
         = "Photo "
         %span.small-gray
-          =link_to "edit", edit_topic_path(@topic), :class => 'btn btn-mini'    
+          =link_to "edit", edit_topic_path(topic), :class => 'btn btn-mini'    
