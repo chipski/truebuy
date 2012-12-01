@@ -18,10 +18,44 @@ h1, h2, h3, h4, h5, h6 {
   color: #505050;
 }
 .btn {
-    padding: 4px 6px;
+    padding: 5px 5px;
 }
 .btn-primary {
     padding: 4px 12px;
+}
+
+
+@media (max-width: 979px) {
+  .navbar-fixed-top, .navbar-fixed-bottom {
+    margin-bottom: 0;
+    position: fixed;
+    .navbar-inner {
+      padding: 6px;
+    }
+  }
+  .span12 {
+    width: 100%
+  }
+  .container {
+    width: 98%
+  }
+  .navbar-static-top .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container, .navbar-inner .container {
+    //width: auto;
+    width: 100%
+  }
+  
+}
+@media (max-width: 767px) {
+  body {
+    padding: 48px 6px 0 6px
+  }
+  .navbar-fixed-top, .navbar-fixed-bottom {
+    margin: 0;
+    position: fixed;
+    .navbar-inner {
+      padding: 0;
+    }
+  }  
 }
 
 

@@ -19,6 +19,5 @@ class CompaniesController < InheritedResources::Base
       format.json { render json: @company }
     end
   end
-  
 
 end

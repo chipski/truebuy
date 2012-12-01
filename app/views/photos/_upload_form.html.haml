@@ -1,0 +1,89 @@
+-parent = parent || @topic || @company
+-photo = photo || @photo || Photo.new
+
+
+-if false
+  = simple_form_for(photo, :html=>{:class=>'form-horizontal', :multipart=>true, :id=>"fileupload" }, :method=>:put) do |f| 
+    =f.hidden_field :parent_id, :value=>parent.id if parent
+    =f.hidden_field :parent_type, :value=>parent.class.to_s if parent   
+    = image_tag photo.image.large.url, :id => 'cropbox'
+    = link_to 'Default', '', :class => 'btn btn-mini btn-success' , :id => 'make_default'
+    - %w[x y w h].each do |attribute|
+      = f.hidden_field "crop_#{attribute}"
+    .fileupload-buttonbar
+      .progressbar.fileupload-progressbar.nofade
+        %div{:style => "width:0%;"}
+      %span.btn.btn-mini.fileinput-button
+        %i.icon-plus
+        %span Add
+        = f.file_field :image, :multiple => true
+    .clearfix
+    .progress.progress-success.progress-striped.active.fade 
+      .bar{:style=>"width:0%;"}   
+    .fileupload-loading
+    
+-if true
+  .row
+    = form_for photo, :html => { :multipart=>true, :id=>"fileupload"  } do |f|
+      -if parent
+        =f.hidden_field :parent_id, :value=>parent.id 
+        =f.hidden_field :parent_type, :value=>parent.class.to_s 
+      -if photo.image.large.url  
+        = image_tag photo.image.large.url, :id => 'cropbox'
+        = link_to 'Default', '', :class => 'btn btn-mini btn-success' , :id => 'make_default'
+        - %w[x y w h].each do |attribute|
+          = f.hidden_field "crop_#{attribute}"   
+      .fileupload-buttonbar
+        .progressbar.fileupload-progressbar.nofade
+          %div{:style => "width:0%;"}
+        %span.btn.btn-mini.fileinput-button
+          %i.icon-plus
+          %span Add
+          = f.file_field :image, :multiple => true
+      .progress.progress-success.progress-striped.active.fade 
+        .bar{:style=>"width:0%;"}   
+      .fileupload-loading
+
+-if false
+  = javascript_include_tag 'jquery.ui.widget.js'
+  = javascript_include_tag 'jquery.iframe-transport.js'
+  = javascript_include_tag 'jquery.fileupload.js'
+  = javascript_include_tag 'jquery.fileupload-ui.js'
+
+-if true  
+  :javascript
+    var fileUploadErrors = {
+      maxFileSize: 'File is too big',
+      minFileSize: 'File is too small',
+      acceptFileTypes: 'Filetype not allowed',
+      maxNumberOfFiles: 'Max number of files exceeded',
+      uploadedBytes: 'Uploaded bytes exceed file size',
+      emptyResult: 'Empty file upload result'
+    };
+  -if true
+    %script#template-download{:type => "text/x-tmpl"}
+      {% for (var i=0, files=o.files, l=files.length, file=files[0]; i<l; file=files[++i]) { %} 
+      %tr.template-download.nofade
+        {% if (file.error) { %}
+        %td
+        %td.name {%=file.name%}
+        %td.size {%=o.formatFileSize(file.size)%}
+        %td.error{:colspan => "2"}
+          %span.label.important Error
+          {%=fileUploadErrors[file.error] || file.error%}
+        {% } else { %}
+        %td.preview
+          {% if (file.thumbnail_url) { %}
+          %a{:href => "{%=file.url%}", :rel => "gallery", :title => "{%=file.name%}"}
+            %img{:src => "{%=file.thumbnail_url%}"}/
+          {% } %}
+        %td.name
+          %a{:href => "{%=file.url%}", :rel => "{%=file.thumbnail_url&&'topic'%}", :title => "{%=file.name%}"} {%=file.name%}
+          From template
+        %td.size {%=o.formatFileSize(file.size)%}
+        %td{:colspan => "2"}
+        {% } %}
+        %td.delete
+          %button.btn.btn-danger{"data-type" => "{%=file.delete_type%}", "data-url" => "{%=file.delete_url%}"}= t('photos.template.delete')
+          %input{:name => "delete", :type => "checkbox", :value => "1"}
+      {% } %}      

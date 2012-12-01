@@ -60,7 +60,7 @@ class PhotosController < InheritedResources::Base
     respond_to do |format|
       if @photo.update_attributes(p_attr)
         format.html { redirect_to @parent ? @parent : @photo , notice: 'Picture was successfully updated.' }
-        format.json { head :no_content }
+        format.json { render :json => [@photo.to_jq_upload].to_json }
       else
         format.html { render action: "edit" }
         format.json { 
@@ -72,18 +72,19 @@ class PhotosController < InheritedResources::Base
   end
   
   def destroy
-    @photo = @parent.photos.find(params[:id])
+    @photo = Photo.find(params[:id])
     @photo.destroy
 
     respond_to do |format|
-      format.html { redirect_to parent_photos_url }
+      format.html { redirect_to photos_url }
       format.json { render :json => true }
     end
   end
   
   def make_default
     @photo = Photo.find(params[:photo_id])
-    #@parent = Topic.find(params[:parent_id])
+    klass_name = params[:parent_type]
+    @parent = klass_name.constantize.find(params[:parent_id])
 
     @parent.cover = @photo.id
     @parent.save

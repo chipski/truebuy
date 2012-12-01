@@ -32,25 +32,26 @@ form {
       width: 600px;
     }
 }
+.image-box {
+    width: 380px;
+    float: right;
+    min-height: 400px;
+}              
+
 .simple_form {
-    .image-box {
-        width: 410px;
-        float: right;
-        min-height: 400px;
-    }              
     .form-input-boxes {
-        width: 500px;
+        width: 475px;
         min-height: 400px;
         float: left;
         input.text_field {
-            width: 420px; 
+            width: 450px; 
             margin-bottom: 10px;
         }
         textarea {
-            width: 490px; 
+            width: 456px; 
             margin-bottom: 10px;
         }  
-    }    
+    }  
     
 }
 
@@ -68,7 +69,8 @@ form {
   left: 30%;
   z-index: 58;
   overflow: hidden;
-  width: 40%;
+  min-width: 120px;
+  min-height: 32px;
   margin: 0 auto;
   padding: 5px 15px;
   color: #777;

@@ -1,87 +1,20 @@
 -parent = @topic || @company 
--photo = @photo || Photo.create()
+-photo = @photo || Photo.create() || Photo.new
 
 .row
-  %h1
-    = parent.name
+  %h1= parent.name
   %input#parentID{:type => "hidden", :value => parent.id}
-    %p
-      = parent.blurb.html_safe
-    %h2 Pictures
-= simple_form_for(Photo.new, :html=>{:class=>'form-horizontal', :multipart=>true, :id=>"fileupload" }, :method=>:post) do |f|    
-  .row
-    .fileupload-buttonbar
-      .progressbar.fileupload-progressbar.nofade
-        %div{:style => "width:0%;"}
-      %span.btn.btn-mini.fileinput-button
-        %i.icon-plus
-        %span Add File
-        = f.file_field :image, :multiple => true
-  %br
-  .row
-    .progress.progress-success.progress-striped.active.fade 
-      .bar{:style=>"width:0%;"}   
-    .fileupload-loading
-      
-    %ul.thumbnails.files
-      - unless parent.photos.empty?
-        - parent.photos.each do |pic|
-          %li.span3{:id => "photo_#{pic.id}"}
-            .thumbnail
-              %a{:href => pic.image.url, :rel => "lightbox-photos", :title => pic.blurb}
-                %img{:alt => "", :src => pic.image.thumb.url}
-              .caption
-                %p{:style => "text-align: center;"}
-                  %a.btn.btn-mini{:href=>parent_photo_path(pic, parent)}
-                    %i.icon-ok
-                    Show
-                  %a.btn.btn-mini{:href=>parent_photo_path(pic, parent, "edit")}
-                    %i.icon-edit
-                    Edit
-                  %a.btn.btn-mini.btn-delete{:confirm => "Are you sure?", "data-method" => "delete", "data-remote" => "true", :href=>parent_photo_path(pic, parent, "edit")}
-                    %i.icon-trash
-                    Delete
-:javascript
-  var fileUploadErrors = {
-    maxFileSize: 'File is too big',
-    minFileSize: 'File is too small',
-    acceptFileTypes: 'Filetype not allowed',
-    maxNumberOfFiles: 'Max number of files exceeded',
-    uploadedBytes: 'Uploaded bytes exceed file size',
-    emptyResult: 'Empty file upload result'
-  };
-%script#template-download{:type => "text/x-tmpl"}
-  {% for (var i=0, files=o.files, l=files.length, file=files[0]; i<l; file=files[++i]) { %} 
-  %tr.template-download.nofade
-    {% if (file.error) { %}
-    %td
-    %td.name {%=file.name%}
-    %td.size {%=o.formatFileSize(file.size)%}
-    %td.error{:colspan => "2"}
-      %span.label.important Error
-      {%=fileUploadErrors[file.error] || file.error%}
-    {% } else { %}
-    %td.preview
-      {% if (file.thumbnail_url) { %}
-      %a{:href => "{%=file.url%}", :rel => "gallery", :title => "{%=file.name%}"}
-        %img{:src => "{%=file.thumbnail_url%}"}/
-      {% } %}
-    %td.name
-      %a{:href => "{%=file.url%}", :rel => "{%=file.thumbnail_url&&'topic'%}", :title => "{%=file.name%}"} {%=file.name%}
-    %td.size {%=o.formatFileSize(file.size)%}
-    %td{:colspan => "2"}
-    {% } %}
-    %td.delete
-      %button.btn.btn-danger{"data-type" => "{%=file.delete_type%}", "data-url" => "{%=file.delete_url%}"}= t('photos.template.delete')
-      %input{:name => "delete", :type => "checkbox", :value => "1"}
-  {% } %}
+  %p= parent.blurb.html_safe
+  
+  %h4 Pictures
+  = render 'photos/upload_form', :locals=>{:parent=>parent, :photo=>photo}
+  = render 'photos/thumbnails', :locals=>{:parent=>parent, :photos=>parent.photos}
 
-= javascript_include_tag 'jquery.ui.widget.js'
-= javascript_include_tag 'jquery.iframe-transport.js'
-= javascript_include_tag 'jquery.fileupload.js'
-= javascript_include_tag 'jquery.fileupload-ui.js'
-.row
-  .form-actions
-    = link_to 'Back', topics_path, :class => 'btn btn-mini'
-    = link_to 'Edit', edit_topic_path(@topic), :class => 'btn btn-mini'
-    = link_to 'Delete', topic_path(@topic), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-mini'
+
+
+
+  .row
+    .form-actions
+      = link_to 'Back', topics_path, :class => 'btn btn-mini'
+      = link_to 'Edit', edit_topic_path(@topic), :class => 'btn btn-mini'
+      = link_to 'Delete', topic_path(@topic), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-mini'

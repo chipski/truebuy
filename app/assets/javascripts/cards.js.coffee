@@ -19,23 +19,15 @@ jQuery ->
   #  "sPaginationType": "bootstrap"
   #})
   
-  #($ "a[data-target]").click (e) ->   
-  #  e.preventDefault()
-  #  target =  ($ @).attr('data-target')
-  #  tab_name= ($ @).attr('data-act') || null
-  #  url =     ($ @).attr('href')
-  #  card =    ($ @).closest(target) 
-  #  console.log("Found data-target of "+target+" tab_name of "+tab_name+" and url of "+url)
-  #  card.addClass("card_focus") 
-  #  if (tab_name == "inactive")  
-  #    old_tab_name = "actived"
-  #  else
-  #    old_tab_name = "actived"                                
-  #  ($ ".tab-content").find("##{old_tab_name}").removeClass('active')  
-  #  #console.log(" removed active class on #{old_tab_name} ") 
-  #  if tab_name == "list_only"  
-  #      console.log("Found list only card")
-  #      card.delete
+  ($ ".make_default").click (e) ->   
+    e.preventDefault()
+    photo_id =  ($ @).attr('data-id')
+    parent_id =  ($ @).attr('data-parent_id')
+    parent_type =  ($ @).attr('data-parent_type')
+    params = {photo_id : photo_id, parent_id : parent_id, parent_type : parent_type}
+    console.log("Post to make_default with "+photo_id+" parent of "+parent_id+"  of "+parent_type, params)
+    $.ajax({url: '/photos/'+photo_id+'/make_default', type: 'POST', data: params})
+    
   #  else
   #      ($ "a[href='##{tab_name}']").tab('show')           
   #      ($ ".tab-content").find("##{tab_name}").addClass('active')   
@@ -44,8 +36,7 @@ jQuery ->
   #  ($ ".tab-content").find("##{tab_name} #masonry").masonry(MasonryOptions) 
   #  console.log("Loaded masonry with #{MasonryOptions.columnWidth} from click data-target ") 
   #  ($ ".tab-content").find("##{tab_name} #masonry").prepend(card).masonry('reload')      
-     
-  
+ 
 
   add_root_formsOFF = (e) ->
      console.log("submiting root forms")

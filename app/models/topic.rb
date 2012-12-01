@@ -1,6 +1,6 @@
 class Topic < ActiveRecord::Base
   belongs_to :company
-  has_many :photos, :dependent => :destroy    
+  has_many :photos, :as => :parent, :class_name => "Photo"  
   attr_accessible :blurb, :body, :cover, :keywords, :name, :permalink, :state, :type, :company_id 
   
   #after_save :update_permalink    

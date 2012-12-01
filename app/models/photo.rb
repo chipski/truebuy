@@ -1,6 +1,6 @@
 class Photo < ActiveRecord::Base
 
-  attr_accessible :blurb, :image_name, :image_uid, :image, :keywords, :name, :permalink, :uid, :topic_id, :crop_x, :crop_y, :crop_w, :crop_h
+  attr_accessible :blurb, :image_name, :image_uid, :image, :keywords, :name, :permalink, :parent_id, :parent_type, :topic_id, :crop_x, :crop_y, :crop_w, :crop_h
   attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
 
   belongs_to :topic     

@@ -42,6 +42,7 @@ $(function () {
       autoUpload: true,
       uploadTemplate: function (o) {
         var rows = $();
+        console.log("Inside photo_main.uploadTemplate");
         $.each(o.files, function (index, file) {
           console.log(file);
             var row = $('<li class="span3">' +
@@ -58,11 +59,12 @@ $(function () {
 
     completed: function(e, data) {
       console.log(data.result[0].url);
+      //console.log("Inside photo_main.completed");
       $('a[href^="' + data.result[0].url + '"]').slimbox();
     },
     downloadTemplate: function (o) {
         var rows = $();     
-        console.log("Inside photo_main.downloadTemplate")
+        console.log("photo_main.downloadTemplate");
         $.each(o.files, function (index, file) {
             var row = $('<li class="span3" id="photo_' + file.photo_id + '">' +
                 (file.error ? '<div class="name"></div>' +
@@ -85,7 +87,7 @@ $(function () {
                         '</div>' +
                       '</div>');
 
-
+            console.log("photo_main.downloadTemplate with new row")
             if (file.error) {
                 row.find('.name').text(file.name);
                 row.find('.error').text(
@@ -96,13 +98,15 @@ $(function () {
                     row.find('img').prop('src', file.thumbnail_url);
                 }
                 row.find('.btn-delete')
-                    .attr('href', '/topics/' + $("#topicID").val() + '/photos/' + file.photo_id);
+                    .attr('href', '/topics/' + $("#parentID").val() + '/photos/' + file.photo_id);
                 row.find('.btn-show')
-                    .attr('href', '/topics/' + $("#topicID").val() + '/photos/' + file.photo_id + '/edit');
+                    .attr('href', '/topics/' + $("#parentID").val() + '/photos/' + file.photo_id + '/edit');
             }            
             rows = rows.add(row);
         });
+        console.log("photo_main.downloadTemplate complete all rows");
         return rows;
+        
     }
 
   });

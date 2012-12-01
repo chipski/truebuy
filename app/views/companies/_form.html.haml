@@ -17,7 +17,7 @@
       = f.input :cover
 
 .image-box 
-  = render 'photos/edit_photos', :locals=>{:parent=>@company, :model_class=>@company.class}
-  
+  = render 'photos/upload_form', :locals=>{:parent=>@company, :photo=>@company.photos.first}
+  = render 'photos/thumbnails', :locals=>{:parent=>@company, :photos=>@company.photos}
   .clearfix
   

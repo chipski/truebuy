@@ -1,11 +1,6 @@
 Reviews::Application.routes.draw do
 
   
-  resources :photos do
-    collection do
-      post 'make_default'
-    end
-  end
   #resources :topics
   resources :topics do
     collection do
@@ -14,8 +9,11 @@ Reviews::Application.routes.draw do
   end
   resources :photos do
     collection do
+      get :make_defaults
+      post :create
+    end
+    member do
       post 'make_default'
-      get :make_default
     end
   end
    

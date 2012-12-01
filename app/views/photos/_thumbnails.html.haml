@@ -1,0 +1,45 @@
+-parent = parent || @company || @topic
+-photos = photos || parent.photos
+
+.row
+  %ul.thumbnails.files
+    - unless photos.empty?
+      - photos.each do |pic|
+        %li.span3{:id => "photo_#{pic.id}"}
+          .thumbnail
+            %a{:href => pic.image.url, :rel => "lightbox-photos", :title => pic.blurb}
+              %img{:alt => "", :src => pic.image.thumb.url}
+            .caption
+              %p{:style => "text-align: center;"}
+                %a.btn.btn-mini{:href=>parent_photo_path(pic, parent)}
+                  %i.icon-ok
+                  Show
+                %a.btn.btn-mini{:href=>edit_photo_path(pic)}
+                  %i.icon-edit
+                  Edit
+                %a.make_default.btn.btn-mini{:data=>{:id=>pic.id, :parent_id=>parent.id, :parent_type=>parent.class.to_s}, :href=>""}
+                  %i.icon-ok
+                  Default
+
+
+     
+-if false
+  -photos.each do |photo|
+    = image_tag photo.image.large.url, :id => 'cropbox'
+    - %w[x y w h].each do |attribute|
+      = hidden_field_tag "crop_#{attribute}"
+    = link_to 'Default', '', :action=>'make_default', :class => 'btn btn-mini btn-success' 
+    %script{:charset => "utf-8", :type => "text/javascript"}
+      $(function () {
+      $('#make_default').click(function(event) {
+      event.preventDefault(); 
+      console.log("starting"); 
+      params = {photo_id : #{photo.id}, parent_id : #{parent.id}, parent_type : #{parent.class.to_s}};
+      console.log("Post to make default with:, params");
+      $.ajax({
+      url: '#{make_default_photo_path(photo)}',
+      type: 'POST',
+      data: params
+      });
+      });
+      });

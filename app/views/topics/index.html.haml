@@ -10,12 +10,10 @@
             =link_to image_tag(Photo.find_by_id(topic.cover).image.thumb.url), topic_path(topic.id)
         .caption
           %p{:style=>"text-align: center;"}
-            =link_to edit_topic_path(topic.id), :class=>"btn btn-mini" do
+            =link_to edit_topic_path(topic.id), :class=>"link" do
               %i.icon-edit
               Edit
-            =link_to topic, method: :delete, data: { confirm: 'Are you sure?' } do
-              %i.icon-trash
-              ='Destroy'   
+            
             =topic.name  
 
 
