@@ -6,6 +6,9 @@ Reviews::Application.routes.draw do
     collection do
       post :create
     end
+    member do
+      put :update_state
+    end
   end
   resources :photos do
     collection do
@@ -18,7 +21,11 @@ Reviews::Application.routes.draw do
   end
    
   resources :categories
-  resources :companies
+  resources :companies do
+    member do
+      put :update_state
+    end
+  end
   
   authenticated :user do
     root :to => 'home#index'
