@@ -13,4 +13,8 @@ module ApplicationHelper
      end 
    end
     
+   def is_admin?
+     (user_signed_in? && current_user.has_role?(:admin)) ? true : false
+   end
+     
 end
