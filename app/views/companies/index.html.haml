@@ -9,8 +9,9 @@
           -else
             =link_to image_tag(Photo.find_by_id(company.cover).image.thumb.url), company_path(company.id)
         .caption
-          %h6
+          %h4
             =company.name 
+            %b=company.topics.count
             %span.small-gray
               =link_to edit_company_path(company.id), :class=>"link" do
                 %i.icon-edit

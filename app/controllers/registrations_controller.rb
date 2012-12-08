@@ -1,5 +1,9 @@
 class RegistrationsController < Devise::RegistrationsController
 
+  def new
+    @company = Company.active.first
+  end
+  
   # ovverride #create to respond to AJAX with a partial
   def create
     build_resource

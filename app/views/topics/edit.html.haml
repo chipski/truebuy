@@ -1,26 +1,27 @@
 - model_class = @topic.class
-= render 'topics/breadcrumbs'
--if @company             
-  = render 'form_company', :locals=>{:f=>form}
+.row
+  = render 'topics/breadcrumbs'
+  -if @company             
+    = render 'form_company', :locals=>{:f=>form}
 
--else                          
-  = simple_form_for(@topic, :html => { :class => 'form-horizontal', :method=>:put }) do |f|
-    .form-input-boxes 
-      = f.error_notification
-      .form-inputs.tight
-        = f.text_field :name, :class => 'text_field' 
-        = f.association :company
-        = f.text_area :blurb, :class => 'wysihtml5', :style=>"height:100px;" 
-        = f.text_area :body, :class => 'wysihtml5', :style=>"height:200px;"
-        -if params[:detailed]
-          .form-inputs
-            = f.input :keywords
-            = f.input :permalink  
-            = f.input :cover    
-        = f.submit nil, :class => 'btn btn-primary'
+  -else                          
+    = simple_form_for(@topic, :html => { :class => 'form-horizontal', :method=>:put }) do |f|
+      .form-input-boxes 
+        = f.error_notification
+        .form-inputs.tight
+          = f.text_field :name, :class => 'text_field' 
+          = f.association :company
+          = f.text_area :blurb, :class => 'wysihtml5', :style=>"height:100px;" 
+          = f.text_area :body, :class => 'wysihtml5', :style=>"height:200px;"
+          -if params[:detailed]
+            .form-inputs
+              = f.input :keywords
+              = f.input :permalink  
+              = f.input :cover    
+          = f.submit nil, :class => 'btn btn-primary'
 
 
 
-  .image-box 
-    = render 'photos/upload_form', :locals=>{:parent=>@topic, :photo=>@topic.photos.first}
-    = render 'photos/thumbnails', :locals=>{:parent=>@topic, :photos=>@topic.photos}
+    .image-box 
+      = render 'photos/upload_form', :locals=>{:parent=>@topic, :photo=>@topic.photos.first}
+      = render 'photos/thumbnails', :locals=>{:parent=>@topic, :photos=>@topic.photos}

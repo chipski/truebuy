@@ -17,10 +17,11 @@ $color: #8c7e7e;
     margin: 0 4px;
 }
 .card {
-  width: 292px;
+  width: 268px;
+  min-height: 200px;
   float: left;
   padding: 10px 10px 4px;
-  margin: 0 1px 8px;
+  margin: 8px;
   font-size: 12px;
   background: white;
   //@include box-shadow( 0 1px 3px rgba(34,25,25,0.4) ); 
@@ -100,6 +101,7 @@ $color: #8c7e7e;
   }
  
 } 
+.narrow .card { width: 262px;}
 .wide { 
    .card { width: 98%; } 
 }

@@ -1,18 +1,19 @@
-.row#masonry
-  %h1
-    = @company.name
-  %input#companyID{:type => "hidden", :value => @company.id}
-  .wide
-    .card
-      .img-box=image_tag(@company.cover_url)
-      .card-info
-        =@company.blurb ? @company.blurb.html_safe : ""
-      .infobox=@company.body ? @company.body.html_safe : "" 
+.img-bar
+  =image_tag(@company.cover_url)
+  .title
+    %h1= @company.name
+  .blurb=@company.blurb ? @company.blurb.html_safe : ""
 
-  %p
+.hero
+  =@company.body ? @company.body.html_safe : "" 
+.row#masonry
+  %input#companyID{:type => "hidden", :value => @company.id}
     -@company.topics.each do |topic|
       .card
-        .img-box=link_to image_tag(topic.cover_url), topic_path(topic.id)
+        .img-box
+          =link_to image_tag(topic.cover_url), topic_path(topic.id)
+          .card_edit
+            =render :partial=>'topics/edit_menu', :locals=>{:company=>@company, :topic=>topic}
         .card-info
           %p{:style=>"text-align: center;"}
             =topic.name  
