@@ -1,32 +1,15 @@
-%p#notice= notice
+%input#categoryID{:type => "hidden", :value => @category.id}
+.img-bar
+  =image_tag(@category.cover_url)
+  .title
+    %h1= @category.name
+  .blurb=@category.blurb ? @category.blurb.html_safe : ""
 
-%p
-  %b Uid:
-  = @category.uid
-%p
-  %b Permalink:
-  = @category.permalink
-%p
-  %b Name:
-  = @category.name
-%p
-  %b Keywords:
-  = @category.keywords
-%p
-  %b Blurb:
-  = @category.blurb
-%p
-  %b Body:
-  = @category.body
-%p
-  %b State:
-  = @category.state
-%p
-  %b Type:
-  = @category.type
-%p
-  %b Photo:
-  = @category.photo
+.hero
+  =@category.body ? @category.body.html_safe : "" 
+.row#masonry
+  %input#categoryID{:type => "hidden", :value => @category.id}
+  
 
 = link_to 'Edit', edit_category_path(@category)
 \|

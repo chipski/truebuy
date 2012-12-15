@@ -1,0 +1,25 @@
+%input#brandID{:type => "hidden", :value => @brand.id}
+.img-bar
+  =image_tag(@brand.cover_url)
+  .title
+    %h1
+      =link_to @brand.company.name, @brand.company
+      = @brand.name
+  .blurb=@brand.blurb ? @brand.blurb.html_safe : ""
+
+.hero
+  =@brand.body ? @brand.body.html_safe : "" 
+.row#masonry
+  %input#brandID{:type => "hidden", :value => @brand.id}
+    -if @brand.topics
+      -@brand.topics.each do |topic|
+        .card
+          .img-box
+            =link_to image_tag(topic.cover_url), topic_path(topic.id)
+          .card-info
+            .card_edit
+              =render :partial=>'shared/edit_menu', :locals=>{:entity=>topic}
+            %p{:style=>"text-align: center;"}
+              =topic.name  
+
+= link_to 'Edit', edit_brand_path(@brand)

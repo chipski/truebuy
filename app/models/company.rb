@@ -1,8 +1,8 @@
 class Company < ActiveRecord::Base
-  include AASM 
-  #include LifeCycleState
   has_many :photos, :as => :parent, :class_name => "Photo"     
   has_many :topics  
+  has_many :brands 
+  has_and_belongs_to_many :categories, :class_name => "Category"  
   
   attr_accessible :blurb, :body, :cover, :duns, :keywords, :name, :permalink, :state, :type, :photo_id, :url, :url2      
    
@@ -15,11 +15,12 @@ class Company < ActiveRecord::Base
   #scope :site_active, where(:state=>:active)
   
   def self.select_active
-    self.initial.collect{ |t| [" #{t.name[0..30]}", t.id]}
+    self.all.collect{ |t| [" #{t.name[0..30]}", t.id]}
   end
   
   # State machine, should be shared in mixin but error now
-  #include LifeCycleState   
+  include AASM 
+  #include LifeCycleState
   aasm :column => :state do
     state :new,      :initial => true              
     state :review,   :enter => :make_review 

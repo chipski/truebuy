@@ -1,20 +1,9 @@
--parent = @topic || @company 
--photo = @photo || Photo.create() || Photo.new
-
+-parent = @topic
 .row
-  %h1= parent.name
+  = render 'topics/breadcrumbs'
   %input#parentID{:type => "hidden", :value => parent.id}
   %p= parent.blurb.html_safe
-  
-  %h4 Pictures
-  = render 'photos/upload_form', :locals=>{:parent=>parent, :photo=>photo}
-  = render 'photos/thumbnails', :locals=>{:parent=>parent, :photos=>parent.photos}
 
-
-
-
-  .row
-    .form-actions
-      = link_to 'Back', topics_path, :class => 'btn btn-mini'
-      = link_to 'Edit', edit_topic_path(@topic), :class => 'btn btn-mini'
-      = link_to 'Delete', topic_path(@topic), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-mini'
+  =# render 'photos/upload_form', :locals=>{:parent=>@topic, :photo=>Photo.new}
+  = render 'topics/edit_modal', :locals=>{:parent=>@topic, :photo=>Photo.new}
+  = render 'photos/thumbnails', :locals=>{:thumbnails=>@topic.photos}, :collection=>@topic.photos

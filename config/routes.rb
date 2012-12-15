@@ -1,8 +1,11 @@
 Reviews::Application.routes.draw do
 
   
+  resources :brands
+
   #resources :topics
   resources :topics do
+    resources :photos
     collection do
       post :create
     end
@@ -10,6 +13,7 @@ Reviews::Application.routes.draw do
       put :update_state
     end
   end
+  resources :photos
   resources :photos do
     collection do
       get :make_defaults
@@ -22,6 +26,7 @@ Reviews::Application.routes.draw do
    
   resources :categories
   resources :companies do
+    resources :photos
     member do
       put :update_state
     end

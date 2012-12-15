@@ -7,14 +7,14 @@
 .hero
   =@company.body ? @company.body.html_safe : "" 
 .row#masonry
-  %input#companyID{:type => "hidden", :value => @company.id}
+  %input#parentID{:type => "hidden", :value => @company.id}
     -@company.topics.each do |topic|
       .card
         .img-box
           =link_to image_tag(topic.cover_url), topic_path(topic.id)
-          .card_edit
-            =render :partial=>'topics/edit_menu', :locals=>{:company=>@company, :topic=>topic}
         .card-info
+          .card_edit
+            =render :partial=>'shared/edit_menu', :locals=>{:entity=>topic}
           %p{:style=>"text-align: center;"}
             =topic.name  
       

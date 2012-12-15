@@ -18,14 +18,14 @@ class Photo < ActiveRecord::Base
   scope :inactive, lambda {|current_user| where(:state=>[:inactive])}      
   scope :initial, where(:state=>[:new, nil])  
   
-  
-  
   def self.select_active         
-
     self.initial.collect{ |t| [" #{t.name[0..30]}", t.id]}
   end
-  
 
+  def self.default_parent
+    Topic.find_by_name("Lost & Found") || Topic.first
+  end
+  
   def to_jq_upload
     {
       "name" => read_attribute(:image),
@@ -48,7 +48,10 @@ class Photo < ActiveRecord::Base
   end
   
   def update_permalink
-    UtilityIds.update_permalink2(self)  
+    unless name
+      update_attribute(:name, (image.identifier ? image.identifier : image.path)) 
+    end
+    UtilityIds.update_permalink(self) 
   end
   
 end
@@ -59,6 +62,8 @@ end
 #  t.string   "name"
 #  t.string   "keywords"
 #  t.text     "blurb"
+#  t.integer :parent_id
+#  t.string :parent_type
 #  t.string   "state"
 #  t.string   "type"
 #  t.string   "image_url"

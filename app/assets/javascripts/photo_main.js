@@ -58,7 +58,7 @@ $(function () {
     },
 
     completed: function(e, data) {
-      console.log(data.result[0].url);
+      console.log(data, e);
       //console.log("Inside photo_main.completed");
       $('a[href^="' + data.result[0].url + '"]').slimbox();
     },
@@ -66,15 +66,15 @@ $(function () {
         var rows = $();     
         console.log("photo_main.downloadTemplate");
         $.each(o.files, function (index, file) {
-            var row = $('<li class="span3" id="photo_' + file.photo_id + '">' +
+            var row = $('<li class="span3 card" id="photo_' + file.photo_id + '">' +
                 (file.error ? '<div class="name"></div>' +
                     '<div class="size"></div><div class="error" ></div>' :
                       '<div class="thumbnail">' +
-                        '<a href="' + file.url +'" rel="lightbox-pictures" class="photo_' + file.id + '" title="<%= pic.blurb %>">' +
+                        '<a href="' + file.url +'" rel="lightbox-pictures" class="photo_' + file.id + '" title="'+file.name+'">' +
                           '<img src="" alt="">') +
                         '</a>' +
                         '<div class="caption">' +
-                          '<p style="text-align: center;">' +
+                          '<div class="card_edit pull-right">' +
                             '<a href="" class="btn btn-mini btn-show" style="margin-right: 4px;">' +
                               '<i class="icon-edit "></i>' +
                               'Edit' +
@@ -83,7 +83,7 @@ $(function () {
                               '<i class="icon-trash"></i>' +
                               'Delete' +
                             '</a>' +
-                          '</p>' +
+                          '</div>' +
                         '</div>' +
                       '</div>');
 
@@ -98,9 +98,9 @@ $(function () {
                     row.find('img').prop('src', file.thumbnail_url);
                 }
                 row.find('.btn-delete')
-                    .attr('href', '/topics/' + $("#parentID").val() + '/photos/' + file.photo_id);
+                    .attr('href', '/photos/' + file.photo_id);
                 row.find('.btn-show')
-                    .attr('href', '/topics/' + $("#parentID").val() + '/photos/' + file.photo_id + '/edit');
+                    .attr('href', '/photos/' + file.photo_id + '/edit');
             }            
             rows = rows.add(row);
         });

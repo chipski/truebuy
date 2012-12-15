@@ -1,0 +1,20 @@
+.row.masonry
+  %h1 Brands
+  %ul.thumbnails
+    - @brands.each do |brand|  
+      %li.card#company
+        .thumbnail
+          -if brand.cover.blank? or !Photo.find_by_id(brand.cover)  
+            =link_to image_tag("/NoImageAvailable.jpg"), brand_path(brand.id)
+          -else
+            =link_to image_tag(Photo.find_by_id(brand.cover).image.thumb.url), brand_path(brand.id)
+        .caption
+          %h4
+            =brand.name 
+            %span.small-gray
+              =link_to edit_brand_path(brand.id), :class=>"link" do
+                %i.icon-edit
+                Edit
+
+  =link_to 'New', new_brand_path, :class => 'btn btn-mini'
+

@@ -6,17 +6,20 @@
 -if @company             
   .page-header
     %h1
-      =link_to topic_path(topic) do
+      =link_to topics_path do
         %i.icon-list-alt
       -if action == "edit" 
         = "Edit "           
         = link_to topic.name, topic 
+        = render :partial=>'shared/edit_menu', :locals=>{:entity=>topic}
       -elsif action == "new"
         = "New "
       -else
-        = "Photo "
+        =link_to @company.name, @company
+        = topic.name
         %span.small-gray
-          =link_to "edit", edit_topic_photo_path(topic, photo), :class => 'btn btn-mini' 
+          =link_to "edit", edit_topic_path(topic)
+          %a.btn.btn-mini{"data-toggle" => "modal", :href => "#edit-topic"} edit2
 -else                          
   .page-header
     %h1 
@@ -24,10 +27,12 @@
         %i.icon-list-alt
       -if action == "edit" 
         = "Edit "           
-        =link_to topic.name, topic_path(topic)   
+        =link_to topic.name, topic_path(topic) 
+        = render :partial=>'shared/edit_menu', :locals=>{:entity=>topic}  
       -elsif action == "new"
         = "New "
       -else
-        = "Photo "
+        = topic.name
         %span.small-gray
-          =link_to "edit", edit_topic_path(topic), :class => 'btn btn-mini'    
+          =link_to "edit", edit_topic_path(topic) 
+          %a.btn.btn-mini{"data-toggle" => "modal", :href => "#edit-topic"} edit2

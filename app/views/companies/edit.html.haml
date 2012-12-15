@@ -2,6 +2,6 @@
   %h1 
     Editing 
     =link_to @company.name, @company
-    = render :partial=>'companies/edit_menu', :locals=>{:company=>@company}
+    = render :partial=>'shared/edit_menu', :locals=>{:company=>@company}
 
   = render 'form'

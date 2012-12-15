@@ -1,35 +1,19 @@
-%h1 Listing categories
+.row.masonry
+  %h1 Categories
+  %ul.thumbnails
+    - @categories.each do |category|  
+      %li.card#company
+        .thumbnail
+          -if category.cover.blank? or !Photo.find_by_id(category.cover)  
+            =link_to image_tag("/NoImageAvailable.jpg"), category_path(category.id)
+          -else
+            =link_to image_tag(Photo.find_by_id(category.cover).image.thumb.url), category_path(category.id)
+        .caption
+          %h4
+            =category.name 
+            %span.small-gray
+              =link_to edit_category_path(category.id), :class=>"link" do
+                %i.icon-edit
+                Edit
 
-%table
-  %tr
-    %th Uid
-    %th Permalink
-    %th Name
-    %th Keywords
-    %th Blurb
-    %th Body
-    %th State
-    %th Type
-    %th Photo
-    %th
-    %th
-    %th
-
-  - @categories.each do |category|
-    %tr
-      %td= category.uid
-      %td= category.permalink
-      %td= category.name
-      %td= category.keywords
-      %td= category.blurb
-      %td= category.body
-      %td= category.state
-      %td= category.type
-      %td= category.photo
-      %td= link_to 'Show', category
-      %td= link_to 'Edit', edit_category_path(category)
-      %td= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }
-
-%br
-
-= link_to 'New Category', new_category_path
+  =link_to 'New', new_category_path, :class => 'btn btn-mini'

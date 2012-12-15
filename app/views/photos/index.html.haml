@@ -1,29 +1,29 @@
 - model_class = Photo.new.class
-.page-header
-  %h1= "Photos"
-%table.table.table-striped
-  %thead
-    %tr
-      %th= "Topic"
-      %th= "Image"
-      %th= "Blurb"
-      %th= "Created"
-      %th= t '.actions', :default => t("helpers.actions")
-  %tbody
-    - @photos.each do |photo|
-      -topic = @topic || photo.topic
+.row
+  .page-header
+    %h1= "Photos"
+  %table.table.table-striped
+    %thead
       %tr
-        %td= link_to topic.name, topic_path(topic) if topic 
-        %td=link_to image_tag(photo.image.thumb.url), photo_path(photo)  
-        %td= photo.blurb
-        %td= l photo.created_at
-        %td
-          -if topic
-            = link_to "Edit", edit_topic_photo_path(topic, photo), :class => 'btn btn-mini'     
-            = link_to "Delete", topic_photo_path(topic, photo), :method => :delete, :confirm => "Are you sure?", :class => 'btn btn-mini btn-danger'                                                             
-            = link_to "New", new_topic_photo_path(topic), :class => 'btn btn-mini btn-primary'  
-          -else
-            = link_to "Edit", edit_photo_path(photo), :class => 'btn btn-mini'     
-            = link_to "Delete", photo_path(photo), :method => :delete, :confirm => "Are you sure?", :class => 'btn btn-mini btn-danger'                                                             
-            = link_to "New", new_photo_path, :class => 'btn btn-mini btn-primary'  
+        %th= "Parent"
+        %th= "Image"
+        %th= "Blurb"
+        %th= t '.actions', :default => t("helpers.actions")
+    %tbody
+      - @photos.each do |photo|
+        -topic = photo.topic
+        -parent = photo.parent
+        %tr
+          %td= link_to parent.name, polymorphic_path(parent) if parent 
+          %td=link_to image_tag(photo.image.thumb.url), photo_path(photo)  
+          %td= photo.blurb
+          %td
+            -if parent
+              =link_to "edit", polymorphic_path([topic, photo], :action=>"edit"), :class => 'btn btn-mini'  
+              =link_to "Delete", photo_path(photo), :method => :delete, :confirm => "Are you sure?", :class => 'btn btn-mini btn-danger'                                                            
+              = link_to "New", polymorphic_path([parent, photo], :action=>"new"), :class => 'btn btn-mini btn-primary'  
+            -else
+              = link_to "Edit", edit_photo_path(photo), :class => 'btn btn-mini'     
+              = link_to "Delete", photo_path(photo), :method => :delete, :confirm => "Are you sure?", :class => 'btn btn-mini btn-danger'                                                             
+              = link_to "New", new_photo_path, :class => 'btn btn-mini btn-primary'  
             

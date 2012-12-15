@@ -1,11 +1,11 @@
--parent = parent || @topic || @company
+-parent = parent || @topic || @company || @category
 -photo = photo || @photo || Photo.new
 
-
 -if false
-  = simple_form_for(photo, :html=>{:class=>'form-horizontal', :multipart=>true, :id=>"fileupload" }, :method=>:put) do |f| 
-    =f.hidden_field :parent_id, :value=>parent.id if parent
-    =f.hidden_field :parent_type, :value=>parent.class.to_s if parent   
+  = simple_form_for(photo, :html=>{:class=>'form-photo', :multipart=>true, :id=>"fileupload" }, :method=>:put) do |f| 
+    -if parent
+      =f.hidden_field :parent_id, :value=>parent.id 
+      =f.hidden_field :parent_type, :value=>parent.class.to_s
     = image_tag photo.image.large.url, :id => 'cropbox'
     = link_to 'Default', '', :class => 'btn btn-mini btn-success' , :id => 'make_default'
     - %w[x y w h].each do |attribute|
@@ -28,6 +28,9 @@
       -if parent
         =f.hidden_field :parent_id, :value=>parent.id 
         =f.hidden_field :parent_type, :value=>parent.class.to_s 
+      -else
+        =f.hidden_field :parent_id, :value=>Photo.default_parent.id 
+        =f.hidden_field :parent_type, :value=>Photo.default_parent.class.to_s 
       -if photo.image.large.url  
         = image_tag photo.image.large.url, :id => 'cropbox'
         = link_to 'Default', '', :class => 'btn btn-mini btn-success' , :id => 'make_default'
@@ -43,6 +46,19 @@
       .progress.progress-success.progress-striped.active.fade 
         .bar{:style=>"width:0%;"}   
       .fileupload-loading
+      -if parent
+        .row.masonry
+          %ul.thumbnails.files
+            - unless parent.photos.empty?
+              - parent.photos.each do |pic|
+                %li.card{:id => "photo_#{pic.id}"}
+                  .thumbnail
+                    %a{:href => pic.image.url, :rel => "lightbox-photos", :title => pic.blurb}
+                      %img{:alt => "", :src => pic.image.thumb.url}
+                    .caption
+                      .card_edit.pull-right
+                        =render :partial=>'photos/edit_menu', :locals=>{:entity=>pic, :parent=>parent}
+                      %p{:style => "text-align: center;"}
 
 -if false
   = javascript_include_tag 'jquery.ui.widget.js'

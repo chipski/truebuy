@@ -40,8 +40,8 @@ $color: #8c7e7e;
      width: auto;
      max-width: 132px;
      height: auto;
-     max-height:68px;
-     img { width: 132px;}
+     max-height: 200px;
+     img { width: auto;}
   } 
   .btn-box {
       width: 294px;
@@ -127,6 +127,14 @@ img {
   margin-left: auto;
   margin-right: auto;
 }
+.thumbnail {
+    .card_edit {
+        position: relative;
+        z-index: 35;
+        top: 0px;
+        right: 0px;
+    }
+}
 .thumbnail .preview > img {
   display: block;
   max-width: 100%;
@@ -138,5 +146,6 @@ img {
 }
 .files .span3 .thumbnail {
   height: 137px;
+
 }
 

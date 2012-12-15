@@ -1,25 +1,17 @@
--parent = parent || @company || @topic
--photos = photos || parent.photos
-
-.row
+-parent = parent || @topic || @company || @category
+.row.masonry
   %ul.thumbnails.files
-    - unless photos.empty?
-      - photos.each do |pic|
-        %li.span3{:id => "photo_#{pic.id}"}
+    - unless parent.photos.empty?
+      - parent.photos.each do |pic|
+        %li.card{:id => "photo_#{pic.id}"}
           .thumbnail
             %a{:href => pic.image.url, :rel => "lightbox-photos", :title => pic.blurb}
               %img{:alt => "", :src => pic.image.thumb.url}
             .caption
+              .card_edit.pull-right
+                =render :partial=>'photos/edit_menu', :locals=>{:entity=>pic}
               %p{:style => "text-align: center;"}
-                %a.btn.btn-mini{:href=>parent_photo_path(pic, parent)}
-                  %i.icon-ok
-                  Show
-                %a.btn.btn-mini{:href=>edit_photo_path(pic)}
-                  %i.icon-edit
-                  Edit
-                %a.make_default.btn.btn-mini{:data=>{:id=>pic.id, :parent_id=>parent.id, :parent_type=>parent.class.to_s}, :href=>""}
-                  %i.icon-ok
-                  Default
+                
 
 
      

@@ -1,8 +1,9 @@
 - model_class = @photo.class
 = render 'photos/breadcrumbs'
--if @topic             
-  = render 'form_topic'
+.row
+  -if @topic             
+    = render 'form_topic'
 
--else                          
-  = render 'form'
+  -else                          
+    = render 'form'
   

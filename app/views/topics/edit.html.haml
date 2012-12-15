@@ -20,8 +20,6 @@
               = f.input :cover    
           = f.submit nil, :class => 'btn btn-primary'
 
-
-
     .image-box 
       = render 'photos/upload_form', :locals=>{:parent=>@topic, :photo=>@topic.photos.first}
-      = render 'photos/thumbnails', :locals=>{:parent=>@topic, :photos=>@topic.photos}
+      

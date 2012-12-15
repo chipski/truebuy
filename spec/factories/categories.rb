@@ -2,6 +2,7 @@
 
 FactoryGirl.define do
   factory :category do
+    parent nil
     uid "MyString"
     permalink "MyString"
     name "MyString"
@@ -10,6 +11,7 @@ FactoryGirl.define do
     body "MyText"
     state "MyString"
     type ""
-    photo nil
+    cover 1
+    cached_tag_list "MyString"
   end
 end

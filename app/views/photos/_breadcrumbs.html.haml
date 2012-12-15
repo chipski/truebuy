@@ -1,25 +1,28 @@
 -action = action || controller.action_name
--topic = @topic || @photo.topic
--if topic             
+-parent = parent || @photo.parent
+
+-if parent             
   .page-header
     %h1
-      =link_to topic_photos_path(topic) do
+      =link_to polymorphic_path([parent, @photo]) do
         %i.icon-list-alt
-      =link_to topic.name, topic
+      =link_to parent.name, parent
+    .smaller
       -if action == "edit" 
         = "Edit "           
-        = link_to @photo.name, topic_photo_path(topic, @photo)   
+        = link_to @photo.name, polymorphic_path([parent, @photo])
       -elsif action == "new"
         = "New "
       -else
         = "Photo "
-        %span.small-gray
-          =link_to "edit", edit_topic_photo_path(topic, @photo), :class => 'btn btn-mini' 
+        %span.smaller
+          =link_to "edit", polymorphic_path([parent, @photo], :action=>"edit"), :class => 'btn btn-mini' 
 -else                          
   .page-header
     %h1 
       =link_to photos_path do
         %i.icon-list-alt
+    .smaller
       -if action == "edit" 
         = "Edit "           
         =link_to @photo.name, photo_path(@photo)   
@@ -27,6 +30,6 @@
         = "New "
       -else
         = "Photo "
-        %span.small-gray
+        %span.smaller
           =link_to "edit", edit_photo_path(@photo), :class => 'btn btn-mini'    
         

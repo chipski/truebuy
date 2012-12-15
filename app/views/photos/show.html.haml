@@ -1,10 +1,9 @@
 - model_class = @photo.class
-= render 'photos/breadcrumbs', :locals=>{:action=>:show}
-
-
-%dl.dl-horizontal
-  %dd= image_tag(@photo.image.url)
-  %dd= @photo.blurb
+.row
+  = render 'photos/breadcrumbs', :locals=>{:action=>:show}
+  %dl.dl-horizontal
+    %dd= image_tag(@photo.image.url)
+    %dd= @photo.blurb
 
 
 

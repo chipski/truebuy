@@ -11,7 +11,68 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121126153120) do
+ActiveRecord::Schema.define(:version => 20121214161734) do
+
+  create_table "brands", :force => true do |t|
+    t.integer  "company_id"
+    t.string   "uid"
+    t.string   "permalink"
+    t.string   "name"
+    t.string   "keywords"
+    t.text     "blurb"
+    t.text     "body"
+    t.string   "state",           :default => "new"
+    t.string   "type"
+    t.integer  "cover"
+    t.string   "cached_tag_list"
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+  end
+
+  add_index "brands", ["company_id"], :name => "index_brands_on_company_id"
+  add_index "brands", ["permalink"], :name => "index_brands_on_permalink", :unique => true
+  add_index "brands", ["uid"], :name => "index_brands_on_uid", :unique => true
+
+  create_table "categories", :force => true do |t|
+    t.integer  "parent_id"
+    t.string   "uid"
+    t.string   "permalink"
+    t.string   "name"
+    t.string   "keywords"
+    t.text     "blurb"
+    t.text     "body"
+    t.string   "state",           :default => "new"
+    t.string   "type"
+    t.integer  "cover"
+    t.string   "cached_tag_list"
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+  end
+
+  add_index "categories", ["parent_id"], :name => "index_categories_on_parent_id"
+  add_index "categories", ["permalink"], :name => "index_categories_on_permalink", :unique => true
+  add_index "categories", ["uid"], :name => "index_categories_on_uid", :unique => true
+
+  create_table "categories_brands", :id => false, :force => true do |t|
+    t.integer "category_id"
+    t.integer "brand_id"
+  end
+
+  add_index "categories_brands", ["category_id", "brand_id"], :name => "index_categories_brands_on_category_id_and_brand_id"
+
+  create_table "categories_companies", :id => false, :force => true do |t|
+    t.integer "category_id"
+    t.integer "company_id"
+  end
+
+  add_index "categories_companies", ["category_id", "company_id"], :name => "index_categories_companies_on_category_id_and_company_id"
+
+  create_table "categories_topics", :id => false, :force => true do |t|
+    t.integer "category_id"
+    t.integer "topic_id"
+  end
+
+  add_index "categories_topics", ["category_id", "topic_id"], :name => "index_categories_topics_on_category_id_and_topic_id"
 
   create_table "companies", :force => true do |t|
     t.string   "uid"
@@ -41,14 +102,15 @@ ActiveRecord::Schema.define(:version => 20121126153120) do
     t.string   "name"
     t.string   "keywords"
     t.text     "blurb"
-    t.string   "state",       :default => "new"
+    t.string   "state",           :default => "new"
     t.string   "type"
     t.string   "image"
     t.string   "image_uid"
     t.string   "image_name"
     t.integer  "topic_id"
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+    t.string   "cached_tag_list"
   end
 
   add_index "photos", ["parent_id"], :name => "index_photos_on_parent_id"
@@ -74,12 +136,14 @@ ActiveRecord::Schema.define(:version => 20121126153120) do
     t.string   "keywords"
     t.text     "blurb"
     t.text     "body"
-    t.string   "state",      :default => "new"
+    t.string   "state",           :default => "new"
     t.string   "type"
     t.integer  "cover"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
     t.integer  "company_id"
+    t.integer  "brand_id"
+    t.string   "cached_tag_list"
   end
 
   add_index "topics", ["company_id"], :name => "index_topics_on_company_id"

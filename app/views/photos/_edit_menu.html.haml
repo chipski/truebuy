@@ -1,0 +1,26 @@
+-entity = entity || @photo 
+-parent = parent 
+-if true
+  .btn-group    
+    %a.btn.btn-mini.dropdown-toggle(data-toggle="dropdown" href="#")
+      %i.icon-cog
+      ="edit"
+      %span.caret
+    %ul.dropdown-menu
+      -if parent
+        %li
+          %a.make_default{:data=>{:id=>entity.id, :parent_id=>parent.id, :parent_type=>parent.class.to_s}, :href=>""}
+            %i.icon-ok
+            Default 
+      %li
+        = link_to polymorphic_path(entity, :action=>"edit") do
+          %i.icon-cog
+          Edit
+      %li
+        = link_to photo_path(entity) do
+          %i.icon-zoom-in
+          Show
+        %li
+          =link_to photo_path(entity), :confirm=>"Are you Sure?", :method=>:delete do
+            %i.icon-trash
+            ="Delete"
