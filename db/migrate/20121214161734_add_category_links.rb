@@ -16,11 +16,11 @@ class AddCategoryLinks < ActiveRecord::Migration
     end
     add_index(:categories_topics, [ :category_id, :topic_id ])
     
-    create_table(:categories_brands, :id => false) do |t|
+    create_table(:brands_categories, :id => false) do |t|
        t.references :category
        t.references :brand
     end
-    add_index(:categories_brands, [ :category_id, :brand_id ])
+    add_index(:brands_categories, [ :brand_id, :category_id])
     
     
   end
