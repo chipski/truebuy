@@ -17,8 +17,8 @@ class AddCategoryLinks < ActiveRecord::Migration
     add_index(:categories_topics, [ :category_id, :topic_id ])
     
     create_table(:brands_categories, :id => false) do |t|
-       t.references :category
        t.references :brand
+       t.references :category
     end
     add_index(:brands_categories, [ :brand_id, :category_id])
     
@@ -30,7 +30,7 @@ class AddCategoryLinks < ActiveRecord::Migration
     remove_column :topics, :cached_tag_list
     remove_column :photos, :cached_tag_list
     
-    drop_table :categories_brands
+    drop_table :brands_categories
     drop_table :categories_topics
     drop_table :categories_companies
   end
