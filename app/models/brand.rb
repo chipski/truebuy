@@ -20,7 +20,11 @@ class Brand < ActiveRecord::Base
     end
     @cover_url ? @cover_url : "default/high_server.jpeg"
   end
-
+  
+  def to_param
+    permalink
+  end
+  
   def update_permalink
     UtilityIds.update_permalink(self, self.name) 
   end

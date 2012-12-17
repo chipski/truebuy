@@ -4,7 +4,7 @@ class CompaniesController < InheritedResources::Base
   
   
   def show
-    @company = Company.find(params[:id])
+    resource
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @company }
@@ -12,7 +12,7 @@ class CompaniesController < InheritedResources::Base
   end
   
   def editOFF
-    @company = Company.find(params[:id])
+    resource
     @photos = Photo.initial
     respond_to do |format|
       format.html # show.html.erb
@@ -21,7 +21,7 @@ class CompaniesController < InheritedResources::Base
   end
   
   def update_state
-    @company = Company.find(params[:id])
+    resource
     return_to = company_path(@company)
     update_entity_state(@company, params[:state])
     respond_to do |format|
@@ -35,4 +35,15 @@ class CompaniesController < InheritedResources::Base
     end
   end  
   
+  protected
+    def resource
+      @company = Company.find_by_permalink(params[:id])
+    end
+    def collectionOff
+      @companies ||= end_of_association_chain.paginate(:page => params[:page])
+    end 
+    def begin_of_association_chainOFF
+      @current_user
+    end
+    
 end

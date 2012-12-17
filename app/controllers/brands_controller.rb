@@ -2,7 +2,7 @@ class BrandsController < InheritedResources::Base
   defaults :resource_class => Brand, :collection_name => 'brands', :instance_name => 'brand'
   
   def update_state
-    @brand = Brand.find(params[:id])
+    resource
     return_to = brand_path(@brand)
     update_entity_state(@brand, params[:state])
     respond_to do |format|
@@ -16,4 +16,15 @@ class BrandsController < InheritedResources::Base
     end
   end
   
+  protected
+    def resource
+      @brand = Brand.find_by_permalink(params[:id])
+    end
+    def collectionOff
+      @brands ||= end_of_association_chain.paginate(:page => params[:page])
+    end 
+    def begin_of_association_chainOFF
+      @current_user
+    end
+    
 end

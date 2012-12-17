@@ -86,6 +86,10 @@ class Company < ActiveRecord::Base
     @cover_url ? @cover_url : "default/amsterdam_crooked.png"
   end
 
+  def to_param
+    permalink
+  end
+  
   def update_permalink
     UtilityIds.update_permalink(self, self.name) 
   end

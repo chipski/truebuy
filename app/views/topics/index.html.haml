@@ -5,18 +5,14 @@
       %li.span3.card#topic
         .thumbnail
           -if topic.cover.blank? or !Photo.find_by_id(topic.cover)  
-            =link_to image_tag("/NoImageAvailable.jpg"), topic_path(topic.id)
+            =link_to image_tag("/NoImageAvailable.jpg"), topic_path(topic)
           -else
-            =link_to image_tag(topic.cover_url("small")), topic_path(topic.id)
+            =link_to image_tag(topic.cover_url("small")), topic_path(topic)
         .card_edit
           =render :partial=>'shared/edit_menu', :locals=>{:entity=>topic}
-        .caption
-          %p{:style=>"text-align: center;"}
-            =link_to edit_topic_path(topic.id), :class=>"link" do
-              %i.icon-edit
-              Edit
-            =topic.photos.count
-            =topic.name  
+        %h4{:style=>"text-align: center;"}
+          =topic.photos.count
+          =topic.name  
 
 
 

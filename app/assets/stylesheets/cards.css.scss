@@ -52,6 +52,20 @@ $color: #8c7e7e;
       max-height: 200px;
       img { width: auto;}
   }
+  .card_edit {
+      z-index: 150;
+      position: relative;
+      left: -4px;
+      top: -28px;
+  }
+  .thumbnail {
+      .card_edit {
+          position: relative;
+          z-index: 35;
+          top: 0px;
+          right: 0px;
+      }
+  }
   .btn-box {
       width: 294px;
   }
@@ -136,14 +150,7 @@ img {
   margin-left: auto;
   margin-right: auto;
 }
-.thumbnail {
-    .card_edit {
-        position: relative;
-        z-index: 35;
-        top: 0px;
-        right: 0px;
-    }
-}
+
 .thumbnail .preview > img {
   display: block;
   max-width: 100%;
@@ -152,9 +159,5 @@ img {
 }
 .files .span3 {
   //width: 220px;
-}
-.files .span3 .thumbnail {
-  height: 137px;
-
 }
 

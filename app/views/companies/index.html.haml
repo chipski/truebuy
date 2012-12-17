@@ -5,15 +5,15 @@
       %li.card#company
         .thumbnail
           -if company.cover.blank? or !Photo.find_by_id(company.cover)  
-            =link_to image_tag("/NoImageAvailable.jpg"), company_path(company.id)
+            =link_to image_tag("/NoImageAvailable.jpg"), company_path(company)
           -else
-            =link_to image_tag(company.cover_url("small")), company_path(company.id)
+            =link_to image_tag(company.cover_url("small")), company_path(company)
         .caption
           %h4
             =company.name 
             %b=company.topics.count
             %span.small-gray
-              =link_to edit_company_path(company.id), :class=>"link" do
+              =link_to edit_company_path(company), :class=>"link" do
                 %i.icon-edit
                 Edit
          

@@ -2,15 +2,28 @@
 .img-bar
   =image_tag(@category.cover_url)
   .title
-    %h1= @category.name
+    %h1
+      = @category.name
+      -if is_admin?
+        .small-gray== link_to 'edit', edit_category_path(@category)
   .blurb=@category.blurb ? @category.blurb.html_safe : ""
 
 .hero
   =@category.body ? @category.body.html_safe : "" 
 .row#masonry
   %input#categoryID{:type => "hidden", :value => @category.id}
-  
+  - @category.companies.each do |company|  
+    .card#brand
+      .thumbnail=link_to image_tag(company.cover_url("small")), company_path(company)
+      %h4=company.name 
+ 
+  - @category.brands.each do |brand|  
+    .card#brand
+      .thumbnail=link_to image_tag(brand.cover_url("small")), brand_path(brand)
+      %h4=brand.name 
 
-= link_to 'Edit', edit_category_path(@category)
-\|
-= link_to 'Back', categories_path
+  - @category.topics.each do |topic|  
+    .card#brand
+      .thumbnail=link_to image_tag(topic.cover_url("small")), topic_path(topic)
+      %h4=topic.name 
+           

@@ -2,7 +2,7 @@ class CategoriesController < InheritedResources::Base
   defaults :resource_class => Category, :collection_name => 'categories', :instance_name => 'category'
   
   def update_state
-    @category = Category.find(params[:id])
+    resource
     return_to = category_path(@category)
     update_entity_state(@category, params[:state])
     respond_to do |format|
@@ -16,4 +16,11 @@ class CategoriesController < InheritedResources::Base
     end
   end
   
+  protected
+    def resource
+      @category = Category.find_by_permalink(params[:id])
+    end
+    def collectionOff
+      @categories ||= end_of_association_chain.paginate(:page => params[:page])
+    end 
 end

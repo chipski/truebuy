@@ -22,6 +22,10 @@ class Category < ActiveRecord::Base
     @cover_url ? @cover_url : "default/high_stride.jpeg"
   end
 
+  def to_param
+    permalink
+  end
+  
   def update_permalink
     UtilityIds.update_permalink(self, self.name) 
   end

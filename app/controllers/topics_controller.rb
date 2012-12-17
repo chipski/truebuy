@@ -3,8 +3,7 @@ class TopicsController < InheritedResources::Base
   #respond_to :html, :json
   
   def show
-    @topic = Topic.find(params[:id])
-    @company = @topic.company || Company.find(params[:id])
+    resource
     @photos = @topic.photos
     respond_to do |format|
       format.html # show.html.erb
@@ -13,7 +12,7 @@ class TopicsController < InheritedResources::Base
   end
   
   def update_state
-    @topic = Topic.find(params[:id])
+    resource
     return_to = topic_path(@topic)
     update_entity_state(@topic, params[:state])
     respond_to do |format|
@@ -28,6 +27,9 @@ class TopicsController < InheritedResources::Base
   end  
   
   protected
+    def resource
+      @topic = Topic.find_by_permalink(params[:id])
+    end
     def collectionOff
       @topics ||= end_of_association_chain.paginate(:page => params[:page])
     end 
