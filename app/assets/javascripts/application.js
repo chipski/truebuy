@@ -49,11 +49,13 @@
 // require jquery.fileupload-ui
 
 //= require jquery.Jcrop
-//= require bootstrap-image-gallery.min 
+//  require bootstrap-image-gallery.min 
 //= require photo_main  
 //= require slimbox2         
 //= require photo_local
 
+//  require jquery.royalslider.min.js
+//= require jquery.royalslider.custom.min.js
 //  require underscore
 //  require jquery.remotipart
 //  require ember

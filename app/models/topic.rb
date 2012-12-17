@@ -71,12 +71,11 @@ class Topic < ActiveRecord::Base
   end
   
   
-  def cover_url
-    if cover
-      Photo.find_by_id(cover).image.thumb.url
-    else
-      "default/fence_hop.jpeg"
+  def cover_url(size="small")
+    @cover_url ||= begin
+      UtilityIds.cover_url(self, size="small")
     end
+    @cover_url ? @cover_url : "default/fence_hop.jpeg"
   end
   
   def update_permalink

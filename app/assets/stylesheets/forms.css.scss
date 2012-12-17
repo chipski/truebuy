@@ -33,26 +33,50 @@ form {
     }
 }
 .image-box {
-    width: 380px;
+    width: 328px;
     float: right;
     min-height: 400px;
-}              
-
-.simple_form {
-    .form-input-boxes {
-        width: 475px;
-        min-height: 400px;
-        float: left;
-        input.text_field {
-            width: 450px; 
-            margin-bottom: 10px;
+    #fileupload {
+        .progress {margin: 0;}
+        input.file {
+            position: relative;
+            text-align: right;
+            -moz-opacity:0;
+            opacity: 0;
+            z-index: 2;
         }
-        textarea {
-            width: 456px; 
-            margin-bottom: 10px;
+        .card {
+            width: 280px;
+            height: 288px;
+            margin-bottom: 0px;
+            .card_edit {
+                z-index: 150;
+                position: relative;
+                left: -10px;
+                top: -20px;
+            }
+            .thumbnail {
+                height: 272px;
+            }
+        }
+    }
+}              
+.form-box {
+    .simple_form {
+        .form-input-boxes {
+            width: 475px;
+            min-height: 400px;
+            float: left;
+            input.text_field {
+                width: 450px; 
+                margin-bottom: 10px;
+            }
+            textarea {
+                width: 456px; 
+                margin-bottom: 10px;
+            }  
         }  
     }  
-    
 }
 
 .progress {

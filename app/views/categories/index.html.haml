@@ -7,7 +7,7 @@
           -if category.cover.blank? or !Photo.find_by_id(category.cover)  
             =link_to image_tag("/NoImageAvailable.jpg"), category_path(category.id)
           -else
-            =link_to image_tag(Photo.find_by_id(category.cover).image.thumb.url), category_path(category.id)
+            =link_to image_tag(category.cover_url("small")), category_path(category.id)
         .caption
           %h4
             =category.name 

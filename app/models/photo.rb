@@ -31,8 +31,10 @@ class Photo < ActiveRecord::Base
       "name" => read_attribute(:image),
       "size" => image.size,
       "url" => image.url,
+      "small_url" => image.small.url,
       "thumbnail_url" => image.thumb.url,
       "delete_url" => photo_path(:id => id),
+      "parent_path" => parent ? polymorphic_path([parent, self]) : "", 
       "photo_id" => id,
       "delete_type" => "DELETE"
     }
@@ -51,7 +53,7 @@ class Photo < ActiveRecord::Base
     unless name
       update_attribute(:name, (image.identifier ? image.identifier : image.path)) 
     end
-    UtilityIds.update_permalink(self) 
+    UtilityIds.update_permalink2(self) 
   end
   
 end

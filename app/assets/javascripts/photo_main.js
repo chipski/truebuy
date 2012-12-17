@@ -45,7 +45,7 @@ $(function () {
         console.log("Inside photo_main.uploadTemplate");
         $.each(o.files, function (index, file) {
           console.log(file);
-            var row = $('<li class="span3">' +
+            var row = $('<li class="span3 card">' +
                 '<div class="thumbnail">' +
                   '<div class="preview" style="text-align: center;"></div>' +
                   '<div class="progress progress-success progress-striped active">' +
@@ -75,14 +75,22 @@ $(function () {
                         '</a>' +
                         '<div class="caption">' +
                           '<div class="card_edit pull-right">' +
-                            '<a href="" class="btn btn-mini btn-show" style="margin-right: 4px;">' +
-                              '<i class="icon-edit "></i>' +
-                              'Edit' +
-                            '</a>' +
-                            '<a class="btn btn-mini btn-delete" confirm="Are you Sure?" data-remote=true data-method="delete" href="" >' +
-                              '<i class="icon-trash"></i>' +
-                              'Delete' +
-                            '</a>' +
+                            '<div class="btn-group">' +
+                              '<a href="#" class="btn btn-mini dropdown-toggle" data-toggle="dropdown">' +
+                                '<i class="icon-edit "></i>' +
+                                  'Edit' +
+                              '</a>' +
+                                '<ul class="dropdown-menu">' +
+                                '<li><a href="" class="btn-show" style="margin-right: 4px;">' +
+                                  '<i class="icon-edit "></i>' +
+                                  'Edit' +
+                                '</a></li>' +
+                                '<li><a class="btn-delete" confirm="Are you Sure?" data-remote=true data-method="delete" href="" >' +
+                                  '<i class="icon-trash"></i>' +
+                                  'Delete' +
+                                '</a></li>' +
+                                '</ul>' +
+                            '</div>' +
                           '</div>' +
                         '</div>' +
                       '</div>');
@@ -95,7 +103,7 @@ $(function () {
                 );
             } else {
                 if (file.thumbnail_url) {
-                    row.find('img').prop('src', file.thumbnail_url);
+                    row.find('img').prop('src', file.small_url);
                 }
                 row.find('.btn-delete')
                     .attr('href', '/photos/' + file.photo_id);

@@ -7,3 +7,4 @@
   -else                          
     = render 'form'
   
+  =link_to "Delete", photo_path(@photo), :method => 'delete', :confirm => "Are you sure?", :class => 'btn btn-mini btn-danger'   

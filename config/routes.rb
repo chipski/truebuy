@@ -1,8 +1,23 @@
 Reviews::Application.routes.draw do
 
   
-  resources :brands
-
+  resources :categories do
+    resources :photos
+    resources :brands
+    resources :companies
+  end
+  resources :companies do
+    resources :photos
+    member do
+      put :update_state
+    end
+  end
+  resources :brands do
+    resources :photos
+    member do
+      put :update_state
+    end
+  end
   #resources :topics
   resources :topics do
     resources :photos
@@ -20,17 +35,10 @@ Reviews::Application.routes.draw do
       post :create
     end
     member do
-      post 'make_default'
+      post :make_default
     end
   end
    
-  resources :categories
-  resources :companies do
-    resources :photos
-    member do
-      put :update_state
-    end
-  end
   
   authenticated :user do
     root :to => 'home#index'

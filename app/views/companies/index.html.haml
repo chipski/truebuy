@@ -7,7 +7,7 @@
           -if company.cover.blank? or !Photo.find_by_id(company.cover)  
             =link_to image_tag("/NoImageAvailable.jpg"), company_path(company.id)
           -else
-            =link_to image_tag(Photo.find_by_id(company.cover).image.thumb.url), company_path(company.id)
+            =link_to image_tag(company.cover_url("small")), company_path(company.id)
         .caption
           %h4
             =company.name 

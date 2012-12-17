@@ -15,14 +15,13 @@ class Category < ActiveRecord::Base
     all.collect{ |t| [t.name, t.id]}
   end
   
-  def cover_url
-    if cover && false
-      @cover_url ||= Photo.find_by_id(cover).image.large.url
-    else
-      "default/high_stride.jpeg"
+  def cover_url(size="small")
+    @cover_url ||= begin
+      UtilityIds.cover_url(self, size="small")
     end
+    @cover_url ? @cover_url : "default/high_stride.jpeg"
   end
-  
+
   def update_permalink
     UtilityIds.update_permalink(self, self.name) 
   end

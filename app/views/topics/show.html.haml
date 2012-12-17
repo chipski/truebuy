@@ -1,9 +1,8 @@
 -parent = @topic
 .row
-  = render 'topics/breadcrumbs'
+  =render :partial=>'topics/breadcrumbs'
   %input#parentID{:type => "hidden", :value => parent.id}
-  %p= parent.blurb.html_safe
+  %p= parent.blurb.html_safe if parent.blurb
 
-  =# render 'photos/upload_form', :locals=>{:parent=>@topic, :photo=>Photo.new}
   = render 'topics/edit_modal', :locals=>{:parent=>@topic, :photo=>Photo.new}
   = render 'photos/thumbnails', :locals=>{:thumbnails=>@topic.photos}, :collection=>@topic.photos

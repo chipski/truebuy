@@ -1,44 +1,21 @@
-=# form_for , :html => { :class => 'form-horizontal' } do |f| 
-= simple_form_for([@parent, @photo], :html => { :class => 'form-horizontal' }) do |f|
-  .form-input-boxes  
-    %b Name
-    = f.text_field :name, :class => 'text_field' 
-    = f.association :parent, :collection=>Topic.select_active 
-    = f.text_area :blurb, :class => 'wysihtml5'
-    = f.submit nil, :class => 'btn btn-primary  btn-mini'
-    = link_to "Listing", parent_path(@parent), :class => 'btn btn-mini' 
-
-  .image-box 
-    = image_tag @photo.image.large.url, :id => 'cropbox'
-    - %w[x y w h].each do |attribute|
-      = f.hidden_field "crop_#{attribute}"
-    = link_to 'Default', '', :class => 'btn btn-mini btn-success' , :id => 'make_default'
-
-%script{:charset => "utf-8", :type => "text/javascript"}
-  $(function () {
-  $('#make_default').click(function(event) {
-  event.preventDefault();
-  $.ajax({
-  url: '#{make_default_parent_photos_path(@parent)}',
-  type: 'POST',
-  data: {photo_id : #{@photo.id}, parent_id : #{@parent.id}}
-  });
-  });
-  });
-  
-
--#/ 
+.form-box
   = simple_form_for([@parent, @photo], :html => { :class => 'form-horizontal' }) do |f|
-  .form-inputs
-    = f.input :uid
-    = f.input :permalink
-    = f.input :name
-    = f.input :keywords
-    = f.input :blurb
-    = f.input :state
-    = f.input :type
-    = f.input :image_url
-    = f.input :image_uid
-    = f.input :image_name
-    .form-actions
-      = f.button :submit                
+    .form-input-boxes  
+      %b Name
+      = f.text_field :name, :class => 'text_field' 
+      = f.association :parent
+      = f.text_area :blurb, :class => 'wysihtml5'
+      = f.submit nil, :class => 'btn btn-primary  btn-mini'
+      = link_to "Listing", parent_path(@parent), :class => 'btn btn-mini' 
+    
+    -if params[:detailed]
+      .form-inputs
+        = f.input :keywords
+        = f.input :permalink  
+        = f.input :image_url
+        = f.input :image_uid
+        = f.input :image_name
+
+.image-box
+  =# link_to 'Default', '', :class => 'btn btn-mini btn-success' , :id => 'make_default'
+  = render 'photos/upload_form', :locals=>{:parent=>@parent, :photo=>@photo}

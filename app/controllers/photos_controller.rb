@@ -20,8 +20,7 @@ class PhotosController < InheritedResources::Base
   end
   
   def new
-    @photo = @parent ? @parent.photos.build : Photo.create
-
+    @photo = @parent ? @parent.photos.build : Photo.new
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @photo }
@@ -73,10 +72,11 @@ class PhotosController < InheritedResources::Base
   
   def destroy
     @photo = Photo.find(params[:id])
+    return_to = params[:return_to] || @photo.parent ? polymorphic_path(@photo.parent, :action=>:edit) : nil
     @photo.destroy
 
     respond_to do |format|
-      format.html { redirect_to photos_url }
+      format.html { redirect_to (return_to || photos_url) }
       format.json { render :json => true }
     end
   end
@@ -104,6 +104,10 @@ class PhotosController < InheritedResources::Base
           case params[:parent_type]
           when "Company" 
             Company
+          when "Brand"
+            Brand
+          when "Category"
+            Category
           when "Topic"
             Topic
           else
@@ -111,7 +115,13 @@ class PhotosController < InheritedResources::Base
           end 
         end 
         @parent = parent_klass.find(params[:parent_id])
-      end  
+      elsif params[:category_id]
+        @parent = Category.find(params[:category_id])
+      elsif params[:company_id]
+        @parent = Company.find(params[:company_id])
+      elsif params[:topic_id]
+        @parent = Topic.find(params[:topic_id])
+      end
     end   
 
 end

@@ -23,42 +23,41 @@
     .fileupload-loading
     
 -if true
-  .row
-    = form_for photo, :html => { :multipart=>true, :id=>"fileupload"  } do |f|
-      -if parent
-        =f.hidden_field :parent_id, :value=>parent.id 
-        =f.hidden_field :parent_type, :value=>parent.class.to_s 
-      -else
-        =f.hidden_field :parent_id, :value=>Photo.default_parent.id 
-        =f.hidden_field :parent_type, :value=>Photo.default_parent.class.to_s 
-      -if photo.image.large.url  
-        = image_tag photo.image.large.url, :id => 'cropbox'
-        = link_to 'Default', '', :class => 'btn btn-mini btn-success' , :id => 'make_default'
-        - %w[x y w h].each do |attribute|
-          = f.hidden_field "crop_#{attribute}"   
-      .fileupload-buttonbar
-        .progressbar.fileupload-progressbar.nofade
-          %div{:style => "width:0%;"}
-        %span.btn.btn-mini.fileinput-button
-          %i.icon-plus
-          %span Add
-          = f.file_field :image, :multiple => true
-      .progress.progress-success.progress-striped.active.fade 
-        .bar{:style=>"width:0%;"}   
-      .fileupload-loading
-      -if parent
-        .row.masonry
-          %ul.thumbnails.files
-            - unless parent.photos.empty?
-              - parent.photos.each do |pic|
-                %li.card{:id => "photo_#{pic.id}"}
-                  .thumbnail
-                    %a{:href => pic.image.url, :rel => "lightbox-photos", :title => pic.blurb}
-                      %img{:alt => "", :src => pic.image.thumb.url}
-                    .caption
-                      .card_edit.pull-right
-                        =render :partial=>'photos/edit_menu', :locals=>{:entity=>pic, :parent=>parent}
-                      %p{:style => "text-align: center;"}
+  = form_for photo, :html => { :multipart=>true, :id=>"fileupload"  } do |f|
+    -if parent
+      =f.hidden_field :parent_id, :value=>parent.id 
+      =f.hidden_field :parent_type, :value=>parent.class.to_s 
+    -else
+      =f.hidden_field :parent_id, :value=>Photo.default_parent.id 
+      =f.hidden_field :parent_type, :value=>Photo.default_parent.class.to_s 
+    -if photo.image.large.url  
+      = image_tag photo.image.large.url, :id => 'cropbox'
+      = link_to 'Default', '', :class => 'btn btn-mini btn-success' , :id => 'make_default'
+      - %w[x y w h].each do |attribute|
+        = f.hidden_field "crop_#{attribute}"   
+    .fileupload-buttonbar
+      .progressbar.fileupload-progressbar.nofade
+        %div{:style => "width:0%;"}
+      %span.btn.btn-mini.fileinput-button
+        %i.icon-plus
+        %span Add
+        = f.file_field :image, :multiple => true
+    .progress.progress-success.progress-striped.active.fade 
+      .bar{:style=>"width:0%;"}   
+    .fileupload-loading
+    -if parent
+      .masonry
+        %ul.thumbnails.files
+          - unless parent.photos.empty?
+            - parent.photos.each do |pic|
+              %li.card{:id => "photo_#{pic.id}"}
+                .thumbnail
+                  %a{:href => pic.image.url, :rel => "lightbox-photos", :title => pic.blurb}
+                    %img{:alt => "", :src => pic.image.small.url}
+                  .card_edit
+                    =render :partial=>'photos/edit_menu', :locals=>{:entity=>pic, :parent=>parent}
+                  .caption
+                  
 
 -if false
   = javascript_include_tag 'jquery.ui.widget.js'

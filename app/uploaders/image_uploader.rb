@@ -1,11 +1,9 @@
 # encoding: utf-8
 
 class ImageUploader < CarrierWave::Uploader::Base
-
-  # Include RMagick or MiniMagick support:
-
-  include CarrierWave::RMagick
   
+  include CarrierWave::MimeTypes
+  include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
 
   # Include the Sprockets helpers for Rails 3.1+ asset pipeline compatibility:
@@ -32,7 +30,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
 
-  resize_to_limit(1024, 768)
+  
 
   # version :large do
   #   # process :crop
@@ -49,11 +47,6 @@ class ImageUploader < CarrierWave::Uploader::Base
   #   # do something
   # end
 
-  # Create different versions of your uploaded files:
-  # version :thumb do
-  #   process :scale => [50, 50]
-  # end
-
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_white_list
@@ -65,9 +58,18 @@ class ImageUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
-
+  # nelow provided by the MimeType gem and helps with fog support
+  process :set_content_type
+  
+  resize_to_limit(2048, 1536)
+  
   version :large do
     process :crop
+  end
+
+  version :medium do
+    process :crop
+    resize_to_limit(1024, 768)
   end
 
   version :preview do
@@ -75,6 +77,11 @@ class ImageUploader < CarrierWave::Uploader::Base
     resize_to_limit(690, 518)
   end
 
+  version :small do
+    process :crop
+    resize_to_fill(280, 280)
+  end
+  
   version :thumb do
     process :crop
     resize_to_fill(100, 100)

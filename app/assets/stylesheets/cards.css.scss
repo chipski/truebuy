@@ -38,11 +38,20 @@ $color: #8c7e7e;
      float: left;
      overflow: hidden; 
      width: auto;
-     max-width: 132px;
+     max-width: 268px;
      height: auto;
      max-height: 200px;
      img { width: auto;}
   } 
+  .tmb-box {
+      float: left;
+      overflow: hidden; 
+      width: auto;
+      max-width: 132px;
+      height: auto;
+      max-height: 200px;
+      img { width: auto;}
+  }
   .btn-box {
       width: 294px;
   }

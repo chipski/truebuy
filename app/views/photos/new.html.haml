@@ -1,12 +1,7 @@
-%h1 New photo
-
-
-
--if @topic
-  = render 'form_topic'
-  = link_to 'Show', topic_photo_path(@topic, @photo) 
-  = link_to 'Back', new_topic_photo_path(@topic)
--else            
-  = render 'form'
-  = link_to 'Show', photo_path(@photo) 
-  = link_to 'Back', photos_path
+.row
+  %h1 New photo
+  -if @parent
+    = render 'form_topic'
+  -else            
+    = render 'form'
+   

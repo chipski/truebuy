@@ -33,6 +33,13 @@ ActiveRecord::Schema.define(:version => 20121214161734) do
   add_index "brands", ["permalink"], :name => "index_brands_on_permalink", :unique => true
   add_index "brands", ["uid"], :name => "index_brands_on_uid", :unique => true
 
+  create_table "brands_categories", :id => false, :force => true do |t|
+    t.integer "brand_id"
+    t.integer "category_id"
+  end
+
+  add_index "brands_categories", ["brand_id", "category_id"], :name => "index_brands_categories_on_brand_id_and_category_id"
+
   create_table "categories", :force => true do |t|
     t.integer  "parent_id"
     t.string   "uid"
@@ -52,13 +59,6 @@ ActiveRecord::Schema.define(:version => 20121214161734) do
   add_index "categories", ["parent_id"], :name => "index_categories_on_parent_id"
   add_index "categories", ["permalink"], :name => "index_categories_on_permalink", :unique => true
   add_index "categories", ["uid"], :name => "index_categories_on_uid", :unique => true
-
-  create_table "categories_brands", :id => false, :force => true do |t|
-    t.integer "category_id"
-    t.integer "brand_id"
-  end
-
-  add_index "categories_brands", ["category_id", "brand_id"], :name => "index_categories_brands_on_category_id_and_brand_id"
 
   create_table "categories_companies", :id => false, :force => true do |t|
     t.integer "category_id"

@@ -1,38 +1,20 @@
 -action = action || controller.action_name
+-topic = @topic 
+-parent = parent || @topic.company
 
--topic = @topic || parent
--photo = @photo || Photo.create()
-
--if @company             
-  .page-header
-    %h1
-      =link_to topics_path do
-        %i.icon-list-alt
-      -if action == "edit" 
-        = "Edit "           
-        = link_to topic.name, topic 
-        = render :partial=>'shared/edit_menu', :locals=>{:entity=>topic}
-      -elsif action == "new"
-        = "New "
-      -else
-        =link_to @company.name, @company
-        = topic.name
-        %span.small-gray
-          =link_to "edit", edit_topic_path(topic)
-          %a.btn.btn-mini{"data-toggle" => "modal", :href => "#edit-topic"} edit2
--else                          
-  .page-header
-    %h1 
-      =link_to topics_path do
-        %i.icon-list-alt
-      -if action == "edit" 
-        = "Edit "           
-        =link_to topic.name, topic_path(topic) 
-        = render :partial=>'shared/edit_menu', :locals=>{:entity=>topic}  
-      -elsif action == "new"
-        = "New "
-      -else
-        = topic.name
-        %span.small-gray
-          =link_to "edit", edit_topic_path(topic) 
-          %a.btn.btn-mini{"data-toggle" => "modal", :href => "#edit-topic"} edit2
+.page-header
+  %h1
+    =link_to topics_path do
+      %i.icon-list-alt
+    -if action == "edit" 
+      = "Edit "           
+      = link_to topic.name, topic 
+      = render :partial=>'shared/edit_menu', :locals=>{:entity=>topic}
+    -elsif action == "new"
+      = "New "
+    -else
+      =link_to parent.name, parent if parent
+      = topic.name
+      %span.small-gray
+        =link_to "edit", edit_topic_path(topic)
+        %a.btn.btn-mini{"data-toggle" => "modal", :href => "#edit-topic"} edit2

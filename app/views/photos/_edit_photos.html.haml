@@ -1,5 +1,4 @@
 -parent = parent || @company || @topic
 -photos = @photos || parent.photos
 
-= render 'photos/upload_form', :locals=>{:parent=>parent, :photo=>photos.first}
-= render 'photos/thumbnails', :locals=>{:parent=>parent, :photos=>photos}
+= render 'photos/upload_form', :locals=>{:parent=>parent}

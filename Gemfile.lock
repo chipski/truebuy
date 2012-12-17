@@ -338,6 +338,7 @@ DEPENDENCIES
   launchy (>= 2.1.2)
   less-rails
   letter_opener
+  mime-types
   mocha
   mysql (= 2.8.1)
   nested_form!

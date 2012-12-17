@@ -6,7 +6,7 @@
         %li.card{:id => "photo_#{pic.id}"}
           .thumbnail
             %a{:href => pic.image.url, :rel => "lightbox-photos", :title => pic.blurb}
-              %img{:alt => "", :src => pic.image.thumb.url}
+              %img{:alt => "", :src => pic.image.small.url}
             .caption
               .card_edit.pull-right
                 =render :partial=>'photos/edit_menu', :locals=>{:entity=>pic}

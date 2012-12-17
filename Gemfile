@@ -81,6 +81,7 @@ gem "hominid", ">= 3.0.5"
 #gem 'rack-cache', :require => 'rack/cache'
 #gem 'dragonfly', '~>0.9.12'     #https://github.com/markevans/dragonfly
 #gem 'dragonfly-rails', :require => 'dragonfly_rails', :git => 'https://github.com/ritxi/dragonfly-rails.git'
+gem "mime-types"
 gem 'carrierwave'    
 gem "jquery-fileupload-rails"
 gem 'rmagick'
