@@ -11,7 +11,10 @@
           = f.error_notification
           .form-inputs.tight
             = f.text_field :name, :class => 'text_field' 
-            = f.association :company
+            .left= f.association :company, :prompt=>"Choose a Company"
+            .right= f.association :brand, :prompt=>"Choose a Brand"
+            .clearfix
+            = f.association :categories
             = f.text_area :blurb, :class => 'wysihtml5', :style=>"height:100px;" 
             = f.text_area :body, :class => 'wysihtml5', :style=>"height:200px;"
             -if params[:detailed]

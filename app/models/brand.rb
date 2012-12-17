@@ -4,7 +4,7 @@ class Brand < ActiveRecord::Base
   has_and_belongs_to_many :categories, :class_name => "Category"  
   has_many :photos, :as => :parent, :class_name => "Photo"     
   
-  attr_accessible :blurb, :body, :cached_tag_list, :cover, :keywords, :name, :permalink, :state, :type, :company_id
+  attr_accessible :blurb, :body, :cached_tag_list, :cover, :keywords, :name, :permalink, :state, :category_ids, :company_id
   
   after_save :update_permalink    
   default_scope order(:updated_at) 
