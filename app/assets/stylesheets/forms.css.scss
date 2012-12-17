@@ -75,6 +75,18 @@ form {
                 width: 456px; 
                 margin-bottom: 10px;
             }  
+        }
+        .left {
+            width: 240px;
+            float: left;
+            select { width: auto;}
+            label { text-align: right; margin: 0 4px; width: auto;}
+        }
+        .right {
+            width: 230px;
+            float: left;
+            select { width: auto;}
+            label { text-align: right; margin: 0 4px;}
         }  
     }  
 }
