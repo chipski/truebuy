@@ -11,9 +11,10 @@ class Photo < ActiveRecord::Base
   mount_uploader :image, ImageUploader        
   
   after_save :update_permalink
+  after_save :update_order
   #after_update :crop_image
   
-  default_scope order(:updated_at) 
+  default_scope order(:slide_order) 
   scope :active, lambda {|current_user| where(:state=>:active)}     
   scope :inactive, lambda {|current_user| where(:state=>[:inactive])}      
   scope :initial, where(:state=>[:new, nil])  
@@ -55,7 +56,9 @@ class Photo < ActiveRecord::Base
     end
     UtilityIds.update_permalink2(self) 
   end
-  
+  def update_order
+    
+  end
 end
 
 #create_table "photos", :force => true do |t|

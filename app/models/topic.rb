@@ -6,7 +6,7 @@ class Topic < ActiveRecord::Base
   attr_accessible :blurb, :body, :cover, :keywords, :name, :permalink, :state, :category_ids, :company_id, :brand_id
   
   after_save :update_permalink    
-  default_scope order(:updated_at) 
+  default_scope order(:slide_order) 
   #scope :active, lambda {|current_user| where(:state=>:active)}     
   #scope :initial, where(:state=>["new","", nil])
   def self.select_active

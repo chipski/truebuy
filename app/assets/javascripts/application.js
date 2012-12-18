@@ -91,6 +91,23 @@ $('document').ready(function() {
   $('.wysihtml5').each(function(i, elem) {
       $(elem).wysihtml5();
   });
-    
+  $('#full-width-slider').royalSlider({
+      arrowsNav: true,
+      loop: false,
+      keyboardNavEnabled: true,
+      controlsInside: false,
+      imageScaleMode: 'fill',
+      arrowsNavAutoHide: false,
+      autoScaleSlider: true, 
+      autoScaleSliderWidth: 960,     
+      autoScaleSliderHeight: 350,
+      controlNavigation: 'bullets',
+      thumbsFitInViewport: false,
+      navigateByClick: true,
+      startSlideId: 0,
+      autoPlay: false,
+      transitionType:'move',
+      globalCaption: true
+    });  
 })
 

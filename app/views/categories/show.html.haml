@@ -5,7 +5,7 @@
     %h1
       = @category.name
       -if is_admin?
-        .small-gray== link_to 'edit', edit_category_path(@category)
+        %span.small-gray= link_to 'edit', edit_category_path(@category)
   .blurb=@category.blurb ? @category.blurb.html_safe : ""
 
 .hero

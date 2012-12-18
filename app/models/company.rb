@@ -8,7 +8,7 @@ class Company < ActiveRecord::Base
    
   after_save :update_permalink  
   
-  default_scope order(:updated_at) 
+  default_scope order(:slide_order) 
   #scope :active, lambda {|current_user| where(:state=>:active)}     
   #scope :inactive, lambda {|current_user| where(:state=>[:inactive])}      
   #scope :initial, where(:state=>[:new, nil])
@@ -79,6 +79,10 @@ class Company < ActiveRecord::Base
     #self.children.map{|c| c.delete_children}
   end
 
+  def slider_photos
+    self.cover ? (self.photos - [Photo.find(self.cover)]) : self.photos
+  end
+  
   def cover_url(size="small")
     @cover_url ||= begin
       UtilityIds.cover_url(self, size="small")
