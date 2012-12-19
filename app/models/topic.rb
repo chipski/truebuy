@@ -70,6 +70,9 @@ class Topic < ActiveRecord::Base
     #self.children.map{|c| c.delete_children}
   end
   
+  def slider_photos
+    self.cover ? (self.photos - [Photo.find(self.cover)]) : self.photos
+  end
   
   def cover_url(size="small")
     @cover_url ||= begin

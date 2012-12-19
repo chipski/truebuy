@@ -1,20 +1,23 @@
--#.sliderContainer.fullWidth.clearfix
 #full-width-slider.royalSlider.heroSlider.rsMinW
-  .rsContent
-    .rsImg=image_tag(@company.cover_url("medium"), :class=>"rsImg")
-    .infoBlock.infoBlockLeftBlack.rsABlock{:data=>{:fade=>{:effect=>10}, :move=>{:offset=>10, :effect=>"bottom"}, :speed=>"200"}} 
-      %h1=@company.name
-    .infoBlock.rsAbsoluteEl.rsNoDrag{:data=>{:fade=>{:effect=>10}, :move=>{:offset=>10, :effect=>"bottom"}, :speed=>"200"}}
-      .blurb=@company.blurb ? @company.blurb.html_safe : ""
-
   -@company.slider_photos.each do |photo|
     .rsContent
       =image_tag(photo.image.medium.url, :class=>"rsImg")
-      .infoBlock.rsAbsoluteEl.rsNoDrag{:data=>{:fade=>{:effect=>10}, :move=>{:offset=>10, :effect=>"bottom"}, :speed=>"200"}}
+      .infoBlock.rsAbsoluteEl.infoBlockLeftBlack.rsNoDrag{:data=>{:fade=>{:effect=>10}, :move=>{:offset=>10, :effect=>"bottom"}, :speed=>"200"}}
         %h1=@company.name
       .infoBlock.infoBlockLeftBlack.rsABlock.rsNoDrag{:data=>{:fade=>{:effect=>10}, :move=>{:offset=>10, :effect=>"bottom"}, :speed=>"200"}}
         %h1= photo.name
-        
+      .infoBlock.rsAbsoluteEl.rsNoDrag{:data=>{:fade=>{:effect=>10}, :move=>{:offset=>10, :effect=>"bottom"}, :speed=>"200"}}
+        .blurb=@company.blurb ? @company.blurb.html_safe : ""
+
+  -@company.topics.map{|t| t.slider_photos}.flatten.each do |photo|
+    .rsContent
+      =image_tag(photo.image.medium.url, :class=>"rsImg")
+      .infoBlock.rsAbsoluteEl.infoBlockLeftBlack.rsNoDrag{:data=>{:fade=>{:effect=>10}, :move=>{:offset=>10, :effect=>"bottom"}, :speed=>"200"}}
+        %h1=@company.name
+      .infoBlock.infoBlockLeftBlack.rsABlock.rsNoDrag{:data=>{:fade=>{:effect=>10}, :move=>{:offset=>10, :effect=>"bottom"}, :speed=>"200"}}
+        %h1= photo.name
+      .infoBlock.rsAbsoluteEl.rsNoDrag{:data=>{:fade=>{:effect=>10}, :move=>{:offset=>10, :effect=>"bottom"}, :speed=>"200"}}
+        .blurb=@company.blurb ? @company.blurb.html_safe : ""
           
 .hero
   =@company.body ? @company.body.html_safe : "" 

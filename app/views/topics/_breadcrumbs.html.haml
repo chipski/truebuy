@@ -17,4 +17,5 @@
       = topic.name
       %span.small-gray
         =link_to "edit", edit_topic_path(topic)
-        %a.btn.btn-mini{"data-toggle" => "modal", :href => "#edit-topic"} edit2
+        -if false
+          %a.btn.btn-mini{"data-toggle" => "modal", :href => "#edit-topic"} edit2

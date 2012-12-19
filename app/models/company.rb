@@ -7,6 +7,7 @@ class Company < ActiveRecord::Base
   attr_accessible :blurb, :body, :cover, :duns, :keywords, :name, :permalink, :state, :type, :photo_id, :url, :url2      
    
   after_save :update_permalink  
+  after_save :update_order
   
   default_scope order(:slide_order) 
   #scope :active, lambda {|current_user| where(:state=>:active)}     
@@ -94,6 +95,9 @@ class Company < ActiveRecord::Base
     permalink
   end
   
+  def update_order(children_names=["topics"])
+    UtilityIds.update_order(self, children_names) 
+  end
   def update_permalink
     UtilityIds.update_permalink(self, self.name) 
   end

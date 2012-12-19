@@ -5,12 +5,13 @@
       - parent.photos.each do |pic|
         %li.card{:id => "photo_#{pic.id}"}
           .thumbnail
-            %a{:href => pic.image.url, :rel => "lightbox-photos", :title => pic.blurb}
+            %a{:href => pic.image.url, :title => pic.blurb}
               %img{:alt => "", :src => pic.image.small.url}
             .caption
-              .card_edit.pull-right
-                =render :partial=>'photos/edit_menu', :locals=>{:entity=>pic}
-              %p{:style => "text-align: center;"}
+              -if is_admin? && false
+                .card_edit.pull-right
+                  =render :partial=>'photos/edit_menu', :locals=>{:entity=>pic}
+              
                 
 
 
