@@ -15,6 +15,14 @@ class Category < ActiveRecord::Base
     all.collect{ |t| [t.name, t.id]}
   end
   
+  def slider_photos
+    photos = self.cover ? (self.photos - [Photo.find(self.cover)]) : self.photos
+    topic_photos = self.topics.map{|t| t.slider_photos}.flatten
+    brand_photos = self.brands.map{|t| t.slider_photos}.flatten
+    company_photos = self.companies.map{|t| t.slider_photos}.flatten
+    photos + topic_photos + brand_photos + company_photos
+  end
+  
   def cover_url(size="small")
     @cover_url ||= begin
       UtilityIds.cover_url(self, size="small")

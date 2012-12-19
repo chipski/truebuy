@@ -1,14 +1,20 @@
-%input#categoryID{:type => "hidden", :value => @category.id}
-.img-bar
-  =image_tag(@category.cover_url)
-  .title
-    %h1
-      = @category.name
-      -if is_admin?
-        %span.small-gray= link_to 'edit', edit_category_path(@category)
-  .blurb=@category.blurb ? @category.blurb.html_safe : ""
+#full-width-slider.royalSlider.heroSlider.rsMinW
+  -@category.slider_photos.each do |photo|
+    .rsContent
+      =image_tag(photo.image.medium.url, :class=>"rsImg")
+      .infoBlock.rsAbsoluteEl.infoBlockLeftBlack.rsNoDrag{:data=>{:fade=>{:effect=>10}, :move=>{:offset=>10, :effect=>"bottom"}, :speed=>"200"}}
+        %h1=@category.name
+      .infoBlock.infoBlockLeftBlack.rsABlock.rsNoDrag{:data=>{:fade=>{:effect=>10}, :move=>{:offset=>10, :effect=>"bottom"}, :speed=>"200"}}
+        %h1= photo.name
+      .infoBlock.rsAbsoluteEl.rsNoDrag{:data=>{:fade=>{:effect=>10}, :move=>{:offset=>10, :effect=>"bottom"}, :speed=>"200"}}
+        .blurb
+          =@category.blurb ? @category.blurb.html_safe : ""
+          =photo.blurb ? photo.blurb.html_safe : ""
 
+%input#categoryID{:type => "hidden", :value => @category.id}
 .hero
+  -if is_admin?
+    %span.small-gray= link_to 'edit', edit_category_path(@category)
   =@category.body ? @category.body.html_safe : "" 
 .row#masonry
   %input#categoryID{:type => "hidden", :value => @category.id}

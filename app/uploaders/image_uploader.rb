@@ -61,7 +61,8 @@ class ImageUploader < CarrierWave::Uploader::Base
   # nelow provided by the MimeType gem and helps with fog support
   process :set_content_type
   
-  resize_to_limit(2048, 1536)
+  #resize_to_limit(2048, 1536)
+  resize_to_limit(1024, 768)
   
   version :large do
     process :crop
@@ -69,7 +70,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   version :medium do
     process :crop
-    resize_to_limit(1024, 768)
+    resize_to_fill(768, 576)
   end
 
   version :preview do
