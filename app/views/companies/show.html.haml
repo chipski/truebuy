@@ -21,16 +21,16 @@
           
 .hero
   =@company.body ? @company.body.html_safe : "" 
-.row#masonry
-  %input#parentID{:type => "hidden", :value => @company.id}
+.row
+  .royalSlider.contentSlider.rsDefault#content-slider-1
+    %input#parentID{:type => "hidden", :value => @company.id}
     -@company.topics.each do |topic|
-      .card
-        .img-box
-          =link_to image_tag(topic.cover_url), topic_path(topic)
-        .card-info
-          -if is_admin?
-            .card_edit
-              =render :partial=>'shared/edit_menu', :locals=>{:entity=>topic}
-          %h4{:style=>"text-align: center;"}
-            =topic.name  
-      
+      %div
+        %h3=link_to topic.name, topic_path(topic)
+        -if is_admin?
+          .card_edit=render :partial=>'shared/edit_menu', :locals=>{:entity=>topic}
+        %p=topic.blurb
+        %p=topic.body
+        .rsTmb=topic.name
+        
+ 

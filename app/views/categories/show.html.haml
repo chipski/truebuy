@@ -18,18 +18,24 @@
   =@category.body ? @category.body.html_safe : "" 
 .row#masonry
   %input#categoryID{:type => "hidden", :value => @category.id}
-  - @category.companies.each do |company|  
-    .card#brand
-      .thumbnail=link_to image_tag(company.cover_url("small")), company_path(company)
-      %h4=company.name 
- 
-  - @category.brands.each do |brand|  
-    .card#brand
-      .thumbnail=link_to image_tag(brand.cover_url("small")), brand_path(brand)
-      %h4=brand.name 
-
+  - @category.slider_photos.each_with_index do |photo, index|  
+    .card.thumb
+      .thumbnail=link_to image_tag(photo.image.thumb.url, :class=>"rsImg"), "#image-#{index}"
+      %h4=photo.name 
+  
   - @category.topics.each do |topic|  
     .card#brand
       .thumbnail=link_to image_tag(topic.cover_url("small")), topic_path(topic)
       %h4=topic.name 
+
+  - @category.companies.each do |company|  
+    .card.company
+      .thumbnail=link_to image_tag(company.cover_url("small")), company_path(company)
+      %h4=company.name 
+ 
+  - @category.brands.each do |brand|  
+    .card.brand
+      .thumbnail=link_to image_tag(brand.cover_url("small")), brand_path(brand)
+      %h4=brand.name 
+
            

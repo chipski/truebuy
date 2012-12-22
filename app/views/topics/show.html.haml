@@ -12,6 +12,8 @@
         .blurb=@topic.blurb ? @topic.blurb.html_safe : ""
 .row
   =#render :partial=>'topics/breadcrumbs'
+  .card_edit
+    =render :partial=>'shared/edit_menu', :locals=>{:entity=>@topic}
   =#render 'topics/edit_modal', :locals=>{:parent=>@topic, :photo=>Photo.new}
   %input#parentID{:type => "hidden", :value => @topic.id}
   %p= @topic.blurb.html_safe if @topic.blurb

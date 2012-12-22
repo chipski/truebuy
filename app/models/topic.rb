@@ -78,7 +78,7 @@ class Topic < ActiveRecord::Base
     @cover_url ||= begin
       UtilityIds.cover_url(self, size="small")
     end
-    @cover_url ? @cover_url : "default/fence_hop.jpeg"
+    @cover_url ? @cover_url : "/NoImageAvailable.jpg"
   end
   
   def to_param

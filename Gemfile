@@ -64,7 +64,7 @@ gem 'aasm'
 #    
 #gem 'acts-as-taggable-on', '~>2.3.1' 
 gem "gritter"
-#gem 'masonry-rails'
+gem 'masonry-rails'
 
 gem 'google-analytics-rails'
 gem "google_visualr", ">= 2.1.2"  

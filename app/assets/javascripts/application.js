@@ -54,8 +54,20 @@
 //= require slimbox2         
 //= require photo_local
 
-//  require jquery.royalslider.min.js
 //= require jquery.royalslider.custom.min.js
+// require jquery.royalslider.min.js
+//= require /modules/jquery.rs.tabs.min.js
+//= require /modules/jquery.rs.thumbnails.min.js
+//= require /modules/jquery.rs.hover.min.js
+//= require /modules/jquery.rs.deeplinking.min.js
+//= require /modules/jquery.rs.auto-height.min.js
+//= require /modules/jquery.rs.bullets.min.js
+//= require /modules/jquery.rs.nav-auto-hide.min.js
+//= require /modules/jquery.rs.global-caption.min.js
+//= require /modules/jquery.rs.hover-nav.min.js
+//= require /modules/jquery.rs.active-class.min.js
+//= require /modules/jquery.rs.animated-blocks.min.js
+
 //  require underscore
 //  require jquery.remotipart
 //  require ember
@@ -108,6 +120,19 @@ $('document').ready(function() {
       autoPlay: false,
       transitionType:'move',
       globalCaption: true
-    });  
+  });  
+  $('#content-slider-1').royalSlider({
+      autoHeight: true,
+      arrowsNav: false,
+      fadeinLoadedSlide: false,
+      controlNavigationSpacing: 0,
+      controlNavigation: 'tabs',
+      imageScaleMode: 'none',
+      imageAlignCenter:false,
+      loop: false,
+      loopRewind: true,
+      numImagesToPreload: 6,
+      keyboardNavEnabled: true
+  });
 })
 

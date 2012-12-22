@@ -12,6 +12,12 @@ $color: #8c7e7e;
   position: relative;
   margin: 0 auto;  
   margin-bottom: 78px;
+  .thumb {
+      width: 84px;
+      min-height: 100px;
+  }
+  .company {height: 380px;}
+  
 } 
 .tab-pane {
     margin: 0 4px;
@@ -79,7 +85,7 @@ $color: #8c7e7e;
     line-height: 20px;
     margin: 0px;
     padding: 8px;
-   }
+  }
   h2 {
     padding-top: 5px;
   }
