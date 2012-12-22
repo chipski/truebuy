@@ -311,7 +311,7 @@ DEPENDENCIES
   bcrypt-ruby (~> 3.0.0)
   bootstrap-sass (>= 2.1.1.0)
   bootstrap-wysihtml5-rails
-  bundler
+  bundler (> 1.2)
   cancan (>= 1.6.8)
   capistrano
   capybara (>= 1.1.3)

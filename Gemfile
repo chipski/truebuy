@@ -1,10 +1,11 @@
 source 'https://rubygems.org'
+ruby "1.9.3"
 
 gem "i18n"
 gem "psych", ">=1.3"          
 gem 'rails', '3.2.8'
  
-gem 'bundler'
+gem 'bundler', ">1.2"
 gem 'mysql', '2.8.1' 
 gem 'pg', :group => :production  
 #gem 'mysql2'
