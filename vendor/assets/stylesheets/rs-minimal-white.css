@@ -39,7 +39,7 @@
 	display: block;
 	cursor: pointer;
 	z-index: 21;
-  }
+}
 
 
 .rsMinW .rsArrowLeft { left: 10%; top: 34%; }

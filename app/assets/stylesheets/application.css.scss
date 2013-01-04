@@ -19,10 +19,10 @@
  * require 'masonry/infinitescroll'
  * require 'masonry/right-to-left'
  * require 'masonry/transitions' 
- *= require dataTables/jquery.dataTables.bootstrap  
- * require rs-default-inverted
- *= require rs-minimal-white
- *= require royalslider
+ *= require 'dataTables/jquery.dataTables.bootstrap'  
+ * require 'rs-default'
+ *= require 'rs-minimal-white'
+ *= require 'royalslider'
 
  *= require_tree .
 */
