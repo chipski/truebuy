@@ -309,7 +309,7 @@ DEPENDENCIES
   aasm
   airbrake
   bcrypt-ruby (~> 3.0.0)
-  bootstrap-sass (>= 2.1.1.0)
+  bootstrap-sass
   bootstrap-wysihtml5-rails
   bundler (> 1.2)
   cancan (>= 1.6.8)
@@ -338,8 +338,10 @@ DEPENDENCIES
   jquery-fileupload-rails
   jquery-rails
   launchy (>= 2.1.2)
+  less
   less-rails
   letter_opener
+  libv8
   masonry-rails
   mime-types
   mocha
@@ -363,7 +365,7 @@ DEPENDENCIES
   sexp_processor (~> 4.1)
   simple_form (>= 2.0.4)
   squeel
-  therubyracer
+  therubyracer (= 0.9.10)
   thin
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)

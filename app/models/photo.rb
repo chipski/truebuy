@@ -75,6 +75,7 @@ end
 #  t.string   "image_uid"
 #  t.string   "image_name"
 #  t.integer  "topic_id"
+#  t.integer  "slide_order",     :default => 0
 #  t.datetime "created_at", :null => false
 #  t.datetime "updated_at", :null => false
 #end

@@ -14,7 +14,7 @@ gem 'squeel'  #http://railscasts.com/episodes/354-squeel?view=asciicast
 gem "ransack"  #:git => "git://github.com/ernie/ransack.git" # better search gem
 
 gem 'rack'  #, '~> 1.2.1'
-gem "rake" #, "10.0.1"     
+gem "rake" #, "10.0.2"     
 gem 'capistrano'
 #gem "chronic"
 gem "airbrake"
@@ -28,9 +28,12 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 #gem 'omniauth-dropbox'
 
 gem "haml", ">= 3.1.7"             
-gem "less-rails"       
+
+gem "less"
+gem 'less-rails'
+       
 gem 'sass-rails',   '~> 3.2.3'
-gem "bootstrap-sass", ">= 2.1.1.0" 
+gem "bootstrap-sass"   # should be at 2.2.2.0 now
 # need to choose!  use above two or below two gems, not both or a mix
 # http://rubysource.com/twitter-bootstrap-less-and-sass-understanding-your-options-for-rails-3-1/
 #gem "less-rails-bootstrap"    #this can be switched with gem below but css & js load files will need rework
@@ -39,6 +42,10 @@ gem "twitter-bootstrap-rails"
 
 group :assets do
   gem 'coffee-rails', '~> 3.2.1' 
+  
+  gem "libv8"
+  gem 'therubyracer', '0.9.10'
+  
   gem "font-awesome-sass-rails"
   gem 'uglifier', '>= 1.0.3'
 end
@@ -107,7 +114,6 @@ end
 
 group :development do
   #gem 'app_drone' 
-  gem "therubyracer"
   gem "haml-rails", ">= 0.3.5"   
   
   

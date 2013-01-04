@@ -1,10 +1,10 @@
 class AddSlideOrder < ActiveRecord::Migration
   def up
-    add_column :companies, :slide_order, :integer
-    add_column :brands, :slide_order, :integer
-    add_column :categories, :slide_order, :integer
-    add_column :topics, :slide_order, :integer
-    add_column :photos, :slide_order, :integer
+    add_column :companies, :slide_order, :integer, :default=>0
+    add_column :brands, :slide_order, :integer, :default=>0
+    add_column :categories, :slide_order, :integer, :default=>0
+    add_column :topics, :slide_order, :integer, :default=>0
+    add_column :photos, :slide_order, :integer, :default=>0
   end
 
   def down

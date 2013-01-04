@@ -118,6 +118,7 @@ end
 #  t.string   "url"
 #  t.string   "url2"
 #  t.integer  "cover"
+#  t.integer  "slide_order",     :default => 0
 #  t.datetime "created_at", :null => false
 #  t.datetime "updated_at", :null => false
 #end

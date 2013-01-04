@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(:version => 20121217233013) do
     t.string   "cached_tag_list"
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
-    t.integer  "slide_order"
+    t.integer  "slide_order",     :default => 0
   end
 
   add_index "brands", ["company_id"], :name => "index_brands_on_company_id"
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(:version => 20121217233013) do
     t.string   "cached_tag_list"
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
-    t.integer  "slide_order"
+    t.integer  "slide_order",     :default => 0
   end
 
   add_index "categories", ["parent_id"], :name => "index_categories_on_parent_id"
@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(:version => 20121217233013) do
     t.integer  "cover"
     t.datetime "created_at",                     :null => false
     t.datetime "updated_at",                     :null => false
-    t.integer  "slide_order"
+    t.integer  "slide_order", :default => 0
   end
 
   add_index "companies", ["permalink"], :name => "index_companies_on_permalink", :unique => true
@@ -114,7 +114,7 @@ ActiveRecord::Schema.define(:version => 20121217233013) do
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
     t.string   "cached_tag_list"
-    t.integer  "slide_order"
+    t.integer  "slide_order",     :default => 0
   end
 
   add_index "photos", ["parent_id"], :name => "index_photos_on_parent_id"
@@ -148,7 +148,7 @@ ActiveRecord::Schema.define(:version => 20121217233013) do
     t.integer  "company_id"
     t.integer  "brand_id"
     t.string   "cached_tag_list"
-    t.integer  "slide_order"
+    t.integer  "slide_order",     :default => 0
   end
 
   add_index "topics", ["company_id"], :name => "index_topics_on_company_id"

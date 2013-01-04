@@ -51,6 +51,7 @@ end
 #  t.string   "state",           :default => "new"
 #  t.string   "type"
 #  t.integer  "cover"
+#  t.integer  "slide_order",     :default => 0
 #  t.string   "cached_tag_list"
 #  t.datetime "created_at",                         :null => false
 #  t.datetime "updated_at",                         :null => false

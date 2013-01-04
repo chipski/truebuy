@@ -5,7 +5,9 @@ class Topic < ActiveRecord::Base
   has_many :photos, :as => :parent, :class_name => "Photo"  
   attr_accessible :blurb, :body, :cover, :keywords, :name, :permalink, :state, :category_ids, :company_id, :brand_id
   
-  after_save :update_permalink    
+  after_save :update_permalink   
+  after_save :update_order   
+   
   default_scope order(:slide_order) 
   #scope :active, lambda {|current_user| where(:state=>:active)}     
   #scope :initial, where(:state=>["new","", nil])
@@ -85,6 +87,9 @@ class Topic < ActiveRecord::Base
     permalink
   end
   
+  def update_order(children_names=["photos"])
+    UtilityIds.update_order(self, children_names) 
+  end
   def update_permalink
     UtilityIds.update_permalink(self, self.name) 
   end
@@ -103,6 +108,7 @@ end
 #  t.string   "state"
 #  t.string   "type"
 #  t.string   "cover"
+# t.integer  "slide_order",     :default => 0
 #  t.datetime "created_at", :null => false
 #  t.datetime "updated_at", :null => false
 #end
