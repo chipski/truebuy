@@ -1,25 +1,25 @@
 Reviews::Application.routes.draw do
 
   
-  resources :categories do
+  resources :categories, :path => 'cat' do
     resources :photos
     resources :brands
     resources :companies
   end
-  resources :companies do
+  resources :companies, :path => 'co' do
     resources :photos
     member do
       put :update_state
     end
   end
-  resources :brands do
+  resources :brands, :path => 'br' do
     resources :photos
     member do
       put :update_state
     end
   end
   #resources :topics
-  resources :topics do
+  resources :topics, :path => 'to' do
     resources :photos
     collection do
       post :create

@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   
-  before_filter :authenticate_user!, :except => [:error, :public, :thankyou]   
+  #before_filter :authenticate_user!, :except => [:error, :public, :thankyou]   
   after_filter :sniff_browser
   
   rescue_from CanCan::AccessDenied do |exception|

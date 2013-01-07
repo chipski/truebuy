@@ -42,8 +42,8 @@
 }
 
 
-.rsMinW .rsArrowLeft { left: 10%; top: 34%; }
-.rsMinW .rsArrowRight { right: 10%; top: 34%; }
+.rsMinW .rsArrowLeft { left: 10%; bottom: 10%; }
+.rsMinW .rsArrowRight { right: 10%; bottom: 10%; }
 
 .rsMinW .rsArrowIcn {		
 	width: 24px;
@@ -68,7 +68,7 @@
 .rsMinW.rsVer .rsArrowLeft .rsArrowIcn { background-position: -96px -32px; }
 .rsMinW.rsVer .rsArrowRight .rsArrowIcn { background-position: -96px -64px; }
 
-.rsMinW .rsArrowDisabled .rsArrowIcn { opacity: .3; }
+.rsMinW .rsArrowDisabled .rsArrowIcn { opacity: .6;}
 
 
 /***************
@@ -79,14 +79,11 @@
 
 .rsMinW .rsBullets {
 	position: absolute;
-	background: #000;
 	background: rgba(0,0,0,0.35);
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
 	padding: 2px 2px 4px;
 	z-index: 35;
-	top: 408px;
-	right: 38%;
 	width: auto;
 	height: auto;
 	text-align: left;

@@ -19,6 +19,10 @@ class Company < ActiveRecord::Base
     self.all.collect{ |t| [" #{t.name[0..30]}", t.id]}
   end
   
+  def self.default_home
+    @default_home ||= Company.where(:state=>"active", :permalink=>"reviews").first || Company.where(:state=>"active").first
+  end
+  
   # State machine, should be shared in mixin but error now
   include AASM 
   #include LifeCycleState
@@ -81,7 +85,8 @@ class Company < ActiveRecord::Base
   end
 
   def slider_photos
-    self.cover ? (self.photos - [Photo.find(self.cover)]) : self.photos
+    #self.cover ? (self.photos - [Photo.find(self.cover)]) : self.photos
+    self.photos
   end
   
   def cover_url(size="small")

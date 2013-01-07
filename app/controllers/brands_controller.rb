@@ -1,6 +1,8 @@
 class BrandsController < InheritedResources::Base
   defaults :resource_class => Brand, :collection_name => 'brands', :instance_name => 'brand'
   
+  before_filter :authenticate_user!, :except => [:error, :show, :index]  
+  
   def update_state
     resource
     return_to = brand_path(@brand)

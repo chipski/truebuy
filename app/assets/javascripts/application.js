@@ -105,12 +105,12 @@ $('document').ready(function() {
   });
   $('#full-width-slider').royalSlider({
       arrowsNav: true,
+      arrowsNavAutoHide: true,
       loop: true,
       keyboardNavEnabled: true,
       controlsInside: false,
       imageScaleMode: 'fill',
-      arrowsNavAutoHide: false,
-      autoScaleSlider: true, 
+      autoScaleSlider: false, 
       autoScaleSliderWidth: 960,     
       autoScaleSliderHeight: 350,
       controlNavigation: 'bullets',
@@ -118,7 +118,8 @@ $('document').ready(function() {
       navigateByClick: true,
       startSlideId: 0,
       autoPlay: false,
-      transitionType:'move',
+      transitionType:'fade',
+      controlsInside: false,
       globalCaption: true
   });  
   $('#content-slider-1').royalSlider({

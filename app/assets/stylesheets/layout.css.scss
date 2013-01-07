@@ -42,55 +42,7 @@ body {
      clear: both; 
      padding-bottom: 2px
   }
-  .img-bar {
-    margin: -20px 0 0;
-    padding: 0px;
-    width: 100%;
-    height: 420px;
-    overflow: hidden;
-    img {
-      width: auto;
-      margin: 0 auto;
-      width: 100%;
-    }
-    .title {
-      position: absolute;
-      top: 100px;
-      left: 10%;
-      padding: 0 16px;
-      background-color: rgba(230,230,230,.78);
-      background-color: rgba(230,230,230,.78);
-      -webkit-border-radius: 6px 6px 6px 6px;
-      -moz-border-radius: 6px 6px 6px 6px;
-      border-radius: 6px 6px 6px 6px;
-      -webkit-box-shadow: 0 8px 12px rgba(0,0,0,.35);
-      -moz-box-shadow: 0 8px 12px rgba(0,0,0,.35);
-      box-shadow: 0 8px 12px rgba(0,0,0,.35);
-    }
-    .blurb {
-      position: absolute;
-      top: 200px;
-      left: 30%;
-      padding: 0 16px;
-      background-color: rgba(230,230,230,.78);
-      -webkit-border-radius: 6px 6px 6px 6px;
-      -moz-border-radius: 6px 6px 6px 6px;
-      border-radius: 6px 6px 6px 6px;
-      -webkit-box-shadow: 0 8px 12px rgba(0,0,0,.35);
-      -moz-box-shadow: 0 8px 12px rgba(0,0,0,.35);
-      box-shadow: 0 8px 12px rgba(0,0,0,.35);
-    }
-    #call-to-action {
-      text-align: center; 
-      position: absolute;
-      top: 360px;
-      right: 25%;
-      .btn-primary {
-        padding: 12px 30px;
-        a {font-size: 120%}
-      }
-    }
-  }
+  
 }
 
 

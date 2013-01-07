@@ -1,6 +1,8 @@
 class CategoriesController < InheritedResources::Base
   defaults :resource_class => Category, :collection_name => 'categories', :instance_name => 'category'
   
+  before_filter :authenticate_user!, :except => [:error, :show, :index]  
+  
   def update_state
     resource
     return_to = category_path(@category)

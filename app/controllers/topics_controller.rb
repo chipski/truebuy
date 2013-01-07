@@ -1,6 +1,7 @@
 class TopicsController < InheritedResources::Base
   defaults :resource_class => Topic, :collection_name => 'topics', :instance_name => 'topic'
   #respond_to :html, :json
+  before_filter :authenticate_user!, :except => [:error, :show, :index]   
   
   def show
     resource

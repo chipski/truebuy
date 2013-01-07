@@ -2,6 +2,7 @@ class PhotosController < InheritedResources::Base
   defaults :resource_class => Photo, :collection_name => 'photos', :instance_name => 'photo'
   respond_to :html, :json   
   
+  before_filter :authenticate_user!, :except => [:error, :show, :index]  
 
   def index
     @photos = @parent ? @parent.photos : Photo.all

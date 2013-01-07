@@ -2,6 +2,7 @@ class CompaniesController < InheritedResources::Base
   defaults :resource_class => Company, :collection_name => 'companies', :instance_name => 'company'
   respond_to :html, :json
   
+  before_filter :authenticate_user!, :except => [:error, :show, :index]  
   
   def show
     resource

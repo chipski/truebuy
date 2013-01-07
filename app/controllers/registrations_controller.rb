@@ -1,7 +1,8 @@
 class RegistrationsController < Devise::RegistrationsController
 
   def new
-    @company = Company.active.first
+    #@company = Company.default_home
+    #render "companies/show"
   end
   
   # ovverride #create to respond to AJAX with a partial
