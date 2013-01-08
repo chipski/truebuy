@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121217233013) do
+ActiveRecord::Schema.define(:version => 20130108030312) do
 
   create_table "brands", :force => true do |t|
     t.integer  "company_id"
@@ -69,6 +69,13 @@ ActiveRecord::Schema.define(:version => 20121217233013) do
 
   add_index "categories_companies", ["category_id", "company_id"], :name => "index_categories_companies_on_category_id_and_company_id"
 
+  create_table "categories_products", :id => false, :force => true do |t|
+    t.integer "category_id"
+    t.integer "product_id"
+  end
+
+  add_index "categories_products", ["category_id", "product_id"], :name => "index_categories_products_on_category_id_and_product_id"
+
   create_table "categories_topics", :id => false, :force => true do |t|
     t.integer "category_id"
     t.integer "topic_id"
@@ -121,6 +128,33 @@ ActiveRecord::Schema.define(:version => 20121217233013) do
   add_index "photos", ["parent_type", "parent_id"], :name => "index_photos_on_parent_type_and_parent_id"
   add_index "photos", ["permalink"], :name => "index_photos_on_permalink", :unique => true
   add_index "photos", ["uid"], :name => "index_photos_on_uid", :unique => true
+
+  create_table "products", :force => true do |t|
+    t.integer  "brand_id"
+    t.string   "uid"
+    t.string   "permalink"
+    t.string   "name"
+    t.string   "keywords"
+    t.string   "url"
+    t.integer  "topic_id"
+    t.text     "blurb"
+    t.text     "body"
+    t.string   "state",            :default => "new"
+    t.string   "type"
+    t.date     "active_date"
+    t.date     "deactivated_date"
+    t.integer  "cover"
+    t.string   "model_num"
+    t.string   "sku"
+    t.string   "sku_type"
+    t.string   "cached_tag_list"
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
+  end
+
+  add_index "products", ["brand_id"], :name => "index_products_on_brand_id"
+  add_index "products", ["permalink"], :name => "index_products_on_permalink", :unique => true
+  add_index "products", ["uid"], :name => "index_products_on_uid", :unique => true
 
   create_table "roles", :force => true do |t|
     t.string   "name"

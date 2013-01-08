@@ -1,6 +1,12 @@
 Reviews::Application.routes.draw do
 
   
+  resources :products do
+    member do
+      put :update_state
+    end
+  end
+
   resources :categories, :path => 'cat' do
     resources :photos
     resources :brands
