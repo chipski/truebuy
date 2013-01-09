@@ -1,0 +1,20 @@
+-action = action || controller.action_name
+-product = product || @product
+
+.page-header
+  %h2
+    =link_to products_path do
+      %i.icon-list-alt
+    -if action == "edit" 
+      = "Edit "           
+      = link_to product.name, product 
+      = render :partial=>'shared/edit_menu', :locals=>{:entity=>product}
+    -elsif action == "new"
+      = "New "
+    -else
+      =link_to product.brand.name, product.brand if product.brand
+      = product.name
+      %span.small-gray
+        =link_to "edit", edit_product_path(product)
+        -if false
+          %a.btn.btn-mini{"data-toggle" => "modal", :href => "#edit-topic"} edit2

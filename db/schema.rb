@@ -147,6 +147,7 @@ ActiveRecord::Schema.define(:version => 20130108030312) do
     t.string   "model_num"
     t.string   "sku"
     t.string   "sku_type"
+    t.integer  "slide_order",      :default => 0
     t.string   "cached_tag_list"
     t.datetime "created_at",                          :null => false
     t.datetime "updated_at",                          :null => false

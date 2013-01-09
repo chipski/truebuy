@@ -1,0 +1,31 @@
+.row
+  %p
+    =link_to @product.brand.name, @product.brand
+  %p
+    %b Name:
+    = @product.name
+  %p
+    %b Blurb:
+    = @product.blurb.html_safe
+  %p
+    %b Body:
+    = @product.body.html_safe
+  %p
+    %b Cover:
+    = @product.cover
+  %p
+    %b Model num:
+    = @product.model_num
+  %p
+    %b Sku:
+    = @product.sku
+  %p
+    %b Sku type:
+    = @product.sku_type
+  %p
+    %b Cached tag list:
+    = @product.cached_tag_list
+
+  = link_to 'Edit', edit_product_path(@product)
+  \|
+  = link_to 'Back', products_path
