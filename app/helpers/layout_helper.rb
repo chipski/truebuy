@@ -11,6 +11,11 @@ module LayoutHelper
   def show_title?
     @show_title
   end
+  
+  def page_namespace
+    @page_namespace ||= "#{params[:controller].tr('/', '_')}_#{controller.action_name}"
+  end
+  
 
   def stylesheet(*args)
     content_for(:head) { stylesheet_link_tag(*args) }

@@ -17,5 +17,9 @@ module ApplicationHelper
      (user_signed_in? && current_user.has_role?(:admin)) ? true : false
    end
     
+   # override if entity is editable
+   def editable?
+     !!@editable
+   end  
    
 end

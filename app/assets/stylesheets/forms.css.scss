@@ -74,7 +74,16 @@ form {
             textarea {
                 width: 490px; 
                 margin-bottom: 10px;
-            }  
+            } 
+            input[type="checkbox"] {
+               width: 24px;
+               height: 19px;
+               -webkit-transform: scale(2);
+               -moz-transform: scale(2);
+               -ms-transform: scale(2);
+               font-size: 20px;
+               margin: 0px 10px 0px 38px;
+            } 
         }
         .left {
             width: 245px;

@@ -1,6 +1,7 @@
 class Brand < ActiveRecord::Base
   belongs_to :company
   has_many :topics 
+  has_many :products 
   has_and_belongs_to_many :categories, :class_name => "Category"  
   has_many :photos, :as => :parent, :class_name => "Photo"     
   
@@ -16,8 +17,11 @@ class Brand < ActiveRecord::Base
     all.collect{ |t| [t.name, t.id]}
   end
   
+  def products_filtered(filter={})
+    self.products.where({}).all
+  end
+  
   def slider_photos
-    #self.cover ? (self.photos - [Photo.find(self.cover)]) : self.photos
     (self.photos + self.topics.collect{|t| t.photos}).flatten
   end
   

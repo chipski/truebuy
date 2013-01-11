@@ -1,21 +1,3 @@
-#full-width-slider.royalSlider.heroSlider.rsMinW
-  -@category.slider_photos.each do |photo|
-    .rsContent
-      =image_tag(photo.image.medium.url, :class=>"rsImg")
-      .infoBlock.rsAbsoluteEl.infoBlockLeftBlack.rsNoDrag{:data=>{:fade=>{:effect=>10}, :move=>{:offset=>10, :effect=>"bottom"}, :speed=>"200"}}
-        %h1=@category.name
-      .infoBlock.infoBlockLeftBlack.rsABlock.rsNoDrag{:data=>{:fade=>{:effect=>10}, :move=>{:offset=>10, :effect=>"bottom"}, :speed=>"200"}}
-        %h1= photo.name
-      .infoBlock.rsAbsoluteEl.rsNoDrag{:data=>{:fade=>{:effect=>10}, :move=>{:offset=>10, :effect=>"bottom"}, :speed=>"200"}}
-        .blurb
-          =@category.blurb ? @category.blurb.html_safe : ""
-          =photo.blurb ? photo.blurb.html_safe : ""
-
-%input#categoryID{:type => "hidden", :value => @category.id}
-.hero
-  -if is_admin?
-    %span= link_to 'edit', edit_category_path(@category)
-  =@category.body ? @category.body.html_safe : "" 
 .row#masonry
   %input#categoryID{:type => "hidden", :value => @category.id}
   - @category.topics.each do |topic|  
@@ -39,4 +21,23 @@
         .thumbnail=link_to image_tag(brand.cover_url("small")), brand_path(brand)
         %h4=brand.name 
 
-           
+=content_for :sidebar do
+  %h2 Browse By
+  .well.sidebar-nav.advanced_search
+    %ul.nav.nav-list
+      %li.nav-header Brands
+      =#form_tag categories_path(:action => :search), :method => :post, :class => :standard_form do
+      
+      -@category.brands.each do |brand|
+        %li= check_box_tag :brand, :value=>brand.id, :label=>brand.name, :class=>'check_box'  
+      %li.nav-header Categories
+      %li= check_box_tag :category, :value=>@category.id, :label=>@category.name, :class=>'check_box' 
+      %li= radio_button_tag :det, "detailed", :class => :radio
+      %li= radio_button_tag :det, "list", :class => :radio
+      -if is_admin?
+        %li.nav-header Admin
+        %li= link_to 'edit', edit_category_path(@category)
+  .info
+    =@category.body ? @category.body.html_safe : ""       
+      
+ 

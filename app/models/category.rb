@@ -4,6 +4,7 @@ class Category < ActiveRecord::Base
   has_and_belongs_to_many :topics, :class_name => "Topic"   
   has_and_belongs_to_many :brands, :class_name => "Brand" 
   has_and_belongs_to_many :companies, :class_name => "Company" 
+  has_and_belongs_to_many :products, :class_name => "Product" 
   
   attr_accessible :blurb, :body, :cached_tag_list, :cover, :keywords, :name, :permalink, :state, :type, :parent_id
   
@@ -15,12 +16,39 @@ class Category < ActiveRecord::Base
     all.collect{ |t| [t.name, t.id]}
   end
   
+  def self.filter_by_ids(category_ids="all", page=nil)
+    category_ids = category_ids.to_a
+    if category_ids.is_a?(Array)
+      Category.find(category_ids)
+    else
+      Rails.logger.info("Category.filter_by_ids no categories found for category_ids=#{category_ids}")
+      Category.paginate(:page => page).all
+    end
+  end
+  
+  def self.products_filtered(brand_ids="all", category_ids="all")
+    categories = Category.filter_by_ids(category_ids)
+    products = categories.map{|c| c.products_filtered(brand_ids)}.flatten
+    Rails.logger.info("Category.products_filtered found #{products.size} products ")
+    products
+  end
+
+  def products_filtered(brand_ids="all")
+    if brand_ids == "all"
+      self.products
+    else
+      if brand_ids.is_a?(Array)
+        self.products.where({:brand_id => brand_ids}).all
+      else
+        Rails.logger.info("category.products_filtered no products found for brand_ids=#{brand_ids}")
+        []
+      end
+    end
+  end
+  
   def slider_photos
-    photos = self.cover ? (self.photos - [Photo.find(self.cover)]) : self.photos
-    topic_photos = self.topics.map{|t| t.slider_photos}.flatten
     brand_photos = self.brands.map{|t| t.slider_photos}.flatten
-    company_photos = self.companies.map{|t| t.slider_photos}.flatten
-    photos + topic_photos + brand_photos + company_photos
+    (self.photos + brand_photos).compact
   end
   
   def cover_url(size="small")

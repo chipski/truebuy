@@ -21,8 +21,23 @@ class CategoriesController < InheritedResources::Base
   protected
     def resource
       @category = Category.find_by_permalink(params[:id])
+      @search = ProductSearch.new
     end
-    def collectionOff
-      @categories ||= end_of_association_chain.paginate(:page => params[:page])
+    def collection
+      @categories ||= begin
+        if params[:category_ids] 
+          Category.filter_by_ids(params[:category_ids], params[:page])
+        else
+          end_of_association_chain.paginate(:page => params[:page])
+        end
+      end
     end 
+    def begin_of_association_chainOff
+      if params[:category_ids] && false
+        @categories = Category.filter_by_ids(params[:category_ids])
+      else
+        @categories = Category.all
+      end
+    end
+    
 end

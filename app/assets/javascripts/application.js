@@ -100,6 +100,16 @@ $('document').ready(function() {
     });
     return false;
   });
+  var M = {};
+  M.Views = {};
+  
+  /* Called when an item is selected from the drop-down */
+  function bind_selection_result(elem) {
+    elem.result(function(event, data, slot_zero) {
+      $('#site_search_form').submit();
+    });    
+  } /* bind_selection_result */
+  
   $('.wysihtml5').each(function(i, elem) {
       $(elem).wysihtml5();
   });
