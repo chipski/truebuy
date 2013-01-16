@@ -1,0 +1,16 @@
+:javascript
+  $(document).ready(function() {
+    var M = {};
+    M.Views = {};
+    M.authenticity_token = '#{form_authenticity_token}';
+    M.user_id = #{signed_in? ? current_user.id : 0};
+    M.editable = #{editable? ? true : false};
+    M.urls = {};
+    M.urls.update_state_product = '#{products_path(:format => :js)}';
+    if (M.Views.#{page_namespace}) { M.Views.#{page_namespace}(); }
+    $('#sign_out_link').click(M.sign_out);
+    //$('#site_search').initialize_hints();
+    @paginator.stop() if @paginator
+    @paginator = new Paginator(this, "#central-column .waypoint", @version_store, @group_id, 3)
+    @paginator.next_page()
+  });

@@ -9,7 +9,7 @@ jQuery ->
   #($ "a[data-toggle=dropdown]").button() 
   
   
-  MasonryOptions = {itemSelector: '.card', columnWidth: 312, gutterWidth: 8, animationOptions: {duration: 400}}
+  MasonryOptions = {itemSelector: '.card', columnWidth: "46%", gutterWidth: 8, animationOptions: {duration: 400}}
   #$('#masonry').masonry(MasonryOptions)
   #$('#masonry').masonry("reload")
   console.log("Loaded masonry with #{MasonryOptions.columnWidth} from bootstrap.js")

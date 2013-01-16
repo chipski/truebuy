@@ -4,6 +4,13 @@ body {
  padding-left: 0px;
  padding-right: 0px;
  color: #505050;
+ .navbar {
+     .brand {
+         margin-left: 0;
+         font-size: 42px;
+         font-weight: bolder;
+     }
+ }
  .container {
    width: 100%;
  }
@@ -21,8 +28,11 @@ body {
     margin-left: 0px;
   }
   .navbar-fixed-top, .navbar-fixed-bottom {
-    margin-bottom: 0;
+    margin-bottom: 0px;
     .navbar-inner { padding: 6px; }
+    .container {
+        width: auto;
+    }
   }
   .page-header {
       margin: 0 0 0 10px;
@@ -65,8 +75,9 @@ body {
     //width: auto;
     width: 100%;
   }
+  .wide {.card { width: 46%; } }
 }
-@media (max-width: 767px) {
+@media (max-width: 920px) {
   body {
     padding: 48px 0px 0 0px;
   }
@@ -77,8 +88,29 @@ body {
       padding: 0;
     }
   }  
+   .wide {.card { width: 45%; } }
 }
-
+@media (max-width: 767px) {
+  body {
+    padding: 44px 0px 0 0px;
+    border: 1px inset red;
+  }
+  .navbar-fixed-top, .navbar-fixed-bottom {
+    margin: 0;
+    position: fixed;
+    .navbar-inner {
+      padding: 0;
+    }
+  }  
+  .wide {.card { width: 44%; } }
+}
+@media (max-width: 680px) {
+  body {
+    padding: 44px 0px 0 0px;
+    border: 1px inset blue;
+  }
+  .wide {.card { width: 94%; } }
+}
 // iPhone portrait and landscape
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
   .navbar-fixed-bottom {
@@ -96,10 +128,11 @@ body {
     input { width: 240px;}
   }
   .row {padding: 8px;}
+  .wide {.card { width: 98%; } }
 }
 // iPhone portrait
 @media only screen and (max-width : 320px) {
-  
+    .wide {.card { width: 98%; } }
 }
 // iPhone landscape
 @media only screen and (max-width : 321px) {

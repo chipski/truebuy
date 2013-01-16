@@ -1,20 +1,29 @@
-=render :partial=>'topics/breadcrumbs'
-
+- if is_admin?
+  =content_for :edit_bar do
+    =render :partial=>'shared/edit_menu', :locals=>{:entity=>@topic}
+    .btn-group.pull-right    
+      %a.btn.btn-mini.dropdown-toggle(data-toggle="dropdown" href="#")
+        %i.icon-cog
+        = "Edit" 
+        %span.caret
+      %ul.dropdown-menu
+        %li=link_to @topic.brand.name, brand_path(@topic.brand) if @topic.brand
+        %li=link_to @topic.company.name, company_path(@topic.company) if @topic.company
+        %li.divider
+        %li=link_to "Edit", edit_topic_path(@topic)
+        
 #full-width-slider.royalSlider.heroSlider.rsMinW
+  %input#topicID{:type => "hidden", :value => @topic.id}
   -@topic.slider_photos.each do |photo|
     .rsContent
       =image_tag(photo.image.medium.url, :class=>"rsImg")
       .infoBlock.rsAbsoluteEl.infoBlockLeftBlack.rsNoDrag{:data=>{:fade=>{:effect=>10}, :move=>{:offset=>10, :effect=>"bottom"}, :speed=>"200"}}
         %h1=@topic.name
-      .infoBlock.infoBlockLeftBlack.rsABlock.rsNoDrag{:data=>{:fade=>{:effect=>10}, :move=>{:offset=>10, :effect=>"bottom"}, :speed=>"200"}}
-        %h1= photo.name
-      .infoBlock.rsAbsoluteEl.rsNoDrag{:data=>{:fade=>{:effect=>10}, :move=>{:offset=>10, :effect=>"bottom"}, :speed=>"200"}}
-        .blurb=@topic.blurb ? @topic.blurb.html_safe : ""
+      
 .row
-  =#render :partial=>'topics/breadcrumbs'
-  .card_edit
-    =render :partial=>'shared/edit_menu', :locals=>{:entity=>@topic}
-  =#render 'topics/edit_modal', :locals=>{:parent=>@topic, :photo=>Photo.new}
-  %input#parentID{:type => "hidden", :value => @topic.id}
   %p= @topic.blurb.html_safe if @topic.blurb
-  = render 'photos/thumbnails', :locals=>{:thumbnails=>@topic.photos}, :collection=>@topic.photos
+  #masonry.wide
+    = render 'photos/thumbnails', :locals=>{:thumbnails=>@topic.photos}, :collection=>@topic.photos
+
+
+=#render 'topics/edit_modal', :locals=>{:parent=>@topic, :photo=>Photo.new}

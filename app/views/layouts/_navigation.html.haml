@@ -3,6 +3,8 @@
   
   #notice= render 'layouts/messages'
   - if user_signed_in?
+    %ul.nav.pull-right
+      %li= link_to 'Logout', destroy_user_session_path, :method=>'delete'
     .btn-group.pull-right    
       %a.btn.btn-mini.dropdown-toggle(data-toggle="dropdown" href="#")
         %i.icon-cog
@@ -17,8 +19,8 @@
         %li= link_to 'Edit account', edit_user_registration_path
         - if is_admin?
           %li= link_to 'Admin', users_path
-    %ul.nav.pull-right
-      %li= link_to 'Logout', destroy_user_session_path, :method=>'delete'
+    =yield :edit_bar
+    
   -else
     %ul.nav.pull-right
       %li= link_to 'Login', new_user_session_path

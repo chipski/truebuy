@@ -1,34 +1,18 @@
-.row
-  %h1 Products
-
-  %table
-    %tr
-      %th Brand
-      %th Name
-      %th Keywords
-      %th State
-      %th Type
-      %th Cover
-      %th Model num
-      %th Sku
-      %th Sku type
-      %th Cached tag list
-      %th
-
-    - @products.each do |product|
-      %tr
-        %td=link_to product.brand.name, product.brand
-        %td= product.name
-        %td= product.keywords
-        %td= product.state
-        %td= product.type
-        %td= product.cover
-        %td= product.model_num
-        %td= product.sku
-        %td= product.sku_type
-        %td= link_to 'Show', product_path(product)
-        %td= link_to 'Edit', edit_product_path(product)
-      
-  %br
+.row.companies
+  #masonry.wide
+    %h1 Topics
+    -@products.each do |product|
+      .card.product
+        .thumbnail
+          =link_to image_tag(product.cover_url("small")), product_path(product)
+        %h4{:style=>"text-align: center;"}
+          =link_to product.brand.name, product.brand
+          =link_to product.name, product
+        =product.photos.count
+        %p
+          = product.keywords
+          = product.model_num
+          = product.sku
+          = product.sku_type
 
   = link_to 'New Product', new_product_path

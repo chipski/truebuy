@@ -73,9 +73,9 @@
 //  require ember
 //  require ember/Rightby.me.js
 
-// require masonry/jquery.masonry    
+//= require masonry/jquery.masonry    
 // require masonry/jquery.imagesloaded.min
-// require masonry/jquery.infinitescroll.min
+//= require masonry/jquery.infinitescroll.min
 //= require dataTables/jquery.dataTables
 //= require dataTables/jquery.dataTables.bootstrap
 //= require_tree .
@@ -100,8 +100,6 @@ $('document').ready(function() {
     });
     return false;
   });
-  var M = {};
-  M.Views = {};
   
   /* Called when an item is selected from the drop-down */
   function bind_selection_result(elem) {

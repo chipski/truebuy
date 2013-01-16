@@ -25,6 +25,20 @@
 }
 
 .content {
+    .breadcrumb {
+        left: 0;
+        top: 0;
+        position: absolute;
+        display: inline;
+        margin: 60px 40px;
+        padding: 4px 12px 6px;
+        z-index: 55;
+         background: rgba(255,255,255,0.30);
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        color: #000;
+        h1 { color: #000;}
+    }
   .royalSlider {
       .call-to-action {
         text-align: center; 
@@ -73,7 +87,6 @@
         h1 { color: #000;}
         
       }
-      
   }
   .img-bar {
     margin: -20px 0 0;
@@ -125,4 +138,5 @@
       }
     }
   }
+  
 }

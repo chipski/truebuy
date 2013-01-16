@@ -11,14 +11,23 @@ $color: #8c7e7e;
 #masonry {
   position: relative;
   margin: 0 auto;  
+  
   margin-bottom: 78px;
   .thumb {
       width: 84px;
       min-height: 100px;
   }
-  .company {height: 380px;}
+  
   
 } 
+.company {
+  #masonry {
+     margin-top: -36px; 
+  }
+}
+.companies {
+    
+}
 .tab-pane {
     margin: 0 4px;
 }
@@ -28,7 +37,7 @@ $color: #8c7e7e;
   float: left;
   padding: 10px 10px 4px;
   margin: 8px;
-  font-size: 12px;
+  font-size: 1.1em;
   background: white;
   //@include box-shadow( 0 1px 3px rgba(34,25,25,0.4) ); 
   -webkit-box-shadow: inset 0 1px 6px rgba(68, 31, 31, 0.25);
@@ -87,7 +96,10 @@ $color: #8c7e7e;
     padding: 8px;
   }
   h2 {
-    padding-top: 5px;
+    margin: 0 12px;  
+    padding: 5px;
+    font-weight: 300;
+    a { color: #505050;}
   }
   h3 { margin-bottom: 0px;}
   h4 {
@@ -128,11 +140,17 @@ $color: #8c7e7e;
     }
     
   }
- 
+  p {
+      margin: 10px;
+  }
 } 
 .narrow .card { width: 262px;}
-.wide { 
+
+.full { 
    .card { width: 98%; } 
+}
+.wide { 
+   .card { width: 46%; } 
 }
 .card_focus {
     border: solid 1px rgba(82, 168, 236, 0.8);                 

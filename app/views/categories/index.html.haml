@@ -1,8 +1,8 @@
-.row.masonry
-  %h1 Categories
-  %ul.thumbnails
+.row.companies
+  #masonry.wide
+    %h1 Categories
     - @categories.each do |category|  
-      %li.card#company
+      .card#category
         .thumbnail
           -if category.cover.blank? or !Photo.find_by_id(category.cover)  
             =link_to image_tag("/NoImageAvailable.jpg"), category_path(category)

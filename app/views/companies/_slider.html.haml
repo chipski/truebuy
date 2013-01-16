@@ -1,0 +1,22 @@
+-if false
+  -@company.topics.map{|t| t.slider_photos}.flatten.each do |photo|
+    .rsContent
+      =image_tag(photo.image.medium.url, :class=>"rsImg")
+      .infoBlock.rsAbsoluteEl.infoBlockLeftBlack.rsNoDrag{:data=>{:fade=>{:effect=>10}, :move=>{:offset=>10, :effect=>"bottom"}, :speed=>"200"}}
+        %h1=@company.name
+      .infoBlock.infoBlockLeftBlack.rsABlock.rsNoDrag{:data=>{:fade=>{:effect=>10}, :move=>{:offset=>10, :effect=>"bottom"}, :speed=>"200"}}
+        %h1= photo.name
+      .infoBlock.rsAbsoluteEl.rsNoDrag{:data=>{:fade=>{:effect=>10}, :move=>{:offset=>10, :effect=>"bottom"}, :speed=>"200"}}
+        .blurb=@company.blurb ? @company.blurb.html_safe : ""
+        
+.
+.royalSlider.contentSlider.rsDefault#content-slider-1
+  %input#parentID{:type => "hidden", :value => @company.id}
+  -@company.topics.each do |topic|
+    %div
+      %h3=link_to topic.name, topic_path(topic)
+      -if is_admin?
+        .card_edit=render :partial=>'shared/edit_menu', :locals=>{:entity=>topic}
+      %p=topic.blurb
+      %p=topic.body
+      .rsTmb=topic.name        

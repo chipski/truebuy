@@ -27,10 +27,11 @@
             
       / ! end of .container
       .footer
-        .navbar.navbar-fixed-bottom
-          %nav.navbar-inner
-            .container
-              = render 'layouts/footer'  
+        -#/
+          .navbar.navbar-fixed-bottom
+            %nav.navbar-inner
+              .container
+                = render 'layouts/footer'  
       .javascript
         = javascript_include_tag "application"
         = render :partial => 'shared/js_startup'
