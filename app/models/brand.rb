@@ -21,6 +21,57 @@ class Brand < ActiveRecord::Base
     self.products.where({}).all
   end
   
+  # State machine, should be shared in mixin but error now
+  include AASM 
+  #include LifeCycleState
+  aasm :column => :state do
+    state :new,      :initial => true              
+    state :review,   :enter => :make_review 
+    state :launch,   :enter => :make_launch 
+    state :active,   :enter => :make_active
+    state :inactive, :enter => :make_inactive
+    state :error,    :enter => :make_inactive  
+    state :list_only,:enter => :make_list_only
+     
+    event :mark_review do
+      transitions :to => :review
+    end
+    event :mark_launch do
+      transitions :to => :launch 
+    end
+    event :mark_active do
+      transitions :to => :active 
+    end
+    event :mark_inactive do
+      transitions :to => :inactive 
+    end  
+    event :mark_error do
+      transitions :to => :error 
+    end
+    event :mark_list_only do
+      transitions :to => :list_only 
+    end
+    event :mark_admin_only do
+      transitions :to => :new #, :from => :all
+    end
+  end
+  def make_review
+    #self.children.map{|c| c.mark_review!}
+  end
+  def make_launch
+    #self.children.map{|c| c.mark_launch!}
+  end
+  def make_active
+    #self.children.map{|c| c.mark_active!}
+  end
+  def make_inactive
+    #self.children.map{|c| c.mark_inactive!}  
+  end 
+  def make_list_only
+    #self.children.map{|c| c.mark_list_only!}
+  end
+  
+  
   def slider_photos
     (self.photos + self.topics.collect{|t| t.photos}).flatten
   end

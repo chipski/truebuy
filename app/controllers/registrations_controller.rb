@@ -1,7 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
 
   def new
-    #@company = Company.default_home
+    @company = Company.default_home
     #render "companies/show"
   end
   

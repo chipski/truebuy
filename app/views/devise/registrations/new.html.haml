@@ -1,7 +1,4 @@
-
-=render "invite_modal", :locals=>{:user=>@user}
 -@company = Company.default_home
-
 
 #full-width-slider.royalSlider.rsMinW.img-bar
   -@company.slider_photos.each do |photo|
@@ -18,20 +15,16 @@
         .call-to-action
           %a.btn.btn-primary.btn-large{"data-toggle" => "modal", :href => "#request-invite"} Request invite
 
-
-          
-.hero
-  =@company.body ? @company.body.html_safe : "" 
-.row
-  .royalSlider.contentSlider.rsDefault#content-slider-1
-    %input#parentID{:type => "hidden", :value => @company.id}
-    -@company.topics.each do |topic|
-      %div
-        %h3=link_to topic.name, topic_path(topic)
-        -if is_admin?
+.row.home
+  #masonry.wide
+    - @company.topics.active.each do |topic|
+      .card
+        %h2=link_to topic.name, topic_path(topic)
+        -if is_admin? && false
           .card_edit=render :partial=>'shared/edit_menu', :locals=>{:entity=>topic}
-        %p=topic.blurb
-        %p=topic.body
-        .rsTmb=topic.name
+        %p=topic.blurb ? topic.blurb.html_safe : ""
+        %p=topic.body ? topic.body.html_safe : ""
+
+=render "invite_modal", :locals=>{:user=>@user}
 
   

@@ -1,3 +1,25 @@
+=render "shared/tab_bar", :locals=>{:entity=>@category}
+.tab-content{:style=>"min-height: 480px;"} 
+  .tab-pane.active#overview
+    .row
+      = render :partial=>'categories/breadcrumb', :locals=>{:action=>"edit"}
+      = render 'form'
+  .tab-pane#content
+    .row
+      %h1 Topics
+      =render :partial => "topics/grid", :locals=>{:entities=>@category.topics, :model_class=>Topic }           
+    .row
+      %h1 Products
+      =render :partial => "products/grid", :locals=>{:entities=>@category.products, :model_class=>Product }
+    .row
+      %h1 Brands
+      =render :partial => "brands/grid", :locals=>{:entities=>@category.brands, :model_class=>Brand }        
+        
+  .tab-pane#photos
+    .row
+      =#render :partial => "grid", :locals=>{:entities=>@mediums_new, :model_class=>model_class } 
+      =render :partial=>'photos/upload_form', :locals=>{:parent=>@category}
+
+
 .row
-  = render :partial=>'categories/breadcrumb', :locals=>{:action=>"edit"}
-  = render 'form'
+  

@@ -1,5 +1,21 @@
-.row
-  %h1 
-    Editing
-    =link_to @brand.name, @brand
-  = render 'form'
+=render "shared/tab_bar", :locals=>{:entity=>@brand}
+.tab-content{:style=>"min-height: 480px;"} 
+  .tab-pane.active#overview
+    .row
+      %h1 
+        Editing 
+        =link_to @brand.name, @brand
+        = link_to "New", new_brand_path(:state=>"inactive"), :class => 'btn btn-primary btn-mini'
+        =#render :partial=>'shared/edit_menu', :locals=>{:entity=>@brand}
+      = render 'form'
+    
+  .tab-pane#content
+    .row
+      %h1 Topics
+      =render :partial => "topics/grid", :locals=>{:entities=>@brand.topics, :model_class=>Topic }           
+  
+  -if is_admin?
+    .tab-pane#photos
+      .row
+        =#render :partial => "grid", :locals=>{:entities=>@mediums_new, :model_class=>model_class } 
+        =render :partial=>'photos/upload_form', :locals=>{:parent=>@brand}

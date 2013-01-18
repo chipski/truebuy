@@ -1,0 +1,26 @@
+- if is_admin?
+  -entity = entity || @company || @topic || @brand
+  =content_for :edit_bar do
+    .btn-group.pull-right    
+      %a.btn.btn-mini.dropdown-toggle(data-toggle="dropdown" href="#")
+        %i.icon-cog
+        = "Edit" 
+        %span.caret
+      %ul.dropdown-menu
+        %li= link_to 'Edit', polymorphic_path(entity, :action=>"edit")
+        %li.divider
+        - if entity.active?
+          %li
+            =link_to polymorphic_path(entity, :action=>"update_state", :state=>"inactive"), :method=>:put do
+              ="Inactivate"
+              %i.icon-zoom-in
+        -else
+          %li
+            =link_to polymorphic_path(entity, :action=>"update_state", :state=>"active"), :method=>:put do
+              ="Activate"
+              %i.icon-zoom-in
+        %li.divider
+
+-unless user_signed_in?
+  =render "devise/registrations/invite_modal"
+        

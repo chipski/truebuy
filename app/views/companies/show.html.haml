@@ -1,15 +1,3 @@
-- if is_admin?
-  =content_for :edit_bar do
-    .btn-group.pull-right    
-      %a.btn.btn-mini.dropdown-toggle(data-toggle="dropdown" href="#")
-        %i.icon-cog
-        = "Edit" 
-        %span.caret
-      %ul.dropdown-menu
-        %li=link_to @company.name, company_path(@company) if @company
-        %li.divider
-        %li=link_to "Edit", edit_company_path(@company)
-        %li.divider
 
 #full-width-slider.royalSlider.heroSlider.rsMinW
   %input#companyID{:type => "hidden", :value => @company.id}
@@ -18,22 +6,23 @@
       =image_tag(photo.image.medium.url, :class=>"rsImg")
       .infoBlock.rsAbsoluteEl.infoBlockLeftBlack.rsNoDrag{:data=>{:fade=>{:effect=>10}, :move=>{:offset=>10, :effect=>"bottom"}, :speed=>"200"}}
         %h1=@company.name
-        -unless user_signed_in?
-          #call-to-action
-            %a.btn.btn-primary.btn-large{"data-toggle" => "modal", :href => "#request-invite"} Request invite
+        -#unless user_signed_in?
+        #call-to-action
+          %a.btn.btn-primary.btn-large{"data-toggle" => "modal", :href => "#request-invite"} Request invite
         .blurb=@company.blurb ? @company.blurb.html_safe : ""
         
 .row.company
   #masonry.wide
-    - @company.topics.each do |topic|
+    - @company.topics.active.each do |topic|
       .card
         %h2=link_to topic.name, topic_path(topic)
         -if is_admin? && false
           .card_edit=render :partial=>'shared/edit_menu', :locals=>{:entity=>topic}
         %p=topic.blurb ? topic.blurb.html_safe : ""
         %p=topic.body ? topic.body.html_safe : ""
-        %p=topic.name
 
--unless user_signed_in?
-  =render "devise/registrations/invite_modal"
-        
+
+.hero
+  =@company.body ? @company.body.html_safe : ""
+  
+=render "shared/popups_menus", :locals=>{:entity=>@company}

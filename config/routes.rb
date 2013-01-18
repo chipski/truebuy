@@ -11,6 +11,9 @@ Reviews::Application.routes.draw do
     resources :photos
     resources :brands
     resources :companies
+    member do
+      put :update_state
+    end
   end
   resources :companies, :path => 'co' do
     resources :photos

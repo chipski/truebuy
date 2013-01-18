@@ -1,7 +1,23 @@
-.row
-  %h1 
-    Editing 
-    =link_to @company.name, @company
-    = render :partial=>'shared/edit_menu', :locals=>{:entity=>@company}
+=render "shared/tab_bar", :locals=>{:entity=>@company}
+.tab-content{:style=>"min-height: 480px;"} 
+  .tab-pane.active#overview
+    .row
+      %h1 
+        Editing 
+        =link_to @company.name, @company
+        = link_to "New", new_company_path(:state=>"inactive"), :class => 'btn btn-primary btn-mini'
+        = render :partial=>'shared/edit_menu', :locals=>{:entity=>@company}
+      = render 'form'
+    
+  .tab-pane#content
+    .row
+      %h1 Topics
+      =render :partial => "topics/grid", :locals=>{:entities=>@company.topics, :model_class=>Topic }           
+  
+  -if is_admin?
+    .tab-pane#photos
+      .row
+        =#render :partial => "grid", :locals=>{:entities=>@mediums_new, :model_class=>model_class } 
+        =render :partial=>'photos/upload_form', :locals=>{:parent=>@company}
 
-  = render 'form'
+        

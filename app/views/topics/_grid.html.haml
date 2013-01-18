@@ -1,0 +1,36 @@
+#masonry
+  - entities.each do |entity|
+    .card
+      .img-box=image_tag(entity.cover_url, :alt=>entity.name, :height=>"80px")
+      -if is_admin?   
+        .btn-group.pull-right    
+          %a.btn.btn-mini.dropdown-toggle(data-toggle="dropdown" href="#")
+            %i.icon-cog
+            = "Edit" 
+            %span.caret
+          %ul.dropdown-menu
+            %li= link_to "Edit Topic", edit_topic_path(entity)
+            %li.divider  
+            %li= link_to "Delete", topic_path(entity), :method => :delete, :confirm => "Are you Sure?"
+      .btn-group.pull-right
+        -if (entity.active? && is_admin?)
+          -url = update_state_topic_path(entity, :state=>:inactive)            
+          =link_to url, :class=>"btn btn-mini", :data=>{:target=>".card", :act=>"inactive", :method=>:put} do
+            ="Deactivate"
+            %i.icon-ban-circle  
+        -else
+          -url = update_state_topic_path(entity, :state=>:active)            
+          =link_to url, :class=>"btn btn-mini", :data=>{:target=>".card", :act=>"actived", :method=>:put} do
+            ="Activate"    
+            %i.icon-ok-circle                                  
+      .card-info
+      .title{:style=>"clear: both;"}
+        = link_to entity.name, entity
+      .info
+        .infobox
+          %h4 
+            Photos
+            = link_to "Add", new_photo_path(:topic_id=>entity.id), :class=>"btn btn-mini" 
+          -entity.photos.each do |photo|
+            %b=link_to photo, photo   
+     
