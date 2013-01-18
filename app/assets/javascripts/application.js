@@ -124,7 +124,7 @@ $('document').ready(function() {
       controlNavigation: 'bullets',
       thumbsFitInViewport: false,
       navigateByClick: true,
-      startSlideId: 1,
+      startSlideId: 0,
       autoPlay: true,
       transitionType:'fade',
       controlsInside: false,
