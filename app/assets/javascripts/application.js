@@ -119,16 +119,16 @@ $('document').ready(function() {
       controlsInside: false,
       imageScaleMode: 'fill',
       autoScaleSlider: false, 
-      autoScaleSliderWidth: 960,     
-      autoScaleSliderHeight: 350,
+      autoScaleSliderWidth: 1260,     
+      autoScaleSliderHeight: 320,
       controlNavigation: 'bullets',
       thumbsFitInViewport: false,
       navigateByClick: true,
-      startSlideId: 0,
-      autoPlay: false,
+      startSlideId: 1,
+      autoPlay: true,
       transitionType:'fade',
       controlsInside: false,
-      globalCaption: true
+      globalCaption: false
   });  
   $('#content-slider-1').royalSlider({
       autoHeight: true,
