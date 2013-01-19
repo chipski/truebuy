@@ -84,6 +84,10 @@ class Brand < ActiveRecord::Base
     @cover_url ? @cover_url : "default/high_server.jpeg"
   end
   
+  def to_partial_path() 
+    "brands/grid_cell" 
+  end
+  
   def to_param
     permalink
   end

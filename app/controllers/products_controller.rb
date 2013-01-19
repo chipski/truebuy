@@ -12,6 +12,13 @@ class ProductsController < InheritedResources::Base
     end
   end
   
+  def edit
+    super do |format|
+      format.html { render :show }
+      format.js { render :edit, :layout=>false }
+    end
+  end
+  
   def update_state
     resource
     return_to = product_path(resource)

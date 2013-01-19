@@ -81,7 +81,11 @@ class Topic < ActiveRecord::Base
     @cover_url ||= begin
       UtilityIds.cover_url(self, size="small")
     end
-    @cover_url ? @cover_url : "/NoImageAvailable.jpg"
+    @cover_url ? @cover_url : "NoImageAvailable.jpg"
+  end
+  
+  def to_partial_path() 
+    "topics/grid_cell" 
   end
   
   def to_param

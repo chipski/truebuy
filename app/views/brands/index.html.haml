@@ -5,7 +5,7 @@
       .card
         .thumbnail
           -if brand.cover.blank? or !Photo.find_by_id(brand.cover)  
-            =link_to image_tag("/NoImageAvailable.jpg"), brand_path(brand)
+            =link_to image_tag("NoImageAvailable.jpg"), brand_path(brand)
           -else
             =link_to image_tag(brand.cover_url("small")), brand_path(brand)
         .caption

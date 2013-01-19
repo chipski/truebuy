@@ -10,7 +10,4 @@
     if (M.Views.#{page_namespace}) { M.Views.#{page_namespace}(); }
     $('#sign_out_link').click(M.sign_out);
     //$('#site_search').initialize_hints();
-    @paginator.stop() if @paginator
-    @paginator = new Paginator(this, "#central-column .waypoint", @version_store, @group_id, 3)
-    @paginator.next_page()
   });

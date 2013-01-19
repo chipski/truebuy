@@ -1,6 +1,9 @@
-=render "shared/tab_bar", :locals=>{:entity=>@brand}
 .tab-content{:style=>"min-height: 480px;"} 
-  .tab-pane.active#overview
+  .tab-pane#overview
+    .row
+      %h1=@brand.name
+
+  .tab-pane.active#edit
     .row
       %h1 
         Editing 

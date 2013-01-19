@@ -1,7 +1,7 @@
 - model_class = @topic.class
-=render "shared/tab_bar", :locals=>{:entity=>@company}
 .tab-content{:style=>"min-height: 480px;"} 
-  .tab-pane.active#overview
+  .tab-pane#overview
+  .tab-pane.active#edit
     .row
       = render 'topics/breadcrumbs'
       -if @company             
@@ -30,8 +30,7 @@
     .row
       %h1 Topics
   
-  -if is_admin?
-    .tab-pane#photos
-      .row
-        =#render :partial => "grid", :locals=>{:entities=>@mediums_new, :model_class=>model_class } 
-        =render :partial=>'photos/upload_form', :locals=>{:parent=>@topic}
+  .tab-pane#photos
+    .row
+      =#render :partial => "grid", :locals=>{:entities=>@mediums_new, :model_class=>model_class } 
+      =render :partial=>'photos/upload_form', :locals=>{:parent=>@topic}

@@ -5,7 +5,7 @@
       .card
         .thumbnail
           -if company.cover.blank? or !Photo.find_by_id(company.cover)  
-            =link_to image_tag("/NoImageAvailable.jpg"), company_path(company)
+            =link_to image_tag("NoImageAvailable.jpg"), company_path(company)
           -else
             =link_to image_tag(company.cover_url("small")), company_path(company)
         .caption

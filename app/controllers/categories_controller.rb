@@ -3,6 +3,14 @@ class CategoriesController < InheritedResources::Base
   
   before_filter :authenticate_user!, :except => [:error, :show, :index]  
   
+  
+  def edit
+    super do |format|
+      format.html { render :show }
+      format.js { render :edit, :layout=>false }
+    end
+  end
+  
   def update_state
     resource
     return_to = category_path(@category)
@@ -21,7 +29,6 @@ class CategoriesController < InheritedResources::Base
   protected
     def resource
       @category = Category.find_by_permalink(params[:id])
-      @search = ProductSearch.new
     end
     def collection
       @categories ||= begin
@@ -33,6 +40,8 @@ class CategoriesController < InheritedResources::Base
       end
     end 
     def begin_of_association_chainOff
+      @search = ProductSearch.new
+      
       if params[:category_ids] && false
         @categories = Category.filter_by_ids(params[:category_ids])
       else

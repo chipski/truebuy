@@ -1,26 +1,32 @@
-.row#masonry
-  %input#categoryID{:type => "hidden", :value => @category.id}
-  - @category.products.each do |product|  
-    .card#product
-      .thumbnail=link_to image_tag(product.cover_url("small")), product_path(product)
-      %h4=product.name 
+.tab-content{:style=>"min-height: 480px;"} 
+  .tab-pane.active#overview
+    .row#masonry
+      %input#categoryID{:type => "hidden", :value => @category.id}
+      - @category.products.each do |product|  
+        .card#product
+          .thumbnail=link_to image_tag(product.cover_url("small")), product_path(product)
+          %h4=product.name 
 
-
-  -if false
-    - @category.slider_photos.each_with_index do |photo, index|  
-      .card.thumb
-        .thumbnail=link_to image_tag(photo.image.thumb.url, :class=>"rsImg"), "#image-#{index}"
-        %h4=photo.name 
-    - @category.companies.each do |company|  
-      .card.company
-        .thumbnail=link_to image_tag(company.cover_url("small")), company_path(company)
-        %h4=company.name 
+      =render :partial => @category.products, :as => :entity
+  
+      -if false
+        - @category.slider_photos.each_with_index do |photo, index|  
+          .card.thumb
+            .thumbnail=link_to image_tag(photo.image.thumb.url, :class=>"rsImg"), "#image-#{index}"
+            %h4=photo.name 
+        - @category.companies.each do |company|  
+          .card.company
+            .thumbnail=link_to image_tag(company.cover_url("small")), company_path(company)
+            %h4=company.name 
  
-    - @category.brands.each do |brand|  
-      .card.brand
-        .thumbnail=link_to image_tag(brand.cover_url("small")), brand_path(brand)
-        %h4=brand.name 
-
+        - @category.brands.each do |brand|  
+          .card.brand
+            .thumbnail=link_to image_tag(brand.cover_url("small")), brand_path(brand)
+            %h4=brand.name 
+  .tab-pane#edit
+  .tab-pane#content
+  .tab-pane#admin
+   
 =content_for :sidebar do
   %h2 Browse By
   .well.sidebar-nav.advanced_search
@@ -40,15 +46,3 @@
   .info
     =@category.body ? @category.body.html_safe : ""       
 
-- if is_admin?
-  =content_for :edit_bar do
-    .btn-group.pull-right    
-      %a.btn.btn-mini.dropdown-toggle(data-toggle="dropdown" href="#")
-        %i.icon-cog
-        = "Edit" 
-        %span.caret
-      %ul.dropdown-menu
-        %li=link_to @category.name, category_path(@category) 
-        %li.divider
-        %li=link_to "Edit", edit_category_path(@category)
- 

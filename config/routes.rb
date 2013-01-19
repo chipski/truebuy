@@ -4,6 +4,8 @@ Reviews::Application.routes.draw do
   resources :products do
     member do
       put :update_state
+      get :content
+      get :admin
     end
   end
 
@@ -13,18 +15,24 @@ Reviews::Application.routes.draw do
     resources :companies
     member do
       put :update_state
+      get :content
+      get :admin
     end
   end
   resources :companies, :path => 'co' do
     resources :photos
     member do
       put :update_state
+      get :content
+      get :admin
     end
   end
   resources :brands, :path => 'br' do
     resources :photos
     member do
       put :update_state
+      get :content
+      get :admin
     end
   end
   #resources :topics
@@ -35,6 +43,8 @@ Reviews::Application.routes.draw do
     end
     member do
       put :update_state
+      get :content
+      get :admin
     end
   end
   resources :photos

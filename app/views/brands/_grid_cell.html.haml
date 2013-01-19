@@ -1,0 +1,52 @@
+.card
+  .img-box=image_tag(entity.cover_url, :alt=>entity.name, :height=>"80px")
+  -if is_admin?   
+    .btn-group.pull-right    
+      %a.btn.btn-mini.dropdown-toggle(data-toggle="dropdown" href="#")
+        %i.icon-cog
+        = "Edit" 
+        %span.caret
+      %ul.dropdown-menu
+        %li= link_to "Edit Brand", edit_brand_path(entity)
+        %li.divider  
+        %li= link_to "Delete", brand_path(entity), :method => :delete, :confirm => "Are you Sure?"
+  .btn-group.pull-right
+    -if (entity.active? && is_admin?)
+      -url = update_state_brand_path(entity, :state=>:inactive)            
+      =link_to url, :class=>"btn btn-mini", :data=>{:target=>".card", :act=>"content", :method=>:put} do
+        ="Deactivate"
+        %i.icon-ban-circle  
+    -else
+      -url = update_state_brand_path(entity, :state=>:active)            
+      =link_to url, :class=>"btn btn-mini", :data=>{:target=>".card", :act=>"content", :method=>:put} do
+        ="Activate"    
+        %i.icon-ok-circle                                  
+  .card-info
+    %span.visibility
+  .title{:style=>"clear: both;"}
+    = link_to entity.name, entity
+  .info
+    -@topics = entity.topics ? entity.topics : []
+    -if @topics.count > 0      
+      .infobox
+        %h4 
+          Topics
+          = link_to "add", new_topic_path(:brand_id=>entity.id)   
+        -@topics.each do |topic|
+          =link_to topic.name , topic                        
+  .info
+    -@products = entity.products ? entity.products : []
+    -if @products.count > 0      
+      .infobox
+        %h4 
+          Products
+          = link_to "add", new_product_path(:brand_id=>entity.id)    
+        -@products.each do |product|
+          =link_to product.name , product                        
+  .info
+    .infobox
+      %h4 
+        Photos
+        = link_to "add", new_photo_path(:brand_id=>entity.id)
+      -entity.photos.each do |photo|
+        =link_to photo, photo   

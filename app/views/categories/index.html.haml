@@ -1,19 +1,26 @@
-.row.companies
-  #masonry.wide
-    %h1 Categories
-    - @categories.each do |category|  
-      .card#category
-        .thumbnail
-          -if category.cover.blank? or !Photo.find_by_id(category.cover)  
-            =link_to image_tag("/NoImageAvailable.jpg"), category_path(category)
-          -else
-            =link_to image_tag(category.cover_url("small")), category_path(category)
-        .caption
-          %h4
-            =category.name 
-            %span.small-gray
-              =link_to edit_category_path(category), :class=>"link" do
-                %i.icon-edit
-                Edit
+.tab-content{:style=>"min-height: 480px;"} 
+  .tab-pane.active#actived
+    .row.companies
+      #masonry.wide
+        %h1 
+          Categories
+          =link_to 'New', new_category_path, :class => 'btn btn-mini' if is_admin?
+        - Category.active.each do |category|  
+          .card#category
+            .thumbnail=link_to image_tag(category.cover_url("small")), category_path(category)
+            .caption
+              %h4 =category.name
+  .tab-pane#inactive
+    .row.companies
+      #masonry.wide
+        %h1 
+          Inactive Categories
+          =link_to 'New', new_category_path, :class => 'btn btn-mini' if is_admin?
+        - Category.not_active.each do |category|  
+          .card#category
+            .thumbnail=link_to image_tag(category.cover_url("small")), category_path(category)
+            .caption
+              %h4=category.name
 
-  =link_to 'New', new_category_path, :class => 'btn btn-mini'
+
+           

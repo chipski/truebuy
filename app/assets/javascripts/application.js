@@ -111,23 +111,24 @@ $('document').ready(function() {
   $('.wysihtml5').each(function(i, elem) {
       $(elem).wysihtml5();
   });
-  $('#full-width-slider').royalSlider({
+  $('#full-width-slider').royalSlider( {
       arrowsNav: true,
       arrowsNavAutoHide: true,
       loop: true,
       keyboardNavEnabled: true,
       controlsInside: false,
       imageScaleMode: 'fill',
-      autoScaleSlider: false, 
-      autoScaleSliderWidth: 1260,     
-      autoScaleSliderHeight: 320,
+      autoScaleSlider: true, 
+      autoScaleSliderWidth: 1040,     
+      autoScaleSliderHeight: 480,
+      arrowsNavHideOnTouch: true,
       controlNavigation: 'bullets',
       thumbsFitInViewport: false,
       navigateByClick: true,
       startSlideId: 0,
       autoPlay: true,
       transitionType:'fade',
-      controlsInside: false,
+      controlsInside: true,
       globalCaption: false
   });  
   $('#content-slider-1').royalSlider({
@@ -142,6 +143,30 @@ $('document').ready(function() {
       loopRewind: true,
       numImagesToPreload: 6,
       keyboardNavEnabled: true
+  });
+  
+  $('.ajax').click(function (e) {
+      var urlHref = $(this).attr('href');
+      $('.tab-pane').removeClass('active');
+      $(this).addClass('active');
+      var urlTarget = $(this).data().target;
+      var urlAction = urlHref.substring(1);
+      console.log("clicked tab "+urlAction+" target "+urlTarget);
+      
+      var urlBase = $(this).parent().parent().attr("data-url");
+      var url = urlBase+"/"+urlAction+".js";
+      console.log(" url="+url);
+      var thisTab = e.target; 
+      $(urlTarget).load(url);
+
+  });
+    
+  $('.ajax2').click(function (e) {
+      var thisTab = e.target; 
+      var pageTarget = $(thisTab).attr('href');
+      console.log("clicked tab");
+      $(thisTab).load(pageTarget);
+
   });
 })
 

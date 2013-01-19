@@ -1,6 +1,8 @@
 class TopicsController < InheritedResources::Base
   defaults :resource_class => Topic, :collection_name => 'topics', :instance_name => 'topic'
-  #respond_to :html, :json
+  respond_to :html, :json, :js
+  custom_actions :resource => [:content, :admin], :collection => :search
+  
   before_filter :authenticate_user!, :except => [:error, :show, :index]   
   
   def show
@@ -12,17 +14,33 @@ class TopicsController < InheritedResources::Base
     end
   end
   
+  def edit
+    super do |format|
+      format.html { render :show }
+      format.js { render :edit, :layout=>false }
+    end
+  end
+  
+  def content
+    resource
+    respond_to do |format|
+      format.html { render :show }
+      format.js { render :edit, :layout=>false }
+    end
+  end
+  
   def update_state
     resource
-    return_to = topic_path(@topic)
+    return_to = resource_url
     update_entity_state(@topic, params[:state])
     respond_to do |format|
-      if @topic.save
+      if resource.save
         format.html { redirect_to return_to }
+        format.js { render :show, :layout=>false }
         format.json { head :no_content }
       else
         format.html { redirect_to return_to, notice: "Cannot update the state" }
-        format.json { render json: @topic.errors, status: :unprocessable_entity }
+        format.json { render json: resource.errors, status: :unprocessable_entity }
       end
     end
   end  

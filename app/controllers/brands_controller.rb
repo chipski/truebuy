@@ -3,6 +3,14 @@ class BrandsController < InheritedResources::Base
   
   before_filter :authenticate_user!, :except => [:error, :show, :index]  
   
+  
+  def edit
+    super do |format|
+      format.html { render :show }
+      format.js { render :edit, :layout=>false }
+    end
+  end
+  
   def update_state
     resource
     return_to = brand_path(@brand)
