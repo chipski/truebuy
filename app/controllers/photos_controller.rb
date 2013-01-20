@@ -57,9 +57,10 @@ class PhotosController < InheritedResources::Base
     @photo = @parent ? @parent.photos.find(params[:id]) : Photo.find(params[:id])
     p_attr = params[:photo]
     p_attr[:image] = params[:photo][:image].first if params[:photo][:image].class == Array
+    return_to = params[:return_to] || (@parent ? resource_path(@parent) : resource_path(resource))
     respond_to do |format|
       if @photo.update_attributes(p_attr)
-        format.html { redirect_to @parent ? @parent : @photo , notice: 'Picture was successfully updated.' }
+        format.html { redirect_to return_to , notice: 'Picture was successfully updated.' }
         format.json { render :json => [@photo.to_jq_upload].to_json }
       else
         format.html { render action: "edit" }
@@ -92,6 +93,21 @@ class PhotosController < InheritedResources::Base
 
     respond_to do |format|
       format.js
+    end
+  end
+  
+  def update_state
+    resource
+    return_to = resource_path(resource)
+    update_entity_state(@resource, params[:state])
+    respond_to do |format|
+      if resource.save
+        format.html { redirect_to return_to }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to return_to, notice: "Cannot update the state" }
+        format.json { render json: resource.errors, status: :unprocessable_entity }
+      end
     end
   end
   

@@ -30,6 +30,7 @@
     -else
       =f.hidden_field :parent_id, :value=>Photo.default_parent.id 
       =f.hidden_field :parent_type, :value=>Photo.default_parent.class.to_s 
+      
     -if photo.image.large.url  
       = image_tag photo.image.large.url, :id => 'cropbox'
       = link_to 'Default', '', :class => 'btn btn-mini btn-success' , :id => 'make_default'
@@ -55,7 +56,7 @@
                   %a{:href => pic.image.url, :rel => "lightbox-photos", :title => pic.blurb}
                     %img{:alt => "", :src => pic.image.small.url}
                   .card_edit
-                    =render :partial=>'photos/edit_menu', :locals=>{:entity=>pic, :parent=>parent}
+                    =render :partial=>'photos/edit_menu', :locals=>{:entity=>pic, :parent=>parent, :return_to=>return_to}
                   .caption
                   
 

@@ -50,11 +50,11 @@ Reviews::Application.routes.draw do
   resources :photos
   resources :photos do
     collection do
-      get :make_defaults
       post :create
     end
     member do
       post :make_default
+      put :update_state
     end
   end
    

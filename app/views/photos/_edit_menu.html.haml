@@ -13,7 +13,7 @@
             %i.icon-ok
             Default 
       %li
-        = link_to polymorphic_path(entity, :action=>"edit") do
+        = link_to polymorphic_path(entity, :action=>"edit", :return_to=>return_to) do
           %i.icon-cog
           Edit
       %li

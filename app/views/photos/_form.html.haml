@@ -5,6 +5,7 @@
       = f.text_field :name, :class => 'text_field'
       = f.text_area :blurb, :class => 'wysihtml5'        
       = #f.input :topic_id, Topic.all.collect{ |t| [t.name, t.id]} 
+      = f.hidden_field :return_to, :value=>params[:return_to]
       = f.submit nil, :class => 'btn btn-primary  btn-mini'
       = link_to "Cancel", photos_path, :class => 'btn btn-mini' 
       
