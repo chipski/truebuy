@@ -12,13 +12,14 @@
           %h4
             =company.name 
             %b=company.topics.count
-            %span.small-gray
-              =link_to edit_company_path(company), :class=>"link" do
-                %i.icon-edit
-                Edit
+            -if is_admin?
+              %span.small-gray
+                =link_to edit_company_path(company), :class=>"link" do
+                  %i.icon-edit
+                  Edit
          
             
 
 
-
-  =link_to 'New', new_company_path, :class => 'btn btn-mini'
+  -if is_admin?
+    =link_to 'New', new_company_path, :class => 'btn btn-mini'
