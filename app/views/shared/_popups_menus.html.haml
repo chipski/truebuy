@@ -1,5 +1,5 @@
 - if is_admin?
-  -entity = entity || @company || @topic || @brand
+  -entity = entity || resource
   =content_for :edit_bar do
     .btn-group.pull-right    
       %a.btn.btn-mini.dropdown-toggle(data-toggle="dropdown" href="#")
@@ -21,6 +21,4 @@
               %i.icon-zoom-in
         %li.divider
 
--unless user_signed_in?
-  =render "devise/registrations/invite_modal"
         

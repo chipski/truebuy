@@ -8,7 +8,7 @@ class CompaniesController < InheritedResources::Base
     resource
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @company }
+      format.js { render :edit, :layout=>false }
     end
   end
   

@@ -1,31 +1,49 @@
-.row
-  %p
-    =link_to @product.brand.name, @product.brand
-  %p
-    %b Name:
-    = @product.name
-  %p
-    %b Blurb:
-    = @product.blurb.html_safe
-  %p
-    %b Body:
-    = @product.body.html_safe
-  %p
-    %b Cover:
-    = @product.cover
-  %p
-    %b Model num:
-    = @product.model_num
-  %p
-    %b Sku:
-    = @product.sku
-  %p
-    %b Sku type:
-    = @product.sku_type
-  %p
-    %b Cached tag list:
-    = @product.cached_tag_list
+.tab-content{:style=>"min-height: 480px;"} 
+  .tab-pane.active#overview
+    #full-width-slider.royalSlider.heroSlider.rsMinW
+      %input#productID{:type => "hidden", :value => resource.id}
+      -resource.slider_photos.each do |photo|
+        .rsContent
+          =image_tag(photo.image.medium.url, :class=>"rsImg")
+          .infoBlock.rsAbsoluteEl.infoBlockLeftBlack.rsNoDrag{:data=>{:fade=>{:effect=>10}, :move=>{:offset=>10, :effect=>"bottom"}, :speed=>"200"}}
+            %h1=resource.name
+            -#unless user_signed_in?
+            #call-to-action
+              %a.btn.btn-primary.btn-large{"data-toggle" => "modal", :href => "#request-invite"} Request invite
+            .blurb=resource.blurb ? resource.blurb.html_safe : ""
 
-  = link_to 'Edit', edit_product_path(@product)
-  \|
-  = link_to 'Back', products_path
+    .row.product
+      %h1
+        =link_to resource.brand.name, resource.brand
+        =resource.name
+      .hero
+        =resource.blurb ? resource.blurb.html_safe : ""
+        %b Model num:
+        = resource.model_num
+        %b Sku:
+        = resource.sku       
+      .hero
+        =resource.body ? resource.body.html_safe : ""
+    
+  .tab-pane#edit
+    .row
+      %h1 
+        Editing 
+        =link_to resource.name, resource
+        = link_to "New", new_product_path(:state=>"inactive"), :class => 'btn btn-primary btn-mini'
+        = render :partial=>'shared/edit_menu', :locals=>{:entity=>resource}
+      = render 'form'
+    
+  .tab-pane#content
+    .row
+      %h1 Variants
+      =#render :partial => "topics/grid", :locals=>{:entities=>resource.topic, :model_class=>Topic }           
+  
+  -if is_admin?
+    .tab-pane#admin
+      .row
+        =#render :partial => "grid", :locals=>{:entities=>@mediums_new, :model_class=>model_class } 
+        =render :partial=>'photos/upload_form', :locals=>{:parent=>resource}
+
+=render "shared/popups_menus", :locals=>{:entity=>resource}
+=render "photos/show_modal"

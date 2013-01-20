@@ -1,0 +1,11 @@
+-photo= photo || @photo 
+#show_photo.modal{:style => "display: none;"}
+  .modal-header
+    %a.close{"data-dismiss" => "modal"} ×
+    %h3 Photo
+  .modal-body
+    =image_tag("NoImageAvailable.jpg")
+    
+  .modal-footer
+    .btn-group.pull-right
+      %a.btn{"data-dismiss" => "modal", :href => "#"} Close

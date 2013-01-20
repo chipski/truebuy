@@ -59,7 +59,9 @@ body {
       //border-bottom: none;
   }
 }
-
+.modal#show_photo {
+    width: 88%;
+}
 
 @media (max-width: 979px) {
   .navbar-fixed-top, .navbar-fixed-bottom {

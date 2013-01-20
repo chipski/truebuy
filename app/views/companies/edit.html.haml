@@ -1,4 +1,3 @@
-=render "shared/tab_bar", :locals=>{:entity=>@company}
 .tab-content{:style=>"min-height: 480px;"} 
   .tab-pane.active#overview
     .row
@@ -15,6 +14,7 @@
       =render :partial => "topics/grid", :locals=>{:entities=>@company.topics, :model_class=>Topic }           
   
   -if is_admin?
+    .tab-pane#admin
     .tab-pane#photos
       .row
         =#render :partial => "grid", :locals=>{:entities=>@mediums_new, :model_class=>model_class } 

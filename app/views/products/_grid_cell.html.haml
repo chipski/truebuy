@@ -31,7 +31,17 @@
     = link_to entity.name, entity
   .info
     .infobox
-      =render :partial=>'photos/thumbnails', :locals=>{:parent=>entity}
+      %ul.thumbnails.files
+        - unless entity.photos.empty?
+          - entity.photos.each do |pic|
+            %li.thumbnail{:id => "photo_#{pic.id}"}
+              %a{:href => pic.image.large.url, :title => pic.blurb, :data=>{:toggle=>"modal", :target=>"#show_photo"}}
+                %img{:alt => "", :src => pic.image.small.url, :width=>"120px"}
+              .caption
+                -if is_admin? && false
+                  .card_edit.pull-right
+                    =render :partial=>'photos/edit_menu', :locals=>{:entity=>pic}
+      
   -if false
     .info
       -@variants = entity.variants ? entity.variants : []

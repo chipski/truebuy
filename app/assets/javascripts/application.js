@@ -168,5 +168,13 @@ $('document').ready(function() {
       $(thisTab).load(pageTarget);
 
   });
+  
+  $("a[data-target=#show_photo]").click(function(ev) {
+      ev.preventDefault();
+      $("#show_photo").modal(); 
+      $("#show_photo .modal-body").find("img")[0].src=$(this).attr("href");
+      console.log("Image loaded");
+      $("#show_photo").modal(); 
+  });
 })
 
