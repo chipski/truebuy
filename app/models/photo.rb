@@ -1,7 +1,8 @@
 class Photo < ActiveRecord::Base
 
-  attr_accessible :blurb, :image_name, :image_uid, :image, :keywords, :name, :permalink, :parent_id, :parent_type, :topic_id, :crop_x, :crop_y, :crop_w, :crop_h
-  attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
+  attr_accessible :blurb, :image_name, :image_uid, :image, :keywords, :name, :permalink 
+  attr_accessible :slide_order, :parent_id, :parent_type, :topic_id, :crop_x, :crop_y, :crop_w, :crop_h, :return_to
+  attr_accessor :crop_x, :crop_y, :crop_w, :crop_h, :return_to
 
   belongs_to :topic     
   belongs_to :parent, :polymorphic => true #, :counter_cache => true

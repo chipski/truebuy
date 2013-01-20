@@ -73,7 +73,7 @@ class Brand < ActiveRecord::Base
   
   
   def slider_photos
-    (self.photos + self.topics.collect{|t| t.photos}).flatten
+    (self.photos.order(:slide_order) + self.topics.collect{|t| t.photos.order(:slide_order)}).flatten
   end
   
   

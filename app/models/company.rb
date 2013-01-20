@@ -86,7 +86,7 @@ class Company < ActiveRecord::Base
 
   def slider_photos
     #self.cover ? (self.photos - [Photo.find(self.cover)]) : self.photos
-    self.photos
+    self.photos.order(:slide_order)
   end
 
   def cover_url(size="small")

@@ -50,7 +50,7 @@
       .masonry
         %ul.thumbnails.files
           - unless parent.photos.empty?
-            - parent.photos.each do |pic|
+            - parent.photos.order(:slide_order).each do |pic|
               %li.card{:id => "photo_#{pic.id}"}
                 .thumbnail
                   %a{:href => pic.image.url, :rel => "lightbox-photos", :title => pic.blurb}
@@ -58,6 +58,8 @@
                   .card_edit
                     =render :partial=>'photos/edit_menu', :locals=>{:entity=>pic, :parent=>parent, :return_to=>return_to}
                   .caption
+                    =pic.name
+                    =pic.slide_order
                   
 
 -if false
