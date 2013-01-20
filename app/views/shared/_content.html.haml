@@ -1,0 +1,16 @@
+-collection = collection || resource.products
+
+
+.tab-content{:style=>"min-height: 480px;"} 
+  .tab-pane.active#overview
+  .tab-pane#edit
+  .tab-pane#content
+    .row#masonry
+      =render :partial => collection, :as => :entity
+      -if false
+        - @brands.each do |brand|  
+          .card.brand
+            .thumbnail=link_to image_tag(brand.cover_url("small")), brand_path(brand)
+            %h4=brand.name 
+
+  .tab-pane#admin

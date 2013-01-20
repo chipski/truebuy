@@ -35,10 +35,11 @@
             = link_to "Add", new_photo_path(:product_id=>entity.id), :class=>"btn btn-mini" 
           -entity.photos.each do |photo|
             %b=link_to photo, photo   
-      .info
-        -@variants = entity.variants ? entity.variants : []
-        -if @variants.count > 0      
-          .infobox
-            %h4 Variants    
-            -@variants.each do |variant|
-              %b=link_to variant.name , variant                        
+      -#/
+        .info
+          -@variants = entity.variants ? entity.variants : []
+          -if @variants.count > 0      
+            .infobox
+              %h4 Variants    
+              -@variants.each do |variant|
+                %b=link_to variant.name , variant                        

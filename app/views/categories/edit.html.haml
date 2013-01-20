@@ -1,5 +1,9 @@
 .tab-content{:style=>"min-height: 480px;"} 
-  .tab-pane.active#overview
+  .tab-pane#overview
+    .row
+      %h1=@category.name
+
+  .tab-pane.active#edit
     .row
       = render :partial=>'categories/breadcrumb', :locals=>{:action=>"edit"}
       = render 'form'

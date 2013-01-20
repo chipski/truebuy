@@ -1,6 +1,6 @@
 
 body { 
- padding-top: 60px;
+ padding-top: 58px;
  padding-left: 0px;
  padding-right: 0px;
  color: #505050;
@@ -33,10 +33,11 @@ body {
     .container {
         width: auto;
     }
+    
   }
   .page-header {
       margin: 0 0 0 10px;
-      height: 48px;
+      height: 37px;
       h1 { 
          width: auto; 
          float:left;
@@ -53,7 +54,10 @@ body {
      padding-bottom: 2px;
      border-bottom: none;
   }
-  
+  .nav-tabs { 
+      margin-bottom: 0px;
+      //border-bottom: none;
+  }
 }
 
 
@@ -80,7 +84,7 @@ body {
 }
 @media (max-width: 920px) {
   body {
-    padding: 44px 0px 0 0px;
+    padding: 58px 0px 0 0px;
   }
   .navbar-fixed-top, .navbar-fixed-bottom {
     margin: 0;
@@ -93,7 +97,7 @@ body {
 }
 @media (max-width: 767px) {
   body {
-    padding: 44px 0px 0 0px;
+    padding: 58px 0px 0 0px;
     
   }
   .navbar-fixed-top, .navbar-fixed-bottom {
@@ -107,7 +111,7 @@ body {
 }
 @media (max-width: 680px) {
   body {
-    padding: 44px 0px 0 0px;
+    padding: 52px 0px 0 0px;
     
   }
   .wide {.card { width: 94%; } }

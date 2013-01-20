@@ -23,16 +23,15 @@
         %i.icon-ok-circle                                  
   .card-info
     %span.visibility
-    = entity.categories if entity.categories  
+    -if entity.categories
+      - entity.categories.each do |category|  
+        =link_to category.name, category
+         
   .title{:style=>"clear: both;"}
     = link_to entity.name, entity
   .info
     .infobox
-      %h4 
-        Photos
-        = link_to "Add", new_photo_path(:product_id=>entity.id), :class=>"btn btn-mini" 
-      -entity.photos.each do |photo|
-        %b=link_to photo, photo   
+      =render :partial=>'photos/thumbnails', :locals=>{:parent=>entity}
   -if false
     .info
       -@variants = entity.variants ? entity.variants : []

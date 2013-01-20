@@ -1,5 +1,5 @@
 -if is_admin?
-  -model_class = model_class
+  -model_class = resource_class
   -show_activation_tabs= show_activation_tabs || true
   -active_tab = active_tab || "actived"
   .page-header
@@ -33,9 +33,6 @@
               %i.icon-ban-circle 
               %strong  Available
               
-        %li{:class=>(model_class==Topic ? "active pull-right" : "pull-right")} 
-          =link_to "Topics", topics_path()       
-
         %li{:class=>(model_class==Brand ? "active pull-right" : "pull-right")} 
           =link_to "Brands", brands_path()
 

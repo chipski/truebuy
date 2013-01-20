@@ -11,9 +11,20 @@ class CategoriesController < InheritedResources::Base
     end
   end
   
+  def content
+    resource
+    collection = resource.products 
+    @brands = resource.brands
+    respond_to do |format|
+      format.html { render :partial=>"shared/content" }
+      format.js { render :partial=>"shared/content" }
+    end
+  end
+  
+  
   def update_state
     resource
-    return_to = category_path(@category)
+    return_to = collection_path #category_path(@category)
     update_entity_state(@category, params[:state])
     respond_to do |format|
       if @category.save

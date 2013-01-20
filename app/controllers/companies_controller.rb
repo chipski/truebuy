@@ -12,15 +12,6 @@ class CompaniesController < InheritedResources::Base
     end
   end
   
-  def editOFF
-    resource
-    @photos = Photo.initial
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @company }
-    end
-  end
-  
   def update_state
     resource
     return_to = company_path(@company)
