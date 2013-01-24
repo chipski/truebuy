@@ -19,7 +19,7 @@
     #main{:role => "main"}
       .container
         .content
-          =render "shared/tab_bar"
+          =render "shared/tab_bar" if ["edit"].include?(controller.action_name)
           -if content_for?(:sidebar)
             .span3
               =yield(:sidebar)
@@ -32,11 +32,10 @@
             
       / ! end of .container
       .footer
-        -#/
-          .navbar.navbar-fixed-bottom
-            %nav.navbar-inner
-              .container
-                = render 'layouts/footer'  
+        .navbar.navbar-static-bottom
+          %nav.navbar-inner
+            .container
+              = render 'layouts/footer'  
       .javascript
         = javascript_include_tag "application"
         = render :partial => 'shared/js_startup'

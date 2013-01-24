@@ -14,7 +14,7 @@ class ProductsController < InheritedResources::Base
   
   def edit
     super do |format|
-      format.html { render :show }
+      format.html { render :edit }
       format.js { render :edit, :layout=>false }
     end
   end
@@ -22,7 +22,7 @@ class ProductsController < InheritedResources::Base
   def update_state
     resource
     return_to = product_path(resource)
-    update_entity_state(@resource, params[:state])
+    resource = update_entity_state(@product, params[:state])
     respond_to do |format|
       if resource.save
         format.html { redirect_to return_to }

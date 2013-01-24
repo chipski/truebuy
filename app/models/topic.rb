@@ -15,7 +15,7 @@ class Topic < ActiveRecord::Base
   def self.select_active
     all.collect{ |t| [t.name, t.id]}
   end
-  
+    
   # State machine, should be shared in mixin but error now
   include AASM 
   #include LifeCycleState

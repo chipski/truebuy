@@ -58,9 +58,12 @@ Reviews::Application.routes.draw do
     end
   end
    
+  match '/about' => 'home#about'
+  match '/tos' => 'home#tos'
+  match '/privacy' => 'home#privacy'
   
   authenticated :user do
-    root :to => 'home#index'
+    root :to => 'categories#index'
   end
   devise_scope :user do
     root :to => "devise/registrations#new"

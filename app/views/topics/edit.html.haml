@@ -30,7 +30,7 @@
     .row
       %h1 Topics
   
-  .tab-pane#photos
+  .tab-pane#admin
     .row
       =#render :partial => "grid", :locals=>{:entities=>@mediums_new, :model_class=>model_class } 
       =render :partial=>'photos/upload_form', :locals=>{:parent=>@topic}

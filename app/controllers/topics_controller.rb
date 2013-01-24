@@ -16,15 +16,7 @@ class TopicsController < InheritedResources::Base
   
   def edit
     super do |format|
-      format.html { render :show }
-      format.js { render :edit, :layout=>false }
-    end
-  end
-  
-  def content
-    resource
-    respond_to do |format|
-      format.html { render :show }
+      format.html { render :edit }
       format.js { render :edit, :layout=>false }
     end
   end
@@ -32,7 +24,7 @@ class TopicsController < InheritedResources::Base
   def update_state
     resource
     return_to = resource_url
-    update_entity_state(@topic, params[:state])
+    resource = update_entity_state(@topic, params[:state])
     respond_to do |format|
       if resource.save
         format.html { redirect_to return_to }

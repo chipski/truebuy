@@ -1,5 +1,6 @@
 -parent = parent || @topic || @company || @category
 -photo = photo || @photo || Photo.new
+-return_to = return_to || parent || resource_path
 
 -if false
   = simple_form_for(photo, :html=>{:class=>'form-photo', :multipart=>true, :id=>"fileupload" }, :method=>:put) do |f| 

@@ -8,7 +8,6 @@
           =image_tag(photo.image.medium.url, :class=>"rsImg")
           .infoBlock.rsAbsoluteEl.infoBlockLeftBlack.rsNoDrag{:data=>{:fade=>{:effect=>10}, :move=>{:offset=>10, :effect=>"bottom"}, :speed=>"200"}}
             %h1=@topic.name
-      
     .row
       %p= @topic.blurb.html_safe if @topic.blurb
       #masonry.wide
@@ -18,3 +17,5 @@
   .tab-pane#content
   .tab-pane#photos
 
+=render "shared/popups_menus", :locals=>{:entity=>resource}
+=render "shared/modals"

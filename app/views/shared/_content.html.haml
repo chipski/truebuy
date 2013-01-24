@@ -2,11 +2,12 @@
 
 
 .tab-content{:style=>"min-height: 480px;"} 
-  .tab-pane.active#overview
+  .tab-pane#overview
   .tab-pane#edit
-  .tab-pane#content
+  .tab-pane.active#content
     .row#masonry
-      =render :partial => collection, :as => :entity
+      =#render :partial => collection, :as => :entity
+      =render :partial =>"topics/grid_cell", :collection=>collection
       -if false
         - @brands.each do |brand|  
           .card.brand

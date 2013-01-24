@@ -36,8 +36,25 @@ class ApplicationController < ActionController::Base
     when  "error" 
       entity.mark_error    
       puts "#{entity.class}.update_state marked mark_error "
-    end      
+    end     
+    Rails.logger.info("Update_state for #{entity.class.name} id=#{entity.id} to #{state}") 
     entity
+  end
+  
+  
+  def content
+    resource
+    respond_to do |format|
+      format.html { render :show }
+      format.js { render :partial=>'shared/content', :locals=>{:collection=>resource.topics}, :layout=>false }
+    end
+  end
+  def admin
+    resource
+    respond_to do |format|
+      format.html { render :show }
+      format.js { render :partial=>'photos/upload_form', :locals=>{:parent=>resource}, :layout=>false }
+    end
   end
   
 end

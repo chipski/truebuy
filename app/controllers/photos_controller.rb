@@ -99,7 +99,7 @@ class PhotosController < InheritedResources::Base
   def update_state
     resource
     return_to = resource_path(resource)
-    update_entity_state(@resource, params[:state])
+    resource = update_entity_state(@photo, params[:state])
     respond_to do |format|
       if resource.save
         format.html { redirect_to return_to }

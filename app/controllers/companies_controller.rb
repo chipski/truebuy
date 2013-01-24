@@ -14,15 +14,15 @@ class CompaniesController < InheritedResources::Base
   
   def update_state
     resource
-    return_to = company_path(@company)
-    update_entity_state(@company, params[:state])
+    return_to = company_path(resource)
+    resource = update_entity_state(@company, params[:state])
     respond_to do |format|
       if @company.save
         format.html { redirect_to return_to }
         format.json { head :no_content }
       else
         format.html { redirect_to return_to, notice: "Cannot update the state" }
-        format.json { render json: @company.errors, status: :unprocessable_entity }
+        format.json { render json: resource.errors, status: :unprocessable_entity }
       end
     end
   end  

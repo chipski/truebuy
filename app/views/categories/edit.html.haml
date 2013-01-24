@@ -18,7 +18,7 @@
       %h1 Brands
       =render :partial => "brands/grid", :locals=>{:entities=>@category.brands, :model_class=>Brand }        
         
-  .tab-pane#photos
+  .tab-pane#admin
     .row
       =#render :partial => "grid", :locals=>{:entities=>@mediums_new, :model_class=>model_class } 
       =render :partial=>'photos/upload_form', :locals=>{:parent=>@category}

@@ -17,8 +17,7 @@
       %h1 Topics
       =render :partial => "topics/grid", :locals=>{:entities=>@brand.topics, :model_class=>Topic }           
   
-  -if is_admin?
-    .tab-pane#photos
-      .row
-        =#render :partial => "grid", :locals=>{:entities=>@mediums_new, :model_class=>model_class } 
-        =render :partial=>'photos/upload_form', :locals=>{:parent=>@brand}
+  .tab-pane#admin
+    .row
+      =#render :partial => "grid", :locals=>{:entities=>@mediums_new, :model_class=>model_class } 
+      =render :partial=>'photos/upload_form', :locals=>{:parent=>@brand}

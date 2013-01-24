@@ -6,22 +6,22 @@ class BrandsController < InheritedResources::Base
   
   def edit
     super do |format|
-      format.html { render :show }
+      format.html { render :edit }
       format.js { render :edit, :layout=>false }
     end
   end
   
   def update_state
     resource
-    return_to = brand_path(@brand)
-    update_entity_state(@brand, params[:state])
+    return_to = brand_path(resource)
+    resource = update_entity_state(@brand, params[:state])
     respond_to do |format|
       if @brand.save
         format.html { redirect_to return_to }
         format.json { head :no_content }
       else
         format.html { redirect_to return_to, notice: "Cannot update the state" }
-        format.json { render json: @brand.errors, status: :unprocessable_entity }
+        format.json { render json: resource.errors, status: :unprocessable_entity }
       end
     end
   end

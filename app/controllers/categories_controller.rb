@@ -6,7 +6,7 @@ class CategoriesController < InheritedResources::Base
   
   def edit
     super do |format|
-      format.html { render :show }
+      format.html { render :edit }
       format.js { render :edit, :layout=>false }
     end
   end
@@ -25,14 +25,14 @@ class CategoriesController < InheritedResources::Base
   def update_state
     resource
     return_to = collection_path #category_path(@category)
-    update_entity_state(@category, params[:state])
+    resource = update_entity_state(@category, params[:state])
     respond_to do |format|
       if @category.save
         format.html { redirect_to return_to }
         format.json { head :no_content }
       else
         format.html { redirect_to return_to, notice: "Cannot update the state" }
-        format.json { render json: @category.errors, status: :unprocessable_entity }
+        format.json { render json: resource.errors, status: :unprocessable_entity }
       end
     end
   end

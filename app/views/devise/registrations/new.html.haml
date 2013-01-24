@@ -16,14 +16,16 @@
           %a.btn.btn-primary.btn-large{"data-toggle" => "modal", :href => "#request-invite"} Request invite
 
 .row.home
-  #masonry.wide
+  .masonry.full
     - @company.topics.active.each do |topic|
       .card
-        %h2=link_to topic.name, topic_path(topic)
-        -if is_admin? && false
-          .card_edit=render :partial=>'shared/edit_menu', :locals=>{:entity=>topic}
-        %p=topic.blurb ? topic.blurb.html_safe : ""
-        %p=topic.body ? topic.body.html_safe : ""
+        .thumb=image_tag(topic.cover, :alt=>topic.name)
+        .info
+          %h2=link_to topic.name, topic_path(topic)
+          -if is_admin? && false
+            .card_edit=render :partial=>'shared/edit_menu', :locals=>{:entity=>topic}
+          %p=topic.blurb ? topic.blurb.html_safe : ""
+          %p=#topic.body ? topic.body.html_safe : ""
 
 =render "invite_modal", :locals=>{:user=>@user}
 

@@ -1,7 +1,7 @@
 -if is_admin?
   -model_class = resource_class
   -show_activation_tabs= show_activation_tabs || true
-  -active_tab = active_tab || "actived"
+  -active_tab = active_tab || "edit"
   .page-header
     %span.tabs
       %ul.nav.nav-tabs{:data=>{:url=>(resource ? resource_url : collection ? collection_url : "" )}} 

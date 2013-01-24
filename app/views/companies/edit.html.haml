@@ -1,5 +1,5 @@
 .tab-content{:style=>"min-height: 480px;"} 
-  .tab-pane.active#overview
+  .tab-pane#overview
     #full-width-slider.royalSlider.heroSlider.rsMinW
       %input#companyID{:type => "hidden", :value => @company.id}
       -@company.slider_photos.each do |photo|
@@ -35,10 +35,9 @@
       %h1 Topics
       =render :partial => "topics/grid", :locals=>{:entities=>@company.topics, :model_class=>Topic }           
   
-  -if is_admin?
-    .tab-pane#admin
-      .row
-        =#render :partial => "grid", :locals=>{:entities=>@mediums_new, :model_class=>model_class } 
-        =render :partial=>'photos/upload_form', :locals=>{:parent=>@company}
+  .tab-pane#admin
+    .row
+      =#render :partial => "grid", :locals=>{:entities=>@mediums_new, :model_class=>model_class } 
+      =render :partial=>'photos/upload_form', :locals=>{:parent=>@company}
 
         
