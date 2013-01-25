@@ -6,10 +6,9 @@
       =image_tag(photo.image.medium.url, :class=>"rsImg", :alt=>photo.blurb)
       .infoBlock.infoBlockLeftBlack.rsABlock.rsNoDrag{:data=>{:fade=>{:effect=>10}, :move=>{:offset=>10, :effect=>"bottom"}, :speed=>"200"}}
         %h1= photo.name
-        %p=(photo.blurb ? photo.blurb.html_safe : "")
+        =(photo.blurb ? photo.blurb.html_safe : "")
         
       .infoBlock.rsAbsoluteEl.rsNoDrag{:data=>{:fade=>{:effect=>10}, :move=>{:offset=>10, :effect=>"bottom"}, :speed=>"200"}}
-        .blurb=@company.blurb ? @company.blurb.html_safe : ""
 
       -if true || user_signed_in?
         .call-to-action
@@ -25,7 +24,7 @@
           -if is_admin? && false
             .card_edit=render :partial=>'shared/edit_menu', :locals=>{:entity=>topic}
           %p=topic.blurb ? topic.blurb.html_safe : ""
-          %p=#topic.body ? topic.body.html_safe : ""
+
 
 =render "invite_modal", :locals=>{:user=>@user}
 
