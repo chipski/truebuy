@@ -1,6 +1,6 @@
 -collection = collection || @products
--categories = collection.map{|p| p.categories}.flatten.uniq
--brands =     collection.map{|p| p.brand}.flatten.uniq
+-categories = []  #collection.map{|p| p.categories}.flatten.uniq
+-brands =   []  #collection.map{|p| p.brand}.flatten.uniq
 
 .tab-content{:style=>"min-height: 480px;"} 
   .tab-pane.active#overview
