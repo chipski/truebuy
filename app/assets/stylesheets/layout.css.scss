@@ -1,6 +1,6 @@
 
 body { 
- padding-top: 58px;
+ padding-top: 53px;
  padding-left: 0px;
  padding-right: 0px;
  color: #505050;
@@ -17,6 +17,7 @@ body {
  .content {
     margin: 0;
     padding: 0;
+    min-height: 640px;
  }
   .row {
     margin: 0px;
@@ -63,7 +64,7 @@ body {
       .navbar-static-bottom {
           margin-top: 10px;
           height:60px;
-          padding: 10px 5px;
+          padding: 10px 12px;
           .nav li a {
               padding: 10px 10px 10px;
           }
@@ -97,7 +98,7 @@ body {
 }
 @media (max-width: 920px) {
   body {
-    padding: 58px 0px 0 0px;
+    padding: 53px 0px 0 0px;
   }
   .navbar-fixed-top, .navbar-fixed-bottom {
     margin: 0;

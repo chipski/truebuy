@@ -9,13 +9,9 @@
           .infoBlock.rsAbsoluteEl.infoBlockLeftBlack.rsNoDrag{:data=>{:fade=>{:effect=>10}, :move=>{:offset=>10, :effect=>"bottom"}, :speed=>"200"}}
             %h1=@topic.name
     .row
-      %p= @topic.blurb.html_safe if @topic.blurb
-      #masonry.wide
-        = render 'photos/thumbnails', :locals=>{:thumbnails=>@topic.photos}, :collection=>@topic.photos
-
-  .tab-pane#edit
-  .tab-pane#content
-  .tab-pane#photos
+      %h1=@topic.name
+      %p= @topic.body.html_safe if @topic.body
+      
 
 =render "shared/popups_menus", :entity=>@topic
 =render "shared/modals"
