@@ -45,5 +45,5 @@
         =#render :partial => "grid", :locals=>{:entities=>@mediums_new, :model_class=>model_class } 
         =render :partial=>'photos/upload_form', :locals=>{:parent=>resource}
 
-=render "shared/popups_menus", :locals=>{:entity=>resource}
+=render "shared/popups_menus", :entity=>resource
 =render "shared/modals"

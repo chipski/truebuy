@@ -6,7 +6,7 @@ class Topic < ActiveRecord::Base
   attr_accessible :blurb, :body, :cover, :keywords, :name, :permalink, :state, :category_ids, :company_id, :brand_id
   
   after_save :update_permalink   
-  after_save :update_order   
+  #after_save :update_order   
    
   #default_scope order(:slide_order) 
   scope :active_for, lambda {|current_user| where(:state=>:active)}     

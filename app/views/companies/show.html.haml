@@ -45,7 +45,7 @@
 .hero
   =@company.body ? @company.body.html_safe : ""
   
-=render "shared/popups_menus", :locals=>{:entity=>@company}
+=render "shared/popups_menus", :entity=>@company
 =render "shared/modals"
 
         

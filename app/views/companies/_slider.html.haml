@@ -16,7 +16,7 @@
     %div
       %h3=link_to topic.name, topic_path(topic)
       -if is_admin?
-        .card_edit=render :partial=>'shared/edit_menu', :locals=>{:entity=>topic}
+        .card_edit=render :partial=>'shared/edit_menu', :entity=>topic
       %p=topic.blurb
       %p=topic.body
       .rsTmb=topic.name        

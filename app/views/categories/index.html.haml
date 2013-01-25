@@ -10,7 +10,8 @@
             .thumbnail=link_to image_tag(category.cover_url("small")), category_path(category)
             .caption
               %h4=category.name
-              .card_edit=render :partial=>'shared/edit_menu', :locals=>{:entity=>category} if is_admin?
+              -if is_admin?
+                .card_edit=render :partial=>'shared/edit_menu', :locals=>{:entity=>category}
   .tab-pane#inactive
     .row.companies
       #masonry.wide
@@ -22,7 +23,8 @@
             .thumbnail=link_to image_tag(category.cover_url("small")), category_path(category)
             .caption
               %h4=category.name
-              .card_edit=render :partial=>'shared/edit_menu', :locals=>{:entity=>category} if is_admin?
+              - if false && is_admin?
+                .card_edit=render :partial=>'shared/edit_menu', :locals=>{:entity=>category}
 
 
            

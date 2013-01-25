@@ -7,9 +7,9 @@
           =image_tag(photo.image.medium.url, :class=>"rsImg")
           .infoBlock.rsAbsoluteEl.infoBlockLeftBlack.rsNoDrag{:data=>{:fade=>{:effect=>10}, :move=>{:offset=>10, :effect=>"bottom"}, :speed=>"200"}}
             %h1=@about.name
+            = @about.blurb.html_safe if @about.blurb
     .row
-      %p= @about.blurb.html_safe if @about.blurb
       %p= @about.body.html_safe if @about.body
 
-=render "shared/popups_menus", :locals=>{:entity=>@about}
+=render "shared/popups_menus", :entity=>@about
 =render "shared/modals"
