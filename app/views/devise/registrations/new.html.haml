@@ -18,7 +18,7 @@
   .masonry.full
     - @company.topics.active.each do |topic|
       .card
-        .thumb=image_tag(topic.cover, :alt=>topic.name)
+        .thumb=image_tag(topic.cover_url, :alt=>topic.name)
         .info
           %h2=link_to topic.name, topic_path(topic)
           -if is_admin? && false
