@@ -17,4 +17,5 @@
         = f.input :cover
 
 .image-box 
-  %h1 Overview of content 
+  =render :partial=>'photos/upload_form', :locals=>{:parent=>@company}
+  

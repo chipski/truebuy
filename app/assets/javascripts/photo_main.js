@@ -59,7 +59,7 @@ $(function () {
 
     completed: function(e, data) {
       console.log(data, e);
-      //console.log("Inside photo_main.completed");
+      console.log("Inside photo_main.completed");
       $('a[href^="' + data.result[0].url + '"]').slimbox();
     },
     downloadTemplate: function (o) {

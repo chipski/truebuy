@@ -1,4 +1,4 @@
--parent = parent || @topic || @company || @category
+-parent = parent 
 -photo = photo || @photo || Photo.new
 -return_to = return_to || parent || resource_path
 
@@ -32,7 +32,7 @@
       =f.hidden_field :parent_id, :value=>Photo.default_parent.id 
       =f.hidden_field :parent_type, :value=>Photo.default_parent.class.to_s 
       
-    -if photo.image.large.url  
+    -if photo && photo.image.large.url  
       = image_tag photo.image.large.url, :id => 'cropbox'
       = link_to 'Default', '', :class => 'btn btn-mini btn-success' , :id => 'make_default'
       - %w[x y w h].each do |attribute|
