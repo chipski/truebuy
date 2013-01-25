@@ -12,7 +12,9 @@
             .form-input-boxes 
               = f.error_notification
               .form-inputs.tight
-                = f.text_field :name, :class => 'text_field' 
+                = f.text_field :name, :class => 'text_field'
+                .left_field=f.text_field :permalink
+                .left_field=f.text_field :slide_order
                 .left= f.association :company, :prompt=>"Choose a Company"
                 .right= f.association :brand, :prompt=>"Choose a Brand"
                 .clearfix
@@ -25,7 +27,9 @@
                     = f.input :permalink  
                     = f.input :cover    
                 = f.submit nil, :class => 'btn btn-primary'
-
+        .image-box 
+          =render :partial=>'photos/upload_form', :locals=>{:parent=>@topic}
+          
   .tab-pane#content
     .row
       %h1 Topics

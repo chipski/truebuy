@@ -31,6 +31,23 @@ form {
     input.text_field {
       width: 600px;
     }
+    .wide {
+        width: 680px;
+    }
+    .left_field {
+      float: left; 
+      margin-bottom: 0px;
+      .control-label { 
+        margin-right: 6px;  
+        width: 98px;
+      }   
+    }
+    .right_field {
+      .control-label { 
+        margin-right: 8px;  
+        width: 100px;
+      }
+    }
 }
 .image-box {
     width: 328px;
