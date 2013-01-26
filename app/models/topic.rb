@@ -5,7 +5,7 @@ class Topic < ActiveRecord::Base
   has_many :photos, :as => :parent, :class_name => "Photo"  
   attr_accessible :blurb, :body, :cover, :keywords, :name, :permalink, :state, :category_ids, :company_id, :brand_id, :slide_order
   
-  after_save :update_permalink   
+  before_save :update_permalink   
   #after_save :update_order   
    
   #default_scope order(:slide_order) 

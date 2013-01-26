@@ -11,7 +11,8 @@ class HomeController < ApplicationController
   end
   
   def about
-    @about = Company.default_about(@company)
+    @topic = Company.default_about(@company)
+    render :about
   end
 
   def tos

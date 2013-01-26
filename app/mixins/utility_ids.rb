@@ -5,8 +5,8 @@ class UtilityIds
     token = Digest::SHA1.hexdigest("#{entity.class}-#{entity.id}".gsub(" ", "_"))
     permalink = name.downcase.gsub(/[^a-z1-9]+/, '-').chomp('-')
     if !entity.permalink || (entity.uid != token)
-      entity.update_attribute(:permalink, permalink)
-      entity.update_attribute(:uid, token)
+      entity.permalink = permalink
+      entity.uid = token
     end      
   end  
   

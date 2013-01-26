@@ -24,15 +24,15 @@ class Company < ActiveRecord::Base
   end
   def self.default_about(company)
     @default_company = company || Company.default_home
-    @default_about ||= Topic.where(:state=>"active", :permalink=>"about", :company_id=>@default_company.id).first || Topic.where(:state=>"active", :company_id=>@default_company.id).first
+    @default_about ||= Topic.where(:state=>"active", :permalink=>"about", :company_id=>@default_company.id).first || Topic.where(:state=>"active", :permalink=>"about").first
   end
   def self.default_tos(company)
     @default_company = company || Company.default_home
-    @default_tos ||= Topic.where(:state=>"active", :permalink=>"tos", :company_id=>@default_company.id).first || Topic.where(:state=>"active", :company_id=>@default_company.id).first
+    @default_tos ||= Topic.where(:state=>"active", :permalink=>"tos", :company_id=>@default_company.id).first || Topic.where(:state=>"active", :permalink=>"about").first
   end
   def self.default_privacy(company)
     @default_company = company || Company.default_home
-    @default_privacy ||= Topic.where(:state=>"active", :permalink=>"privacy", :company_id=>@default_company.id).first || Topic.where(:state=>"active", :company_id=>@default_company.id).first
+    @default_privacy ||= Topic.where(:state=>"active", :permalink=>"privacy", :company_id=>@default_company.id).first || Topic.where(:state=>"active", :permalink=>"about").first
   end
   
   
