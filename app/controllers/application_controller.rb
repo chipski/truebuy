@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
     when  "list_only" 
       entity.mark_list_only    
       puts "#{entity.class}.update_state marked mark_list_only "
-      return_to = admin_new_campaigns_path
+      #return_to = admin_new_campaigns_path
     when "admin_only" 
       entity.mark_admin_only    
       puts "#{entity.class}.update_state marked mark_admin_only "

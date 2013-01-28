@@ -11,16 +11,16 @@ class HomeController < ApplicationController
   end
   
   def about
-    @topic = Company.default_about(@company)
+    @topic = @company.about
     render :about
   end
 
   def tos
-    @tos = Company.default_tos(@company)
+    @tos = @company.tos
   end
   
   def privacy
-    @privacy = Company.default_privacy(@company)
+    @privacy = @company.privacy
   end
   
   def default_company

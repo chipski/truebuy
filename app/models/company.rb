@@ -16,7 +16,7 @@ class Company < ActiveRecord::Base
   #scope :site_active, where(:state=>:active)
   
   def self.select_active
-    self.all.collect{ |t| [" #{t.name[0..30]}", t.id]}
+    self.active.collect{ |t| [" #{t.name[0..30]}", t.id]}
   end
   
   def self.default_home
@@ -35,6 +35,15 @@ class Company < ActiveRecord::Base
     @default_privacy ||= Topic.where(:state=>"active", :permalink=>"privacy", :company_id=>@default_company.id).first || Topic.where(:state=>"active", :permalink=>"about").first
   end
   
+  def about
+    self.topics.where(:permalink=>"about").last  
+  end
+  def tos
+    self.topics.where(:permalink=>"tos").last  
+  end
+  def privacy
+    self.topics.where(:permalink=>"privacy").last  
+  end
   
   # State machine, should be shared in mixin but error now
   include AASM 
