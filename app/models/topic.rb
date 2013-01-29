@@ -74,7 +74,8 @@ class Topic < ActiveRecord::Base
   end
   
   def slider_photos
-    self.cover ? (self.photos - [Photo.find(self.cover)]) : self.photos
+    #self.cover ? (self.photos - [Photo.find(self.cover)]) : self.photos
+    self.photos
   end
   
   def cover_url(size="small")

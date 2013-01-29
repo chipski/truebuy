@@ -9,6 +9,7 @@
             %h1=@tos.name
             = @tos.blurb.html_safe if @tos.blurb
     .row
+      %h1=@tos.name
       %p= @tos.body.html_safe if @tos.body
 
 =render "shared/popups_menus", :entity=>@tos

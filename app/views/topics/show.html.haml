@@ -1,7 +1,7 @@
 
 .tab-content{:style=>"min-height: 480px;"} 
   .tab-pane.active#overview        
-    #full-width-slider.royalSlider.heroSlider.rsMinW
+    #full-width-slider.royalSlider.rsMinW
       %input#topicID{:type => "hidden", :value => @topic.id}
       -@topic.slider_photos.each do |photo|
         .rsContent

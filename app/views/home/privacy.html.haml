@@ -9,6 +9,7 @@
             %h1=@privacy.name
             = @privacy.blurb.html_safe if @privacy.blurb
     .row
+      %h1=@privacy.name
       %p= @privacy.body.html_safe if @privacy.body
 
 =render "shared/popups_menus", :entity=>@privacy
