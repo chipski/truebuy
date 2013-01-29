@@ -70,8 +70,8 @@ $color: #8c7e7e;
   .card_edit {
       z-index: 150;
       position: relative;
-      left: -4px;
-      top: -28px;
+      left: -2px;
+      top: -34px;
   }
   .thumbnail {
       .card_edit {
@@ -149,17 +149,19 @@ $color: #8c7e7e;
 
 .full { 
    .card { 
-      width: 95%;
+      width: 96%;
       min-height: 180px;
       .thumb {
           float: left;
-          padding: 15px;
+          padding: 4px;
           min-height: 180px;
           width: 30%;
           img { margin: 10px auto;}
       }
       .info {
           margin: 8px;
+          margin-left: 34%;
+          
       }
    } 
 }

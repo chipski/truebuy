@@ -8,8 +8,6 @@
         %h1= photo.name
         =(photo.blurb ? photo.blurb.html_safe : "")
         
-      .infoBlock.rsAbsoluteEl.rsNoDrag{:data=>{:fade=>{:effect=>10}, :move=>{:offset=>10, :effect=>"bottom"}, :speed=>"200"}}
-
       -if true || user_signed_in?
         .call-to-action
           %a.btn.btn-primary.btn-large{"data-toggle" => "modal", :href => "#request-invite"} Request invite

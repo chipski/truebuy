@@ -8,10 +8,10 @@
         - Category.active.each do |category|  
           .card#category
             .thumbnail=link_to image_tag(category.cover_url("small")), category_path(category)
+            -if is_admin?
+              .card_edit=render :partial=>'shared/edit_menu', :locals=>{:entity=>category}
             .caption
-              %h4=category.name
-              -if is_admin?
-                .card_edit=render :partial=>'shared/edit_menu', :locals=>{:entity=>category}
+              %h2=category.name
   .tab-pane#inactive
     .row.companies
       #masonry.wide
