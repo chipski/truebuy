@@ -7,7 +7,7 @@
     %title= content_for?(:title) ? yield(:title) : "Reviews"
     %meta{:content => content_for?(:description) ? yield(:description) : "Reviews", :name => "description"}
     = stylesheet_link_tag "application", :media => "all"
-    -if false
+    -if true
       %link{ :rel => "stylesheet", :type => 'text/css', :href => "http://fonts.googleapis.com/css?family=Istok+Web:400,700|Oswald:300,400,700"}
     -else
       =javascript_include_tag("https://use.typekit.net/cex6svf.js")
