@@ -4,6 +4,10 @@ body {
  padding-left: 0px;
  padding-right: 0px;
  color: #505050;
+ font: 100% sans-serif;
+ font-family: 'proxima-nova', 'HelveticaNeue','Open Sans','Helvetica Neue', Helvetica, Arial, sans-serif;
+ line-height: 18px;
+
  .navbar {
      .brand {
          margin-left: 0;
@@ -60,7 +64,7 @@ body {
       //border-bottom: none;
   }
   .footer {
-      height: 80px;
+      height: 100px;
       .navbar-static-bottom {
           margin-top: 10px;
           height:60px;
