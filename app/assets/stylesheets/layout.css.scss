@@ -5,9 +5,18 @@ body {
  padding-right: 0px;
  color: #505050;
  font: 100% sans-serif;
- font-family: 'proxima-nova', 'HelveticaNeue','Open Sans','Helvetica Neue', Helvetica, Arial, sans-serif;
+ font-family: 'HelveticaNeue','Open Sans','Helvetica Neue', Helvetica, Arial, sans-serif;
  line-height: 18px;
-
+ h1, h2, h3, h4, h5, h6 {
+    font-family: 'HelveticaNeue','Open Sans','Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 200; 
+    line-height: 20px;
+    margin: 10px;
+ }
+ h1, h2, h3 {
+    line-height: 40px;
+    margin: 10px 0px; 
+ }
  .navbar {
      .brand {
          margin-left: 0;
