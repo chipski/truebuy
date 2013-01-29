@@ -16,11 +16,13 @@ class HomeController < ApplicationController
   end
 
   def tos
-    @tos = @company.tos
+    @topic = @company.tos
+    render :about
   end
   
   def privacy
-    @privacy = @company.privacy
+    @topic = @company.privacy
+    render :about
   end
   
   def default_company

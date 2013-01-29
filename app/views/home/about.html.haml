@@ -1,16 +1,18 @@
+#full-width-slider.royalSlider.rsMinW.img-bar
+  -@topic.slider_photos.each do |photo|
+    .rsContent
+      =image_tag(photo.image.medium.url, :class=>"rsImg", :alt=>photo.blurb)
+      -if photo.blurb
+        .infoBlock.infoBlockLeftBlack.rsABlock.rsNoDrag{:data=>{:fade=>{:effect=>10}, :move=>{:offset=>10, :effect=>"bottom"}, :speed=>"200"}}
+          %h1= photo.name
+          =(photo.blurb ? photo.blurb.html_safe : "")
 
-.tab-content{:style=>"min-height: 480px;"} 
-  .tab-pane.active#overview        
-    #full-width-slider.royalSlider.heroSlider.rsMinW
-      -@topic.slider_photos.each do |photo|
-        .rsContent
-          =image_tag(photo.image.medium.url, :class=>"rsImg")
-          .infoBlock.rsAbsoluteEl.infoBlockLeftBlack.rsNoDrag{:data=>{:fade=>{:effect=>10}, :move=>{:offset=>10, :effect=>"bottom"}, :speed=>"200"}}
-            %h1=@topic.name
-            = @topic.blurb.html_safe if @topic.blurb
-    .row
-      %h1=@topic.name
-      %p= @topic.body.html_safe if @topic.body
+      -if true || user_signed_in?
+        .call-to-action
+          %a.btn.btn-primary.btn-large{"data-toggle" => "modal", :href => "#request-invite"} Request invite
+.row
+  %h1=@topic.name
+  %p= @topic.body.html_safe if @topic.body
 
 =render "shared/popups_menus", :entity=>@topic
 =render "shared/modals"
