@@ -4,7 +4,7 @@
       #masonry.wide
         %h1 Brands
         - Brand.active.each do |brand|  
-          .card.brand
+          .card
             .category_gallery.royalSlider.rsDefault.fwImage.col.span_4.thumbnail
               -brand.slider_photos.each do |photo|
                 =link_to image_tag(photo.image.medium.url, :class=>"rsImg"), brand_path(brand)
@@ -18,8 +18,8 @@
           %h1 
             Inactive Brands
             =link_to 'New', new_brand_path, :class => 'btn btn-mini'
-          - Brand.not_active.each do |category|  
-            .card.brand
+          - Brand.not_active.each do |brand|  
+            .card
               .thumbnail=link_to image_tag(brand.cover_url("small")), brand_path(brand)
               .caption
                 %h4=brand.name
