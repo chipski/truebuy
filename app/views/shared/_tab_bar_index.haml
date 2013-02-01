@@ -1,0 +1,41 @@
+-if is_admin?
+  -model_class = resource_class
+  -show_activation_tabs= show_activation_tabs || true
+  -active_tab = active_tab || "actived"
+  -if show_activation_tabs
+    .page-header
+      %span.tabs
+        %ul.nav.nav-tabs{:data=>{:url=>(collection ? collection_url : "" )}} 
+          %li{:class=>(active_tab=='actived' ? 'active' : '')}
+            =link_to "#actived", :data=>{:toggle=>:tab} do
+              %i.icon-ok-circle
+              %strong Active
+          %li{:class=>(active_tab=='inactive' ? 'active' : '')}
+            =link_to "#inactive", :data=>{:toggle=>:tab} do
+              %i.icon-ban-circle 
+              %strong  Available
+          -if resource.is_a?(ActiveRecord::Relation)
+            %li{:class=>(active_tab=='inactive' ? 'active' : '')}
+              =link_to "#admin", "Admin", :data=>{:toggle=>:tab}
+                    
+          %li{:class=>(model_class==Brand ? "active pull-right" : "pull-right")} 
+            =link_to "Brands", brands_path()
+
+          %li{:class=>(model_class==Product ? "active pull-right" : "pull-right")} 
+            =link_to "Products", products_path()
+
+          %li{:class=>(model_class==Category ? "active pull-right" : "pull-right")}
+            =link_to "Categories", categories_path()
+
+  =content_for :edit_bar do
+    Hi again
+    .btn-group.pull-right    
+      %a.btn.btn-mini.dropdown-toggle(data-toggle="dropdown" href="#")
+        %i.icon-cog
+        = "Manage" 
+        %span.caret
+      %ul.dropdown-menu
+        %li=#link_to "New #{resource.class.name}", new_polymorphic_path(resource.class)
+        %li.divider
+        %li=link_to "Photos", ""
+        %li.divider 
