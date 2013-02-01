@@ -4,7 +4,7 @@ class CategoriesController < InheritedResources::Base
   before_filter :authenticate_user!, :except => [:error, :show, :index]  
   
   def index
-    @search ||= ProductSearch.new
+    #@search ||= ProductSearch.new
     #@products = @search.query()
   end
 
