@@ -123,6 +123,7 @@ GEM
       railties (>= 3.1.1)
       sass-rails (>= 3.1.1)
     formatador (0.2.4)
+    geocoder (1.1.6)
     gherkin (2.11.5)
       json (>= 1.4.6)
     girl_friday (0.11.1)
@@ -326,6 +327,7 @@ DEPENDENCIES
   factory_girl_rails (>= 4.1.0)
   fog
   font-awesome-sass-rails
+  geocoder
   google-analytics-rails
   google_visualr (>= 2.1.2)
   gritter

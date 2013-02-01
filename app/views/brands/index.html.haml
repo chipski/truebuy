@@ -1,20 +1,30 @@
-.row.companies
-  #masonry.wide
-    %h1 Brands
-    - @brands.each do |brand|  
-      .card
-        .thumbnail
-          -if brand.cover.blank? or !Photo.find_by_id(brand.cover)  
-            =link_to image_tag("NoImageAvailable.jpg"), brand_path(brand)
-          -else
-            =link_to image_tag(brand.cover_url("small")), brand_path(brand)
-        .caption
-          %h4
-            =brand.name 
-            %span.small-gray
-              =link_to edit_brand_path(brand), :class=>"link" do
-                %i.icon-edit
-                Edit
+.row
+  .tab-content{:style=>"min-height: 480px;"} 
+    .tab-pane.active#actived
+      #masonry.wide
+        %h1 Brands
+        - Brand.active.each do |brand|  
+          .card.brand
+            .category_gallery.royalSlider.rsDefault.fwImage.col.span_4.thumbnail
+              -brand.slider_photos.each do |photo|
+                =link_to image_tag(photo.image.medium.url, :class=>"rsImg"), brand_path(brand)
+            -if is_admin? 
+              .card_edit=render :partial=>'shared/edit_menu', :locals=>{:entity=>brand}
+            .caption
+              %h2=brand.name
+    .tab-pane#inactive
+      .row.companies
+        #masonry.wide
+          %h1 
+            Inactive Brands
+            =link_to 'New', new_brand_path, :class => 'btn btn-mini'
+          - Brand.not_active.each do |category|  
+            .card.brand
+              .thumbnail=link_to image_tag(brand.cover_url("small")), brand_path(brand)
+              .caption
+                %h4=brand.name
+                - if is_admin?
+                  .card_edit=render :partial=>'shared/edit_menu', :locals=>{:entity=>brand}
 
-  =link_to 'New', new_brand_path, :class => 'btn btn-mini'
+=render "shared/modals"
 

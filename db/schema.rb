@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130108030312) do
+ActiveRecord::Schema.define(:version => 20130130025358) do
 
   create_table "brands", :force => true do |t|
     t.integer  "company_id"
@@ -104,6 +104,36 @@ ActiveRecord::Schema.define(:version => 20130108030312) do
   add_index "companies", ["permalink"], :name => "index_companies_on_permalink", :unique => true
   add_index "companies", ["uid"], :name => "index_companies_on_uid", :unique => true
 
+  create_table "locations", :force => true do |t|
+    t.integer  "store_id"
+    t.integer  "user_id"
+    t.string   "uid"
+    t.string   "permalink"
+    t.string   "name"
+    t.string   "keywords"
+    t.text     "blurb"
+    t.string   "state"
+    t.string   "type"
+    t.string   "cached_tag_list"
+    t.string   "ip_address"
+    t.string   "full_address"
+    t.string   "street"
+    t.string   "city"
+    t.string   "us_state"
+    t.string   "country"
+    t.string   "zipcode"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "phone"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "locations", ["permalink"], :name => "index_locations_on_permalink", :unique => true
+  add_index "locations", ["store_id"], :name => "index_locations_on_store_id"
+  add_index "locations", ["uid"], :name => "index_locations_on_uid", :unique => true
+  add_index "locations", ["user_id"], :name => "index_locations_on_user_id"
+
   create_table "photos", :force => true do |t|
     t.string   "uid"
     t.string   "permalink"
@@ -151,6 +181,7 @@ ActiveRecord::Schema.define(:version => 20130108030312) do
     t.string   "cached_tag_list"
     t.datetime "created_at",                          :null => false
     t.datetime "updated_at",                          :null => false
+    t.float    "price",            :default => 0.0
   end
 
   add_index "products", ["brand_id"], :name => "index_products_on_brand_id"
@@ -167,6 +198,25 @@ ActiveRecord::Schema.define(:version => 20130108030312) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], :name => "index_roles_on_name"
+
+  create_table "stores", :force => true do |t|
+    t.string   "uid"
+    t.string   "permalink"
+    t.string   "name"
+    t.string   "keywords"
+    t.text     "blurb"
+    t.string   "state"
+    t.string   "type"
+    t.string   "url"
+    t.string   "url2"
+    t.string   "store_id"
+    t.boolean  "realtime_availability"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
+  add_index "stores", ["permalink"], :name => "index_stores_on_permalink", :unique => true
+  add_index "stores", ["uid"], :name => "index_stores_on_uid", :unique => true
 
   create_table "topics", :force => true do |t|
     t.string   "uid"

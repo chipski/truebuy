@@ -6,7 +6,7 @@
       ="Launch"
       %span.caret
     %ul.dropdown-menu
-      %li= link_to 'Edit', polymorphic_path(entity, :action=>"edit")
+      %li= link_to 'Edit', edit_polymorphic_path(entity)
       - if entity.active?
         %li
           =link_to polymorphic_path(entity, :action=>"update_state", :state=>"inactive"), :method=>:put do

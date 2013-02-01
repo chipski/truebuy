@@ -1,8 +1,8 @@
 -action = action || controller.action_name
 -product = product || @product
 
-.page-header.breadcrumbs
-  %h2
+.resource-header.breadcrumbs
+  %h1
     =link_to products_path do
       %i.icon-list-alt
     -if action == "edit" 

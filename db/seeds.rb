@@ -24,19 +24,26 @@ u1=recreate_user('chipski@mac.com', "Chip Vanek", true)
 u2=recreate_user('chipski@me.com', "Chip Vanek")
 
 
-top=Company.find_by_name("Reviews") || Company.create!(:name=>"Reviews")
-bran=Brand.find_by_name("Baby Products") || Brand.create!(:name=>"Baby Products",:company_id=>top.id)
+top=Company.find_by_name("TrueBuy") || Company.create!(:name=>"TrueBuy", :state=>"active", :permalink=>"truebuy")
+bran=Brand.find_by_name("Baby Products") || Brand.create!(:name=>"Baby Products",:company_id=>top.id, :state=>"active")
 comp=Company.find_by_name("Graco") || Company.create!(:name=>"Graco")
 
-cat1=Category.find_by_name("Travel Gear") || Category.create!(:name=>"Travel Gear")  
-cat2=Category.find_by_name("Strollers") || Category.create!(:name=>"Strollers", :parent_id=>cat1.id)  
-cat3=Category.find_by_name("Car Seats") || Category.create!(:name=>"Car Seats", :parent_id=>cat1.id)  
+cat1=Category.find_by_name("Travel Gear") || Category.create!(:name=>"Travel Gear", :state=>"active")  
+cat2=Category.find_by_name("Strollers") || Category.create!(:name=>"Strollers", :parent_id=>cat1.id, :state=>"active")  
+cat3=Category.find_by_name("Car Seats") || Category.create!(:name=>"Car Seats", :parent_id=>cat1.id, :state=>"active")  
 cat4=Category.find_by_name("Toys") || Category.create!(:name=>"Toys")  
 
-comp.categories << [cat1,cat2,cat3,cat4]
+top.categories << [cat1,cat2,cat3,cat4]
+top.save
 bran.categories << [cat1,cat2,cat3,cat4]
+bran.save
 comp.categories << [cat1,cat2,cat3,cat4]
+comp.save
 
-topic=Topic.create!(:name=>"Simple Browse") unless Topic.find_by_name("Simple Browse")
-topic2=Topic.create!(:name=>"Lost & Found") unless Topic.find_by_name("Lost & Found")
+topic=Topic.find_by_name("Simple Browse") || Topic.create!(:name=>"Simple Browse", :state=>"active")  
+topic2=Topic.find_by_name("Lost & Found") || Topic.create!(:name=>"Lost & Found", :state=>"active")
+
+about=Topic.find_by_permalink("about") || Topic.create!(:name=>"About Us", :permalink=>"about", :company_id=>top.id,:state=>"list_only")
+tos=Topic.find_by_permalink("tos") || Topic.create!(:name=>"Terms of Service", :permalink=>"tos", :company_id=>top.id, :state=>"list_only")
+privacy=Topic.find_by_permalink("privacy") || Topic.create!(:name=>"Privacy Policy", :permalink=>"privacy", :company_id=>top.id, :state=>"list_only")
 

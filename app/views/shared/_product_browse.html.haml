@@ -3,7 +3,7 @@
 -brands =   []  #collection.map{|p| p.brand}.flatten.uniq
 
 .tab-content{:style=>"min-height: 480px;"} 
-  .tab-pane.active#overview
+  .tab-pane.active#actived
     .row#masonry
       =render :partial => collection, :as => :entity
   
@@ -22,17 +22,18 @@
             .thumbnail=link_to image_tag(brand.cover_url("small")), brand_path(brand)
             %h4=brand.name 
             
-  .tab-pane#edit
-  .tab-pane#content
+  .tab-pane#inactive
+    %h2 Available to add
+    = link_to 'New', new_polymorphic_path(Product)
   .tab-pane#admin
+    
 
 =render "shared/modals"
-=render "shared/popups_menus",:entity=>resource
+=render "shared/popups_menus", :entity=>resource, :model_class=>resource_class
    
 =content_for :sidebar do
   %h3
     =resource ? resource.name : ""
-    Products
   .well.sidebar-nav.advanced_search
     %ul.nav.nav-list
       =#form_tag collection_path(:action => :search), :method => :post, :class => :standard_form do

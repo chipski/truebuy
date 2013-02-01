@@ -68,9 +68,16 @@ body {
      padding-bottom: 2px;
      border-bottom: none;
   }
+  .resource-header {
+    
+  }
   .nav-tabs { 
       margin-bottom: 0px;
+      margin-top: 5px;
       //border-bottom: none;
+  }
+  .well .nav-list {
+      padding: 0;
   }
   .footer {
       height: 100px;
@@ -108,6 +115,21 @@ body {
     width: 100%;
   }
   .wide {.card { width: 46%; } }
+}
+@media (min-width: 1200px) {
+  .span9 {
+    width: 940px;  
+  }
+}
+@media (max-width: 1280px) and (min-width: 979px) {
+  .span9 {
+    //width: 870px;  
+  }
+}
+@media (max-width: 979px) and (min-width: 768px) {
+  .span9 {
+    width: 700px;  
+  }
 }
 @media (max-width: 920px) {
   body {

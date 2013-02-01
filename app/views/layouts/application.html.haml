@@ -25,7 +25,8 @@
     #main{:role => "main"}
       .container
         .content
-          =render "shared/tab_bar" if ["edit"].include?(controller.action_name)
+          -if ["edit","index"].include?(controller.action_name)
+            =render :partial=>"shared/tab_bar_#{controller.action_name}" 
           -if content_for?(:sidebar)
             .span3
               =yield(:sidebar)

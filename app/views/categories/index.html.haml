@@ -1,30 +1,32 @@
-.tab-content{:style=>"min-height: 480px;"} 
-  .tab-pane.active#actived
-    .row.companies
+.row
+  .tab-content{:style=>"min-height: 480px;"} 
+    .tab-pane.active#actived
       #masonry.wide
-        %h1 
-          Categories
-          =link_to 'New', new_category_path, :class => 'btn btn-mini' if is_admin?
+        %h1 Categories
         - Category.active.each do |category|  
-          .card#category
-            .thumbnail=link_to image_tag(category.cover_url("small")), category_path(category)
-            -if is_admin?
+          .card.category
+            .category_gallery.royalSlider.rsDefault.fwImage.col.span_4.thumbnail
+              -category.slider_photos.each do |photo|
+                =link_to image_tag(photo.image.medium.url, :class=>"rsImg"), category_path(category)
+            -if is_admin? 
               .card_edit=render :partial=>'shared/edit_menu', :locals=>{:entity=>category}
             .caption
               %h2=category.name
-  .tab-pane#inactive
-    .row.companies
-      #masonry.wide
-        %h1 
-          Inactive Categories
-          =link_to 'New', new_category_path, :class => 'btn btn-mini' if is_admin?
-        - Category.not_active.each do |category|  
-          .card#category
-            .thumbnail=link_to image_tag(category.cover_url("small")), category_path(category)
-            .caption
-              %h4=category.name
-              - if false && is_admin?
-                .card_edit=render :partial=>'shared/edit_menu', :locals=>{:entity=>category}
+    .tab-pane#inactive
+      .row.companies
+        #masonry.wide
+          %h1 
+            Inactive Categories
+            =link_to 'New', new_category_path, :class => 'btn btn-mini' if is_admin?
+          - Category.not_active.each do |category|  
+            .card#category
+              .thumbnail=link_to image_tag(category.cover_url("small")), category_path(category)
+              .caption
+                %h4=category.name
+                - if is_admin?
+                  .card_edit=render :partial=>'shared/edit_menu', :locals=>{:entity=>category}
 
+=render "shared/modals"
+=#render "shared/popups_menus", :entity=>resource, :model_class=>resource_class
 
            

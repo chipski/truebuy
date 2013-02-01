@@ -1,26 +1,31 @@
 - if is_admin? 
   -entity = entity 
   =content_for :edit_bar do
-    .btn-group.pull-right    
-      %a.btn.btn-mini.dropdown-toggle(data-toggle="dropdown" href="#")
-        %i.icon-cog
-        = "Edit" 
-        %span.caret
-      %ul.dropdown-menu
-        %li= link_to 'Edit', polymorphic_path(entity, :action=>"edit")
-        %li.divider
-        -if entity.active?
+    -if entity
+      .btn-group.pull-right    
+        %a.btn.btn-mini.dropdown-toggle(data-toggle="dropdown" href="#")
+          %i.icon-cog
+          = "Edit" 
+          %span.caret
+        %ul.dropdown-menu
+          %li= link_to 'Edit', edit_polymorphic_path(entity)
+          %li.divider
+          -if entity.active?
+            %li
+              =link_to polymorphic_path(entity, :action=>"update_state", :state=>"inactive"), :method=>:put do
+                ="Inactivate"
+                %i.icon-zoom-in
+          -else
+            %li
+              =link_to polymorphic_path(entity, :action=>"update_state", :state=>"active"), :method=>:put do
+                ="Activate"
+                %i.icon-zoom-in
+          %li.divider
+          %li=link_to "List Only", polymorphic_path(entity, :action=>"update_state", :state=>"list_only"), :method=>:put
+          %li=link_to "Admin Only", polymorphic_path(entity, :action=>"update_state", :state=>"admin_only"), :method=>:put
+          %li.divider
           %li
-            =link_to polymorphic_path(entity, :action=>"update_state", :state=>"inactive"), :method=>:put do
-              ="Inactivate"
-              %i.icon-zoom-in
-        -else
-          %li
-            =link_to polymorphic_path(entity, :action=>"update_state", :state=>"active"), :method=>:put do
-              ="Activate"
-              %i.icon-zoom-in
-        %li.divider
-        %li=link_to "List Only", polymorphic_path(entity, :action=>"update_state", :state=>"list_only"), :method=>:put
-        %li=link_to "Admin Only", polymorphic_path(entity, :action=>"update_state", :state=>"admin_only"), :method=>:put
-
-        
+            = link_to new_polymorphic_path(resource_class) do
+              New
+              %i.icon-cog
+      

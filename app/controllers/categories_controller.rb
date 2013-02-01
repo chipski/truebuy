@@ -3,6 +3,17 @@ class CategoriesController < InheritedResources::Base
   
   before_filter :authenticate_user!, :except => [:error, :show, :index]  
   
+  def index
+    @search ||= ProductSearch.new
+    #@products = @search.query()
+  end
+
+  def show
+    resource
+    @search ||= ProductSearch.new
+    @products = @search.query([resource.id])
+  end
+
   
   def edit
     super do |format|
@@ -51,7 +62,6 @@ class CategoriesController < InheritedResources::Base
       end
     end 
     def begin_of_association_chainOff
-      @search = ProductSearch.new
       
       if params[:category_ids] && false
         @categories = Category.filter_by_ids(params[:category_ids])

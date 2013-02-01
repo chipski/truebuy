@@ -3,6 +3,11 @@ class BrandsController < InheritedResources::Base
   
   before_filter :authenticate_user!, :except => [:error, :show, :index]  
   
+  def show
+    resource
+    @search ||= ProductSearch.new
+    @products = @search.query([resource.id])
+  end
   
   def edit
     super do |format|

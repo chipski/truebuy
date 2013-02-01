@@ -16,8 +16,10 @@ class Photo < ActiveRecord::Base
   #after_update :crop_image
   
   default_scope order(:slide_order) 
-  scope :active, lambda {|current_user| where(:state=>:active)}     
-  scope :inactive, lambda {|current_user| where(:state=>[:inactive])}      
+  scope :active_all,   where(:state=>:active)  
+  scope :inactive_all, where(:state=>:active)     
+  scope :active_for, lambda {|current_user| where(:state=>:active)}     
+  scope :inactive_for, lambda {|current_user| where(:state=>[:inactive])}      
   scope :initial, where(:state=>[:new, nil])  
   
   def self.select_active         

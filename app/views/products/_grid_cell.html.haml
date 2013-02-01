@@ -1,34 +1,9 @@
 .card
-  .img-box=image_tag(entity.cover_url, :alt=>entity.name, :height=>"80px")
-  -if is_admin?   
-    .btn-group.pull-right    
-      %a.btn.btn-mini.dropdown-toggle(data-toggle="dropdown" href="#")
-        %i.icon-cog
-        = "Edit" 
-        %span.caret
-      %ul.dropdown-menu
-        %li= link_to "Edit product", edit_product_path(entity)
-        %li.divider  
-        %li= link_to "Delete", product_path(entity), :method => :delete, :confirm => "Are you Sure?"
-  .btn-group.pull-right
-    -if (entity.active? && is_admin?)
-      -url = update_state_product_path(entity, :state=>:inactive)            
-      =link_to url, :class=>"btn btn-mini", :data=>{:target=>".card", :act=>"content", :method=>:put} do
-        ="Deactivate"
-        %i.icon-ban-circle  
-    -else
-      -url = update_state_product_path(entity, :state=>:active)            
-      =link_to url, :class=>"btn btn-mini", :data=>{:target=>".card", :act=>"content", :method=>:put} do
-        ="Activate"    
-        %i.icon-ok-circle                                  
-  .card-info
-    %span.visibility
-    -if entity.categories
-      - entity.categories.each do |category|  
-        =link_to category.name, category
-         
   .title{:style=>"clear: both;"}
     = link_to entity.name, entity
+  .rating_box
+    %span.visibility
+    
   .info
     .infobox
       %ul.thumbnails.files
@@ -37,10 +12,35 @@
             %li.thumbnail{:id => "photo_#{pic.id}"}
               %a{:href => pic.image.large.url, :title => pic.blurb, :data=>{:toggle=>"modal", :target=>"#show_photo"}}
                 %img{:alt => "", :src => pic.image.small.url, :width=>"120px"}
-              .caption
-                -if is_admin? && false
-                  .card_edit.pull-right
-                    =render :partial=>'photos/edit_menu', :locals=>{:entity=>pic}
+              
+    -if is_admin? && false 
+      .btn-group.pull-right    
+        %a.btn.btn-mini.dropdown-toggle(data-toggle="dropdown" href="#")
+          %i.icon-cog
+          = "Edit" 
+          %span.caret
+        %ul.dropdown-menu
+          %li= link_to "Edit product", edit_product_path(entity)
+          %li.divider  
+          %li= link_to "Delete", product_path(entity), :method => :delete, :confirm => "Are you Sure?"
+      .btn-group.pull-right
+        -if (entity.active? && is_admin?)
+          -url = update_state_product_path(entity, :state=>:inactive)            
+          =link_to url, :class=>"btn btn-mini", :data=>{:target=>".card", :act=>"content", :method=>:put} do
+            ="Deactivate"
+            %i.icon-ban-circle  
+        -else
+          -url = update_state_product_path(entity, :state=>:active)            
+          =link_to url, :class=>"btn btn-mini", :data=>{:target=>".card", :act=>"content", :method=>:put} do
+            ="Activate"    
+            %i.icon-ok-circle                                  
+
+  .card-info
+    %span.visibility
+    -if entity.categories
+      - entity.categories.each do |category|  
+        =link_to category.name, category
+  
       
   -if false
     .info

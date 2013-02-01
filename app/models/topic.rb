@@ -7,7 +7,14 @@ class Topic < ActiveRecord::Base
   
   before_save :update_permalink   
   #after_save :update_order   
-   
+
+  def update_permalink
+    UtilityIds.update_permalink(self, self.name) 
+  end
+  def update_order(children_names=["photos"])
+    UtilityIds.update_order(self, children_names) 
+  end
+     
   #default_scope order(:slide_order) 
   scope :active_for, lambda {|current_user| where(:state=>:active)}     
   scope :active_all, where(:state=>[:active])
@@ -91,13 +98,6 @@ class Topic < ActiveRecord::Base
   
   def to_param
     permalink
-  end
-  
-  def update_order(children_names=["photos"])
-    UtilityIds.update_order(self, children_names) 
-  end
-  def update_permalink
-    UtilityIds.update_permalink(self, self.name) 
   end
   
 end

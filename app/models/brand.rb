@@ -7,12 +7,21 @@ class Brand < ActiveRecord::Base
   
   attr_accessible :blurb, :body, :cached_tag_list, :cover, :keywords, :name, :permalink, :state, :category_ids, :company_id
   
-  after_save :update_permalink  
-  after_save :update_order   
+  before_save :update_permalink   
+  #after_save :update_order   
+
+  def update_permalink
+    UtilityIds.update_permalink(self, self.name) 
+  end
+  def update_order(children_names=["photos","topics"])
+    UtilityIds.update_order(self, children_names) 
+  end
+
     
   default_scope order(:slide_order) 
-  #scope :active, lambda {|current_user| where(:state=>:active)}     
+  #scope :active_for, lambda {|current_user| where(:state=>:active)}     
   #scope :initial, where(:state=>["new","", nil])
+  scope :not_active, where(:state=>["new","review", "inactive","error", nil])
   def self.select_active
     all.collect{ |t| [t.name, t.id]}
   end
@@ -90,13 +99,6 @@ class Brand < ActiveRecord::Base
   
   def to_param
     permalink
-  end
-  
-  def update_order(children_names=["photos","topics"])
-    UtilityIds.update_order(self, children_names) 
-  end
-  def update_permalink
-    UtilityIds.update_permalink(self, self.name) 
   end
   
 end

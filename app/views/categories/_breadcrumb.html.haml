@@ -1,4 +1,4 @@
-.page-header
+.resource-header
   %h1
     =link_to categories_path do
       %i.icon-list-alt
@@ -14,4 +14,4 @@
         = render :partial=>'shared/edit_menu', :locals=>{:entity=>@category}
         %a.btn.btn-mini{"data-toggle" => "modal", :href => "#edit-topic"} edit2
   
-  =render :partial=>'shared/edit_menu', :locals=>{:entity=>@category}
+    =render :partial=>'shared/edit_menu', :locals=>{:entity=>@category}

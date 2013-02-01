@@ -1,9 +1,11 @@
 class UtilityIds
   
   def self.update_permalink(entity, name="")
+    # used in before_save filter
     name = "#{entity.name}".gsub(" ", "_")  
-    token = Digest::SHA1.hexdigest("#{entity.class}-#{entity.id}".gsub(" ", "_"))
-    permalink = name.downcase.gsub(/[^a-z1-9]+/, '-').chomp('-')
+    #token = Digest::SHA1.hexdigest("#{entity.class}-#{entity.id}".gsub(" ", "_"))
+    token = SecureRandom.hex(16)
+    permalink = entity.permalink || name.downcase.gsub(/[^a-z1-9]+/, '-').chomp('-')
     if !entity.permalink || (entity.uid != token)
       entity.permalink = permalink
       entity.uid = token
@@ -11,6 +13,7 @@ class UtilityIds
   end  
   
   def self.update_permalink2(entity)
+    # only in a after create filter
     name = "#{entity.class}-#{entity.id}-#{entity.name}".gsub(" ", "_")  
     token = Digest::SHA1.hexdigest("#{entity.class}-#{entity.id}".gsub(" ", "_"))
     permalink = Digest::SHA1.hexdigest(name)
@@ -35,6 +38,8 @@ class UtilityIds
           photo.image.thumb.url
         end 
       end
+    elsif entity.photos
+      #entity.photos.where(:state=>:active).last
     end
   end
   
@@ -48,10 +53,10 @@ class UtilityIds
       siblings += new_children
     end
     siblings_sorted = siblings.sort_by{|s| s.slide_order}
-    puts "updated order #{siblings_sorted.map{|s| [s.id, s.slide_order]}}"
+    #puts "updated order #{siblings_sorted.map{|s| [s.id, s.slide_order]}}"
     i=entity.slide_order
     sort_return = siblings_sorted.map{|s| [s.id, s.slide_order == i ? "skip" : (s.slide_order = i+=1;s.save;) ]}
-    puts "updated order #{siblings_sorted.map{|s| [s.id, s.slide_order]}} sort_return=#{sort_return}"
+    #puts "updated order #{siblings_sorted.map{|s| [s.id, s.slide_order]}} sort_return=#{sort_return}"
     #save_return = siblings_sorted.map{|s| [s.id, s.save]}
     #siblings.sort()
   end

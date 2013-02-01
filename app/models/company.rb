@@ -6,8 +6,16 @@ class Company < ActiveRecord::Base
   
   attr_accessible :blurb, :body, :cover, :duns, :keywords, :name, :permalink, :state, :type, :photo_id, :url, :url2      
    
-  after_save :update_permalink  
+  before_save :update_permalink  
   after_save :update_order
+  
+  def update_permalink
+    UtilityIds.update_permalink(self, self.name) 
+  end
+  def update_order(children_names=["topics"])
+    UtilityIds.update_order(self, children_names) 
+  end
+  
   
   default_scope order(:slide_order) 
   #scope :active, lambda {|current_user| where(:state=>:active)}     
@@ -20,7 +28,7 @@ class Company < ActiveRecord::Base
   end
   
   def self.default_home
-    @default_home ||= Company.where(:state=>"active", :permalink=>"reviews").first || Company.where(:state=>"active").first
+    @default_home ||= Company.where(:state=>"active", :permalink=>"truebuy").first || Company.where(:state=>"active").first
   end
   def self.default_about(company)
     @default_company = company || Company.default_home
@@ -28,11 +36,11 @@ class Company < ActiveRecord::Base
   end
   def self.default_tos(company)
     @default_company = company || Company.default_home
-    @default_tos ||= Topic.where(:state=>"active", :permalink=>"tos", :company_id=>@default_company.id).first || Topic.where(:state=>"active", :permalink=>"about").first
+    @default_tos ||= Topic.where(:state=>"active", :permalink=>"tos", :company_id=>@default_company.id).first || Topic.where(:state=>"active", :permalink=>"tos").first
   end
   def self.default_privacy(company)
     @default_company = company || Company.default_home
-    @default_privacy ||= Topic.where(:state=>"active", :permalink=>"privacy", :company_id=>@default_company.id).first || Topic.where(:state=>"active", :permalink=>"about").first
+    @default_privacy ||= Topic.where(:state=>"active", :permalink=>"privacy", :company_id=>@default_company.id).first || Topic.where(:state=>"active", :permalink=>"privacy").first
   end
   
   def about
@@ -121,14 +129,7 @@ class Company < ActiveRecord::Base
   def to_param
     permalink
   end
-  
-  def update_order(children_names=["topics"])
-    UtilityIds.update_order(self, children_names) 
-  end
-  def update_permalink
-    UtilityIds.update_permalink(self, self.name) 
-  end
-  
+    
 end
   
 #create_table "companies", :force => true do |t|

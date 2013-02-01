@@ -8,8 +8,17 @@ class Category < ActiveRecord::Base
   
   attr_accessible :blurb, :body, :cached_tag_list, :cover, :keywords, :name, :permalink, :state, :type, :parent_id
   
-  after_save :update_permalink    
-  default_scope order(:slide_order) 
+  before_save :update_permalink   
+  #after_save :update_order   
+
+  def update_permalink
+    UtilityIds.update_permalink(self, self.name) 
+  end
+  def update_order(children_names=["photos"])
+    UtilityIds.update_order(self, children_names) 
+  end
+
+  #default_scope order(:slide_order) 
   #scope :active, lambda {|current_user| where(:state=>:active)}     
   #scope :initial, where(:state=>["new","", nil])
   scope :not_active, where(:state=>["new","review", "inactive","error", nil])
@@ -17,10 +26,14 @@ class Category < ActiveRecord::Base
     all.collect{ |t| [t.name, t.id]}
   end
   
-  def self.filter_by_ids(category_ids="all", page=nil)
-    category_ids = category_ids.to_a
-    if category_ids.is_a?(Array)
-      Category.find(category_ids)
+  def self.filter_by_ids(category_ids=nil, page=nil)
+    #category_ids = category_ids.to_a
+    if category_ids
+      if category_ids.is_a?(Array)
+        Category.find(category_ids)
+      else
+        Category.paginate(:page => page).all
+      end
     else
       Rails.logger.info("Category.filter_by_ids no categories found for category_ids=#{category_ids}")
       Category.paginate(:page => page).all
@@ -34,16 +47,16 @@ class Category < ActiveRecord::Base
     products
   end
 
-  def products_filtered(brand_ids="all")
-    if brand_ids == "all"
-      self.products
-    else
+  def products_filtered(brand_ids=nil)
+    if brand_ids
       if brand_ids.is_a?(Array)
         self.products.where({:brand_id => brand_ids}).all
       else
         Rails.logger.info("category.products_filtered no products found for brand_ids=#{brand_ids}")
         []
       end
+    else
+      self.products if self.products
     end
   end
   
@@ -101,14 +114,18 @@ class Category < ActiveRecord::Base
   
   def slider_photos
     brand_photos = self.brands.map{|t| t.slider_photos}.flatten
-    (self.photos + brand_photos).compact
+    product_photos = self.products.map{|t| t.slider_photos}.flatten
+    (self.photos + brand_photos + product_photos).compact
   end
   
   def cover_url(size="small")
     @cover_url ||= begin
       UtilityIds.cover_url(self, size="small")
     end
-    @cover_url ? @cover_url : "default/high_stride.jpeg"
+    @default_images = ["default/high_stride.jpeg","default/high_server.jpeg","default/fence_hop.jpeg","default/krausmusic.jpeg"]
+    @default_images += ["default/cat1.jpg","default/sky_hang.jpeg","default/tunnel_hop.jpeg","default/picture-17.png"]
+    @default_images += ["default/snakeoil_supplements_956.png","default/wild-office-space.png","default/boarded up store Lake Valley NM ghost town.jpg"]
+    @cover_url ? @cover_url : @default_images[rand(11)]
   end
 
   def to_partial_path() 
@@ -117,10 +134,6 @@ class Category < ActiveRecord::Base
   
   def to_param
     permalink
-  end
-  
-  def update_permalink
-    UtilityIds.update_permalink(self, self.name) 
   end
   
 end

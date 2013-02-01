@@ -1,24 +1,5 @@
 Reviews::Application.routes.draw do
 
-  
-  resources :products do
-    member do
-      put :update_state
-      get :content
-      get :admin
-    end
-  end
-
-  resources :categories, :path => 'cat' do
-    resources :photos
-    resources :brands
-    resources :companies
-    member do
-      put :update_state
-      get :content
-      get :admin
-    end
-  end
   resources :companies, :path => 'co' do
     resources :photos
     member do
@@ -35,6 +16,34 @@ Reviews::Application.routes.draw do
       get :admin
     end
   end
+  resources :stores, :path=> 'store' do
+    member do
+      get :update_products
+    end
+  end
+  resources :locations, :path => 'loc' do
+    member do
+      put :update_location
+    end
+  end
+  resources :categories, :path => 'cat' do
+    resources :photos
+    resources :brands
+    resources :companies
+    member do
+      put :update_state
+      get :content
+      get :admin
+    end
+  end
+  resources :products, :path => 'prod' do
+    member do
+      put :update_state
+      get :content
+      get :admin
+    end
+  end
+
   #resources :topics
   resources :topics, :path => 'to' do
     resources :photos

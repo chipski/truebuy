@@ -1,20 +1,26 @@
 class Product < ActiveRecord::Base
   belongs_to :brand
   belongs_to :topic 
-  has_many :photos, :as => :parent, :class_name => "Photo"     
   has_and_belongs_to_many :categories, :class_name => "Category"  
+  has_many :photos, :as => :parent, :class_name => "Photo"     
   
   attr_accessible :active_date, :brand_id, :blurb, :body, :cover, :keywords, :name, :state
   attr_accessible :category_ids, :model_num, :sku, :sku_type, :cached_tag_list
   
-  after_save :update_permalink   
+  before_save :update_permalink   
   after_save :update_order
   
+  #default_scope order(:slide_order) 
+  scope :active_for, lambda {|current_user| where(:state=>:active)}     
+  scope :active_all, where(:state=>[:active])
+  #scope :initial, where(:state=>["new","", nil])
+  
+  def self.select_active
+    all.collect{ |t| [t.name, t.id]}
+  end
   def self.select_sku_type
     [["UPC","upc"],["EIN","ein"],["Other","other"]]
   end
-  
-  
   
   # State machine, should be shared in mixin but error now
   include AASM 
@@ -81,10 +87,9 @@ class Product < ActiveRecord::Base
     #self.cover ? (self.photos - [Photo.find(self.cover)]) : self.photos
     self.photos
   end
-  
   def cover_url(size="small")
     @cover_url ||= begin
-      UtilityIds.cover_url(self, size="small")
+      UtilityIds.cover_url(self, size)
     end
     @cover_url ? @cover_url : "NoImageAvailable.jpg"
   end
@@ -92,7 +97,6 @@ class Product < ActiveRecord::Base
   def to_partial_path() 
     "products/grid_cell" 
   end
-    
   def to_param
     permalink
   end
@@ -103,7 +107,6 @@ class Product < ActiveRecord::Base
   def update_permalink
     UtilityIds.update_permalink(self, self.name) 
   end
-  
   
 end
 
@@ -120,11 +123,13 @@ end
 #  t.date     "active_date"
 #  t.date     "deactivated_date"
 #  t.integer  "cover"
-#  t.string   "model_num"
+# t.string   "model_num"
 #  t.string   "sku"
 #  t.string   "sku_type"
+#  t.integer  "slide_order",      :default => 0
 #  t.string   "cached_tag_list"
 #  t.datetime "created_at",                          :null => false
 #  t.datetime "updated_at",                          :null => false
+#  t.float    "price",            :default => 0.0
 #end
 #
