@@ -56,12 +56,11 @@
                 .thumbnail
                   %a{:href => pic.image.url, :rel => "lightbox-photos", :title => pic.blurb}
                     %img{:alt => "", :src => pic.image.small.url}
-                  .card_edit
-                    =render :partial=>'photos/edit_menu', :locals=>{:entity=>pic, :parent=>parent, :return_to=>return_to}
                   .caption
                     =pic.name
                     =pic.slide_order
-                  
+                .card_edit
+                  =render :partial=>'photos/edit_menu', :locals=>{:entity=>pic, :parent=>parent, :return_to=>return_to}  
 
 -if false
   = javascript_include_tag 'jquery.ui.widget.js'

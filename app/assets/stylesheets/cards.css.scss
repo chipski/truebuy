@@ -90,7 +90,7 @@ $color: #8c7e7e;
   }
   .rating_box {
       padding: 6px;
-      border: 1px solid red;
+      
   }
   .title { 
     font-size: 140%;   
@@ -159,12 +159,15 @@ $color: #8c7e7e;
           float: left;
           padding: 4px;
           min-height: 180px;
-          width: 30%;
-          img { margin: 10px auto;}
+          width: 180px;
+          margin: 0 10px;
+          img { 
+             margin: 10px auto;
+             width: 180px;
+          }
       }
       .info {
           margin: 8px;
-          margin-left: 34%;
           
       }
    } 

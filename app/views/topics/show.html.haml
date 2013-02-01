@@ -12,7 +12,7 @@
         .call-to-action
           %a.btn.btn-primary.btn-large{"data-toggle" => "modal", :href => "#request-invite"} Request invite
 .row
-  %h1=@topic.name
+  %h1=@topic.name.html_safe
   %p= @topic.body.html_safe if @topic.body
     
 
