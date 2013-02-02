@@ -71,6 +71,7 @@ gem 'aasm'
 #gem "stateflow"   
 #    
 #gem 'acts-as-taggable-on', '~>2.3.1' 
+gem 'letsrate'
 gem "gritter"
 gem 'masonry-rails'
 
