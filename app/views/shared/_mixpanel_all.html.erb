@@ -1,0 +1,21 @@
+<script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"===e.location.protocol?"https:":"http:")+'//cdn.mxpnl.com/libs/mixpanel-2.2.min.js';f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f);b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==
+typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.increment people.append people.track_charge people.clear_charges people.delete_user".split(" ");for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,
+e,d])};b.__SV=1.2}})(document,window.mixpanel||[]);
+mixpanel.init("c8be709992466eead8b8579e48b30fc7");
+mixpanel.set_config({cross_subdomain_cookie: true, verbose: false, debug: false});
+<% if current_user %> 
+  mixpanel.identify("<%= current_user.analytics_id ? current_user.analytics_id : current_user.id %>");
+  mixpanel.people.set({$email: "<%= current_user.email %>",$name: "<%= current_user.name %>",
+          sign_in_count: "<%= current_user.sign_in_count %>",
+          rating_average: "<%= current_user.rating_average %>",
+          rating_count: "<%= current_user.rating_count %>",
+          review_count: "<%= current_user.review_count %>",
+          email_count: "<%= current_user.email_count %>"
+  });
+  mixpanel.name_tag("<%= current_user.name %>"); 
+  // below are super sticky properties
+<% else %>
+  
+  mixpanel.register_once({ 'initial referrer': document.referrer });
+<% end %>
+</script>

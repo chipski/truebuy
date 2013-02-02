@@ -18,3 +18,5 @@
 
 =render "shared/popups_menus", :entity=>@topic
 =render "shared/modals"
+=content_for :mixpanel_tag do 
+  mixpanel.track("show topic", {'topic_name': "#{@topic.name}", 'Referrer': document.referrer});

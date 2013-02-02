@@ -57,6 +57,10 @@ class User < ActiveRecord::Base
   def to_partial_path() 
     "users/#{type}" 
   end 
+  
+  def avatar_url
+    "/assets/default/DefaultAvatar2.png"
+  end
     
   private
 

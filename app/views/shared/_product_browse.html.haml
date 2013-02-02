@@ -30,7 +30,9 @@
 
 =render "shared/modals"
 =render "shared/popups_menus", :entity=>resource, :model_class=>resource_class
-   
+=content_for :mixpanel_tag do 
+  mixpanel.track("browse products", {'browse_name': "#{entity.name}", 'browse_type': "#{entity.class}", 'Referrer': document.referrer});
+  
 =content_for :sidebar do
   %h3
     =resource ? resource.name : ""

@@ -31,6 +31,72 @@ $color: #8c7e7e;
 .tab-pane {
     margin: 8px 0px 0px;
 }
+
+.rating_box {
+  padding: 2px;
+  .metric {
+     font-size: 120%;
+     text-align: center;
+     font-weight: bolder;
+     display: inline;
+     margin: 2px; 
+  }
+  .rating {
+    clear: both;
+    .scope { 
+       width: 118px;
+       float: left; 
+    } 
+    .star {
+       width: 202px !important; 
+       float: left;   
+    } 
+    .totals {
+       width: 132px !important; 
+       font-size: 80%;
+       float: right;
+       clear: right;
+    }
+  }
+  .raters {
+      clear: both;
+      .rater_avatar {
+          float: left;
+          margin: 2px 4px;
+          min-width: 72px;
+          max-width: 88px;
+          height: 58px;
+          font-size: 75%;
+          .avatar_img { 
+              height: 32px;
+              float: left;
+              margin: 2px 6px 0 0;
+          }
+          .rater_name { 
+            margin: 0px; 
+            display: block;
+            height: 24px;
+            overflow: hidden;
+          }
+          .metric { 
+             display: block;
+             height: 28px;
+             margin: 0px;
+             padding-top: 9px;
+             font-size: 140%;
+          } 
+      }
+      .rater_avatar:last-child { clear: right; margin-bottom: 10px;}
+  }
+  .left { 
+      .scope {float: left;}
+      .star { 
+         width: 120px !important;
+         display: inline;
+       }
+  }
+}
+
 .card {
   width: 268px;
   min-height: 180px;
@@ -88,25 +154,6 @@ $color: #8c7e7e;
       float: right;
       margin: 0px 2px 6px;
   }
-  .rating_box {
-      padding: 2px;
-      .rating {
-        .scope {
-          width: 140px;
-        } 
-        .star {
-          width: 225px !important; 
-          float: right;   
-        } 
-      }
-      .left { 
-          .scope {float: left;}
-          .star { 
-             width: 120px !important;
-             display: inline;
-           }
-      }
-  }
   .title { 
     font-size: 140%;   
     font-weight: bold;
@@ -160,6 +207,20 @@ $color: #8c7e7e;
     }
     
   }
+  .rating_box {
+    padding: 2px;
+    .rating {
+      .scope { width: 140px;} 
+      .star {
+        width: 225px !important; 
+        float: right;   
+      } 
+    }
+    .left { 
+      .scope {float: left;}
+      .star { width: 120px !important;}
+    }
+  }
   p {
       margin: 10px;
   }
@@ -194,7 +255,6 @@ $color: #8c7e7e;
     border: solid 1px rgba(82, 168, 236, 0.8);                 
     box-shadow: inset 0 1px 8px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6); 
 }
-
 .small-gray {
     font-size: 0.5em;
     text-align: bottom;
@@ -227,7 +287,6 @@ img {
   margin-right: auto;
   overflow: hidden;
 }
-
 .thumbnail .preview > img {
   display: block;
   max-width: 100%;

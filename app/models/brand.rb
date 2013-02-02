@@ -97,6 +97,9 @@ class Brand < ActiveRecord::Base
     "brands/grid_cell" 
   end
   
+  def to_s
+    name
+  end
   def to_param
     permalink
   end

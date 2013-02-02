@@ -8,6 +8,11 @@ class Product < ActiveRecord::Base
   attr_accessible :category_ids, :model_num, :sku, :sku_type, :cached_tag_list
   
   letsrate_rateable "quality", "value", "fits_needs"
+  # above will add 3 has_many linkes for each dimension above
+  # <dimension>_rates, <dimension>_raters, <dimension>_average,
+  def rate_dimensions
+    [["quality","Overall Quality", 10], ["value", "Overall Value", 5], ["fits_needs", "Fits Your Needs", 5]]
+  end
   
   before_save :update_permalink   
   after_save :update_order

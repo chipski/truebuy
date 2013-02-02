@@ -284,6 +284,12 @@ ActiveRecord::Schema.define(:version => 20130202170701800) do
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
     t.boolean  "opt_in"
+    t.string   "uuid"
+    t.string   "analytics_id"
+    t.string   "rating_count"
+    t.string   "rating_average"
+    t.string   "review_count"
+    t.string   "email_count"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

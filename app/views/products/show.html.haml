@@ -13,18 +13,32 @@
             .blurb=resource.blurb ? resource.blurb.html_safe : ""
 
     .row.product
-      %h1
-        =link_to resource.brand.name, resource.brand
-        =resource.name
-      .hero
-        =resource.blurb ? resource.blurb.html_safe : ""
-        %b Model num:
-        = resource.model_num
-        %b Sku:
-        = resource.sku       
-      .hero
-        =resource.body ? resource.body.html_safe : ""
-    
+      .span5
+        %h1=resource.name
+        .info
+          %b=link_to resource.brand.name, resource.brand
+          %b Model num:
+          = resource.model_num
+          %b Sku:
+          = resource.sku       
+        .description
+          =resource.body ? resource.body.html_safe : ""
+      .span6
+        %h3 Ratings & Reviews
+        .rating_box
+          -resource.rate_dimensions.each do |rate_dimension_id, rate_dimension_name, rate_dimension_stars|
+            .rating
+              .scope=rate_dimension_name
+              =rating_for resource, rate_dimension_id, :star=>rate_dimension_stars
+              .totals
+                -ratings = resource.rates(rate_dimension_id)
+                .metric=resource.average(rate_dimension_id).avg
+                =" over #{ratings.count} ratings" 
+            .raters  
+              -ratings.each do |rate|
+                =rater_avatar(resource, rate, rate_dimension_id)
+            
+            
   .tab-pane#edit
     .row
       %h1 
@@ -47,3 +61,5 @@
 
 =render "shared/popups_menus", :entity=>resource
 =render "shared/modals"
+=content_for :mixpanel_tag do 
+  mixpanel.track("show product", {'product_name': "#{resource.name}", 'brand': "#{resource.brand}", 'Referrer': document.referrer});
