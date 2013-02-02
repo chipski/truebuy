@@ -89,8 +89,23 @@ $color: #8c7e7e;
       margin: 0px 2px 6px;
   }
   .rating_box {
-      padding: 6px;
-      
+      padding: 2px;
+      .rating {
+        .scope {
+          width: 140px;
+        } 
+        .star {
+          width: 225px !important; 
+          float: right;   
+        } 
+      }
+      .left { 
+          .scope {float: left;}
+          .star { 
+             width: 120px !important;
+             display: inline;
+           }
+      }
   }
   .title { 
     font-size: 140%;   

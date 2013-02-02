@@ -54,6 +54,9 @@
 //= require slimbox2         
 //= require photo_local
 
+//= require jquery.raty.js
+//= require letsrate.js
+
 //= require jquery.royalslider.custom.min.js
 // require jquery.royalslider.min.js
 //= require /modules/jquery.rs.tabs.min.js

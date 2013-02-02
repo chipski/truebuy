@@ -72,6 +72,8 @@ Reviews::Application.routes.draw do
   match '/privacy' => 'home#privacy'
   
   authenticated :user do
+    
+    match '/rate' => 'rater#create', :as => 'rate'
     root :to => 'categories#index'
   end
   devise_scope :user do

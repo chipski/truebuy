@@ -7,6 +7,8 @@ class Product < ActiveRecord::Base
   attr_accessible :active_date, :brand_id, :blurb, :body, :cover, :keywords, :name, :state
   attr_accessible :category_ids, :model_num, :sku, :sku_type, :cached_tag_list
   
+  letsrate_rateable "quality", "value", "fits_needs"
+  
   before_save :update_permalink   
   after_save :update_order
   

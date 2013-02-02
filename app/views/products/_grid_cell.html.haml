@@ -2,7 +2,16 @@
   .title{:style=>"clear: both;"}
     = link_to entity.name, entity
   .rating_box
-    %span.visibility
+    .rating
+      .scope Overall Quality
+      =rating_for entity, "quality", :star=>10
+    .rating.left
+      .scope Overall Value
+      =rating_for entity, "value"
+    .rating.left
+      .scope Fits Your Needs
+      =rating_for entity, "fits_needs"
+    
     
   .info
     .infobox
