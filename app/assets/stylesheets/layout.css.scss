@@ -297,7 +297,6 @@ h1, h2, h3, h4, h5, h6 {
   top: 50%;
   left: 50%;
   z-index: 1050;
-  overflow: auto;
   //width: 98%;
   margin: -280px 0 0 -280px;
   background-color: white;
@@ -313,6 +312,7 @@ h1, h2, h3, h4, h5, h6 {
   }
   .modal-body {
     padding: 6px;
+    overflow: auto;
     .control-group { margin-bottom: 4px;}
     .control-label {
         text-align: right; 

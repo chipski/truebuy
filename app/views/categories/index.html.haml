@@ -26,6 +26,9 @@
                 - if is_admin?
                   .card_edit=render :partial=>'shared/edit_menu', :locals=>{:entity=>category}
 
+=content_for :admin_bar do
+  =render :partial=>"shared/tab_bar_index" 
+            
 =render "shared/modals"
 =#render "shared/popups_menus", :entity=>resource, :model_class=>resource_class
 

@@ -23,3 +23,5 @@
       =#render :partial => "grid", :locals=>{:entities=>@mediums_new, :model_class=>model_class } 
       =render :partial=>'photos/upload_form', :locals=>{:parent=>@category}
 
+=content_for :admin_bar do
+  =render :partial=>"shared/tab_bar_edit" 

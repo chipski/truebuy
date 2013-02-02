@@ -3,6 +3,9 @@ class ProductSearch
   def self.model_name
     "ProductSearch"
   end
+  def name
+    "ProductSearch"
+  end
   
   def query(categories=[], brands=[], topics=[])
     if categories == []

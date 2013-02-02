@@ -98,7 +98,7 @@ $('document').ready(function() {
       data: dataString,
       success: function(data) {
         $('#request-invite').html(data);
-        loadSocial();
+        //loadSocial();
       }
     });
     return false;

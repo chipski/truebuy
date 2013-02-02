@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default :from => "notifications@example.com"
+  default :from => "info@truebuy.com"
   
   def welcome_email(user)
     mail(:to => user.email, :subject => "Invitation Request Received")

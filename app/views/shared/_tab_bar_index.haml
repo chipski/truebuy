@@ -1,4 +1,4 @@
--if is_admin?
+-if is_admin? && resource_class
   -model_class = resource_class
   -show_activation_tabs= show_activation_tabs || true
   -active_tab = active_tab || "actived"
@@ -28,7 +28,6 @@
             =link_to "Categories", categories_path()
 
   =content_for :edit_bar do
-    Hi again
     .btn-group.pull-right    
       %a.btn.btn-mini.dropdown-toggle(data-toggle="dropdown" href="#")
         %i.icon-cog

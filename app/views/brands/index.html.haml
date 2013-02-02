@@ -27,4 +27,5 @@
                   .card_edit=render :partial=>'shared/edit_menu', :locals=>{:entity=>brand}
 
 =render "shared/modals"
-
+=content_for :admin_bar do
+  =render :partial=>"shared/tab_bar_index" 
