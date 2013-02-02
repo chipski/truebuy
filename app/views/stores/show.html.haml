@@ -1,0 +1,39 @@
+%p#notice= notice
+
+%p
+  %b Uid:
+  = @store.uid
+%p
+  %b Permalink:
+  = @store.permalink
+%p
+  %b Name:
+  = @store.name
+%p
+  %b Keywords:
+  = @store.keywords
+%p
+  %b Blurb:
+  = @store.blurb
+%p
+  %b State:
+  = @store.state
+%p
+  %b Type:
+  = @store.type
+%p
+  %b Url:
+  = @store.url
+%p
+  %b Url2:
+  = @store.url2
+%p
+  %b Store:
+  = @store.store_id
+%p
+  %b Realtime availability:
+  = @store.realtime_availability
+
+= link_to 'Edit', edit_store_path(@store)
+\|
+= link_to 'Back', stores_path

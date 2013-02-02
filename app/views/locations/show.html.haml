@@ -1,0 +1,36 @@
+%p#notice= notice
+
+%p
+  %b Store:
+  = @location.store
+  %b Name:
+  = @location.name
+%p
+  %b Blurb:
+  = @location.blurb
+%p
+  %b Address:
+  = @location.address
+%p
+  %b Address:
+  = @location.full_address
+
+%p
+  %b City:
+  = @location.city
+%p
+  %b Us state:
+  = @location.us_state
+%p
+  %b Lat:
+  = @location.latitude
+%p
+  %b Long:
+  = @location.longitude
+%p
+  %b Phone:
+  = @location.phone
+
+= link_to 'Edit', edit_location_path(@location)
+\|
+= link_to 'Back', locations_path

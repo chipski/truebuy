@@ -1,0 +1,39 @@
+%h1 Listing stores
+
+%table
+  %tr
+    %th Uid
+    %th Permalink
+    %th Name
+    %th Keywords
+    %th Blurb
+    %th State
+    %th Type
+    %th Url
+    %th Url2
+    %th Store
+    %th Realtime availability
+    %th
+    %th
+    %th
+
+  - @stores.each do |store|
+    %tr
+      %td= store.uid
+      %td= store.permalink
+      %td= store.name
+      %td= store.keywords
+      %td= store.blurb
+      %td= store.state
+      %td= store.type
+      %td= store.url
+      %td= store.url2
+      %td= store.store_id
+      %td= store.realtime_availability
+      %td= link_to 'Show', store
+      %td= link_to 'Edit', edit_store_path(store)
+      %td= link_to 'Destroy', store, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Store', new_store_path
