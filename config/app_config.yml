@@ -23,9 +23,9 @@ defaults: &DEFAULTS
     user_name:
     password:     
   mailjet:
-    api_key: application_id
-    secret_key: secret_value
-    default_from: a_token
+    api_key: 117e0fa84c038646b6fa26e85a766322
+    secret_key: 487ea9095fdaeaf77a6429938ef0c1cc
+    default_from: chip@truebuy.com
   mandrill:
     username:
     api_key:    
