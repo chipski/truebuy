@@ -298,7 +298,7 @@ h1, h2, h3, h4, h5, h6 {
   left: 50%;
   z-index: 1050;
   //width: 98%;
-  margin: -280px 0 0 -280px;
+  //margin: -280px 0 0 -280px;
   background-color: white;
   padding: 10px;
   .modal-header {
@@ -330,6 +330,9 @@ h1, h2, h3, h4, h5, h6 {
       margin-bottom: 8px;
   } 
 }
+#request-invite {
+    width: 454px;
+}
 .modal-backdrop {
     opacity: 0.8;
     position: fixed;
@@ -346,7 +349,56 @@ h1, h2, h3, h4, h5, h6 {
     border-top: none;
     input { margin: 10px;}
 }
-#request-invite {
-    width: 454px;
-    
+// iPhone portrait
+@media (max-width: 480px) {
+  .modal {
+    border: 1px solid yellow;
+    height: 500px; 
+    position: fixed; 
+    top: 18px;
+    left: 3px;
+    overflow-y: scroll; 
+    -webkit-overflow-scrolling: touch; 
+  }
+  #request-invite {
+    width: 290px;
+    height: 260px;
+    border: 1px solid blue;
+    label { display:none;}
+    .controls { margin-left: 0px;}
+    input {
+      width: 260px;
+      height: 34px; 
+      font-size: 120%;
+    }
+    .modal-footer {
+       input {width: 220px;} 
+    }
+  }
+  .modal.fade.in{
+    top: 5px; 
+  }
+  .modal-body{
+    max-height: 2400px; 
+  } 
+  .modal-footer {
+    input {
+      width: 220px;
+      height: 34px; 
+      font-size: 120%;
+    } 
+  } 
 }
+// iPhone landscape
+@media only screen and (max-width : 321px) {
+  .modal{
+      
+  }  
+}
+// iPhone 4
+@media only screen and (-webkit-min-device-pixel-ratio : 1.5), only screen and (min-device-pixel-ratio : 1.5) {
+  
+
+}
+
+

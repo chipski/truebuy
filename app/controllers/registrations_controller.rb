@@ -9,6 +9,7 @@ class RegistrationsController < Devise::RegistrationsController
   def create
     build_resource
     if resource.save
+      Rails.logger.info("User.create saved ok #{resource}")
       if resource.active_for_authentication?
         sign_in(resource_name, resource)
         (render(:partial => 'thankyou', :layout => false) && return)  if request.xhr?
@@ -19,8 +20,16 @@ class RegistrationsController < Devise::RegistrationsController
         respond_with resource, :location => after_inactive_sign_up_path_for(resource)
       end
     else
+      Rails.logger.info("User.create save error for #{resource} error=#{resource.errors}")
       clean_up_passwords resource
-      render :action => :new, :layout => !request.xhr?
+      respond_to do |format|
+        format.html { 
+          #render :action => :new, :layout => !request.xhr? 
+          render :partial=>"devise/registrations/invite_modal", :locals=>{:user=>@user}
+        }
+        format.json { render json: resource.errors, status: :unprocessable_entity }
+      
+      end
     end
   end
 

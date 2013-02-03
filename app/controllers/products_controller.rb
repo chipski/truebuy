@@ -5,7 +5,7 @@ class ProductsController < InheritedResources::Base
   
   def show
     resource
-    @photos = resource.photos
+    @photos = resource.photos if resource
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: resource }

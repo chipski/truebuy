@@ -55,7 +55,7 @@
 
 	position: absolute;	
 	cursor: pointer;	
-	background: url('/assets/rs-minimal-white.png');
+	background: url('rs-minimal-white.png');
 	background-color: transparent;
 }
 .rsMinW .rsArrowIcn:hover {
@@ -198,7 +198,7 @@
 	margin-left: -8px;
 	position: absolute;	
 	cursor: pointer;	
-	background: url('/assets/rs-minimal-white.png');
+	background: url('assets/rs-minimal-white.png');
 }
 
 .rsMinW.rsWithThumbsHor .rsThumbsArrowLeft .rsThumbsArrowIcn { background-position: -128px -32px; }
@@ -322,7 +322,7 @@
 	width: 32px;
 	height: 32px;
 
-	background: url('/assets/rs-minimal-white.png') 0 0;
+	background: url('assets/rs-minimal-white.png') 0 0;
 	background-color: #fff;
 	background-color: rgba(255,255,255,0.75);
 	border-radius: 2px;
@@ -359,7 +359,7 @@
 	height:64px;
 	-webkit-border-radius: 4px;
 	border-radius: 4px;
-	background:url(/assets/rs-minimal-white.png) no-repeat 0 -32px;
+	background:url(assets/rs-minimal-white.png) no-repeat 0 -32px;
 	background-color: #eee;
 	background-color: rgba(238,238,238,0.75);
 	-webkit-transition: .3s;
@@ -396,7 +396,7 @@
 	margin: 6px;
 	width: 32px;
 	height: 32px;
-	background: url('/assets/rs-minimal-white.png') -64px 0;
+	background: url('assets/rs-minimal-white.png') -64px 0;
 	background-color: #eee;
 	background-color: rgba(238,238,238,0.75);
 }
@@ -415,7 +415,7 @@
 .rsMinW .rsPreloader {
 	width:20px;
 	height:20px;
-	background-image:url(/assets/preloaders/preloader.gif);
+	background-image:url(preloaders/preloader.gif);
 
 	left:50%;
 	top:50%;
