@@ -9,6 +9,7 @@ defaults: &DEFAULTS
     api_key: some_crazy_key
     bucket: assets.truebuy.com 
   aws:
+    # also see 1CTX1AKY0EZHAZKYGG82 in aws chipski@mac.com
     access_key: AKIAJ4WX6PQISTLVZNEQ
     secret_key: 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   
     bucket: "assets.rightbyme"
@@ -45,6 +46,8 @@ development: &DEVELOPMENT
 test: &TEST
   <<: *DEVELOPMENT
   aws:
+    access_key: AKIAJA6Y6RTHK3JZM3GQ
+    secret_key: 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   
     bucket: "truebuy-dev"    
       
 cucumber:

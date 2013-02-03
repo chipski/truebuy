@@ -35,7 +35,21 @@ module Reviews
     config.autoload_paths += %W( #{Rails.root}/app/mixins )
     config.autoload_paths += %W( #{Rails.root}/app/uploaders ) 
     
-
+    
+    config.middleware.insert_before(Rack::Lock, Rack::Rewrite) do
+      send_file /^.+\.(?:ico|jpg|jpeg|png|gif|)$/,
+          'public/$&',
+          :headers => lambda { { 'Expires' => 1.year.from_now.httpdate } }
+          
+      rewrite   %r{/old_path(.*)}, '/new_path$1'
+      r301      '/chip',   '/chipski'
+      r302      '/testing',   '/greg'
+      r301      '/search/(.*)', 'http://www.google.com/?q=$1' 
+      r301      %r{/old_path(.*)}, '/new_path$1'
+      r301 %r{.*}, 'http://www.truebuy.com$&', :if => Proc.new {|rack_env|
+        rack_env['SERVER_NAME'] != 'www.truebuy.com'
+      }
+    end
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.

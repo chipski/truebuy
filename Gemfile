@@ -14,6 +14,7 @@ gem 'squeel'  #http://railscasts.com/episodes/354-squeel?view=asciicast
 gem "ransack"  #:git => "git://github.com/ernie/ransack.git" # better search gem
 
 gem 'rack'  #, '~> 1.2.1'
+gem 'rack-rewrite', '~> 1.2.1'
 gem "rake", "10.0.3"     
 gem 'capistrano'
 #gem "chronic"
