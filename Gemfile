@@ -71,7 +71,7 @@ gem 'aasm'
 #gem "stateflow"   
 #    
 #gem 'acts-as-taggable-on', '~>2.3.1' 
-gem 'letsrate'
+gem 'letsrate'         #https://github.com/muratguzel/letsrate
 gem "gritter"
 gem 'masonry-rails'
 
@@ -82,8 +82,11 @@ gem "google_visualr", ">= 2.1.2"
 gem "fog"
 gem "geocoder"    #http://www.rubygeocoder.com/
 gem "hominid", ">= 3.0.5"
+gem 'mailjet'   #email out & newsletters
 #gem 'airbrake'
 #gem 'mixpanel'   # https://github.com/zevarito/mixpanel
+
+#gem "ransack"    # MetaSearch  https://github.com/ernie/ransack
 
 # Image Processing and image/file upload    
 #gem "remotipart"

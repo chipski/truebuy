@@ -1,4 +1,3 @@
-
 defaults: &DEFAULTS
   domain: localhost:3000 
   dropbox:
@@ -8,15 +7,11 @@ defaults: &DEFAULTS
   rackspace:
     username: my_username
     api_key: some_crazy_key
-    bucket: assets.groupiter.com 
+    bucket: assets.truebuy.com 
   aws:
     access_key: AKIAJ4WX6PQISTLVZNEQ
     secret_key: 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   
     bucket: "assets.rightbyme"
-  blitline:
-    app_id: application_id
-    secet: secret_value
-    public_token: a_token
   analytics:
     google: google_analytics_id
     mixpanel: mixpanel_id
@@ -27,13 +22,17 @@ defaults: &DEFAULTS
   gmail:
     user_name:
     password:     
+  mailjet:
+    api_key: application_id
+    secret_key: secret_value
+    default_from: a_token
   mandrill:
     username:
     api_key:    
   rackspace:
-    username: rightbyme
+    username: truebuy
     api_key: ggggg
-    bucket: rightbyme-prod                
+    bucket: truebuy-prod                
     
 development: &DEVELOPMENT
   <<: *DEFAULTS
@@ -41,25 +40,23 @@ development: &DEVELOPMENT
   aws:
     access_key: AKIAJA6Y6RTHK3JZM3GQ
     secret_key: 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   
-    bucket: "rightbyme-dev"
-
+    bucket: "truebuy-dev"
 
 test: &TEST
   <<: *DEVELOPMENT
   aws:
-    bucket: "rightbyme-dev"    
+    bucket: "truebuy-dev"    
       
 cucumber:
   <<: *TEST
 
 staging: &STAGING
   <<: *DEVELOPMENT
-  domain: review.rightby.me 
+  domain: www.truebuy.com 
 
 production:
   <<: *STAGING
-  domain: review.rightby.me
+  domain: www.truebuy.com 
 
-beta: &BETA
-  <<: *STAGING       
-  domain: beta.rightby.me
+
+
