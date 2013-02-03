@@ -32,7 +32,7 @@ defaults: &DEFAULTS
   rackspace:
     username: truebuy
     api_key: ggggg
-    bucket: truebuy-prod                
+    bucket: rightbyme-prod                
     
 development: &DEVELOPMENT
   <<: *DEFAULTS
