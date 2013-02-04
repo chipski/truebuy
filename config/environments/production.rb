@@ -82,14 +82,13 @@ Reviews::Application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default :charset => "utf-8"  
-
   # config.action_mailer.smtp_settings = {
-  #   :address   => "smtp.mandrillapp.com",
-  #   :port      => 25,
-  #   :user_name => ENV["MANDRILL_USERNAME"],
-  #   :password  => ENV["MANDRILL_API_KEY"]
+  #   :address   => "in.mailjet.com",
+  #   :port      => 587,
+  #   :user_name => APP_CONFIG['mailjet']['api_key'],
+  #   :password  => APP_CONFIG['mailjet']['secret_key'],
   # }
-
+  
   GA.tracker = "UA-35680198-1" 
 
   # Log the query plan for queries taking more than this (works

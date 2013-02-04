@@ -23,8 +23,8 @@ Reviews::Application.configure do
   config.action_mailer.default :charset => "utf-8"  
   
    # config.action_mailer.smtp_settings = {
-   #   :address   => "smtp.mandrillapp.com",
-   #   :port      => 25,
+   #   :address   => "in.mailjet.com",
+   #   :port      => 587,
    #   :user_name => APP_CONFIG['mailjet']['api_key'],
    #   :password  => APP_CONFIG['mailjet']['secret_key'],
    #   :default_from = APP_CONFIG['mailjet']['default_from']  
