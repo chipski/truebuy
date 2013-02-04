@@ -5,7 +5,6 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
-
   has_many :locations
   
   # Setup accessible (or protected) attributes for your model
@@ -24,13 +23,9 @@ class User < ActiveRecord::Base
       !password.nil? || !password_confirmation.nil?
     end
   end
-  
-  # override Devise method
   def confirmation_required?
     false
   end
-  
-  # override Devise method
   def active_for_authentication?
     confirmed? || confirmation_period_valid?
   end
@@ -42,12 +37,10 @@ class User < ActiveRecord::Base
     p[:password_confirmation] = params[:password_confirmation]
     update_attributes(p)
   end
-  
   # new function to determine whether a password has been set
   def has_no_password?
     self.encrypted_password.blank?
   end
-
   # new function to provide access to protected method pending_any_confirmation
   def only_if_unconfirmed
     pending_any_confirmation {yield}
@@ -57,7 +50,6 @@ class User < ActiveRecord::Base
   def to_partial_path() 
     "users/#{type}" 
   end 
-  
   def avatar_url
     "/assets/default/DefaultAvatar2.png"
   end

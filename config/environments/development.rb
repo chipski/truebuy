@@ -14,9 +14,9 @@ Reviews::Application.configure do
   config.action_controller.perform_caching = false
 
   # ActionMailer Config
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
-  #config.action_mailer.delivery_method = :mailjet
-  config.action_mailer.delivery_method = :letter_opener 
+  config.action_mailer.default_url_options = { :host => 'www.truebuy.com' }
+  config.action_mailer.delivery_method = :mailjet
+  #config.action_mailer.delivery_method = :letter_opener 
   # change to true to allow email to be sent during development
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
