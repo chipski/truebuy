@@ -61,7 +61,7 @@ Reviews::Application.configure do
     #r301 %r{.*}, 'http://www.truebuy.com$&', :if => Proc.new {|rack_env|
     #  rack_env['SERVER_NAME'] != 'www.truebuy.com'
     #}
-  en#d
+  end
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
 
