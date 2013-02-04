@@ -25,8 +25,9 @@ Reviews::Application.configure do
    # config.action_mailer.smtp_settings = {
    #   :address   => "smtp.mandrillapp.com",
    #   :port      => 25,
-   #   :user_name => APP_CONFIG['mandrill']['user_name'],
-   #   :password  => APP_CONFIG['mandrill']['api_key'] 
+   #   :user_name => APP_CONFIG['mailjet']['api_key'],
+   #   :password  => APP_CONFIG['mailjet']['secret_key'],
+   #   :default_from = APP_CONFIG['mailjet']['default_from']  
    # }
    #config.action_mailer.smtp_settings = {
    #   address: "smtp.gmail.com",
