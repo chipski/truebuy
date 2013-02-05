@@ -4,7 +4,7 @@
 
 .tab-content{:style=>"min-height: 480px;"} 
   .tab-pane.active#actived
-    .row#masonry
+    .row.full.masonry
       =render :partial => collection, :as => :entity
   
       -if false
@@ -16,12 +16,7 @@
           .card.company
             .thumbnail=link_to image_tag(company.cover_url("small")), company_path(company)
             %h4=company.name 
- 
-        - @category.brands.each do |brand|  
-          .card.brand
-            .thumbnail=link_to image_tag(brand.cover_url("small")), brand_path(brand)
-            %h4=brand.name 
-            
+
   .tab-pane#inactive
     %h2 Available to add
     = link_to 'New', new_polymorphic_path(Product)

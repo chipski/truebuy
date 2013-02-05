@@ -12,8 +12,8 @@
               %a.btn.btn-primary.btn-large{"data-toggle" => "modal", :href => "#request-invite"} Request invite
             .blurb=@company.blurb ? @company.blurb.html_safe : ""
 
-    .company
-      #masonry.wide
+    .row
+      #masonry
         - @company.topics.active.each do |topic|
           .card
             %h2=link_to topic.name, topic_path(topic)

@@ -13,7 +13,7 @@
           %a.btn.btn-primary.btn-large{"data-toggle" => "modal", :href => "#request-invite"} Request invite
 
 .home
-  .masonry.full
+  .masonry
     - @company.topics.active.each do |topic|
       .card
         .thumb=image_tag(topic.cover_url, :alt=>topic.name)

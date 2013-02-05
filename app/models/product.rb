@@ -101,8 +101,8 @@ class Product < ActiveRecord::Base
     @cover_url ? @cover_url : "NoImageAvailable.jpg"
   end
   
-  def to_partial_path() 
-    "products/grid_cell" 
+  def to_partial_path
+    "products/grid_cell2" 
   end
   def to_param
     permalink
