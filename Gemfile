@@ -3,7 +3,7 @@ ruby "1.9.3"
 
 gem "i18n"
 gem "psych", ">=1.3"          
-gem 'rails', '3.2.11'
+gem 'rails', '3.2.12'
  
 gem 'bundler', ">1.2"
 gem 'mysql', '2.8.1' 
