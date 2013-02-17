@@ -18,7 +18,7 @@ class UserMailer < Devise::Mailer
     @resource = user
     @site_url = root_url,
     @site_logo = root_url+"/assets/logo.png"
-    @hero_url = root_url+"/assets/hero1.png"
+    @hero_url = root_url+"/assets/stock/save_time2.jpg"
     mail(
       to: @resource.email
       )

@@ -121,12 +121,12 @@ class User < ActiveRecord::Base
     main_role ? main_role["name"] : "nothing"
   end
   def make_admin
-    self.remove_role :customer if self.has_role? :customer  
-    self.add_role :admin
+    self.remove_role "customer" if self.has_role? :customer  
+    self.add_role :admin unless self.has_role? :admin 
   end
   def make_customer
-    self.remove_role :admin if self.has_role? :admin  
-    self.add_role :customer
+    self.remove_role "admin" if self.has_role? :admin  
+    self.add_role :customer unless self.has_role? :customer 
   end
     
   private
