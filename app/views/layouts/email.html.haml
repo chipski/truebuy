@@ -1,0 +1,288 @@
+!!!
+%html
+  %head
+    %meta{:content=>"text/html; charset=UTF-8", "http-equiv"=>"Content-Type"}/
+    %title=yield :title
+    :css
+      #outlook a{
+      	padding:0;
+      }
+      body{
+      	width:100% !important;
+      }
+      .ReadMsgBody{
+      	width:100%;
+      }
+      .ExternalClass{
+      	width:100%;
+      }
+      body{
+      	-webkit-text-size-adjust:none;
+      }
+      body{
+      	margin:0;
+      	padding:0;
+      }
+      img{
+      	border:0;
+      	height:auto;
+      	line-height:100%;
+      	outline:none;
+      	text-decoration:none;
+      }
+      table td{
+      	border-collapse:collapse;
+      }
+      #backgroundTable{
+      	height:100% !important;
+      	margin:0;
+      	padding:0;
+      	width:100% !important;
+      }
+      body,#backgroundTable,#templateFooter{
+      	background-color:#707070;
+      }
+      h1,.h1{
+      	color:#FFFFFF;
+      	display:block;
+      	font-family:Helvetica;
+      	font-size:30px;
+      	font-weight:bold;
+      	line-height:100%;
+      	margin-top:0;
+      	margin-right:0;
+      	margin-bottom:10px;
+      	margin-left:0;
+      	text-align:left;
+      }
+      h2,.h2{
+      	color:#101010;
+      	display:block;
+      	font-family:Helvetica;
+      	font-size:20px;
+      	font-weight:bold;
+      	line-height:100%;
+      	margin-top:0;
+      	margin-right:0;
+      	margin-bottom:10px;
+      	margin-left:0;
+      	text-align:left;
+      }
+      h3,.h3{
+      	color:#202020;
+      	display:block;
+      	font-family:Helvetica;
+      	font-size:26px;
+      	font-weight:bold;
+      	line-height:100%;
+      	margin-top:0;
+      	margin-right:0;
+      	margin-bottom:10px;
+      	margin-left:0;
+      	text-align:left;
+      }
+      h4,.h4{
+      	color:#202020;
+      	display:block;
+      	font-family:Helvetica;
+      	font-size:22px;
+      	font-weight:bold;
+      	line-height:100%;
+      	margin-top:0;
+      	margin-right:0;
+      	margin-bottom:10px;
+      	margin-left:0;
+      	text-align:left;
+      }
+      .btn {
+        font-size: 30px;
+        margin: 30px 40px;
+        padding: 8px
+      }
+      .btn {
+        -webkit-border-radius: 8px;
+        -moz-border-radius: 8px;
+        border-radius: 8px;  
+        background-color:#e6e6e6;
+        border-color:#e6e6e6;
+      }
+      #templatePreheader{
+      	background-color:#101010;
+      }
+      .preheaderContent{
+      	color:#444444;
+      	font-family:Helvetica;
+      	font-size:10px;
+      	line-height:125%;
+      	text-align:left;
+      }
+      .preheaderContent a:link,.preheaderContent a:visited,.preheaderContent a .yshortcuts {
+      	color:#8ea837;
+      	font-weight:normal;
+      	text-decoration:none;
+      }
+      #templateHeader{
+      	background-color:#f0f0f0;
+      	border-bottom:0;
+      }
+      .headerContent{
+      	color:#202020;
+      	font-family:Helvetica;
+      	font-size:34px;
+      	font-weight:bold;
+      	line-height:100%;
+      	padding:20px;
+      	text-align:left;
+      	vertical-align:middle;
+      }
+      .headerContent a:link,.headerContent a:visited,.headerContent a .yshortcuts {
+      	color:#444444;
+      	font-weight:normal;
+      	text-decoration:none;
+      }
+      #headerImage{
+      	height:auto;
+      	max-width:600px !important;
+      }
+      #templateContainer{
+      	background-color:#f0f0f0;
+      }
+      .bodyContent{
+      	color:#444444;
+      	font-family:Helvetica;
+      	font-size:15px;
+      	line-height:150%;
+      	text-align:left;
+      }
+      .bodyContent a:link,.bodyContent a:visited,.bodyContent a .yshortcuts {
+      	color:#8ea837;
+      	font-weight:normal;
+      	text-decoration:none;
+      }
+      .bodyContent img{
+      	display:inline;
+      	height:auto;
+      }
+      .leftColumnContent{
+      	color:#101010;
+      	font-family:Helvetica;
+      	font-size:13px;
+      	line-height:150%;
+      	text-align:left;
+      }
+      .leftColumnContent a:link,.leftColumnContent a:visited,.leftColumnContent a .yshortcuts {
+      	color:#8ea837;
+      	font-weight:normal;
+      	text-decoration:none;
+      }
+      .centerColumnContent{
+      	color:#101010;
+      	font-family:Helvetica;
+      	font-size:13px;
+      	line-height:150%;
+      	text-align:left;
+      }
+      .centerColumnContent a:link,.centerColumnContent a:visited,.centerColumnContent a .yshortcuts {
+      	color:#8ea837;
+      	font-weight:normal;
+      	text-decoration:none;
+      }
+      .rightColumnContent{
+      	color:#101010;
+      	font-family:Helvetica;
+      	font-size:13px;
+      	line-height:150%;
+      	text-align:left;
+      }
+      .rightColumnContent a:link,.rightColumnContent a:visited,.rightColumnContent a .yshortcuts {
+      	color:#8ea837;
+      	font-weight:normal;
+      	text-decoration:none;
+      }
+      .leftColumnContent img,.centerColumnContent img,.rightColumnContent img{
+      	display:inline;
+      	height:auto;
+      	max-width:160px !important;
+      }
+      #templateFooter{
+      	border-top:0;
+      }
+      .footerContent{
+      	color:#CCCCCC;
+      	font-family:Helvetica;
+      	font-size:10px;
+      	line-height:150%;
+      	text-align:left;
+      }
+      .footerContent a:link,.footerContent a:visited,.footerContent a .yshortcuts {
+      	color:#CCCCCC;
+      	font-weight:normal;
+      	text-decoration:underline;
+      }
+      .footerContent img{
+      	display:inline;
+      }
+  %body{:leftmargin=>"0",:marginheight=>"0", :marginwidth=>"0", :offset=>"0", :style=>"-webkit-text-size-adjust: none;margin: 0;padding: 0;background-color: #707070;width: 100% !important;", :topmargin=>"0"}
+    %center
+      %table#backgroundTable{:border=>"0", :cellpadding=>"0", :cellspacing=>"0", :height=>"100%", :style=>"margin: 0;padding: 0;background-color: #707070;height: 100% !important;width: 100% !important;", :width=>"100%"}
+        %tr
+          %td{:align=>"center", :style=>"border-collapse: collapse;", :valign=>"top"}
+            %table#templatePreheader{:border=>"0", :cellpadding=>"10", :cellspacing=>"0", :style=>"background-color:#e6e6e6;", :width=>"600"}
+              %tr
+                %td.preheaderContent{:style=>"border-collapse: collapse;font-size: 10px;line-height: 125%;text-align: left;", :valign=>"top"}
+                  %table{:border=>"0", :cellpadding=>"2", :cellspacing=>"0", :width=>"100%"}
+                    %tr
+                      %td{:style=>"border-collapse: collapse;color: grey;", :valign=>"top", :width=>"280", :height=>"30"}
+                        %a{:href=>@site_url, :style=>";text-decoration: none; font-size:30px;padding-top: 10px;", :target=>"_blank"} 
+                          %img{:alt=>"", :border=>"0", :src=>@site_logo, :style=>"margin: 0;padding: 0;border: 0;display: inline;float: left;height: 58px;"}
+        
+                          
+                      %td{:style=>"color: #c7c7c7; border-collapse: collapse;", :valign=>"top"}
+                        =yield :top_note
+                        
+            %table#templateContainer{:border=>"0", :cellpadding=>"0", :cellspacing=>"0", :style=>"background-color: #f0f0f0;", :width=>"600"}
+              %tr
+                %td{:align=>"center", :style=>"border-collapse: collapse;", :valign=>"top"}
+                  %table#templateBody{:border=>"0", :cellpadding=>"0", :cellspacing=>"0", :width=>"600"}
+                    %tr
+                      %td.bodyContent{:colspan=>"3", :style=>"border-collapse: collapse;font-size: 15px;line-height: 150%;text-align: left;", :valign=>"top"}
+                        %table{:border=>"0", :cellpadding=>"10", :cellspacing=>"0", :width=>"100%"}
+                          %tr
+                            %td{:style=>"padding-bottom: 0;border-collapse: collapse;", :valign=>"top"}
+                              %img{:alt=>"", :border=>"0", :src=>@hero_url, :style=>"margin: 0;padding: 0;max-width: 560px;border: 0;height: auto;"}
+                          %tr
+                            %td{:style=>"padding-top: 0;border-collapse: collapse;", :valign=>"top"}
+                              %table{:border=>"0", :cellpadding=>"16", :cellspacing=>"0", :style=>"background-color:#e6e6e6;", :width=>"100%"}
+                                %tr
+                                  %td.bodyContent{:style=>"color: #444;;font-size: 15px;line-height: 180%;text-align: left;", :valign=>"top"}
+                                    %h1{:style=>"color: #444;display: block;font-size: 30px;font-weight: bold;margin: 0 0 10px 0;text-align: left;"} 
+                                      =yield :title
+                                    =yield :blurb
+                    %tr
+                      %td.bodyContent{:colspan=>"3", :style=>"border-collapse: collapse;color:#444;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;padding: 0 14px 14px;", :valign=>"top"}
+                        =yield :body
+                      
+              %tr
+                %td{:align=>"center", :style=>"border-collapse: collapse;", :valign=>"top"}
+                  %table#templateFooter{:border=>"0", :cellpadding=>"0", :cellspacing=>"0", :style=>"background-color: #707070;border-top: 0;", :width=>"600"}
+                    %tr
+                      %td.footerContent{:style=>"padding-top: 20px;padding-bottom: 40px;border-collapse: collapse;color: #CCCCCC;font-family: Helvetica;font-size: 10px;line-height: 150%;text-align: left;", :valign=>"top"}
+                        %table{:border=>"0", :cellpadding=>"0", :cellspacing=>"0", :width=>"100%"}
+                          %tr
+                            %td{:style=>"border-collapse: collapse;", :valign=>"top"}
+                              %em Copyright © 2013 Truebuy, All rights reserved.
+                              %br/
+                              %strong Our mailing address is:
+                              %br/
+                              .vcard
+                                %span.org.fn Truebuy
+                                .adr
+                                  .street-address 1104 Boranda Ave
+                                  = succeed "," do
+                                    %span.locality Mountain View
+                                  %span.region CA
+                                  %span.postal-code 94040
+                            %td#utility{:colspan=>"1", :style=>"padding-top: 20px;border-collapse: collapse;", :valign=>"middle"}
+                              %div
+                                %a{:href=>@site_url, :style=>"color: #CCCCCC;font-weight: normal;text-decoration: underline;"} unsubscribe from this list
+                  

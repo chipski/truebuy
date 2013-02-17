@@ -4,7 +4,7 @@
   #notice= render 'layouts/messages'
   - if user_signed_in?
     %ul.nav.pull-right
-      %li= link_to 'Logout', destroy_user_session_path, :method=>'delete'
+      %li= link_to "Logout", logout_path
     .btn-group.pull-right    
       %a.btn.btn-mini.dropdown-toggle(data-toggle="dropdown" href="#")
         %i.icon-cog
@@ -28,3 +28,6 @@
   -else
     %ul.nav.pull-right
       %li= link_to 'Login', new_user_session_path
+      %li= link_to 'Facebook', user_omniauth_authorize_path(:facebook)
+      -#
+        %li= link_to 'Twitter', "/auth/twitter"

@@ -2,10 +2,14 @@ source 'https://rubygems.org'
 ruby "1.9.3"
 
 gem "i18n"
-gem "psych", ">=1.3"          
+gem "psych", ">=1.3"     
+gem 'bundler', ">1.2"
+gem 'rack'  #, '~> 1.2.1'
+gem 'rack-rewrite', '~> 1.2.1'
+gem "rake", "10.0.3"     
+gem "thor", "~> 0.16.0"
 gem 'rails', '3.2.12'
  
-gem 'bundler', ">1.2"
 gem 'mysql', '2.8.1' 
 gem 'pg', :group => :production  
 #gem 'mysql2'
@@ -13,25 +17,25 @@ gem 'pg', :group => :production
 gem 'squeel'  #http://railscasts.com/episodes/354-squeel?view=asciicast
 gem "ransack"  #:git => "git://github.com/ernie/ransack.git" # better search gem
 
-gem 'rack'  #, '~> 1.2.1'
-gem 'rack-rewrite', '~> 1.2.1'
-gem "rake", "10.0.3"     
 gem 'capistrano'
 #gem "chronic"
 gem "airbrake"
 
+# Authentication
+gem 'bcrypt-ruby', '~> 3.0.0' 
+#gem "devise-encryptable"   # failing now, todo fix
 gem "devise", ">= 2.1.2"
 gem "cancan", ">= 1.6.8"
 gem "rolify", ">= 3.2.0"
-gem 'bcrypt-ruby', '~> 3.0.0' 
-# Authentication
-#gem 'omniauth', '~> 1.0.1'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem "koala"  # This is a Graph client for Facebook, still use omniauth to connect
 #gem 'omniauth-dropbox'
-
-gem "haml", ">= 3.1.7"             
+gem 'oauth2'
 
 gem "less"
 gem 'less-rails'
+gem "haml", ">= 3.1.7"             
        
 gem 'sass-rails',   '~> 3.2.3'
 gem "bootstrap-sass"   # should be at 2.2.2.0 now
@@ -40,13 +44,10 @@ gem "bootstrap-sass"   # should be at 2.2.2.0 now
 #gem "less-rails-bootstrap"    #this can be switched with gem below but css & js load files will need rework
 gem "twitter-bootstrap-rails"                   
 
-
 group :assets do
   gem 'coffee-rails', '~> 3.2.1' 
-  
   gem "libv8"
   gem 'therubyracer', '0.9.10'
-  
   gem "font-awesome-sass-rails"
   gem 'uglifier', '>= 1.0.3'
 end

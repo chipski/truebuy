@@ -1,0 +1,19 @@
+.row
+  -if resource.errors
+    - resource.errors.full_messages.each do |message|
+      -if message.scan("token is invalid")[0]
+        %h2 This Password Token Already Confirmed 
+        =link_to "Sign In Now", login_path
+        =link_to "Request Password Link", new_password_path(resource_name), :class => 'btn btn-primary'
+      -else
+        %h2=message 
+
+  %h2 Forgot your password?
+  = simple_form_for(resource, :as=>resource_name, :url=>password_path(resource_name), :html =>{:method=>:post,:class => 'form-horizontal'}) do |f|
+    %div
+      = f.input :email, :autofocus => true
+      .form-actions
+        = f.button :submit, "Send Reset Password", :class => 'btn-primary'
+    
+
+  = render "devise/shared/links"

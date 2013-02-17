@@ -43,7 +43,8 @@ body {
   }
   .navbar-fixed-top, .navbar-fixed-bottom {
     margin-bottom: 0px;
-    .navbar-inner { padding: 6px; }
+    padding: 6px;
+    .navbar-inner {  }
     .container {
         width: auto;
     }

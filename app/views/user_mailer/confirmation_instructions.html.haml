@@ -1,0 +1,14 @@
+=content_for :top_note do
+  Confirm Invite    
+=content_for :title do
+  Welcome #{@resource.email}!
+  
+=content_for :blurb do
+  %p
+  We're pleased to invite you to try #{link_to 'Rampmetrics', root_url}.
+
+=content_for :body do
+  %h4{:style=>"margin: 18px 0 0 40px"}
+    = link_to 'Confirm my account', user_confirm_url(@resource.confirmation_token)
+  %p Please click the link above to confirm your email address and set your password:
+

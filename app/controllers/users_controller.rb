@@ -8,7 +8,12 @@ class UsersController < ApplicationController
   end
   
   def show
-    @user = User.find(params[:id])
+    if ["edit","me"].include?(params[:id])
+      @user = current_user
+    else
+      authorize! :invite, @user, :message => 'Not authorized as an administrator.'
+      @user = User.find(params[:id])
+    end
   end
   
   def invite
@@ -25,6 +30,35 @@ class UsersController < ApplicationController
       user.send_confirmation_instructions
     end
     redirect_to :back, :only_path => true, :notice => "Sent invitation to #{users.count} users."
+  end
+  def update_role
+    authorize! :update_role, @user, :message => 'Not authorized as an administrator.'
+    @user = User.find(params[:id])
+    if ["admin",:admin].include?(params[:role])
+      @user.make_admin
+    else
+      @user.make_customer
+    end
+    redirect_to :back, :only_path => true, :notice => "Sent invitation to #{@user.email}."
+  end
+  def edit_admin
+    authorize! :edit_admin, @user, :message => 'Not authorized as an administrator.'
+    @user = User.find(params[:id])
+    #@sforg = Sforg.find(params[:sforg_id])
+    render :edit
+  end
+  def update_admin
+    authorize! :update_admin, @user, :message => 'Not authorized as an administrator.'
+    @user = User.find(params[:id])
+    @user.update_attributes(params[:user])
+    if @user.save
+      flash[:info] = "The user was updated!"
+    else
+      @msg = "User.update_admin errors #{@user.errors.map{|e| e.inspect}}"
+      Rails.logger.info(@msg )
+      flash[:info] = @msg
+    end
+    redirect_to user_path(@user)
   end
   
   private

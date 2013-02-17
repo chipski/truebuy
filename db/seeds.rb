@@ -7,6 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 puts 'SETTING UP DEFAULT USER LOGIN'
+Role.create([{:name=>:admin},{:name=>:customer},{:name=>:member},{:name=>:visitor}]) 
+
 def recreate_user(email, name="", admin=false)
   user = User.find_by_email(email)
   if user

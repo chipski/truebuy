@@ -79,16 +79,11 @@ Reviews::Application.configure do
   config.action_mailer.default_url_options = { :host => 'www.truebuy.com' }
   # ActionMailer Config
   # Setup for production - deliveries, no errors raised
-  config.action_mailer.delivery_method = :mailjet
+  config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default :charset => "utf-8"  
-  # config.action_mailer.smtp_settings = {
-  #   :address   => "in.mailjet.com",
-  #   :port      => 587,
-  #   :user_name => APP_CONFIG['mailjet']['api_key'],
-  #   :password  => APP_CONFIG['mailjet']['secret_key'],
-  # }
+ 
   
   GA.tracker = "UA-35680198-1" 
 

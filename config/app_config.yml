@@ -4,10 +4,6 @@ defaults: &DEFAULTS
     app_key: app_key
     app_secret: app_secret
     polling_interval: 300
-  rackspace:
-    username: my_username
-    api_key: some_crazy_key
-    bucket: assets.truebuy.com 
   aws:
     # also see 1CTX1AKY0EZHAZKYGG82 in aws chipski@mac.com
     access_key: AKIAJ4WX6PQISTLVZNEQ
@@ -30,8 +26,19 @@ defaults: &DEFAULTS
     domain: truebuy.com
     smtp_host: in.mailjet.com
   mandrill:
-    username:
-    api_key:    
+    username: truebuy
+    api_key:  tDBRHpJOJC0aSsnSSupuAQ
+    domain:  truebuy.com
+  mailchimp:
+    username: truebuy
+    api_key: 6e87a6e9c351726564eb72fc930d660c-us6   
+  facebook:
+    app_key: 109984119186279
+    app_secret: 8a7eb02e1c0908c6988c8c5e48c31c76
+    callback: "http://localhost:3000"
+  twitter:
+    consumer_key: PmGym41STsIW4Gg2G4cHmw
+    consumer_secret: OXMlrpN1LqQug1OLkAWn9sFIszYJoyaGr8QRd62qk
   rackspace:
     username: truebuy
     api_key: ggggg
@@ -62,6 +69,11 @@ staging: &STAGING
 production:
   <<: *STAGING
   domain: www.truebuy.com 
+  facebook:
+    app_key: 248229361979945
+    app_secret: 83ea6278a5516b04c6a5e50f0c5229bb
+    callback: "http://www.truebuy.com"
+
 
 
 

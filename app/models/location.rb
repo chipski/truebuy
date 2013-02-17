@@ -18,6 +18,15 @@ class Location < ActiveRecord::Base
   
   def from_location(location)
     puts "Location.from_location #{location.inspect}"
+    
+  end
+  
+  def self.from_fb(location_hash, user)
+    return unless location_hash
+    Rails.logger.info("Location.from_fb #{location_hash.inspect}")
+    @location_hash = location_hash.delete("id")
+    @location_hash["user_id"] = user.id
+    @location = Location.create(@location_hash)
   end
   
   def display_address
@@ -26,7 +35,12 @@ class Location < ActiveRecord::Base
   def full_address
     "#{self.street} #{self.city} #{self.us_state} #{self.zipcode} #{self.country}"
   end
-
+  def zip=(zipcode)
+    self.update_attribute(:zipcode, zipcode)
+  end
+  def state=(us_state)
+    self.update_attribute(:us_state, us_state)
+  end
 
 
 end

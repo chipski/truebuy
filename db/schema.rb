@@ -120,13 +120,13 @@ ActiveRecord::Schema.define(:version => 20130202170701800) do
     t.string   "street"
     t.string   "city"
     t.string   "us_state"
-    t.string   "country"
+    t.string   "country",         :default => "US"
     t.string   "zipcode"
     t.float    "latitude"
     t.float    "longitude"
     t.string   "phone"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
   end
 
   add_index "locations", ["permalink"], :name => "index_locations_on_permalink", :unique => true
@@ -266,8 +266,8 @@ ActiveRecord::Schema.define(:version => 20130202170701800) do
   add_index "topics", ["uid"], :name => "index_topics_on_uid", :unique => true
 
   create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "email",                  :default => "",    :null => false
+    t.string   "encrypted_password",     :default => "",    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -276,8 +276,8 @@ ActiveRecord::Schema.define(:version => 20130202170701800) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
     t.string   "name"
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
@@ -290,6 +290,20 @@ ActiveRecord::Schema.define(:version => 20130202170701800) do
     t.string   "rating_average"
     t.string   "review_count"
     t.string   "email_count"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "password"
+    t.string   "fb_token"
+    t.string   "state",                  :default => "new"
+    t.string   "status"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "gender"
+    t.string   "avatar_url"
+    t.string   "profile_url"
+    t.datetime "date_of_birth"
+    t.string   "hometown"
+    t.text     "about"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
