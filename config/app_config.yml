@@ -4,11 +4,6 @@ defaults: &DEFAULTS
     app_key: app_key
     app_secret: app_secret
     polling_interval: 300
-  aws:
-    # also see 1CTX1AKY0EZHAZKYGG82 in aws chipski@mac.com
-    access_key: AKIAJ4WX6PQISTLVZNEQ
-    secret_key: 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   
-    bucket: "assets.rightbyme"
   analytics:
     google: google_analytics_id
     mixpanel: mixpanel_id
@@ -39,29 +34,20 @@ defaults: &DEFAULTS
   twitter:
     consumer_key: PmGym41STsIW4Gg2G4cHmw
     consumer_secret: OXMlrpN1LqQug1OLkAWn9sFIszYJoyaGr8QRd62qk
-  rackspace:
-    username: truebuy
-    api_key: ggggg
-    bucket: rightbyme-dev              
+  aws:
+    # also see 1CTX1AKY0EZHAZKYGG82 in aws chipski@mac.com
+    access_key: AKIAICUAICIZ65ID27QA
+    secret_key: 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   
+    bucket: "truebuy-dev"            
     
 development: &DEVELOPMENT
   <<: *DEFAULTS
   domain: localhost:3000 
-  aws:
-    access_key: AKIAJA6Y6RTHK3JZM3GQ
-    secret_key: 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   
-    bucket: "rightbyme-dev"
 
 test: &TEST
   <<: *DEVELOPMENT
-  aws:
-    access_key: AKIAJA6Y6RTHK3JZM3GQ
-    secret_key: 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   
-    bucket: "truebuy-dev"    
-      
 cucumber:
   <<: *TEST
-
 staging: &STAGING
   <<: *DEVELOPMENT
   domain: www.truebuy.com 
@@ -69,6 +55,10 @@ staging: &STAGING
 production:
   <<: *STAGING
   domain: www.truebuy.com 
+  aws:
+    access_key: AKIAICUAICIZ65ID27QA
+    secret_key: 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   
+    bucket: "truebuy" 
   facebook:
     app_key: 248229361979945
     app_secret: 83ea6278a5516b04c6a5e50f0c5229bb

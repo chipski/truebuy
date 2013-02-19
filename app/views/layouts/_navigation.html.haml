@@ -1,7 +1,6 @@
 .navbar
   = link_to "TrueBuy", root_path, :class => 'brand'
   
-  #notice= render 'layouts/messages'
   - if user_signed_in?
     %ul.nav.pull-right
       %li= link_to "Logout", logout_path

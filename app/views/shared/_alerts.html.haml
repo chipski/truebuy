@@ -1,0 +1,11 @@
+-ft=flash_text
+-unless ft[1].blank?
+  :javascript
+    (function() {
+      $.pnotify({
+        title: "#{ft[0]}",
+        text: "#{ft[1]}",
+        addclass: "alert-#{ft[2]}",
+        nonblock: true
+      })
+    });

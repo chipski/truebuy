@@ -42,8 +42,11 @@
           %nav
             = render 'layouts/footer'  
       .javascript
-        = javascript_include_tag "application"
-        = render :partial => "shared/mixpanel_all"
+        .libs
+          = javascript_include_tag "application"
+        .page
+          = render :partial=> "shared/alerts"  
+          = render :partial => "shared/mixpanel_all"
         :javascript
           #{yield :mixpanel_tag}
         = render :partial => 'shared/js_startup'

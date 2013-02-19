@@ -84,7 +84,7 @@ gem "google_visualr", ">= 2.1.2"
 gem "fog"
 gem "geocoder"    #http://www.rubygeocoder.com/
 gem "hominid", ">= 3.0.5"
-gem 'mailjet'   #email out & newsletters
+#gem 'mailjet'   #email out & newsletters
 #gem 'airbrake'
 #gem 'mixpanel'   # https://github.com/zevarito/mixpanel
 

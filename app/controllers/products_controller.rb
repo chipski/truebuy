@@ -18,6 +18,15 @@ class ProductsController < InheritedResources::Base
       format.js { render :edit, :layout=>false }
     end
   end
+  def create
+    super do |format|
+      format.html { 
+        return_to = products_path
+        redirect_to return_to, notice: "Product Created" 
+      }
+      format.js { head :no_content  }
+    end
+  end
   
   def update_state
     resource
@@ -25,7 +34,7 @@ class ProductsController < InheritedResources::Base
     resource = update_entity_state(@product, params[:state])
     respond_to do |format|
       if resource.save
-        format.html { redirect_to return_to }
+        format.html { redirect_to return_to, notice: "State updated to #{params[:state]}" }
         format.json { head :no_content }
       else
         format.html { redirect_to return_to, notice: "Cannot update the state" }

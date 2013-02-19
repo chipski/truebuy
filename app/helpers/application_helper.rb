@@ -22,4 +22,22 @@ module ApplicationHelper
      !!@editable
    end  
    
+   
+   def flash_text
+    title = ""
+    body = ""
+    css_class = "success"
+    flash.each do |name, msg|
+      if msg.is_a?(String)
+        title = name.to_s 
+        if name == :error 
+          title = "error" 
+          css_class = "error"
+        end
+        body += msg + "  " 
+      end
+    end
+    [title,body,css_class]
+  end
+   
 end

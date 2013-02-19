@@ -39,7 +39,7 @@ class CategoriesController < InheritedResources::Base
     resource = update_entity_state(@category, params[:state])
     respond_to do |format|
       if @category.save
-        format.html { redirect_to return_to }
+        format.html { redirect_to return_to, notice: "State updated to #{params[:state]}" }
         format.json { head :no_content }
       else
         format.html { redirect_to return_to, notice: "Cannot update the state" }

@@ -27,9 +27,9 @@
 //  require bootstrap-ajax.js
 //= require bootstrap-wysihtml5
 
-//= require gritter    
-//= require jquery_nested_form
+// require jquery.ui.widget
 
+//= require jquery.Jcrop
 //=require jquery-fileupload/vendor/jquery.ui.widget
 //=require jquery-fileupload/vendor/load-image
 //=require jquery-fileupload/vendor/canvas-to-blob
@@ -39,23 +39,22 @@
 //=require jquery-fileupload/jquery.fileupload-fp
 //=require jquery-fileupload/jquery.fileupload-ui
 //=require jquery-fileupload/locale
-
-// require jquery.ui.widget
-// require load-image.min
-// require canvas-to-blob.min                        #These are old ones in vendor/assets/javascript
-// require jquery.iframe-transport
-// require jquery.fileupload
-// require jquery.fileupload-ip
-// require jquery.fileupload-ui
-
-//= require jquery.Jcrop
-//  require bootstrap-image-gallery.min 
 //= require photo_main  
 //= require slimbox2         
 //= require photo_local
 
+//  require spin.min.js   
 //= require jquery.raty.js
 //= require letsrate.js
+//= require select2
+//= require jquery.pnotify
+//= require jquery_nested_form
+
+//= require masonry/jquery.masonry    
+// require masonry/jquery.imagesloaded.min
+//= require masonry/jquery.infinitescroll.min
+//= require dataTables/jquery.dataTables
+//= require dataTables/jquery.dataTables.bootstrap
 
 //= require jquery.royalslider.custom.min.js
 // require jquery.royalslider.min.js
@@ -75,13 +74,10 @@
 //  require jquery.remotipart
 //  require ember
 //  require ember/Rightby.me.js
+//  require gritter    
 
-//= require masonry/jquery.masonry    
-// require masonry/jquery.imagesloaded.min
-//= require masonry/jquery.infinitescroll.min
-//= require dataTables/jquery.dataTables
-//= require dataTables/jquery.dataTables.bootstrap
 //= require_tree .
+
 $('document').ready(function() {
   
   // use AJAX to submit the "request invitation" form
@@ -147,7 +143,11 @@ $('document').ready(function() {
       numImagesToPreload: 6,
       keyboardNavEnabled: true
   });
-  
+  $.pnotify.defaults.styling = "bootstrap";
+  $.pnotify.defaults.history = false;
+  $.pnotify.defaults.animate_speed = "slow";
+  $.pnotify.defaults.shadow= true;
+    
   $('.ajax').click(function (e) {
       var urlHref = $(this).attr('href');
       $('.tab-pane').removeClass('active');
