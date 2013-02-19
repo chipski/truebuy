@@ -103,8 +103,8 @@ Reviews::Application.routes.draw do
     get 'invite', :on => :member
   end
 
-  match '/about' => 'home#about'
-  match '/tos' => 'home#tos'
+  match '/about'   => 'home#about'
+  match '/tos'     => 'home#tos'
   match '/privacy' => 'home#privacy'
   
   
