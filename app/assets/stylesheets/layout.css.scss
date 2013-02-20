@@ -1,12 +1,72 @@
-
+html {
+    background-size: auto;
+    background-origin: padding-box;
+    -webkit-background-clip: border-box;
+    -webkit-background-origin: padding-box;
+    -webkit-background-size: auto;
+    background-attachment: scroll;
+    background-clip: border-box;
+}
 body { 
- padding-top: 53px;
- padding-left: 0px;
- padding-right: 0px;
+ padding: 68px 0px 0 0px;
  color: #505050;
- //font: 100% sans-serif;
+ background-color: none;
+ background-color: rgb(247, 245, 245);
+ background-image: url("/assets/background.jpg");
+ background-size: auto;
+ background-clip: border-box;
  font-family: 'HelveticaNeue','Open Sans','Helvetica Neue', Helvetica, Arial, sans-serif;
  line-height: 18px;
+}
+body {
+ .container {
+   width: 100%;
+ }
+ .navbar-fixed-top, .navbar-fixed-bottom {
+    margin-bottom: 0px;
+    padding: 6px;
+    height: 64px;
+    background-color: rgb(250, 247, 247);
+    -webkit-box-shadow: rgb(255, 255, 255) 0px 1px 0px 0px inset, rgba(34, 25, 25, 0.4) 0px 1px 3px 0px;
+    box-shadow: rgb(255, 255, 255) 0px 1px 0px 0px inset, rgba(34, 25, 25, 0.4) 0px 1px 3px 0px;
+    .brand {
+       padding: 0px;
+       width: 320px;
+       img {
+           height: 64px;
+           float: left;
+       }
+       h1 {
+           margin: 14px 0 0 10px;
+           font-weight: 100;
+           float: left;
+       }
+    }
+    .pull-right {
+       padding: 10px 10px 0 0;
+    }
+    .container {
+        border: 1px solid yellow;
+        width: auto;
+        clear: both; 
+    }
+ }
+ #main {
+     
+ }
+ .footer {
+      height: 100px;
+      .navbar-static-bottom {
+          margin-top: 10px;
+          height:60px;
+          padding: 10px 12px;
+          .nav li a {
+              padding: 10px 8px 10px;
+          }
+      }
+  }
+} 
+
  h1, h2, h3, h4, h5, h6 {
     font-family: 'HelveticaNeue','Open Sans','Helvetica Neue', Helvetica, Arial, sans-serif;
     font-weight: 200; 
@@ -17,16 +77,7 @@ body {
     line-height: 40px;
     margin: 18px 0px 10px; 
  }
- .navbar {
-     .brand {
-         margin-left: 0;
-         font-size: 42px;
-         font-weight: bolder;
-     }
- }
- .container {
-   width: 100%;
- }
+
  .content {
     margin: 0;
     padding: 0;
@@ -41,15 +92,7 @@ body {
     width: 100%;
     margin-left: 0px;
   }
-  .navbar-fixed-top, .navbar-fixed-bottom {
-    margin-bottom: 0px;
-    padding: 6px;
-    .navbar-inner {  }
-    .container {
-        width: auto;
-    }
-    
-  }
+  
   .page-header {
       margin: 0 0 0 10px;
       height: 37px;
@@ -80,18 +123,53 @@ body {
   .well .nav-list {
       padding: 0;
   }
-  .footer {
-      height: 100px;
-      .navbar-static-bottom {
-          margin-top: 10px;
-          height:60px;
-          padding: 10px 12px;
-          .nav li a {
-              padding: 10px 8px 10px;
-          }
-      }
+  
+
+.big_gray_box {
+  background-color: #eee;
+  -webkit-border-radius: 6px 6px 6px 6px;
+  -moz-border-radius: 6px 6px 6px 6px;
+  border-radius: 6px 6px 6px 6px;
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+  -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+  box-shadow: 0 1px 2px rgba(0,0,0,.15);
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+  color: #505050;
+}
+
+.btn {
+    padding: 5px 5px;
+}
+.btn-primary {
+    padding: 4px 12px;
+}
+
+#notice, .alert {
+  position: fixed;
+  top: 4px;
+  left: 22%;
+  z-index: 58;
+  overflow: hidden;
+  min-width: 220px;
+  min-height: 22px;
+  margin: 0 auto;
+  padding: 3px 10px;
+  color: #777;
+  .close { right: -9px; top: -9px;}
+  .alert-success {
+    background-color: rgba(88, 245, 0, 0.33);
+    //background-color: #468847;  
+  }
+  .alert-error {
+    background-color: rgba(245, 245, 0, 0.58);
+    //background-color: #b94a48;
   }
 }
+
+
 .modal#show_photo {
     width: 88%;
 }
@@ -134,7 +212,7 @@ body {
 }
 @media (max-width: 920px) {
   body {
-    padding: 53px 0px 0 0px;
+    
   }
   .navbar-fixed-top, .navbar-fixed-bottom {
     margin: 0;
@@ -245,161 +323,6 @@ body {
 // iPads portrait
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
   
-}
-
-
-.big_gray_box {
-  background-color: #eee;
-  -webkit-border-radius: 6px 6px 6px 6px;
-  -moz-border-radius: 6px 6px 6px 6px;
-  border-radius: 6px 6px 6px 6px;
-  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
-  -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
-  box-shadow: 0 1px 2px rgba(0,0,0,.15);
-}
-
-
-h1, h2, h3, h4, h5, h6 {
-  color: #505050;
-}
-
-.btn {
-    padding: 5px 5px;
-}
-.btn-primary {
-    padding: 4px 12px;
-}
-
-#notice, .alert {
-  position: fixed;
-  top: 4px;
-  left: 22%;
-  z-index: 58;
-  overflow: hidden;
-  min-width: 220px;
-  min-height: 22px;
-  margin: 0 auto;
-  padding: 3px 10px;
-  color: #777;
-  .close { right: -9px; top: -9px;}
-  .alert-success {
-    background-color: rgba(88, 245, 0, 0.33);
-    //background-color: #468847;  
-  }
-  .alert-error {
-    background-color: rgba(245, 245, 0, 0.58);
-    //background-color: #b94a48;
-  }
-}
-
-
-.modal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  z-index: 1050;
-  //width: 98%;
-  //margin: -280px 0 0 -280px;
-  background-color: white;
-  padding: 10px;
-  .modal-header {
-      border-bottom: none;
-      padding: 8px;
-      h3 {
-          margin: 0 10px 8px;
-          font-size: 26px;
-      }
-      .close {position: relative; right: -9px; top: -17px;}
-  }
-  .modal-body {
-    padding: 6px;
-    overflow: auto;
-    .control-group { margin-bottom: 4px;}
-    .control-label {
-        text-align: right; 
-        margin-right: 6px;
-        font-size: 150%;
-        line-height: 32px;
-    }
-    input {
-      width: 320px;
-      height: 34px; 
-      font-size: 140%;
-      }
-    }
-    form {
-      margin-bottom: 8px;
-  } 
-}
-#request-invite {
-    width: 454px;
-}
-.modal-backdrop {
-    opacity: 0.8;
-    position: fixed;
-    top: 0;
-    right:0;
-    bottom: 0;
-    left: 0;
-    z-index: 1040;
-    background-color: black;
-}
-.modal-footer {
-    background-color: white;
-    padding: 0 30px;
-    border-top: none;
-    input { margin: 10px;}
-}
-// iPhone portrait
-@media (max-width: 480px) {
-  .modal {
-    border: 1px solid yellow;
-    height: 500px; 
-    position: fixed; 
-    top: 18px;
-    left: 3px;
-    overflow-y: scroll; 
-    -webkit-overflow-scrolling: touch; 
-  }
-  #request-invite {
-    width: 290px;
-    height: 260px;
-    border: 1px solid blue;
-    label { display:none;}
-    .controls { margin-left: 0px;}
-    input {
-      width: 260px;
-      height: 34px; 
-      font-size: 120%;
-    }
-    .modal-footer {
-       input {width: 220px;} 
-    }
-  }
-  .modal.fade.in{
-    top: 5px; 
-  }
-  .modal-body{
-    max-height: 2400px; 
-  } 
-  .modal-footer {
-    input {
-      width: 220px;
-      height: 34px; 
-      font-size: 120%;
-    } 
-  } 
-}
-// iPhone landscape
-@media only screen and (max-width : 321px) {
-  .modal{
-      
-  }  
-}
-// iPhone 4
-@media only screen and (-webkit-min-device-pixel-ratio : 1.5), only screen and (min-device-pixel-ratio : 1.5) {
-  
-
 }
 
 

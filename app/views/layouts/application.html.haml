@@ -7,25 +7,18 @@
     %title= content_for?(:title) ? yield(:title) : "Reviews"
     %meta{:content => content_for?(:description) ? yield(:description) : "Reviews", :name => "description"}
     = stylesheet_link_tag "application", :media => "all"
-    -if true || params[:tb]
-      %link{ :rel => "stylesheet", :type => 'text/css', :href => "http://fonts.googleapis.com/css?family=Istok+Web:400,700|Oswald:300,400,700"}
-    -else
-      =javascript_include_tag("https://use.typekit.net/cex6svf.js")
-      :javascript
-        try{Typekit.load();}catch(e){}
+    %link{ :rel => "stylesheet", :type => 'text/css', :href => "http://fonts.googleapis.com/css?family=Istok+Web:400,700|Oswald:300,400,700"}
       
     = csrf_meta_tags
     = yield(:head)
   
   %body{:class => "#{controller_name} #{action_name}"}
     %header.navbar.navbar-fixed-top
-      %nav
-        .container
-          = render 'layouts/navigation'
+      = render 'layouts/navigation'
     #main{:role => "main"}
       .container
         .content
-          =yield(:admin_bar)
+          =yield(:admin_bar) if show_admin_bar?
           -if content_for?(:sidebar)
             .span3
               =yield(:sidebar)

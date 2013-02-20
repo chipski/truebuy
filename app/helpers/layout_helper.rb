@@ -16,6 +16,9 @@ module LayoutHelper
     @page_namespace ||= "#{params[:controller].tr('/', '_')}_#{controller.action_name}"
   end
   
+  def show_admin_bar?
+    false
+  end
 
   def stylesheet(*args)
     content_for(:head) { stylesheet_link_tag(*args) }

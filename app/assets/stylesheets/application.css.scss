@@ -19,11 +19,17 @@
  * require 'masonry/infinitescroll'
  * require 'masonry/right-to-left'
  * require 'masonry/transitions' 
+ 
  *= require 'dataTables/jquery.dataTables.bootstrap'  
  * require 'rs-default'
- *= require 'rs-minimal-white'
  *= require 'royalslider'
-
- *= require_tree .
+ *= require 'rs-minimal-white'
+ *= require 'slides'
+ *= require 'layout'
+ *= require 'cards'
+ *= require 'forms'
+ *= require 'modals'
+ 
+ *  require_tree .
 */
 
