@@ -17,7 +17,7 @@ module LayoutHelper
   end
   
   def show_admin_bar?
-    false
+    true
   end
 
   def stylesheet(*args)

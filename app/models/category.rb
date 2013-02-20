@@ -129,7 +129,7 @@ class Category < ActiveRecord::Base
   end
 
   def to_partial_path() 
-    "category/grid_cell" 
+    "categories/grid_cell" 
   end
   
   def to_param

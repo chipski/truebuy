@@ -5,10 +5,11 @@
   %h1
     =link_to products_path do
       %i.icon-list-alt
+    = render :partial=>'shared/edit_menu', :locals=>{:entity=>product}
     -if action == "edit" 
       = "Edit "           
       = link_to product.name, product 
-      = render :partial=>'shared/edit_menu', :locals=>{:entity=>product}
+      
     -elsif action == "new"
       = "New "
     -else

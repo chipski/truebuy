@@ -3,28 +3,17 @@
     .tab-pane.active#actived
       #masonry.wide
         %h1 Categories
-        - Category.active.each do |category|  
-          .card.category
-            .category_gallery.royalSlider.rsDefault.fwImage.col.span_4.thumbnail
-              -category.slider_photos.each do |photo|
-                =link_to image_tag(photo.image.medium.url, :class=>"rsImg"), category_path(category)
-            -if is_admin? 
-              .card_edit=render :partial=>'shared/edit_menu', :locals=>{:entity=>category}
-            .caption
-              %h2=category.name
+        -collection = Category.active
+        .row.full.masonry
+          =render :partial => collection, :as => :entity
+          
     .tab-pane#inactive
-      .row.companies
-        #masonry.wide
-          %h1 
-            Inactive Categories
-            =link_to 'New', new_category_path, :class => 'btn btn-mini' if is_admin?
-          - Category.not_active.each do |category|  
-            .card#category
-              .thumbnail=link_to image_tag(category.cover_url("small")), category_path(category)
-              .caption
-                %h4=category.name
-                - if is_admin?
-                  .card_edit=render :partial=>'shared/edit_menu', :locals=>{:entity=>category}
+      #masonry.wide
+        %h1 
+          Inactive Categories
+          =link_to 'New', new_category_path, :class => 'btn btn-mini' if is_admin?
+        .row.full.masonry
+          =render :partial => Category.not_active, :as => :entity
 
 =content_for :admin_bar do
   =render :partial=>"shared/tab_bar_index" 

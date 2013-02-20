@@ -11,7 +11,8 @@ class Product < ActiveRecord::Base
   # above will add 3 has_many linkes for each dimension above
   # <dimension>_rates, <dimension>_raters, <dimension>_average,
   def rate_dimensions
-    [["quality","Overall Quality", 10], ["value", "Overall Value", 5], ["fits_needs", "Fits Your Needs", 5]]
+    #[["quality","Overall Quality", 10], ["value", "Overall Value", 5], ["fits_needs", "Fits Your Needs", 5]]
+    [["quality","Overall", 10]]
   end
   
   before_save :update_permalink   

@@ -3,28 +3,16 @@
     .tab-pane.active#actived
       #masonry.wide
         %h1 Brands
-        - Brand.active.each do |brand|  
-          .card
-            .category_gallery.royalSlider.rsDefault.fwImage.col.span_4.thumbnail
-              -brand.slider_photos.each do |photo|
-                =link_to image_tag(photo.image.medium.url, :class=>"rsImg"), brand_path(brand)
-            -if is_admin? 
-              .card_edit=render :partial=>'shared/edit_menu', :locals=>{:entity=>brand}
-            .caption
-              %h2=brand.name
+        .row.full.masonry
+          =render :partial => Brand.active, :as => :entity
+          
     .tab-pane#inactive
-      .row.companies
-        #masonry.wide
-          %h1 
-            Inactive Brands
-            =link_to 'New', new_brand_path, :class => 'btn btn-mini'
-          - Brand.not_active.each do |brand|  
-            .card
-              .thumbnail=link_to image_tag(brand.cover_url("small")), brand_path(brand)
-              .caption
-                %h4=brand.name
-                - if is_admin?
-                  .card_edit=render :partial=>'shared/edit_menu', :locals=>{:entity=>brand}
+      #masonry.wide
+        %h1 
+          Inactive Brands
+          =link_to 'New', new_brand_path, :class => 'btn btn-mini' if is_admin?
+        .row.full.masonry
+          =render :partial => Brand.not_active, :as => :entity
 
 =render "shared/modals"
 =content_for :admin_bar do

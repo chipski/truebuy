@@ -12,6 +12,7 @@ class CategoriesController < InheritedResources::Base
     resource
     @search ||= ProductSearch.new
     @products = @search.query([resource.id])
+    @products = resource.products if @products.length < 1
   end
 
   

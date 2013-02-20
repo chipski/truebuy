@@ -1,5 +1,21 @@
 - model_class = @product.class
-.row
-  = render 'products/breadcrumbs', :locals=>{:product=>@product}
-  = render 'form'
+= render 'products/breadcrumbs', :locals=>{:product=>@product}
+
+.tab-content{:style=>"min-height: 480px;"} 
+  .tab-pane.active#edit
+    .row.product
+      .span12
+        = render 'form'
+      .span6
+            
+  .tab-pane#content
+    .row
+      %h1 Variants
+      =#render :partial => "topics/grid", :locals=>{:entities=>resource.topic, :model_class=>Topic }           
+  
+  -if is_admin?
+    .tab-pane#admin
+      .row
+        =#render :partial => "grid", :locals=>{:entities=>@mediums_new, :model_class=>model_class } 
+        =render :partial=>'photos/upload_form', :locals=>{:parent=>resource}
 

@@ -1,20 +1,11 @@
 .tab-content{:style=>"min-height: 480px;"} 
   .tab-pane.active#overview
-    #full-width-slider.royalSlider.heroSlider.rsMinW
-      %input#productID{:type => "hidden", :value => resource.id}
-      -resource.slider_photos.each do |photo|
-        .rsContent
-          =image_tag(photo.image.medium.url, :class=>"rsImg")
-          .infoBlock.rsAbsoluteEl.infoBlockLeftBlack.rsNoDrag{:data=>{:fade=>{:effect=>10}, :move=>{:offset=>10, :effect=>"bottom"}, :speed=>"200"}}
-            %h1=resource.name
-            -#unless user_signed_in?
-            #call-to-action
-              %a.btn.btn-primary.btn-large{"data-toggle" => "modal", :href => "#request-invite"} Request invite
-            .blurb=resource.blurb ? resource.blurb.html_safe : ""
-
-    .row.product
+    .page-header
+      %h1=resource.name
+    .row
       .span5
-        %h2=resource.name
+        .img_box
+          Images
         .info
           %b=link_to resource.brand.name, resource.brand
           %b Model num:
@@ -32,32 +23,17 @@
               =rating_for resource, rate_dimension_id, :star=>rate_dimension_stars
               .totals
                 -ratings = resource.rates(rate_dimension_id)
-                .metric=resource.average(rate_dimension_id).avg
+                .metric=resource.average(rate_dimension_id).avg if resource.average(rate_dimension_id)
                 =" over #{ratings.count} ratings" 
             .raters  
               -ratings.each do |rate|
                 =rater_avatar(resource, rate, rate_dimension_id)
+
             
-            
-  .tab-pane#edit
-    .row
-      %h1 
-        Editing 
-        =link_to resource.name, resource
-        = link_to "New", new_product_path(:state=>"inactive"), :class => 'btn btn-primary btn-mini'
-        = render :partial=>'shared/edit_menu', :locals=>{:entity=>resource}
-      = render 'form'
-    
-  .tab-pane#content
-    .row
-      %h1 Variants
-      =#render :partial => "topics/grid", :locals=>{:entities=>resource.topic, :model_class=>Topic }           
-  
-  -if is_admin?
-    .tab-pane#admin
-      .row
-        =#render :partial => "grid", :locals=>{:entities=>@mediums_new, :model_class=>model_class } 
-        =render :partial=>'photos/upload_form', :locals=>{:parent=>resource}
+-#unless user_signed_in?
+  #call-to-action
+    %a.btn.btn-primary.btn-large{"data-toggle" => "modal", :href => "#request-invite"} Request invite
+  .blurb=resource.blurb ? resource.blurb.html_safe : ""
 
 =render "shared/popups_menus", :entity=>resource
 =render "shared/modals"
