@@ -1,4 +1,0 @@
-Rightby.me
-==========
-
-Rightby.me
