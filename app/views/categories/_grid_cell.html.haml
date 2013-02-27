@@ -5,7 +5,7 @@
         - entity.slider_photos[0..3].each do |pic|
           %li.thumbnail{:id => "photo_#{pic.id}"}
             =link_to entity do
-              %img{:alt => "", :src => pic.image.small.url, :width=>"90px"}       
+              %img{:alt => "", :src => pic.image.thumb.url, :width=>"90px"}       
               
     -if false && is_admin?   
       .btn-group.pull-right    
