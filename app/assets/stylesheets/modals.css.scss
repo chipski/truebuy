@@ -31,10 +31,21 @@
       width: 320px;
       height: 34px; 
       font-size: 140%;
-      }
     }
     form {
       margin-bottom: 8px;
+    }
+    .rating_box {
+      padding: 2px;
+      .rating {
+        .scope { width: 140px;} 
+        .star {
+          width: 225px !important; 
+          float: left;
+          border: 1px solid red;   
+        } 
+      }
+    }
   } 
 }
 #request-invite {

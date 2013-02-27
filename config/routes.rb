@@ -44,6 +44,11 @@ Reviews::Application.routes.draw do
       get :admin
     end
   end
+  resources :reviews do
+    collection do
+      get :new_modal
+    end
+  end
 
   #resources :topics
   resources :topics, :path => 'to' do

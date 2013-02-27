@@ -213,6 +213,30 @@ ActiveRecord::Schema.define(:version => 20130202170701800) do
 
   add_index "rating_caches", ["cacheable_id", "cacheable_type"], :name => "index_rating_caches_on_cacheable_id_and_cacheable_type"
 
+  create_table "reviews", :force => true do |t|
+    t.integer  "product_id"
+    t.integer  "user_id"
+    t.string   "uid"
+    t.string   "permalink"
+    t.string   "name"
+    t.string   "keywords"
+    t.text     "blurb"
+    t.text     "body"
+    t.string   "state",            :default => "new"
+    t.string   "type"
+    t.date     "active_date"
+    t.date     "deactivated_date"
+    t.integer  "slide_order",      :default => 0
+    t.string   "cached_tag_list"
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
+  end
+
+  add_index "reviews", ["permalink"], :name => "index_reviews_on_permalink", :unique => true
+  add_index "reviews", ["product_id"], :name => "index_reviews_on_product_id"
+  add_index "reviews", ["uid"], :name => "index_reviews_on_uid", :unique => true
+  add_index "reviews", ["user_id"], :name => "index_reviews_on_user_id"
+
   create_table "roles", :force => true do |t|
     t.string   "name"
     t.integer  "resource_id"

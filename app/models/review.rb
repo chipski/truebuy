@@ -1,40 +1,13 @@
-class Product < ActiveRecord::Base
-  belongs_to :brand
-  belongs_to :topic 
-  has_and_belongs_to_many :categories, :class_name => "Category"  
-  has_many :photos, :as => :parent, :class_name => "Photo"     
-  has_many :reviews
-  
-  attr_accessible :active_date, :brand_id, :blurb, :body, :cover, :keywords, :name, :state
-  attr_accessible :category_ids, :model_num, :sku, :sku_type, :cached_tag_list
-  
-  letsrate_rateable "quality", "value", "fits_needs"
-  # above will add 3 has_many linkes for each dimension above
-  # <dimension>_rates, <dimension>_raters, <dimension>_average,
-  def rate_dimensions
-    #[["quality","Overall Quality", 10], ["value", "Overall Value", 5], ["fits_needs", "Fits Your Needs", 5]]
-    [["quality","Overall", 10]]
-  end
-  
+class Review < ActiveRecord::Base
+  belongs_to :product
+  belongs_to :user
+  attr_accessible :active_date, :blurb, :body, :cached_tag_list, :deactivated_date, :keywords, :name, :permalink, :state, :user_id, :product_id
   before_save :update_permalink   
-  after_save :update_order
   
   #default_scope order(:slide_order) 
-  scope :active_for, lambda {|current_user| where(:state=>:active)}     
   scope :active_all, where(:state=>[:active])
   #scope :initial, where(:state=>["new","", nil])
   
-  def ave_rating(dimension="quality")
-    self.average(dimension).avg
-  end
-    
-  
-  def self.select_active
-    all.collect{ |t| [t.name, t.id]}
-  end
-  def self.select_sku_type
-    [["UPC","upc"],["EIN","ein"],["Other","other"]]
-  end
   
   # State machine, should be shared in mixin but error now
   include AASM 
@@ -93,57 +66,36 @@ class Product < ActiveRecord::Base
     #self.children.map{|c| c.mark_list_only!}
     # propogate to sf  
   end
-  def delete_children
-    #self.children.map{|c| c.delete_children}
-  end
 
-  def slider_photos
-    #self.cover ? (self.photos - [Photo.find(self.cover)]) : self.photos
-    self.photos
-  end
-  def cover_url(size="small")
-    @cover_url ||= begin
-      UtilityIds.cover_url(self, size)
-    end
-    @cover_url ? @cover_url : "NoImageAvailable.jpg"
-  end
-  
   def to_partial_path
-    "products/grid_cell2" 
+    "reviews/grid_cell" 
   end
   def to_param
     permalink
   end
-  
-  def update_order(children_names=["photos"])
-    UtilityIds.update_order(self, children_names) 
-  end
   def update_permalink
+    # ensure name has a value
+    self.name = self.name || "#{self.product} "
     UtilityIds.update_permalink(self, self.name) 
   end
-  
+
 end
 
-#create_table "products", :force => true do |t|
-#  t.integer  "brand_id"
-#  t.string   "uid"
-#  t.string   "permalink"
-#  t.string   "name"
-#  t.string   "keywords"
-#  t.text     "blurb"
-#  t.text     "body"
-#  t.string   "state",            :default => "new"
-#  t.string   "type"
-#  t.date     "active_date"
-#  t.date     "deactivated_date"
-#  t.integer  "cover"
-# t.string   "model_num"
-#  t.string   "sku"
-#  t.string   "sku_type"
-#  t.integer  "slide_order",      :default => 0
-#  t.string   "cached_tag_list"
-#  t.datetime "created_at",                          :null => false
-#  t.datetime "updated_at",                          :null => false
-#  t.float    "price",            :default => 0.0
-#end
-#
+#create_table "reviews", :force => true do |t|
+#    t.integer  "product_id"
+#    t.integer  "user_id"
+#    t.string   "uid"
+#    t.string   "permalink"
+#    t.string   "name"
+#    t.string   "keywords"
+#    t.text     "blurb"
+#    t.text     "body"
+#    t.string   "state",            :default => "new"
+#    t.string   "type"
+#    t.date     "active_date"
+#    t.date     "deactivated_date"
+#    t.integer  "slide_order",      :default => 0
+#    t.string   "cached_tag_list"
+#    t.datetime "created_at",                          :null => false
+#    t.datetime "updated_at",                          :null => false
+#  end

@@ -25,6 +25,9 @@
 
     .info
       =entity.blurb.html_safe if entity.blurb  
+    =link_to new_modal_reviews_path, :data=>{:toggle=>"modal", :target=>"#new_review", :remote=>new_modal_reviews_path(:p=>entity.id)}, :class=>" btn-mini" do
+      ="Add Review"
+      %i.icon-thumbs-up
     .card-info
       %span.visibility
       -if entity.categories

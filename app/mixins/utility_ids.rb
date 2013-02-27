@@ -1,12 +1,12 @@
 class UtilityIds
   
-  def self.update_permalink(entity, name="")
+  def self.update_permalink(entity, name=nil)
     # used in before_save filter
     name = "#{entity.name}".gsub(" ", "_")  
     #token = Digest::SHA1.hexdigest("#{entity.class}-#{entity.id}".gsub(" ", "_"))
     token = SecureRandom.hex(16)
     permalink = entity.permalink || name.downcase.gsub(/[^a-z1-9]+/, '-').chomp('-')
-    if !entity.permalink || (entity.uid != token)
+    if !entity.permalink || !entity.uid
       entity.permalink = permalink
       entity.uid = token
     end      
@@ -16,6 +16,17 @@ class UtilityIds
     # only in a after create filter
     name = "#{entity.class}-#{entity.id}-#{entity.name}".gsub(" ", "_")  
     token = Digest::SHA1.hexdigest("#{entity.class}-#{entity.id}".gsub(" ", "_"))
+    permalink = Digest::SHA1.hexdigest(name)
+    if entity.permalink != permalink
+      entity.update_attribute(:permalink, permalink)
+      entity.update_attribute(:uid, token)
+    end      
+  end
+  
+  def self.update_permalink3(entity)
+    # only in a after create filter for reviews
+    name = "#{entity.name}-#{entity.product.ave_rating}-#{entity.user}".gsub(" ", "_")  
+    token = SecureRandom.hex(16)
     permalink = Digest::SHA1.hexdigest(name)
     if entity.permalink != permalink
       entity.update_attribute(:permalink, permalink)

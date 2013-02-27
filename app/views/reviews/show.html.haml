@@ -1,0 +1,45 @@
+%p#notice= notice
+
+%p
+  %b Product:
+  = @review.product
+%p
+  %b Uid:
+  = @review.uid
+%p
+  %b Permalink:
+  = @review.permalink
+%p
+  %b Name:
+  = @review.name
+%p
+  %b Keywords:
+  = @review.keywords
+%p
+  %b Blurb:
+  = @review.blurb
+%p
+  %b Body:
+  = @review.body
+%p
+  %b State:
+  = @review.state
+%p
+  %b Type:
+  = @review.type
+%p
+  %b Active date:
+  = @review.active_date
+%p
+  %b Deactivated date:
+  = @review.deactivated_date
+%p
+  %b User:
+  = @review.user
+%p
+  %b Cached tag list:
+  = @review.cached_tag_list
+
+= link_to 'Edit', edit_review_path(@review)
+\|
+= link_to 'Back', reviews_path

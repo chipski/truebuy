@@ -1,6 +1,15 @@
 
 =render "photos/show_modal"
 
+#new_review.modal{:style => "display: none; height: 540px;"}
+  .modal-header
+    %a.close{"data-dismiss" => "modal"} ×
+  .modal-body{:style => "max-height: 480px;"}
+    
+    .spinner{:style=>"margin: 30px;"}
+      =image_tag("loading.gif")
+
+
 -unless user_signed_in?
   =render "devise/registrations/invite_modal"
   

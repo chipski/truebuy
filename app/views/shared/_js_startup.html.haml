@@ -7,7 +7,6 @@
     M.editable = #{editable? ? true : false};
     M.urls = {};
     M.urls.update_state_product = '#{products_path(:format => :js)}';
-    if (M.Views.#{page_namespace}) { M.Views.#{page_namespace}(); }
     $('#sign_out_link').click(M.sign_out);
     //$('#site_search').initialize_hints();
   });

@@ -76,7 +76,7 @@
 //  require ember/Rightby.me.js
 //  require gritter    
 
-//= require_tree .
+// require_tree .
 
 $('document').ready(function() {
   

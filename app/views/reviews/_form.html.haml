@@ -1,0 +1,42 @@
+-review = @review || Review.new
+-product = product || @product
+= simple_form_for(review, :html => { :class => 'form-horizontal' }) do |f|    
+  .form-fields
+    =f.hidden_field :user_id, :value=>current_user.id
+    -if product
+      =f.hidden_field :product_id, :value=>product.id
+      .title="Review for #{product.name}"
+      .rating_box{:style=>"height: 30px;"}
+        .rating
+          =rating_for product, "quality", :star=>10
+          This is some text
+    -else
+      = f.association :product
+    = f.input :name, :label=>"Headline", :prompt=>"Catchy Headline", :autofocus => true
+    
+    = f.text_area :body, :class => 'wysihtml5', :style=>"height:260px; width:500px;"
+  .form-bottom{:style=>"padding: 10px;"}
+    -if review.id
+      = f.button :submit, :label=>"Edit Review", :class => 'btn btn-primary'
+    -else
+      = f.submit :label=>"Create Review", :class => 'btn btn-primary'
+    %a.btn{"data-dismiss"=> "modal", :href => "#"} Close 
+
+  -if false && params[:detailed]
+    .form-inputs
+      = f.text_area :blurb, :class => 'wysihtml5', :style=>"height:100px;" 
+      = f.input :keywords
+      = f.input :permalink  
+      = f.date_select :active_date
+      = f.date_select :deactivated_date
+      = f.text_field :cached_tag_list
+    - if @review.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(review.errors.count, "error")} prohibited this review from being saved:"
+        %ul
+          - @review.errors.full_messages.each do |msg|
+            %li= msg
+  =content_for :page_js do
+    :javascript
+      
+ 
