@@ -15,7 +15,7 @@ $(function(){
         var raton = $(this).attr('data-classname')
         var raton_id = $(this).attr('data-id')
         var raton_by = $(this).attr('data-dimension')
-        $.post('<%= Rails.application.class.routes.url_helpers.rate_path %>', 
+        $.post('/rate', 
             { score: score, dimension: raton_by, id: raton_id, klass: raton}, 
             function(data) {
                   if(data) {
