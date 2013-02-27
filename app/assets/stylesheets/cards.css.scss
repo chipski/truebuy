@@ -276,14 +276,16 @@ $color: #8c7e7e;
 .full { 
    .card { 
       width: 96%;
-      min-height: 190px;
+      min-height: 200px;
+      height: 200px;
       .left {
           float: left;
-          width: 200px;
+          width: 208px;
           min-height: 190px;
       }
       .right {
           float: left;
+          max-width: 50%;
           padding-left: 14px;
       }
       ul.thumbnails {
