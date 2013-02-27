@@ -83,7 +83,7 @@ Reviews::Application.routes.draw do
       end
     end
     
-    match '/rate' => 'rater#create', :as => 'rate'
+    #match '/rate' => 'rater#create', :as => 'rate'
     root :to => 'categories#index'
   end
   
@@ -98,7 +98,9 @@ Reviews::Application.routes.draw do
     match '/users/auth/facebook/callback', to: 'users/omniauth_callbacks#facebook'
     get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
     match '/users/auth/:provider/callback', to: 'sessions#create_omni'
-
+    
+    match '/rate' => 'rater#create', :as => 'rate'
+    
     root :to => "devise/registrations#new"
   end
   devise_for :users, :controllers => { :registrations => "registrations", :confirmations => "confirmations", :omniauth_callbacks => "users/omniauth_callbacks" }
