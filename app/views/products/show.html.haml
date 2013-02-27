@@ -1,33 +1,46 @@
-.tab-content{:style=>"min-height: 480px;"} 
-  .tab-pane.active#overview
-    .page-header
-      %h1=resource.name
-    .row
-      .span5
-        .img_box
-          Images
-        .info
-          %b=link_to resource.brand.name, resource.brand
-          %b Model num:
-          = resource.model_num
-          %b Sku:
-          = resource.sku       
-        .description
-          =resource.body ? resource.body.html_safe : ""
-      .span6
-        %h3 Ratings & Reviews
-        .rating_box
-          -resource.rate_dimensions.each do |rate_dimension_id, rate_dimension_name, rate_dimension_stars|
-            .rating
-              .scope=rate_dimension_name
-              =rating_for resource, rate_dimension_id, :star=>rate_dimension_stars
-              .totals
-                -ratings = resource.rates(rate_dimension_id)
-                .metric=resource.average(rate_dimension_id).avg if resource.average(rate_dimension_id)
-                =" over #{ratings.count} ratings" 
-            .raters  
-              -ratings.each do |rate|
-                =rater_avatar(resource, rate, rate_dimension_id)
+-resource = @product if @product
+.row
+  .span4
+    %h3= resource.model_num
+    %b=link_to resource.brand.name, resource.brand
+    .img_box
+      -url=resource.cover_url("large")
+      %a{:href=>url, :title => resource.blurb, :data=>{:toggle=>"modal", :target=>"#show_photo",:remote=>url}}      
+      %ul.thumbnails.files
+        - unless resource.photos.empty?
+          - resource.photos.each do |pic|
+            %li.thumbnail{:id => "photo_#{pic.id}"}
+              -url=pic.image.large.url
+              %a{:href=>url, :title => pic.blurb, :data=>{:toggle=>"modal", :target=>"#show_photo",:remote=>url}}
+                %img{:alt => "", :src => pic.image.small.url, :width=>"120px"}
+    .info
+      =resource.blurb ? resource.blurb.html_safe : ""
+    .info  
+      %b Sku:
+      =resource.sku       
+    
+  .span7
+    %h1=resource.name
+    .description
+      =resource.body ? resource.body.html_safe : ""
+    -rate_dimension_id = resource.rate_dimensions[0][0]
+    -ratings = resource.rates(rate_dimension_id)
+    %h3 
+      Ratings & Reviews
+      %span.small-gray
+        %b=resource.average(rate_dimension_id).avg if resource.average(rate_dimension_id)
+        =" over #{ratings.count} ratings" 
+    .rating_box
+      .rating
+        =rating_for resource, rate_dimension_id, :star=>10
+        .totals
+          -url=new_modal_reviews_path(:p=>resource.id)
+          =link_to url, :data=>{:toggle=>"modal", :target=>"#new_review", :remote=>url}, :class=>" btn-mini" do
+            ="Add Review"
+            %i.icon-thumbs-up
+      .raters  
+        -ratings.each do |rate|
+          =rater_avatar(resource, rate, rate_dimension_id)
 
             
 -#unless user_signed_in?

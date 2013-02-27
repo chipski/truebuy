@@ -1,36 +1,29 @@
-.card
-  .left
-    %ul.thumbnails.files
-      - unless entity.photos.empty?
-        - entity.photos[0..3].each do |pic|
-          %li.thumbnail{:id => "photo_#{pic.id}"}
-            %a{:href => pic.image.large.url, :title => pic.blurb, :data=>{:toggle=>"modal", :target=>"#show_photo"}}
-              %img{:alt => "", :src => pic.image.small.url, :width=>"100px"}              
-  .right
-    .title{:style=>"clear: both;"}
-      = link_to entity.name, entity
-    .rating_box
-      -entity.rate_dimensions.each do |rate_dimension_id, rate_dimension_name, rate_dimension_stars|
-        .rating
-          .scope=rate_dimension_name
-          =rating_for entity, rate_dimension_id, :star=>rate_dimension_stars
-          .totals
-            -ratings = entity.rates(rate_dimension_id)
-            .metric=entity.average(rate_dimension_id).avg if entity.average(rate_dimension_id)
-            =" over #{ratings.count} ratings" 
-        -#/
-          .raters  
-            -ratings.each do |rate|
-              =rater_avatar(entity, rate, rate_dimension_id)
+.card{:style=>"min-height: 100px;"}
+  .title{:style=>"float:left;"}
+    = link_to entity.name, entity
+  .card-info{:style=>"float:right;"}
+    %span.visibility
+    -if entity.categories
+      - entity.categories.each do |category|  
+        =link_to category.name, category    
+  .rating_box
+    -rate_dimension_id = entity.rate_dimensions[0][0]
+    -ratings = entity.rates(rate_dimension_id)
+    .rating
+      =rating_for entity, rate_dimension_id, :star=>10
+      .totals
+        %b=entity.average(rate_dimension_id).avg if entity.average(rate_dimension_id)
+        =" over #{ratings.count} ratings" 
+      .add_link
+        -url=new_modal_reviews_path(:p=>entity.id)
+        =link_to url, :data=>{:toggle=>"modal", :target=>"#new_review", :remote=>url}, :class=>" btn-mini" do
+          ="Add Review"
+          %i.icon-thumbs-up
+      -#/
+        .raters  
+          -ratings.each do |rate|
+            =rater_avatar(entity, rate, rate_dimension_id)
 
-    .info
-      =entity.blurb.html_safe if entity.blurb  
-    =link_to new_modal_reviews_path, :data=>{:toggle=>"modal", :target=>"#new_review", :remote=>new_modal_reviews_path(:p=>entity.id)}, :class=>" btn-mini" do
-      ="Add Review"
-      %i.icon-thumbs-up
-    .card-info
-      %span.visibility
-      -if entity.categories
-        - entity.categories.each do |category|  
-          =link_to category.name, category
+    
+    
   

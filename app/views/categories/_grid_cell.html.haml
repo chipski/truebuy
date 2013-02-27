@@ -1,43 +1,51 @@
 .card
-  .img-box=image_tag(entity.cover_url, :alt=>entity.name, :height=>"80px")
-  -if is_admin?   
-    .btn-group.pull-right    
-      %a.btn.btn-mini.dropdown-toggle(data-toggle="dropdown" href="#")
-        %i.icon-cog
-        = "Edit" 
-        %span.caret
-      %ul.dropdown-menu
-        %li
-          = link_to edit_category_path(entity) do
-            %i.icon-edit
-            Edit Category
-        -if (entity.active? && is_admin?)
-          -url = update_state_category_path(entity, :state=>:inactive) 
-          %li           
-            =link_to url, :data=>{:target=>".card", :act=>"content", :method=>:put} do
-              %i.icon-ban-circle  
-              ="Deactivate"
-        -else
-          -url = update_state_category_path(entity, :state=>:active) 
-          %li           
-            =link_to url, :data=>{:target=>".card", :act=>"content", :method=>:put} do
-              %i.icon-ok-circle                                  
-              ="Activate"    
-        %li.divider  
-        %li= link_to "Delete", category_path(entity), :method => :delete, :confirm => "Are you Sure?"
-
-  .card-info
-    %span.visibility
-  .title{:style=>"clear: both;"}
-    = link_to entity.name, entity
+  .left
+    %ul.thumbnails.files
+      - unless entity.slider_photos.empty?
+        - entity.slider_photos[0..3].each do |pic|
+          %li.thumbnail{:id => "photo_#{pic.id}"}
+            =link_to entity do
+              %img{:alt => "", :src => pic.image.small.url, :width=>"90px"}       
+              
+    -if false && is_admin?   
+      .btn-group.pull-right    
+        %a.btn.btn-mini.dropdown-toggle(data-toggle="dropdown" href="#")
+          %i.icon-cog
+          = "Edit" 
+          %span.caret
+        %ul.dropdown-menu
+          %li
+            = link_to edit_category_path(entity) do
+              %i.icon-edit
+              Edit Category
+          -if (entity.active? && is_admin?)
+            -url = update_state_category_path(entity, :state=>:inactive) 
+            %li           
+              =link_to url, :data=>{:target=>".card", :act=>"content", :method=>:put} do
+                %i.icon-ban-circle  
+                ="Deactivate"
+          -else
+            -url = update_state_category_path(entity, :state=>:active) 
+            %li           
+              =link_to url, :data=>{:target=>".card", :act=>"content", :method=>:put} do
+                %i.icon-ok-circle                                  
+                ="Activate"    
+          %li.divider  
+          %li= link_to "Delete", category_path(entity), :method => :delete, :confirm => "Are you Sure?"
+      %h4 
+        Products
+        = link_to "add", new_product_path(:category_id=>entity.id)  
+  .right
+    .card-info
+      %span.visibility
+    .title{:style=>"clear: both;"}
+      = link_to entity.name, entity
  
-  .info
-    -@products = entity.products ? entity.products : []
-    -if @products.count > 0      
-      .infobox
-        %h4 
-          Products
-          = link_to "add", new_product_path(:category_id=>entity.id)    
-        -@products.each do |product|
-          =link_to product.name , product                        
+    .info
+      -@products = entity.products ? entity.products : []
+      -if @products.count > 0      
+        .infobox
+            
+          -@products.each do |product|
+            =link_to product.name , product                        
   

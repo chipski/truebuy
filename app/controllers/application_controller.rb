@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   
   #before_filter :authenticate_user!, :except => [:error, :public, :thankyou]   
   after_filter :sniff_browser
+  after_filter :set_access_control_headers
   
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_path, :alert => exception.message
@@ -41,6 +42,10 @@ class ApplicationController < ActionController::Base
     entity
   end
   
+  def set_access_control_headers
+    headers['Access-Control-Allow-Origin'] = '*'
+    headers['Access-Control-Request-Method'] = '*'
+  end
   
   def content
     resource

@@ -2,9 +2,10 @@ class UtilityIds
   
   def self.update_permalink(entity, name=nil)
     # used in before_save filter
-    name = "#{entity.name}".gsub(" ", "_")  
+    name = "#{entity.name} #{SecureRandom.hex(6)}".gsub(" ", "_")  
     #token = Digest::SHA1.hexdigest("#{entity.class}-#{entity.id}".gsub(" ", "_"))
     token = SecureRandom.hex(16)
+    #permalink = SecureRandom.hex(6)
     permalink = entity.permalink || name.downcase.gsub(/[^a-z1-9]+/, '-').chomp('-')
     if !entity.permalink || !entity.uid
       entity.permalink = permalink
@@ -50,7 +51,7 @@ class UtilityIds
         end 
       end
     elsif entity.photos
-      #entity.photos.where(:state=>:active).last
+      entity.photos.where(:state=>"active").last
     end
   end
   

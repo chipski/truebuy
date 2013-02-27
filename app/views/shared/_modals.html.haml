@@ -1,10 +1,19 @@
 
-=render "photos/show_modal"
-
-#new_review.modal{:style => "display: none; height: 540px;"}
+#show_photo.modal{:style => "display: none;"}
   .modal-header
     %a.close{"data-dismiss" => "modal"} ×
-  .modal-body{:style => "max-height: 480px;"}
+    %h3 Photo
+  .modal-body
+    =image_tag("NoImageAvailable.jpg")
+    
+  .modal-footer
+    .btn-group.pull-right
+      %a.btn{"data-dismiss" => "modal", :href => "#"} Close
+
+#new_review.modal{:style => "display: none; height: 560px; width: 568px;"}
+  .modal-header
+    %a.close{"data-dismiss" => "modal"} ×
+  .modal-body{:style => "max-height: 520px;"}
     
     .spinner{:style=>"margin: 30px;"}
       =image_tag("loading.gif")

@@ -5,7 +5,8 @@ class Review < ActiveRecord::Base
   before_save :update_permalink   
   
   #default_scope order(:slide_order) 
-  scope :active_all, where(:state=>[:active])
+  scope :active_all, where(:state=>["active"])
+  scope :not_active, where(:state=>["new","review", "inactive","error", nil]).group(:product_id)
   #scope :initial, where(:state=>["new","", nil])
   
   

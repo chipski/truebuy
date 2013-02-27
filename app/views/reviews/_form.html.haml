@@ -5,14 +5,19 @@
     =f.hidden_field :user_id, :value=>current_user.id
     -if product
       =f.hidden_field :product_id, :value=>product.id
-      .title="Review for #{product.name}"
-      .rating_box{:style=>"height: 30px;"}
+      .rating_box{:style=>"height: 60px;"}
+        .title="Review for #{product.name}"
+        -rate_dimension_id = product.rate_dimensions[0][0]
+        -ratings = product.rates(rate_dimension_id)
         .rating
-          =rating_for product, "quality", :star=>10
-          This is some text
+          =rating_for product, rate_dimension_id, :star=>10
+          .totals
+            %b=product.average(rate_dimension_id).avg if product.average(rate_dimension_id)
+            =" over #{ratings.count} ratings" 
     -else
       = f.association :product
-    = f.input :name, :label=>"Headline", :prompt=>"Catchy Headline", :autofocus => true
+    =# f.input :name, :label=>" ", :prompt=>"Catchy Headline", :autofocus => true
+    = f.text_field :name, :class => 'text_field2', :prompt=>"Catchy Headline", :autofocus => true 
     
     = f.text_area :body, :class => 'wysihtml5', :style=>"height:260px; width:500px;"
   .form-bottom{:style=>"padding: 10px;"}

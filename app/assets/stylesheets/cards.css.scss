@@ -34,6 +34,13 @@ $color: #8c7e7e;
 
 .rating_box {
   padding: 2px;
+  clear: both;
+  text-align: left;
+  .title {
+     font-size: 160%;
+     font-weight: bolder;
+     margin: 2px 8px 8px; 
+  }
   .metric {
      font-size: 120%;
      text-align: center;
@@ -48,7 +55,7 @@ $color: #8c7e7e;
        float: left; 
     } 
     .star {
-       width: 202px !important; 
+       width: 170px !important; 
        float: left;
        padding: 0;
        margin: 0;
@@ -59,10 +66,14 @@ $color: #8c7e7e;
        }    
     } 
     .totals {
-       width: 132px !important; 
-       font-size: 80%;
-       float: right;
-       clear: right;
+       width: 110px !important; 
+       font-size: 90%;
+       padding: 0px;
+       float: left;
+    }
+    .add_link {
+       float: left;
+       clear: right;    
     }
   }
   .raters {
@@ -159,7 +170,8 @@ $color: #8c7e7e;
   }
   .card-info {     
       float: right;
-      margin: 0px 2px 6px;
+      margin: 0px;
+      padding: 8px;
   }
   .title { 
     font-size: 140%;   
@@ -229,11 +241,7 @@ $color: #8c7e7e;
     padding: 2px;
     .rating {
       .scope { width: 140px;} 
-      .starOFF {
-        width: 225px; 
-        float: right;  
-        
-      } 
+      
     }
     .left { 
       .scope {float: left;}
@@ -268,15 +276,14 @@ $color: #8c7e7e;
 .full { 
    .card { 
       width: 96%;
-      min-height: 180px;
+      min-height: 190px;
       .left {
           float: left;
-          width: 224px;
-          
+          width: 200px;
+          min-height: 190px;
       }
       .right {
           float: left;
-          width: 394px;
           padding-left: 14px;
       }
       ul.thumbnails {

@@ -26,6 +26,7 @@
         margin-right: 6px;
         font-size: 150%;
         line-height: 32px;
+        float: left;
     }
     input {
       width: 320px;
@@ -35,16 +36,15 @@
     form {
       margin-bottom: 8px;
     }
-    .rating_box {
-      padding: 2px;
-      .rating {
-        .scope { width: 140px;} 
-        .star {
-          width: 225px !important; 
-          float: left;
-          border: 1px solid red;   
-        } 
-      }
+    .text_field2 {
+       width: 500px;
+       margin-bottom: 8px; 
+    }
+    .wysihtml5-toolbar {
+        font-size: 80%;
+        .btn {
+            padding: 4px 7px;
+        }
     }
   } 
 }
