@@ -2,7 +2,9 @@
 .row
   .span4
     %h3= resource.model_num
-    %b=link_to resource.brand.name, resource.brand
+    -if resource.categories
+      - resource.categories.each do |category|  
+        =link_to category.name, category 
     .img_box
       -url=resource.cover_url("large")
       %a{:href=>url, :title => resource.blurb, :data=>{:toggle=>"modal", :target=>"#show_photo",:remote=>url}}      
@@ -19,7 +21,7 @@
       %b Sku:
       =resource.sku       
     
-  .span7
+  .span8
     %h1=resource.name
     .description
       =resource.body ? resource.body.html_safe : ""
@@ -38,10 +40,12 @@
           =link_to url, :data=>{:toggle=>"modal", :target=>"#new_review", :remote=>url}, :class=>" btn-mini" do
             ="Add Review"
             %i.icon-thumbs-up
-      .raters  
-        -ratings.each do |rate|
-          =rater_avatar(resource, rate, rate_dimension_id)
-
+      -#/
+        .raters  
+          -ratings.each do |rate|
+            =rater_avatar(resource, rate, rate_dimension_id)
+    .row.full
+      =render :partial => resource.reviews, :as => :review
             
 -#unless user_signed_in?
   #call-to-action

@@ -1,0 +1,40 @@
+-entity=review.product
+
+.card
+  .title{:style=>"float: left;"}
+    = review.name
+  .rating_box{:style=>"float:right; clear: right; margin-top: 4px;"}
+    -rate_dimension_id = entity.rate_dimensions[0][0]
+    -ratings = entity.rates(rate_dimension_id)
+    .rating
+      =rating_for entity, rate_dimension_id, :star=>10
+    =#rater_avatar(entity, rate, rate_dimension_id)
+    
+  .info
+    .infobox
+      =review.body.html_safe  
+              
+    -if is_admin? && false 
+      .btn-group.pull-right    
+        %a.btn.btn-mini.dropdown-toggle(data-toggle="dropdown" href="#")
+          %i.icon-cog
+          = "Edit" 
+          %span.caret
+        %ul.dropdown-menu
+          %li= link_to "Edit product", edit_product_path(entity)
+          %li.divider  
+          %li= link_to "Delete", product_path(entity), :method => :delete, :confirm => "Are you Sure?"
+      .btn-group.pull-right
+        -if (entity.active? && is_admin?)
+          -url = update_state_product_path(entity, :state=>:inactive)            
+          =link_to url, :class=>"btn btn-mini", :data=>{:target=>".card", :act=>"content", :method=>:put} do
+            ="Deactivate"
+            %i.icon-ban-circle  
+        -else
+          -url = update_state_product_path(entity, :state=>:active)            
+          =link_to url, :class=>"btn btn-mini", :data=>{:target=>".card", :act=>"content", :method=>:put} do
+            ="Activate"    
+            %i.icon-ok-circle                                  
+
+  
+ 

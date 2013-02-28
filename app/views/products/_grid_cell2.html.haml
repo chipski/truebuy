@@ -1,12 +1,7 @@
-.card{:style=>"min-height: 100px; height: 100px;"}
-  .title{:style=>"float:left;"}
+.card{:style=>"min-height: 51px; height: 51px;"}
+  .title{:style=>"float:left; "}
     = link_to entity.name, entity
-  .card-info{:style=>"float:right;"}
-    %span.visibility
-    -if entity.categories
-      - entity.categories.each do |category|  
-        =link_to category.name, category    
-  .rating_box
+  .rating_box{:style=>"float:right; clear: right;"}
     -rate_dimension_id = entity.rate_dimensions[0][0]
     -ratings = entity.rates(rate_dimension_id)
     .rating
