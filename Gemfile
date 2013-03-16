@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby "1.9.3"
+#ruby "1.9.3"
 
 gem "i18n"
 gem "psych", ">=1.3"     
@@ -10,10 +10,10 @@ gem "rake", "10.0.3"
 gem "thor", "~> 0.16.0"
 gem 'rails', '3.2.12'
  
-gem 'mysql', '2.8.1' 
+#gem 'mysql', '2.8.1' 
 gem 'pg', :group => :production  
 #gem 'mysql2'
-#gem 'sqlite3'
+gem 'sqlite3'
 gem 'squeel'  #http://railscasts.com/episodes/354-squeel?view=asciicast
 gem "ransack"  #:git => "git://github.com/ernie/ransack.git" # better search gem
 
