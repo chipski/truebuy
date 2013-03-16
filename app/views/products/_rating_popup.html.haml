@@ -1,0 +1,34 @@
+-entity=resource
+.rating_box
+  .callout{:style=>"float: left; margin-right: 8px;"}
+    Not at all Likely
+  .btn-group.rate_buttons{:data=>{:toggle=>"buttons-radio"}}
+    %button.btn{"data-type"=>"button"} 0
+    %button.btn{"data-type"=>"button"} 1
+    %button.btn{"data-type"=>"button"} 2
+    %button.btn{"data-type"=>"button"} 3
+    %button.btn{"data-type"=>"button"} 4
+    %button.btn{"data-type"=>"button"} 5
+    %button.btn{"data-type"=>"button"} 6
+    %button.btn{"data-type"=>"button"} 7
+    %button.btn{"data-type"=>"button"} 8
+    %button.btn{"data-type"=>"button"} 9
+    %button.btn{"data-type"=>"button"} 10
+    
+  .callout{:style=>"float: right;"}
+    Extremely Likely
+  
+  -#/ 
+    -rate_dimension_id = entity.rate_dimension   
+    -ratings = entity.rates(rate_dimension_id)
+    .rating
+      =rating_for entity, rate_dimension_id, :star=>10
+      =rating_for entity, rate_dimension_id, :star=>10
+      .totals
+        %b=entity.average(rate_dimension_id).avg if entity.average(rate_dimension_id)
+        ="#{ratings.count} ratings" 
+        -if entity.can_rate?(current_user.id, rate_dimension_id)
+          -url=rate_pop_product_path(entity)
+          #rating_popover
+        -else
+          #rating_popover

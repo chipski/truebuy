@@ -42,6 +42,7 @@ Reviews::Application.routes.draw do
       put :update_state
       get :content
       get :admin
+      get :rate_pop
     end
   end
   resources :reviews do

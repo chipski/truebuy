@@ -275,18 +275,23 @@ $color: #8c7e7e;
 
 .full { 
    .card { 
-      width: 96%;
+      width: 100%;
       min-height: 200px;
       height: 200px;
+      margin: 2px 0;
+      padding: 0;
       .left {
           float: left;
-          width: 208px;
-          min-height: 190px;
+          width: 36%;
+          margin: 0px;
+          padding: 8px;
+          
       }
       .right {
           float: left;
-          max-width: 47%;
-          padding-left: 14px;
+          width: 58%;
+          margin: 0px;
+          padding: 8px;
       }
       ul.thumbnails {
          margin: 0;
@@ -301,13 +306,24 @@ $color: #8c7e7e;
         font-size: 140%;   
         font-weight: bold;
         line-height: 20px;
-        height: 32px;
-        margin: 0px;
-        padding: 10px 0 0 8px;
+        vertical-align: center;
+        
       }
       .info {
           padding: 12px 6px 0;
       }
+      .popover {
+          width: 420px;
+          .popover-inner {
+             width: 420px;
+             .popover-title { text-align: center; }
+             .callout { 
+                 width: 70px;
+                 text-align: center;
+             }
+          }
+      }
+      
    } 
 }
 .wide { 

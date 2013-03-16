@@ -15,6 +15,9 @@ class Product < ActiveRecord::Base
     #[["quality","Overall Quality", 10], ["value", "Overall Value", 5], ["fits_needs", "Fits Your Needs", 5]]
     [["quality","Overall", 10]]
   end
+  def rate_dimension
+    "quality"
+  end
   
   before_save :update_permalink   
   after_save :update_order
@@ -27,7 +30,14 @@ class Product < ActiveRecord::Base
   def ave_rating(dimension="quality")
     self.average(dimension).avg
   end
-    
+  def my_ratings(user_id, dimension="quality")  
+    rates.where(:rater_id=>user_id, :dimension=>dimension)
+  end
+  def update_rating(stars, user_id, dimension="quality")
+    @rating = self.my_ratings(user_id, dimension).last
+    @rating.update_attribute(:stars=>stars)
+    self.update_rate_average(stars, dimension)
+  end
   
   def self.select_active
     all.collect{ |t| [t.name, t.id]}
