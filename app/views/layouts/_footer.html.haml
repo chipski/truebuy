@@ -1,22 +1,30 @@
-%ul.nav
-  %li=link_to "About", about_path
-  %li=link_to "Terms of Service", tos_path
-  %li=link_to "Privacy Policy", privacy_path
 
-- if false && user_signed_in?
-  %ul.nav.pull-right 
-    %li=link_to "Topics", topics_path
-    %li= link_to 'Edit account', edit_user_registration_path
-    - if is_admin?
-      %li= link_to 'Admin', users_path
-
-.navbar
-  
-  
-%ul.nav.pull-right
-  %li
-    %a(href="/") &copy; TrueBuy 2013
-  
+%footer#footer
+  .container
+    %h1
+      %a{:href => "/"} &copy; TrueBuy 2013
+    %nav.footer
+      %ul
+        %li=link_to "About", about_path
+        %li=link_to "Terms of Service", tos_path
+        %li=link_to "Privacy Policy", privacy_path
+        - if user_signed_in? && is_admin?
+          %li= link_to 'Admin', users_path
+      .clear
+    %nav.social_media
+      %ul
+        %li.facebook
+          %a{:href => "http://www.facebook.com/", :target => "_blank", :title => "Facebook"} Facebook
+        %li.twitter
+          %a{:href => "http://www.twitter.com/", :target => "_blank", :title => "Twitter"} Twitter
+        %li.instagram
+          %a{:href => "http://www.instagram.com/", :target => "_blank", :title => "Instagram"} Instagram
+        %li.pinterest
+          %a{:href => "http://www.pinterest.com/", :target => "_blank", :title => "Pinterest"} Pinterest
+        %li.tumblr
+          %a{:href => "http://truebuy.tumblr.com", :target => "_blank", :title => "Tumblr"} Tumblr
+      .clear
+    .clear  
 
  
  

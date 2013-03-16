@@ -1,2 +1,74 @@
-.row
-  %h1 Home
+
+#home.content
+  %section.intro
+    .container
+      .clear
+      .seven.last.caption
+        %p
+          Betty Rodgers, Los Angeles.
+          %br>/
+          At her best making sunny side up.
+  %section#how-it-works.basic
+    .container
+      %h2
+        %span How it works
+      .steps
+        .six.step
+          %p
+            %img{:src => "/assets/public/how_it_works_fitting.png"}/
+          %h3 Get a personal fitting
+          %p An expert Outfitter comes to you to get your measurements and show you our products. It's easy, fun, and should only take about 15 minutes.
+        .six.step
+          %p
+            %img{:src => "/assets/public/how_it_works_confirm.png"}/
+          %h3 Confirm your fit
+          %p We build and deliver your first shirt to make sure you are completely satisfied with the fit and quality. Then we lock in your unique size profile.
+        .six.last.step
+          %p
+            %img{:src => "/assets/public/how_it_works_order.png"}/
+          %h3 Order online, anytime
+          %p Now you can be certain ordering any of our shirts because each one is made especially to fit you. It's like having your own personal online store.
+        .clear
+      %h3
+        Because men are at their best when creating things
+        %br/
+        they care about, not shopping.
+  %section#the-fit.basic.green
+    .container
+      %h2
+        %span The fit
+      
+      
+      %h3 Built for you. Not the masses.
+  %section#the-product.basic
+    .container
+      %h2
+        %span The Product
+      %h3
+        
+        
+  %section#thanks-for-asking.basic.black
+    .container
+      %h2
+        %span Thanks for asking
+      .columns
+        .four
+          %h3 How do I make a purchase?
+          %p
+            
+        .four
+          %h3 What if you're not in my area?
+          %p
+            
+        .four
+          %h3 What's an appointment like?
+          %p 
+          
+        .four.last
+          %h3 How much does it cost?
+          %p 
+          
+        .clear
+        
+= content_for (:analytics_tag) do
+  analytics.track('Home', { test_prop : 'coming soon' });

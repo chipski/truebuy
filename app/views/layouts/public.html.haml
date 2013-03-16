@@ -1,0 +1,31 @@
+!!!
+%html
+  %head
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
+    %link{ :rel => "shortcut icon" , :href => "/assets/favicon.ico"}/
+    %link{ :rel => "apple-touch-icon", :href => "/assets/apple-touch-icon-precomposed.png"}/
+    %title= content_for?(:title) ? yield(:title) : "Truebuy - Reviews by Real Parents"
+    %meta{:content => content_for?(:description) ? yield(:description) : "Truebuy", :name => "description"}
+    = stylesheet_link_tag "public", :media => "all"
+    %link{ :rel => "stylesheet", :type => 'text/css', :href => "http://fonts.googleapis.com/css?family=Istok+Web:400,700|Oswald:300,400,700"}
+      
+    = csrf_meta_tags
+    = yield(:head)
+  
+  %body{:class => "#{controller_name} #{action_name}"}
+    %header.navbar.navbar-fixed-top
+      = render 'layouts/navigation'
+    =yield
+            
+    .footer
+      .navbar.navbar-static-bottom
+        %nav= render 'layouts/footer'  
+    .javascript
+      .libs
+        = javascript_include_tag "application"
+      .page
+        = render :partial=> "shared/alerts"  
+        = render :partial => "shared/mixpanel_all"
+      :javascript
+        #{yield :mixpanel_tag}
+      = render :partial => 'shared/js_startup'

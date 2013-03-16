@@ -101,7 +101,8 @@ Reviews::Application.routes.draw do
     
     match '/rate' => 'rater#create', :as => 'rate'
     
-    root :to => "devise/registrations#new"
+    #root :to => "devise/registrations#new"
+    root :to => 'home#index'
   end
   devise_for :users, :controllers => { :registrations => "registrations", :confirmations => "confirmations", :omniauth_callbacks => "users/omniauth_callbacks" }
   match 'users/bulk_invite/:quantity' => 'users#bulk_invite', :via => :get, :as => :bulk_invite
