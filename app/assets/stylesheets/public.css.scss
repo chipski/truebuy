@@ -131,20 +131,17 @@ header {
       }
     }
     &.primary {
-      /* 	float: left; */
       float: right;
       height: 51px;
       padding-left: 56px;
-      background: url(/assets/public/nelson/logo-crest_header@2x.png) top left no-repeat;
       background-size: 41px 51px;
       text-align: left;
     }
     &.account {
-      display: none;
+      //display: none;
       float: right;
       height: 51px;
       padding-left: 56px;
-      background: url(/assets/public/nelson/logo-crest_header@2x.png) top left no-repeat;
       background-size: 41px 51px;
       text-align: left;
     }
@@ -154,46 +151,17 @@ header {
     z-index: 999;
     width: 100%;
     height: 102px;
-    padding: 25px 0px;
+    padding: 8px 0px;
     background: #000;
     h1 a {
       width: 219px;
       height: 28px;
       margin: 11px 50px 0px 0px;
-      background: url(/assets/public/nelson/logo-outline_header@2x.png) top left no-repeat;
+      background: url(/assets/logo.png) top left no-repeat;
       background-size: 219px 28px;
     }
   }
-  .small {
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    z-index: 998;
-    width: 100%;
-    height: auto;
-    padding-top: 14px;
-    padding-bottom: 15px;
-    background: #000;
-    nav {
-      ul {
-        margin-top: 2px;
-      }
-      &.primary {
-        height: 20px;
-        padding-left: 36px;
-        background: url(/assets/public/nelson/logo-crest_small-header@2x.png) top left no-repeat;
-        background-size: 18px 20px;
-      }
-    }
-    h1 a {
-      width: 159px;
-      height: 22px;
-      margin-top: 0px;
-      margin-right: 50px;
-      background: url(/assets/public/nelson/logo-solid_small-header@2x.png) top left no-repeat;
-      background-size: 159px 22px;
-    }
-  }
+  
 }
 
 /* footer */
@@ -268,7 +236,6 @@ header {
   background: #FFF;
   h2 {
     width: 71.278825995807%;
-    /* 680 ÖÊ954 = 0.71278825995807 */
     margin: 0px auto 30px auto;
     background-image: url('/assets/public/basic_section_white_h2.png');
     background-position: left center;

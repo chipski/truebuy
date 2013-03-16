@@ -1,15 +1,9 @@
 %header
   .large
     .container
-      =link_to root_path, :class => 'brand', :id=>"truebuy" do
-        =image_tag("logo_only.png", :alt=>"Truebuy Logo")
-        %h1 Truebuy
-      %nav.primary
-        %ul
-          %li=link_to "About", "/about"
-          %li=link_to "Journal", "http://trumaker.tumblr.com", :target => "_blank"
-        .clear
-      %nav.account.pull-right
+      %h1=link_to "Truebuy", root_path, :class => 'brand', :id=>"truebuy" 
+
+      %nav.account
         - if user_signed_in?
           %ul
             %li= link_to "Logout", logout_path
@@ -34,6 +28,12 @@
         -else
           %ul
             %li= link_to 'Login', new_user_session_path
-            %li= link_to 'Facebook', user_omniauth_authorize_path(:facebook)
+            %li=# link_to 'Facebook', user_omniauth_authorize_path(:facebook)
+        .clear
+         
+      %nav.primary
+        %ul
+          %li=link_to "About", "/about"
+          %li=link_to "Journal", "http://trumaker.tumblr.com", :target => "_blank"
         .clear
       .clear
