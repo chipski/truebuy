@@ -1,2 +1,38 @@
-.row
-  %h1 Home
+
+#home.content
+  %section.intro
+    .container
+      .clear
+      -#/ no caption for now
+        .seven.last.caption
+          %p
+            Betty Rodgers, Los Angeles.
+            %br>/
+            At her best making sunny side up.
+  %section#how-it-works.basic
+    .container
+      %h2
+        %span Welcome to Truebuy
+      %h3
+        Choosing products can be difficult.  Let's make it simpler.
+      .steps
+        .six.step
+          %p
+            %img{:src => "/assets/public/parents.png"}/
+          %h3 By Parents, For Parents
+          %p The Truebuy community is for parents - not manufacturers or paid reviewers.   Learn from the people who know which products really work and which don't - parents like you.
+        .six.step
+          %p
+            %img{:src => "/assets/public/clock.jpg"}/
+          %h3 Save Time & Aggravation
+          %p With an unbelievable array of strollers, car seats, and cribs choosing the right one can be daunting.  Zero in on the best for you're child with reviews from the Truebuy community. 
+        .six.last.step
+          %p
+            %img{:src => "/assets/public/quality.png"}/
+          %h3 Quality, Not Quantity
+          %p Truebuy.com sorts and selects the very best reviews so you can get the best insight and make informed choices quickly.
+        .clear
+
+        
+= content_for (:analytics_tag) do
+  analytics.track('Home', { test_prop : 'coming soon' });

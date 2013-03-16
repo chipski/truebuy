@@ -1,0 +1,40 @@
+%header
+  .large
+    .container
+      %h1=link_to "Truebuy", root_path, :class => 'brand', :id=>"truebuy" 
+      -#/ .logo
+        %img{:src => "/assets/logo.png"}
+      %nav.account
+        - if user_signed_in?
+          %ul
+            %li= link_to "Logout", logout_path
+          .btn-group.pull-right    
+            %a.btn.btn-mini.dropdown-toggle(data-toggle="dropdown" href="#")
+              %i.icon-cog
+              = "Account" 
+              %span.caret
+            %ul.dropdown-menu
+              %li=link_to "Categories", categories_path
+              %li=link_to "Brands", brands_path
+              %li=link_to "Products", products_path
+              %li.divider
+              %li= link_to 'Edit account', edit_user_registration_path
+              - if is_admin?
+                %li.divider
+                %li=link_to 'Admin', users_path
+                %li.divider
+                %li=link_to "Companies", companies_path
+                %li=link_to "Topics", topics_path
+          =yield :edit_bar
+        -else
+          %ul
+            %li= link_to 'Login', new_user_session_path
+            %li=# link_to 'Facebook', user_omniauth_authorize_path(:facebook)
+        .clear
+      -#/    Removing "primary navigation portion for now; may need it later"
+        %nav.primary
+          %ul
+            %li=link_to "About", "/about"
+            %li=link_to "Journal", "http://trumaker.tumblr.com", :target => "_blank"
+          .clear
+        .clear
