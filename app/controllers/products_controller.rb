@@ -28,6 +28,11 @@ class ProductsController < InheritedResources::Base
     end
   end
   
+  def rate_pop
+    resource
+    render :partial=>"products/rating_popup", :layout=>false 
+  end
+  
   def update_state
     resource
     return_to = product_path(resource)

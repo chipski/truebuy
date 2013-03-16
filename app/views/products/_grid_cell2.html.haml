@@ -1,14 +1,25 @@
 .card{:style=>"min-height: 51px; height: 51px;"}
-  .title{:style=>"float:left; "}
+  .title.left
     = link_to entity.name, entity
-  .rating_box{:style=>"float:right; clear: right;"}
-    -rate_dimension_id = entity.rate_dimensions[0][0]
+  .rating_box.right{:style=>"clear: right;"}
+    -rate_dimension_id = entity.rate_dimension
     -ratings = entity.rates(rate_dimension_id)
     .rating
-      =rating_for entity, rate_dimension_id, :star=>10
+      =rating_for entity, rate_dimension_id, :star=>10, :data=>{:read_only=>false}
       .totals
         %b=entity.average(rate_dimension_id).avg if entity.average(rate_dimension_id)
-        =" over #{ratings.count} ratings" 
+        ="#{ratings.count} ratings" 
+        .clearfix
+        -url=rate_pop_product_path(entity)
+        #popover_content{:style=>"display: hidden;"}
+          =#render :partial=>"products/rating_popup", :locals=>{:entity=>entity}
+          
+        -if entity.can_rate?(current_user.id, rate_dimension_id)
+          =link_to "Add Rating", "#", :data=>{:poload=>url, :title=>"How likely are you to recommend this product to a friend"}
+          
+        -else
+          =link_to "Edit Rating", "#", :data=>{:poload=>url, :title=>"How likely are you to recommend this product to a friend"}
+        
       .add_link
         -url=new_modal_reviews_path(:p=>entity.id)
         =link_to url, :data=>{:toggle=>"modal", :target=>"#new_review", :remote=>url}, :class=>" btn-mini" do

@@ -47,6 +47,7 @@
 //= require jquery.raty.js
 //= require letsrate.js
 //= require select2
+//= require products
 //= require jquery.pnotify
 //= require jquery_nested_form
 

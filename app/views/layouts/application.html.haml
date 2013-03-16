@@ -20,9 +20,9 @@
         .content
           =yield(:admin_bar) if show_admin_bar?
           -if content_for?(:sidebar)
-            .span3
+            .span2
               =yield(:sidebar)
-            .span9
+            .span10
               =yield
           -else
             .span12
@@ -30,9 +30,7 @@
           %footer       
             
       / ! end of .container
-      .footer
-        .navbar.navbar-static-bottom
-          %nav= render 'layouts/footer'  
+      = render 'layouts/footer2'  
       .javascript
         .libs
           = javascript_include_tag "application"

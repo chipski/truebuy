@@ -13,6 +13,7 @@ $(function(){
     number: function() {
       return $(this).attr('data-star-count')
     },
+    
     click: function(score, evt) {
         var raton = $(this).attr('data-classname')
         var raton_id = $(this).attr('data-id')
@@ -26,6 +27,16 @@ $(function(){
         });
     }                        
   });           
+});
+
+
+//$('#rating_popover').popover({delay:500, title:"Rating Popover", placement:"bottom", html:true})
+$('.rating *[data-poload]').bind('click',function(){
+  var e=$(this);
+  e.unbind('click');
+  $.get(e.data('poload'),function(d){
+      e.popover({content: d, html:true, placement:"bottom", delay:500}).popover('show');
+  });
 });
 
 
