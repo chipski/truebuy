@@ -21,7 +21,8 @@ body {
   line-height: 22px;
   font-weight: 500;
   color: #000;
-  background: #dfe4de;
+  background: #fff;
+  margin: 0px;
 }
 
 p {
@@ -182,7 +183,6 @@ header {
     background: url(/assets/logo.png) top left no-repeat;
     background-size: 120px;
     text-indent: -9999px;
-    border: 1px red solid;
   }
   nav {
     ul {
