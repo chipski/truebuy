@@ -107,7 +107,6 @@ header {
           font-size: 13px;
           line-height: 19px;
           color: #000000;
-          text-transform: uppercase;
           letter-spacing: 2px;
           &:hover {
             color: #999;
@@ -168,7 +167,7 @@ header {
 
 #footer {
   padding: 24px 0px;
-   /* background: #dfe4de; */
+  background: #EfEfEf;
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 9px;
   line-height: 19px;
@@ -177,7 +176,7 @@ header {
     float: right;
     display: block;
     width: 200px;
-    height: 30px;
+    height: 40px;
     margin-top: 20px;
     margin-right: 20px;
     background: url(/assets/logo.png) top left no-repeat;
@@ -444,7 +443,7 @@ header {
 
 #home {
   .intro {
-    height: 700px;
+    height: 500px;
     padding: 120px 0px 0px 0px;
     background-image: url(/assets/public/carseat_hero_l.jpg);
     background-position: top center;
