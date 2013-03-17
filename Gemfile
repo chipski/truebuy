@@ -98,7 +98,7 @@ gem "hominid", ">= 3.0.5"
 gem "mime-types"
 gem 'carrierwave'    
 gem "jquery-fileupload-rails"
-#gem 'rmagick'
+gem 'rmagick'
 
 group :development, :test do
   #gem 'eventmachine', '~> 1.0.0.beta.4.1'
