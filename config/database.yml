@@ -10,3 +10,14 @@ development:
   timeout: 5000
   encoding: utf8
   
+test: &test
+  adapter: postgresql
+  encoding: utf8
+  database: truebuy_test
+  host: localhost
+
+production:
+  adapter: postgresql
+  encoding: utf8
+  database: truebuy_production
+  host: localhost
