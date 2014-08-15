@@ -33,3 +33,5 @@ capybara-*.html
 .yardoc
 _yardoc
 doc/
+
+/vendor/assets/.DS_Store
