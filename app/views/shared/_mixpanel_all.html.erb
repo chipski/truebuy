@@ -18,4 +18,20 @@ mixpanel.set_config({cross_subdomain_cookie: true, verbose: false, debug: false}
   
   mixpanel.register_once({ 'initial referrer': document.referrer });
 <% end %>
+
+var Ramp=Ramp||{};
+var load_hash = {
+  'rampmetrics_customer':'chip@chipski-local', 
+  'rampmetrics_api_key': '00DE0000000bqMrMAI', 
+  'rampmetrics_campaign_id': '115c96b39366', 
+  'rampmetrics_sf_campaign_id': '701E0000000RtmfIAC'
+};
+Ramp.load_hash = load_hash;
+Ramp.load = function(key) {
+  var s=document.createElement('script');
+  s.type='text/javascript';s.async=true;s.id='rampmetrics';
+  s.src=document.location.protocol+"//rampmetrics.dev/assets/track.js";
+  document.getElementsByTagName('head')[0].appendChild(s);
+};
+Ramp.load("00DE0000000bqMrMAI");
 </script>

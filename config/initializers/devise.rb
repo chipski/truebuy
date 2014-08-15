@@ -214,7 +214,8 @@ Devise.setup do |config|
   config.omniauth :facebook, APP_CONFIG['facebook']['app_key'], APP_CONFIG['facebook']['app_secret'],
               :scope => fb_scopes,
               :strategy_class => OmniAuth::Strategies::Facebook,
-              :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}
+              :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}},
+              :auth_type=> 'https'
   # other scopes offline_access
   #Supported scopes: 
   # ads_management create_event create_note email export_stream friends_about_me 

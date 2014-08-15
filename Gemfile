@@ -16,9 +16,9 @@ gem 'sqlite3' , :group => :development
 gem 'squeel'  #http://railscasts.com/episodes/354-squeel?view=asciicast
 gem "ransack"  #:git => "git://github.com/ernie/ransack.git" # better search gem
 
-gem 'capistrano'
+#gem 'capistrano'
 #gem "chronic"
-gem "airbrake"
+#gem "airbrake"
 
 # Authentication
 gem 'bcrypt-ruby', '~> 3.0.0' 
@@ -45,9 +45,9 @@ gem "twitter-bootstrap-rails"
 
 group :assets do
   gem 'coffee-rails', '~> 3.2.1' 
-  gem "libv8"
-  gem 'therubyracer', '0.9.10'
-  gem "font-awesome-sass-rails"
+  #gem "libv8"
+  #gem 'therubyracer'
+  #gem "font-awesome-sass-rails"
   gem 'uglifier', '>= 1.0.3'
 end
 
@@ -56,25 +56,22 @@ gem "simple_form", ">= 2.0.4"
 gem "nested_form", :git => "git://github.com/ryanb/nested_form.git"       
 gem 'bootstrap-wysihtml5-rails'
 
+gem 'jquery-rails'
+gem "jquery-datatables-rails", ">= 1.11.2"
+#gem "ember-rails"
+#gem "underscore-rails"
+
 #gem "has_scope"
 gem 'inherited_resources' 
 gem "responders"    
 gem 'will_paginate', '~> 3.0'  
-
-gem 'jquery-rails'
-gem "jquery-datatables-rails", ">= 1.11.2"
-
-#gem "ember-rails"
-#gem "underscore-rails"
-
-#gem "rest-client"
 gem 'aasm'              
-#gem "stateflow"   
-#    
-#gem 'acts-as-taggable-on', '~>2.3.1' 
 gem 'letsrate'         #https://github.com/muratguzel/letsrate
 gem "gritter"
 gem 'masonry-rails'
+#gem "stateflow"   
+#gem 'acts-as-taggable-on', '~>2.3.1' 
+#gem "rest-client"
 
 gem 'google-analytics-rails'
 gem "google_visualr", ">= 2.1.2"  
@@ -87,7 +84,7 @@ gem "hominid", ">= 3.0.5"
 #gem 'airbrake'
 #gem 'mixpanel'   # https://github.com/zevarito/mixpanel
 
-#gem "ransack"    # MetaSearch  https://github.com/ernie/ransack
+
 
 # Image Processing and image/file upload    
 #gem "remotipart"
@@ -121,8 +118,6 @@ end
 group :development do
   #gem 'app_drone' 
   gem "haml-rails", ">= 0.3.5"   
-  
-  
   gem "ruby_parser", ">= 3.0.1"    
   gem "nifty-generators", ">= 0.4.6"   
   gem 'sexp_processor', '~> 4.1'

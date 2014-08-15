@@ -28,9 +28,9 @@ defaults: &DEFAULTS
     username: truebuy
     api_key: 6e87a6e9c351726564eb72fc930d660c-us6   
   facebook:
-    app_key: 109984119186279
-    app_secret: 8a7eb02e1c0908c6988c8c5e48c31c76
-    callback: "http://localhost:3000"
+    app_key: 188484924642221
+    app_secret: 1e4390306f78ec2f2ac9a27f49942251
+    callback: "http://truebuy.dev"
   twitter:
     consumer_key: PmGym41STsIW4Gg2G4cHmw
     consumer_secret: OXMlrpN1LqQug1OLkAWn9sFIszYJoyaGr8QRd62qk
