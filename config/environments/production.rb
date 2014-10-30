@@ -58,8 +58,8 @@ Reviews::Application.configure do
     r302      '/testing',   '/greg'
     r301      '/search/(.*)', 'http://www.google.com/?q=$1' 
     r301      %r{/old_path(.*)}, '/new_path$1'
-    r301 %r{.*}, 'http://www.truebuy.com$&', :if => Proc.new {|rack_env|
-      rack_env['SERVER_NAME'] != 'www.truebuy.com'
+    r301 %r{.*}, 'http://www.domain-name.com$&', :if => Proc.new {|rack_env|
+      rack_env['SERVER_NAME'] != 'www.domain-name.com'
     }
   end
   
@@ -76,7 +76,7 @@ Reviews::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  config.action_mailer.default_url_options = { :host => 'www.truebuy.com' }
+  config.action_mailer.default_url_options = { :host => 'www.domain-name.com' }
   # ActionMailer Config
   # Setup for production - deliveries, no errors raised
   config.action_mailer.delivery_method = :smtp
@@ -85,7 +85,7 @@ Reviews::Application.configure do
   config.action_mailer.default :charset => "utf-8"  
  
   
-  GA.tracker = "UA-35680198-1" 
+  GA.tracker = "UA-35456198-1" 
 
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)

@@ -1,5 +1,5 @@
 class UserMailer < Devise::Mailer
-  default :from => "info@truebuy.com"
+  default :from => "info@domain-name.com"
   layout 'email'
   
   def welcome_email(user)
@@ -9,8 +9,8 @@ class UserMailer < Devise::Mailer
     #@mixpanel_tracking_pixel = Mixpanel::Tracker.new("#{APP_CONFIG['analytics']['mixpanel']}").tracking_pixel("Open Email Welcome", {"distinct_id" => user.email}) 
     mail(
       to: @resource.email,
-      subject: "Welcome to Truebuy",
-      from: "Truebuy <info@truebuy.com>"
+      subject: "Welcome to domain-name",
+      from: "Truebuy <info@domain-name.com>"
       )
   end
   

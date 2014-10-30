@@ -23,7 +23,7 @@ defaults: &DEFAULTS
   mandrill:
     username: name
     api_key:  key
-    domain:  truebuy.com
+    domain:  domain-name.com
   mailchimp:
     username: truebuy
     api_key:    
@@ -50,11 +50,11 @@ cucumber:
   <<: *TEST
 staging: &STAGING
   <<: *DEVELOPMENT
-  domain: www.truebuy.com 
+  domain: truebuy1.herokuapp.com
 
 production:
   <<: *STAGING
-  domain: www.truebuy.com 
+  domain: truebuy1.herokuapp.com
   aws:
     access_key: AKIAICUAICIZ65ID27QA
     secret_key: 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   
