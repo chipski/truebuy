@@ -15,30 +15,30 @@ defaults: &DEFAULTS
     user_name:
     password:     
   mailjet:
-    api_key: 117e0fa84c038646b6fa26e85a766322
-    secret_key: 487ea9095fdaeaf77a6429938ef0c1cc
-    default_from: chip@truebuy.com
-    domain: truebuy.com
+    api_key: key
+    secret_key: secret
+    default_from: you@domain.com
+    domain: domain.com
     smtp_host: in.mailjet.com
   mandrill:
-    username: truebuy
-    api_key:  tDBRHpJOJC0aSsnSSupuAQ
+    username: name
+    api_key:  key
     domain:  truebuy.com
   mailchimp:
     username: truebuy
-    api_key: 6e87a6e9c351726564eb72fc930d660c-us6   
+    api_key:    
   facebook:
-    app_key: 188484924642221
-    app_secret: 1e4390306f78ec2f2ac9a27f49942251
-    callback: "http://truebuy.dev"
+    app_key: key
+    app_secret: secret
+    callback: "http://domain.dev"
   twitter:
-    consumer_key: PmGym41STsIW4Gg2G4cHmw
-    consumer_secret: OXMlrpN1LqQug1OLkAWn9sFIszYJoyaGr8QRd62qk
+    consumer_key: key
+    consumer_secret: secret
   aws:
-    # also see 1CTX1AKY0EZHAZKYGG82 in aws chipski@mac.com
-    access_key: AKIAICUAICIZ65ID27QA
-    secret_key: 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   
-    bucket: "truebuy-dev"            
+   
+    access_key: key
+    secret_key: secret   
+    bucket: "domain-dev"            
     
 development: &DEVELOPMENT
   <<: *DEFAULTS
@@ -62,7 +62,7 @@ production:
   facebook:
     app_key: 248229361979945
     app_secret: 83ea6278a5516b04c6a5e50f0c5229bb
-    callback: "http://www.truebuy.com"
+    callback: "http://truebuy1.herokuapp.com"
 
 
 
