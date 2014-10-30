@@ -32,22 +32,28 @@ gem "koala"  # This is a Graph client for Facebook, still use omniauth to connec
 #gem 'omniauth-dropbox'
 gem 'oauth2'
 
-gem "less", '~> 2.4.0'
-gem 'less-rails', '~> 2.4.2'
+# gem "less" #, '~> 2.4.0'
+# gem 'less-rails' #, '~> 2.4.2'
 gem "haml", ">= 3.1.7"    
-gem 'font-awesome-less' #, '~> 4.2.0'         
        
-gem 'sass-rails',   '~> 3.2.3'
-gem "bootstrap-sass"   # should be at 2.2.2.0 now
+#gem 'sass-rails',   '~> 3.2.3'
+gem 'sass-rails', '>= 3.2'
+#gem "bootstrap-sass"   # should be at '~> 3.1.1.1' now
+gem 'bootstrap-sass', '~> 3.2.0.2'
+
 # need to choose!  use above two or below two gems, not both or a mix
 # http://rubysource.com/twitter-bootstrap-less-and-sass-understanding-your-options-for-rails-3-1/
 #gem "less-rails-bootstrap"    #this can be switched with gem below but css & js load files will need rework
-gem "twitter-bootstrap-rails"                   
+#gem "twitter-bootstrap-rails"                   
 
 group :assets do
   gem 'coffee-rails', '~> 3.2.1' 
   gem "libv8"
   gem 'therubyracer'
+  gem 'jquery-rails'
+  gem 'turbolinks'
+  gem 'turbo-sprockets-rails3',   '~> 0.3.13'
+  gem 'sprockets',                '~> 2.2.2'
   #gem "font-awesome-sass-rails"
   gem 'uglifier', '>= 1.0.3'
   
@@ -131,7 +137,7 @@ group :development do
 end
  
 group :production do
-  gem "thin" 
+  #gem "thin" 
   #gem "unicorn"
 end  
 

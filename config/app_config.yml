@@ -56,8 +56,8 @@ production:
   <<: *STAGING
   domain: truebuy1.herokuapp.com
   aws:
-    access_key: AKIAICUAICIZ65ID27QA
-    secret_key: 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   
+    access_key: AKIAII3ODB2G6M6LHBMQ
+    secret_key: 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   
     bucket: "truebuy" 
   facebook:
     app_key: 248229361979945
