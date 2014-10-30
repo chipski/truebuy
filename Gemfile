@@ -9,10 +9,10 @@ gem "rake", "10.0.3"
 gem "thor", "~> 0.16.0"
 gem 'rails', '3.2.12'
  
-gem 'mysql', '2.8.1' 
 gem 'pg', :group => :production  
+#gem 'mysql', '2.8.1' 
 #gem 'mysql2'
-gem 'sqlite3' , :group => :development 
+#gem 'sqlite3' , :group => :development 
 gem 'squeel'  #http://railscasts.com/episodes/354-squeel?view=asciicast
 gem "ransack"  #:git => "git://github.com/ernie/ransack.git" # better search gem
 
@@ -45,8 +45,8 @@ gem "twitter-bootstrap-rails"
 
 group :assets do
   gem 'coffee-rails', '~> 3.2.1' 
-  #gem "libv8"
-  #gem 'therubyracer'
+  gem "libv8"
+  gem 'therubyracer'
   #gem "font-awesome-sass-rails"
   gem 'uglifier', '>= 1.0.3'
 end

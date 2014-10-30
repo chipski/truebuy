@@ -24,7 +24,7 @@ class UserMailer < Devise::Mailer
       )
   end
 
-  def reset_password_instructions(user)
+  def reset_password_instructionsOFF(user)
     @resource = user
     @site_url = root_url,
     @site_logo = root_url+"/assets/logo.png"
