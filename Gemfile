@@ -32,9 +32,10 @@ gem "koala"  # This is a Graph client for Facebook, still use omniauth to connec
 #gem 'omniauth-dropbox'
 gem 'oauth2'
 
-gem "less"
-gem 'less-rails'
-gem "haml", ">= 3.1.7"             
+gem "less", '~> 2.4.0'
+gem 'less-rails', '~> 2.4.2'
+gem "haml", ">= 3.1.7"    
+gem 'font-awesome-less' #, '~> 4.2.0'         
        
 gem 'sass-rails',   '~> 3.2.3'
 gem "bootstrap-sass"   # should be at 2.2.2.0 now
@@ -49,6 +50,7 @@ group :assets do
   gem 'therubyracer'
   #gem "font-awesome-sass-rails"
   gem 'uglifier', '>= 1.0.3'
+  
 end
 
 #gem 'twitter_bootstrap_form_for'
