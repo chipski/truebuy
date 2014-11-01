@@ -1,6 +1,6 @@
 
 //= require jquery
-//= require twitter/bootstrap
+//= require bootstrap-sprockets
 //= require bootstrap-wysihtml5
 //  require spin.min.js   
 //= require jquery.raty.js

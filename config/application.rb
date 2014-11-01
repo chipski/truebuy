@@ -76,6 +76,9 @@ module Reviews
     config.assets.enabled = true
     config.assets.logger = false   
     config.assets.initialize_on_precompile = false 
+    config.assets.precompile += %w( .svg .eot .woff .ttf )
+    config.assets.precompile += %w( popup.js )
+    config.assets.precompile += %w( popup.css )
     
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'

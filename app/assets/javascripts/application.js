@@ -16,7 +16,6 @@
 //= require bootstrap-sprockets
 //  require bootstrap-ajax.js
 //= require bootstrap-wysihtml5
-
 // require jquery.ui.widget
 
 //= require jquery.Jcrop
