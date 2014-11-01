@@ -3,7 +3,7 @@
   -show_activation_tabs= show_activation_tabs || true
   -active_tab = active_tab || "edit"
   -if show_activation_tabs
-    .page-header
+    %header
       %span.tabs
         %ul.nav.nav-tabs{:data=>{:url=>(resource ? resource_url : collection ? collection_url : "" )}} 
           -if resource

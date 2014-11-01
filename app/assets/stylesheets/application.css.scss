@@ -2,6 +2,12 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+@import 'layout';
+@import 'cards';
+/*@import 'forms';
+@import 'modals';
+@import 'bootstrap_and_overrides';*/
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -12,30 +18,12 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self                                      
- *= require bootstrap_and_overrides
- *= require 'layout'
- *= require 'cards'
- *= require 'forms'
- *= require 'modals'
- *= require bootstrap-wysihtml5
- * require 'masonry/basic'
- * require 'masonry/centered'
- * require 'masonry/fluid'
- * require 'masonry/gutters'
- * require 'masonry/infinitescroll'
- * require 'masonry/right-to-left'
- * require 'masonry/transitions'  
- *  require 'rs-default'
+ *= require_tree .
+ *= require_self
  *= require 'royalslider'
  *= require 'rs-minimal-white'
- *= require 'slides' 
- *  require_tree .
 */
 
-#main {
-    margin-top: 50px;
-}
 .navbar-header {
    .brand {
        padding: 0px;

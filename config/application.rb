@@ -73,11 +73,10 @@ module Reviews
     config.active_record.whitelist_attributes = false
 
     # Enable the asset pipeline
-    config.assets.digest = true
-    config.assets.enabled = true
+    # config.assets.digest = true
+    # config.assets.enabled = true
     config.assets.logger = false   
     config.assets.handle_expiration  =  true
-    config.assets.version = '0.16'
     config.assets.initialize_on_precompile = false 
     config.assets.precompile += %w( .svg .eot .woff .ttf )
     config.assets.precompile += %w( popup.js )

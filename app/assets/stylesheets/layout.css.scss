@@ -27,15 +27,13 @@ body {
     height: 64px;
     background-color: rgb(250, 247, 247);
     -webkit-box-shadow: rgb(255, 255, 255) 0px 1px 0px 0px inset, rgba(34, 25, 25, 0.4) 0px 1px 3px 0px;
-    box-shadow: rgb(255, 255, 255) 0px 1px 0px 0px inset, rgba(34, 25, 25, 0.4) 0px 1px 3px 0px;
-    
-    }
-    .container {
-        border: 1px solid yellow;
-        width: auto;
-        clear: both; 
-    }
+    box-shadow: rgb(255, 255, 255) 0px 1px 0px 0px inset, rgba(34, 25, 25, 0.4) 0px 1px 3px 0px;    
 }
+.container {
+    width: auto;
+    clear: both; 
+}
+
 
 .footer {
   height: 100px;
@@ -70,14 +68,11 @@ body {
     padding: 10px; 
     clear: both;
   }
-.span12 {
-    width: 100%;
-    margin-left: 0px;
-}
+
   
 .page-header {
   margin: 0 ;
-  padding: 18px 0 8px 18px;
+  padding: 0px 0 8px 0px;
   height: 58px;
   h1 { 
      width: auto; 

@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+
   rolify
   letsrate_rater
   # Include default devise modules. Others available are:
