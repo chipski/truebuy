@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby '2.1.3'
 gem "i18n"
 gem 'pg' #, :group => :production  
 #gem 'mysql', '2.8.1' 
