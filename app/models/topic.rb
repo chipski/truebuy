@@ -15,8 +15,8 @@ class Topic < ActiveRecord::Base
   end
      
   #default_scope order(:slide_order) 
-  scope :active_for, lambda {|current_user| where(:state=>:active)}     
-  scope :active_all, where(:state=>[:active])
+  scope :active_for, -> {|current_user| where(:state=>:active)}     
+  scope :active_all, -> {where(:state=>[:active])}
   #scope :initial, where(:state=>["new","", nil])
   def self.select_active
     all.collect{ |t| [t.name, t.id]}

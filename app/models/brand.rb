@@ -19,7 +19,7 @@ class Brand < ActiveRecord::Base
   default_scope { order(:slide_order) }
   #scope :active_for, lambda {|current_user| where(:state=>:active)}     
   #scope :initial, where(:state=>["new","", nil])
-  scope :not_active, where(:state=>["new","review", "inactive","error", nil])
+  scope :not_active, -> {where(:state=>["new","review", "inactive","error", nil])}
   def self.select_active
     all.collect{ |t| [t.name, t.id]}
   end

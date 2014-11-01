@@ -14,11 +14,11 @@ class Photo < ActiveRecord::Base
   #after_update :crop_image
   
   default_scope { order(:slide_order) }
-  scope :active_all,   where(:state=>:active)  
-  scope :inactive_all, where(:state=>:active)     
-  scope :active_for, lambda {|current_user| where(:state=>:active)}     
-  scope :inactive_for, lambda {|current_user| where(:state=>[:inactive])}      
-  scope :initial, where(:state=>[:new, nil])  
+  scope :active_all,   ->{where(:state=>:active)  }
+  scope :inactive_all, ->{where(:state=>:active)}     
+  scope :active_for,   ->{|current_user| where(:state=>:active)}     
+  scope :inactive_for, ->{|current_user| where(:state=>[:inactive])}      
+  scope :initial,      ->{where(:state=>[:new, nil]) } 
   
   def self.select_active         
     self.initial.collect{ |t| [" #{t.name[0..30]}", t.id]}

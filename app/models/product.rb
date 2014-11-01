@@ -20,8 +20,8 @@ class Product < ActiveRecord::Base
   after_save :update_order
   
   #default_scope order(:slide_order) 
-  scope :active_for, lambda {|current_user| where(:state=>:active)}     
-  scope :active_all, where(:state=>[:active])
+  scope :active_for, ->{|current_user| where(:state=>:active)}     
+  scope :active_all, ->{where(:state=>[:active])}
   #scope :initial, where(:state=>["new","", nil])
   
   def ave_rating(dimension="quality")
