@@ -20,7 +20,13 @@ class TopicsController < InheritedResources::Base
       format.js { render :edit, :layout=>false }
     end
   end
-  
+
+  def update
+    resource
+    resource.update_attributes!(topic_params)
+    redirect_to resource
+  end  
+      
   def update_state
     resource
     return_to = resource_url
@@ -38,6 +44,10 @@ class TopicsController < InheritedResources::Base
   end  
   
   protected
+    def topic_params
+      params.permit(:blurb, :body, :cover, :keywords, :name, :permalink, :state, :category_ids, :company_id, :brand_id, :slide_order)
+    end
+  
     def resource
       @topic = Topic.find_by_permalink(params[:id])
     end

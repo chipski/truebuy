@@ -5,8 +5,6 @@ class Brand < ActiveRecord::Base
   has_and_belongs_to_many :categories, :class_name => "Category"  
   has_many :photos, :as => :parent, :class_name => "Photo"     
   
-  attr_accessible :blurb, :body, :cached_tag_list, :cover, :keywords, :name, :permalink, :state, :category_ids, :company_id
-  
   before_save :update_permalink   
   #after_save :update_order   
 
@@ -18,7 +16,7 @@ class Brand < ActiveRecord::Base
   end
 
     
-  default_scope order(:slide_order) 
+  default_scope { order(:slide_order) }
   #scope :active_for, lambda {|current_user| where(:state=>:active)}     
   #scope :initial, where(:state=>["new","", nil])
   scope :not_active, where(:state=>["new","review", "inactive","error", nil])

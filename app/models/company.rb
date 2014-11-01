@@ -2,9 +2,7 @@ class Company < ActiveRecord::Base
   has_many :photos, :as => :parent, :class_name => "Photo"     
   has_many :topics  
   has_many :brands 
-  has_and_belongs_to_many :categories, :class_name => "Category"  
-  
-  attr_accessible :blurb, :body, :cover, :duns, :keywords, :name, :permalink, :state, :type, :photo_id, :url, :url2      
+  has_and_belongs_to_many :categories, :class_name => "Category"   
    
   before_save :update_permalink  
   after_save :update_order
@@ -17,7 +15,7 @@ class Company < ActiveRecord::Base
   end
   
   
-  default_scope order(:slide_order) 
+  default_scope { order(:slide_order) }
   #scope :active, lambda {|current_user| where(:state=>:active)}     
   #scope :inactive, lambda {|current_user| where(:state=>[:inactive])}      
   #scope :initial, where(:state=>[:new, nil])

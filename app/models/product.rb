@@ -5,9 +5,6 @@ class Product < ActiveRecord::Base
   has_many :photos, :as => :parent, :class_name => "Photo"     
   has_many :reviews
   
-  attr_accessible :active_date, :brand_id, :blurb, :body, :cover, :keywords, :name, :state
-  attr_accessible :category_ids, :model_num, :sku, :sku_type, :cached_tag_list
-  
   letsrate_rateable "quality", "value", "fits_needs"
   # above will add 3 has_many linkes for each dimension above
   # <dimension>_rates, <dimension>_raters, <dimension>_average,

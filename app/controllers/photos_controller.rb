@@ -53,6 +53,13 @@ class PhotosController < InheritedResources::Base
       render :json => [{:error => "custom_failure"}], :status => 304
     end
   end
+  
+  def updateOFF
+    resource
+    resource.update_attributes!(photo_params)
+    redirect_to resource
+  end  
+  
   def update
     @photo = @parent ? @parent.photos.find(params[:id]) : Photo.find(params[:id])
     p_attr = params[:photo]
@@ -112,6 +119,10 @@ class PhotosController < InheritedResources::Base
   end
   
   protected
+    def photo_params
+      params.permit(:blurb, :image_name, :image_uid, :image, :keywords, :name, :permalink, :slide_order, :parent_id, :parent_type, :topic_id, :crop_x, :crop_y, :crop_w, :crop_h, :return_to)
+    end
+  
     def collection
       @photos ||= end_of_association_chain.paginate(:page => params[:page])
     end 

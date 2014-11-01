@@ -32,7 +32,12 @@ class CategoriesController < InheritedResources::Base
       format.js { render :partial=>"shared/content" }
     end
   end
-  
+
+  def update
+    resource
+    resource.update_attributes!(category_params)
+    redirect_to resource
+  end  
   
   def update_state
     resource
@@ -50,6 +55,10 @@ class CategoriesController < InheritedResources::Base
   end
   
   protected
+    def category_params
+      params.permit(:blurb, :body, :cached_tag_list, :cover, :keywords, :name, :permalink, :state, :type, :parent_id)
+    end
+
     def resource
       @category = Category.find_by_permalink(params[:id])
     end

@@ -6,8 +6,6 @@ class Category < ActiveRecord::Base
   has_and_belongs_to_many :companies, :class_name => "Company" 
   has_and_belongs_to_many :products, :class_name => "Product" 
   
-  attr_accessible :blurb, :body, :cached_tag_list, :cover, :keywords, :name, :permalink, :state, :type, :parent_id
-  
   before_save :update_permalink   
   #after_save :update_order   
 

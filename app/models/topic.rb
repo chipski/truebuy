@@ -2,8 +2,7 @@ class Topic < ActiveRecord::Base
   belongs_to :company
   belongs_to :brand
   has_and_belongs_to_many :categories, :class_name => "Category"  
-  has_many :photos, :as => :parent, :class_name => "Photo"  
-  attr_accessible :blurb, :body, :cover, :keywords, :name, :permalink, :state, :category_ids, :company_id, :brand_id, :slide_order
+  has_many :photos, :class_name => "Photo"  #:as => :parent, 
   
   before_save :update_permalink   
   #after_save :update_order   
@@ -82,7 +81,7 @@ class Topic < ActiveRecord::Base
   
   def slider_photos
     #self.cover ? (self.photos - [Photo.find(self.cover)]) : self.photos
-    self.photos
+    photos
   end
   
   def cover_url(size="small")

@@ -1,5 +1,5 @@
 #full-width-slider.royalSlider.rsMinW.img-bar
-  -@topic.slider_photos.each do |photo|
+  -@topic.photos.each do |photo|
     .rsContent
       =image_tag(photo.image.medium.url, :class=>"rsImg", :alt=>photo.blurb)
       -if photo.blurb

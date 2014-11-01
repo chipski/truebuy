@@ -1,7 +1,5 @@
 class Photo < ActiveRecord::Base
 
-  attr_accessible :blurb, :image_name, :image_uid, :image, :keywords, :name, :permalink 
-  attr_accessible :slide_order, :parent_id, :parent_type, :topic_id, :crop_x, :crop_y, :crop_w, :crop_h, :return_to
   attr_accessor :crop_x, :crop_y, :crop_w, :crop_h, :return_to
 
   belongs_to :topic     
@@ -15,7 +13,7 @@ class Photo < ActiveRecord::Base
   after_save :update_order
   #after_update :crop_image
   
-  default_scope order(:slide_order) 
+  default_scope { order(:slide_order) }
   scope :active_all,   where(:state=>:active)  
   scope :inactive_all, where(:state=>:active)     
   scope :active_for, lambda {|current_user| where(:state=>:active)}     

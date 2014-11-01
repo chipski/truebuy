@@ -1,18 +1,8 @@
-%footer#footer.footer
-  .navbar.navbar-static-bottom
-    .navbar-inner
-      .brand
-        =link_to root_path do
-          &copy; TrueBuy 2013
-      %ul.nav
-        %li=link_to "About", about_path
-        %li=link_to "Terms of Service", tos_path
-        %li=link_to "Privacy Policy", privacy_path
-        - if user_signed_in? && is_admin?
-          %li= link_to 'Admin', users_path
-      .clear
-        
-        .clear  
-
- 
- 
+.navbar.navbar-static-bottom{style:"margin: 80px 20px 0 20px"}
+  %ul.nav.navbar-nav.navbar-right
+    %li=link_to "About", about_path
+    %li=link_to "Terms of Service", tos_path
+    %li=link_to "Privacy Policy", privacy_path
+    - if user_signed_in? && is_admin?
+      %li= link_to 'Admin', users_path
+  .clear

@@ -32,7 +32,13 @@ class ProductsController < InheritedResources::Base
     resource
     render :partial=>"products/rating_popup", :layout=>false 
   end
-  
+
+  def update
+    resource
+    resource.update_attributes!(product_params)
+    redirect_to resource
+  end  
+    
   def update_state
     resource
     return_to = product_path(resource)
@@ -49,6 +55,10 @@ class ProductsController < InheritedResources::Base
   end  
   
   protected
+    def product_params
+      params.permit(:active_date, :brand_id, :blurb, :body, :cover, :keywords, :name, :state, :category_ids, :model_num, :sku, :sku_type, :cached_tag_list)
+    end
+  
     def resource
       @product = Product.find_by_permalink(params[:id])
     end

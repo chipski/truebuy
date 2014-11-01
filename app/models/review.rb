@@ -1,7 +1,6 @@
 class Review < ActiveRecord::Base
   belongs_to :product
   belongs_to :user
-  attr_accessible :active_date, :blurb, :body, :cached_tag_list, :deactivated_date, :keywords, :name, :permalink, :state, :user_id, :product_id
   before_save :update_permalink   
   
   #default_scope order(:slide_order) 

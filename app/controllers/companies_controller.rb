@@ -11,7 +11,13 @@ class CompaniesController < InheritedResources::Base
       format.js { render :edit, :layout=>false }
     end
   end
-  
+
+  def update
+    resource
+    resource.update_attributes!(company_params)
+    redirect_to resource
+  end  
+    
   def update_state
     resource
     return_to = company_path(resource)
@@ -28,6 +34,10 @@ class CompaniesController < InheritedResources::Base
   end  
   
   protected
+    def company_params
+      params.permit(:blurb, :body, :cover, :duns, :keywords, :name, :permalink, :state, :type, :photo_id, :url, :url2)
+    end
+  
     def resource
       @company = Company.find_by_permalink(params[:id])
     end

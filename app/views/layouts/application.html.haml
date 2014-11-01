@@ -13,8 +13,9 @@
     = yield(:head)
   
   %body{:class => "#{controller_name} #{action_name}"}
-    %header.navbar.navbar-fixed-top
+    .header
       = render 'layouts/navigation'
+    .top-line
     #main{:role => "main"}
       .container
         .content
@@ -27,16 +28,17 @@
           -else
             .span12
               = yield
-          %footer       
+                
             
       / ! end of .container
-      = render 'layouts/footer2'  
-      .javascript
-        .libs
-          = javascript_include_tag "application"
-        .page
-          = render :partial=> "shared/alerts"  
-          = render :partial => "shared/mixpanel_all"
-        :javascript
-          #{yield :mixpanel_tag}
-        = render :partial => 'shared/js_startup'
+      %footer#footer.footer
+        = render 'layouts/footer2'  
+        .javascript
+          .libs
+            = javascript_include_tag "application"
+          .page
+            = render :partial=> "shared/alerts"  
+            = render :partial => "shared/mixpanel_all"
+          :javascript
+            #{yield :mixpanel_tag}
+          = render :partial => 'shared/js_startup'

@@ -84,8 +84,8 @@ Reviews::Application.routes.draw do
       end
     end
     
-    #match '/rate' => 'rater#create', :as => 'rate'
-    root :to => 'categories#index'
+    #get '/rate' => 'rater#create', :as => 'rate'
+    
   end
   
   devise_scope :user do
@@ -93,28 +93,31 @@ Reviews::Application.routes.draw do
     get "/login",  :to => "devise/sessions#new", :as => :login  
     get "/logout", :to => "devise/sessions#destroy", :as => :logout
     get "/signup", :to => "devise/registrations#new", :as => :signup     
-    match '/user/confirmation' => 'confirmations#update', :via => :put, :as => :update_user_confirmation
-    match '/confirm/:confirmation_token', :to => "devise/confirmations#show", :as => "user_confirm", :only_path => false
+    get '/user/confirmation' => 'confirmations#update', :via => :put, :as => :update_user_confirmation
+    get '/confirm/:confirmation_token', :to => "devise/confirmations#show", :as => "user_confirm", :only_path => false
     
-    match '/users/auth/facebook/callback', to: 'users/omniauth_callbacks#facebook'
+    get '/users/auth/facebook/callback', to: 'users/omniauth_callbacks#facebook'
     get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
-    match '/users/auth/:provider/callback', to: 'sessions#create_omni'
+    get '/users/auth/:provider/callback', to: 'sessions#create_omni'
     
-    match '/rate' => 'rater#create', :as => 'rate'
+    get '/rate' => 'rater#create', :as => 'rate'
     
     #root :to => "devise/registrations#new"
-    root :to => 'home#index'
+    
   end
   devise_for :users, :controllers => { :registrations => "registrations", :confirmations => "confirmations", :omniauth_callbacks => "users/omniauth_callbacks" }
-  match 'users/bulk_invite/:quantity' => 'users#bulk_invite', :via => :get, :as => :bulk_invite
+  get 'users/bulk_invite/:quantity' => 'users#bulk_invite', :via => :get, :as => :bulk_invite
   
   resources :users, :only => [:show, :index] do
     get 'invite', :on => :member
   end
 
-  match '/about'   => 'home#about'
-  match '/tos'     => 'home#tos'
-  match '/privacy' => 'home#privacy'
+  root :to => 'home#index'
+  #root :to => 'categories#index'
+
+  get '/about'   => 'home#about'
+  get '/tos'     => 'home#tos'
+  get '/privacy' => 'home#privacy'
   
   
 end

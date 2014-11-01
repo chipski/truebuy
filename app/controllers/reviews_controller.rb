@@ -21,7 +21,13 @@ class ReviewsController < InheritedResources::Base
     @product = Product.find(params[:p]) if params[:p]
     render :partial=>"reviews/form", :layout=>"popups"
   end
-  
+
+  def update
+    resource
+    resource.update_attributes!(review_params)
+    redirect_to resource
+  end  
+    
   def create
     super do |format|
       format.html { 
@@ -33,6 +39,10 @@ class ReviewsController < InheritedResources::Base
   end
   
   protected
+    def review_params
+      params.permit(:active_date, :blurb, :body, :cached_tag_list, :deactivated_date, :keywords, :name, :permalink, :state, :user_id, :product_id)
+    end
+  
     def resource
       @review = Review.find_by_permalink(params[:id])
     end

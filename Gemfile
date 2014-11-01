@@ -1,73 +1,41 @@
 source 'https://rubygems.org'
 
 gem "i18n"
-gem "psych", ">=1.3"     
-gem 'bundler', ">1.2"
-gem 'rack'  #, '~> 1.2.1'
-gem 'rack-rewrite', '~> 1.2.1'
-gem "rake", "10.0.3"     
-gem "thor", "~> 0.16.0"
-gem 'rails', '3.2.12'
- 
-gem 'pg', :group => :production  
+gem 'pg' #, :group => :production  
 #gem 'mysql', '2.8.1' 
 #gem 'mysql2'
 #gem 'sqlite3' , :group => :development 
 gem 'squeel'  #http://railscasts.com/episodes/354-squeel?view=asciicast
 gem "ransack"  #:git => "git://github.com/ernie/ransack.git" # better search gem
 
-#gem 'capistrano'
-#gem "chronic"
-#gem "airbrake"
+gem 'rack'          #, '~> 1.2.1'
+gem 'rack-rewrite', '~> 1.2.1'
+gem "rake"          #, "10.0.3"     
+gem "thor"          #, "~> 0.16.0"
+gem "haml"          #, ">= 3.1.7"    
+
+gem 'rails', '4.1.5'
+gem "protected_attributes"
+# gem 'activeresource', github: 'rails/activeresource'
+# gem 'actionpack-action_caching', github: 'rails/actionpack-action_caching'
+# gem 'actionpack-page_caching', github: 'rails/actionpack-page_caching'
+# gem 'activerecord-session_store'
+# gem 'rails-observers'
+# gem 'actionview-encoded_mail_to'
+# gem 'rails-perftest'
+# gem 'actionpack-xml_parser', github: 'rails/actionpack-xml_parser' 
 
 # Authentication
-gem 'bcrypt-ruby', '~> 3.0.0' 
+gem 'bcrypt', '~> 3.1.7'
 #gem "devise-encryptable"   # failing now, todo fix
-gem "devise", ">= 2.1.2"
-gem "cancan", ">= 1.6.8"
-gem "rolify", ">= 3.2.0"
+gem "devise"
+gem "cancan"                #, ">= 1.6.8"
+gem "rolify"                #, ">= 3.2.0"
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem "koala"  # This is a Graph client for Facebook, still use omniauth to connect
 #gem 'omniauth-dropbox'
 gem 'oauth2'
-
-# gem "less" #, '~> 2.4.0'
-# gem 'less-rails' #, '~> 2.4.2'
-gem "haml", ">= 3.1.7"    
-       
-#gem 'sass-rails',   '~> 3.2.3'
-gem 'sass-rails', '>= 3.2'
-#gem "bootstrap-sass"   # should be at '~> 3.1.1.1' now
-gem 'bootstrap-sass', '~> 3.2.0.2'
-
-# need to choose!  use above two or below two gems, not both or a mix
-# http://rubysource.com/twitter-bootstrap-less-and-sass-understanding-your-options-for-rails-3-1/
-#gem "less-rails-bootstrap"    #this can be switched with gem below but css & js load files will need rework
-#gem "twitter-bootstrap-rails"                   
-
-group :assets do
-  gem 'coffee-rails', '~> 3.2.1' 
-  gem "libv8"
-  gem 'therubyracer'
-  gem 'jquery-rails'
-  gem 'turbolinks'
-  gem 'turbo-sprockets-rails3',   '~> 0.3.13'
-  gem 'sprockets',                '~> 2.2.2'
-  #gem "font-awesome-sass-rails"
-  gem 'uglifier', '>= 1.0.3'
-  
-end
-
-#gem 'twitter_bootstrap_form_for'
-gem "simple_form", ">= 2.0.4"          
-gem "nested_form", :git => "git://github.com/ryanb/nested_form.git"       
-gem 'bootstrap-wysihtml5-rails'
-
-gem 'jquery-rails'
-gem "jquery-datatables-rails", ">= 1.11.2"
-#gem "ember-rails"
-#gem "underscore-rails"
 
 #gem "has_scope"
 gem 'inherited_resources' 
@@ -76,10 +44,35 @@ gem 'will_paginate', '~> 3.0'
 gem 'aasm'              
 gem 'letsrate'         #https://github.com/muratguzel/letsrate
 gem "gritter"
-gem 'masonry-rails'
+
+# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+gem 'jbuilder', '~> 2.0'
+
 #gem "stateflow"   
 #gem 'acts-as-taggable-on', '~>2.3.1' 
 #gem "rest-client"
+       
+group :assets do
+  gem 'uglifier'        , '>= 1.3.0'
+  gem 'coffee-rails'    , '~> 4.0.0'
+  #gem "libv8"
+  gem 'therubyracer' 
+  gem 'jquery-rails'
+  gem 'turbolinks'
+  gem 'bootstrap-sass'  , '~> 3.3.0'
+  gem 'sass-rails'      , '~> 4.0.3'
+  #gem "font-awesome-sass-rails"
+end
+
+#gem 'twitter_bootstrap_form_for'
+gem "simple_form", ">= 2.0.4"          
+gem "nested_form", :git => "git://github.com/ryanb/nested_form.git"       
+gem 'bootstrap-wysihtml5-rails'
+gem 'masonry-rails'
+
+gem "jquery-datatables-rails", ">= 1.11.2"
+#gem "ember-rails"
+#gem "underscore-rails"
 
 gem 'google-analytics-rails'
 gem "google_visualr", ">= 2.1.2"  
@@ -88,11 +81,10 @@ gem "google_visualr", ">= 2.1.2"
 gem "fog"
 gem "geocoder"    #http://www.rubygeocoder.com/
 gem "hominid", ">= 3.0.5"
+
 #gem 'mailjet'   #email out & newsletters
 #gem 'airbrake'
 #gem 'mixpanel'   # https://github.com/zevarito/mixpanel
-
-
 
 # Image Processing and image/file upload    
 #gem "remotipart"
@@ -123,6 +115,10 @@ group :test do
   gem "mocha"
 end
 
+#gem 'capistrano'
+#gem "chronic"
+#gem "airbrake"
+
 group :development do
   #gem 'app_drone' 
   gem "haml-rails", ">= 0.3.5"   
@@ -132,6 +128,7 @@ group :development do
   #gem "bootstrapped", :git => 'https://github.com/entropillc/bootstrapped.git'           
   #gem 'nice_generators'
   gem "quiet_assets", ">= 1.0.1"
+  gem 'spring'  # https://github.com/rails/spring
   gem "erd"
   gem "rails-erd"      
 end
