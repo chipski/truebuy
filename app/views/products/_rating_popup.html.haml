@@ -27,7 +27,7 @@
       .totals
         %b=entity.average(rate_dimension_id).avg if entity.average(rate_dimension_id)
         ="#{ratings.count} ratings" 
-        -if entity.can_rate?(current_user.id, rate_dimension_id)
+        -if entity.can_rate?(current_user, rate_dimension_id)
           -url=rate_pop_product_path(entity)
           #rating_popover
         -else

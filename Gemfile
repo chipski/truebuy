@@ -66,9 +66,9 @@ group :assets do
 end
 
 #gem 'twitter_bootstrap_form_for'
-gem "simple_form", ">= 2.0.4"          
+gem 'simple_form', '~> 3.0.2'         
 gem "nested_form", :git => "git://github.com/ryanb/nested_form.git"       
-gem 'bootstrap-wysihtml5-rails'
+gem 'bootstrap-wysihtml5-rails', '~> 0.3.3.1'
 gem 'masonry-rails'
 
 gem "jquery-datatables-rails", ">= 1.11.2"

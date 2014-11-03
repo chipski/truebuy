@@ -1,17 +1,15 @@
 .form-box
   = simple_form_for(@product, :html => { :class => 'form-horizontal' }) do |f|    
     .form-input-boxes 
-      = f.text_field :name, :class => 'text_field' 
-      .left
-        = f.association :categories
-      .right
-        =# f.association :brand, :prompt=>"Choose a Brand"
-        = f.text_field :model_num, :prompt=>"Model Number"
+      = f.input :name, :class => 'text_field' 
+      = f.association :categories, wrapper_html:{class:"col-md-6"}
+      =# f.association :brand, :prompt=>"Choose a Brand"
+      = f.input :model_num, :prompt=>"Model Number", wrapper_html:{class:"col-md-6"}
       .clearfix
-      = f.text_area :blurb, :class => 'wysihtml5', :style=>"height:100px;" 
-      = f.text_area :body, :class => 'wysihtml5', :style=>"height:600px;"
-      .left= f.text_field :sku
-      .right= f.select :sku_type, :collection=>Product.select_sku_type
+      = f.input :blurb, :class => 'wysihtml5', :style=>"height:100px;" 
+      = f.input :body, :class => 'wysihtml5', :style=>"height:600px;"
+      .left= f.input :sku, wrapper_html:{class:"col-md-6"}
+      .right= f.input :sku_type, :collection=>Product.select_sku_type, wrapper_html:{class:"col-md-6"}
       
       = f.submit nil, :class => 'btn btn-primary'
 

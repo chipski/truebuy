@@ -1,6 +1,6 @@
 -collection = collection || @products
 -categories = []  #collection.map{|p| p.categories}.flatten.uniq
--brands =   []  #collection.map{|p| p.brand}.flatten.uniq
+-brands     = []  #collection.map{|p| p.brand}.flatten.uniq
 
 .tab-content{:style=>"min-height: 480px;"} 
   .tab-pane.active#actived
@@ -45,8 +45,9 @@
           =check_box_tag :category, category.id, true, :class=>'check_box' 
           =category.name
       %li.nav-header 
-      %li
-        = radio_button_tag :det, "detailed", :class => :radio
-        Detailed
-        = radio_button_tag :det, "list", :class => :radio
-        List
+      -#/
+        %li
+          = radio_button_tag :det, "detailed", :class => :radio
+          Detailed
+          = radio_button_tag :det, "list", :class => :radio
+          List

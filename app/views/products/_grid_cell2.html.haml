@@ -14,7 +14,7 @@
         #popover_content{:style=>"display: hidden;"}
           =#render :partial=>"products/rating_popup", :locals=>{:entity=>entity}
           
-        -if entity.can_rate?(current_user.id, rate_dimension_id)
+        -if entity.can_rate?(current_user, rate_dimension_id)
           =link_to "Add Rating", "#", :data=>{:poload=>url, :title=>"How likely are you to recommend this product to a friend"}
           
         -else

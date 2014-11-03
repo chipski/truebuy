@@ -1,5 +1,5 @@
 .row
-  .hero
+  .hero{style:"max-width:320px; margin:8px auto;"}
     %h2 Sign in
     = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-vertical' }) do |f|
       = f.input :email, :autofocus => true

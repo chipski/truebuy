@@ -21,12 +21,12 @@
         .content
           =yield(:admin_bar) if show_admin_bar?
           -if content_for?(:sidebar)
-            .span2
+            .col-md-3
               =yield(:sidebar)
-            .span10
+            .col-md-9
               =yield
           -else
-            .span12
+            .col-md-12
               = yield
                 
             
